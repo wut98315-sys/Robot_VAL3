@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
   <Program name="_tCycleCtrl">
     <Locals>
@@ -20,21 +20,31 @@
   if rs:bToStartCycle and rs:bIsReady
     rs:bToStartCycle=false
     taskCreate "cycle",100,_productCycle()
-    wait(taskStatus("cycle")>-1)
+    //原来的 wait 没有超时，任务起不来会让整个控制循环卡死
+    l_bResult=watch(taskStatus("cycle")>-1,2)
+    if !l_bResult
+      rs:bIsError=true
+      logMsg("启动生产任务超时")
+    endIf
   endIf
-  //停止程序
+  //暂停程序（含生产任务异常：停止运动等待人工处理）
+  if((rs:bToPause) and rs:bIsCycle) or taskStatus("cycle")>1
+    rs:bToPause=false
+    stopMove()
+    rs:bIsPause=true
+  endIf
+  //停止程序（与暂停同时请求时，停止优先）
   if(rs:bToStopCycle or rs:bIsEstop) and rs:bIsCycle
     rs:bToStopCycle=false
     resetMotion()
     stopMove()
     taskKill("cycle")
-    wait(taskStatus("cycle")==-1)
-  endIf
-  //暂停程序
-  if((rs:bToPause) and rs:bIsCycle) or taskStatus("cycle")>1
-    rs:bToPause=false
-    stopMove()
-    rs:bIsPause=true
+    l_bResult=watch(taskStatus("cycle")==-1,2)
+    if !l_bResult
+      logMsg("停止生产任务超时")
+    endIf
+    //停止后必须清掉暂停标志：PLC 报警恢复沿会把 bIsPause 当作"暂停中"而自动重新启动
+    rs:bIsPause=false
   endIf
   //暂停恢复程序
   if rs:bIsPause and rs:bIsCycle and rs:bToStartCycle

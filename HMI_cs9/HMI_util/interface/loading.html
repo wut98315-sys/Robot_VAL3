@@ -45,7 +45,14 @@
           color: #28405a; font-family: inherit; font-size: 13px;
         }
         hr { border: 1px solid #d3dde7; }
+        /* 加载动画：线条圆环旋转（替代原来的 gif） */
+        #img1 {
+          -webkit-animation: hmi-spin 1.1s linear infinite;
+          animation: hmi-spin 1.1s linear infinite;
+        }
+        @-webkit-keyframes hmi-spin { from { -webkit-transform: rotate(0deg); } to { -webkit-transform: rotate(360deg); } }
+        @keyframes hmi-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
       </style>    </head>
-    <body style="width: 480px; height: 690px; margin: 0; background-color: #FFFFFF"><img id="img1" style="width: 260px; height: 174px; top: 258px; position: absolute; left: 110px" src="../../image/loading1.gif"></img>
+    <body style="width: 480px; height: 690px; margin: 0; background-color: #FFFFFF"><img id="img1" style="width: 56px; height: 56px; top: 300px; position: absolute; left: 212px" src="../../image/loading-ring.svg"></img>
 </body>
   </html>

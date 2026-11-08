@@ -50,5 +50,94 @@
       <img id="img1" style="width: 64px; height: 64px; top: 313px; position: absolute; left: 394px" src="../../image/cancel.svg"></img>
       <label id="lbl1" style="top: 335px; position: absolute; left: 39px; width: 84px; height: 20px">正在模拟：</label>
       <label id="lbl2" style="top: 335px; position: absolute; left: 123px; width: 257px; height: 20px">Label</label>
+    <!-- i18n -->
+    <script id="i18n-script" type="text/javascript">
+(function () {
+  var D = {"正在模拟：":"Simulating:"};
+  var K = 'hmiLang';
+  function get() {
+    try { var v = localStorage.getItem(K); if (v) { return v; } } catch (e) {}
+    var m = document.cookie.match(/(?:^|;\s*)hmiLang=(\w+)/);
+    return m ? m[1] : 'zh';
+  }
+  function set(v) {
+    try { localStorage.setItem(K, v); } catch (e) {}
+    document.cookie = K + '=' + v + ';path=/';
+  }
+  function trim(s) { return (s || '').replace(/^\s+|\s+$/g, ''); }
+  function fit(el) {
+    var orig = el.getAttribute('data-fs');
+    var fs = parseFloat(orig);
+    if (!fs) { try { fs = parseFloat(getComputedStyle(el).fontSize); } catch (e) {} }
+    if (!fs) { fs = 13; }
+    el.style.fontSize = fs + 'px';
+    var guard = 0;
+    while (guard < 12 && fs > 9 && (el.scrollWidth > el.clientWidth + 1 || el.scrollHeight > el.clientHeight + 1)) {
+      fs -= 1; el.style.fontSize = fs + 'px'; guard++;
+    }
+  }
+  function apply(lang) {
+    var els = document.getElementsByTagName('*');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (el.id === 'btnLang') { continue; }
+      if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') { continue; }
+      if (el.childNodes.length === 1 && el.firstChild.nodeType === 3) {
+        var t = trim(el.firstChild.nodeValue);
+        var key = el.getAttribute('data-zh') || t;
+        var en = D[key];
+        if (en) {
+          if (lang === 'en') {
+            if (!el.getAttribute('data-zh')) {
+              el.setAttribute('data-zh', t);
+              el.setAttribute('data-fs', el.style.fontSize || '');
+            }
+            el.textContent = en;
+            fit(el);
+          } else {
+            el.textContent = key;
+            var fs0 = el.getAttribute('data-fs');
+            if (fs0 !== null) { el.style.fontSize = fs0; }
+          }
+        }
+      }
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        var attrs = ['placeholder', 'value'];
+        for (var a = 0; a < attrs.length; a++) {
+          var v = el.getAttribute(attrs[a]);
+          if (!v) { continue; }
+          var e2 = D[trim(v)];
+          if (!e2) { continue; }
+          if (lang === 'en') {
+            if (!el.getAttribute('data-zh-' + attrs[a])) { el.setAttribute('data-zh-' + attrs[a], v); }
+            el.setAttribute(attrs[a], e2);
+          } else {
+            var z = el.getAttribute('data-zh-' + attrs[a]);
+            if (z) { el.setAttribute(attrs[a], z); }
+          }
+        }
+      }
+    }
+  }
+  function syncBtn(lang) {
+    var b = document.getElementById('btnLang');
+    if (!b) { return; }
+    b.textContent = (lang === 'en') ? '中' : 'EN';
+    b.title = (lang === 'en') ? 'Switch to Chinese' : 'Switch to English';
+    if (!b.getAttribute('data-bound')) {
+      b.setAttribute('data-bound', '1');
+      b.onclick = function () {
+        var n = (get() === 'en') ? 'zh' : 'en';
+        set(n); apply(n); syncBtn(n);
+      };
+    }
+  }
+  var L = get();
+  apply(L); syncBtn(L);
+  if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', function () { apply(L); syncBtn(L); });
+  }
+})();
+    </script>
     </body>
   </html>

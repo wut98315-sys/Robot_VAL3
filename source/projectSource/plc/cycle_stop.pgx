@@ -1,12 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
-  <Program name="cycle_stop" access="public" >
+<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="cycle_stop" access="public">
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
     <Code><![CDATA[begin
   rs:bToStopCycle=true
   stopMove()
-  wait(rs:bIsCycle==false)
+  //原来的 wait 没有超时：停止未被接受时 plc 任务会永久阻塞，连带心跳停止
+  l_bResult=watch(rs:bIsCycle==false,5)
   rs:bToStopCycle=false
-  logMsg("PLC:stopcycle")
+  if l_bResult
+    logMsg("PLC:stopcycle")
+  else
+    logMsg("PLC:stopcycle timeout")
+  endIf
 end]]></Code>
   </Program>
 </Programs>

@@ -1,13 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
-  <Program name="cycle_start" access="public" >
+<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="cycle_start" access="public">
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
     <Code><![CDATA[begin
   rs:bToStartCycle=true
-  wait(rs:bIsCycle==true)
+  //原来的 wait 没有超时：启动未被接受时 plc 任务会永久阻塞，连带心跳停止
+  l_bResult=watch(rs:bIsCycle==true,5)
   rs:bToStartCycle=false
-  
-  
-  logMsg("PLC:startcycle")
+  if l_bResult
+    logMsg("PLC:startcycle")
+  else
+    logMsg("PLC:startcycle timeout")
+  endIf
 end]]></Code>
   </Program>
 </Programs>

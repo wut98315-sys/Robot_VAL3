@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
   <Program name="_TolleranceCheck">
     <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
@@ -16,7 +16,7 @@
     bMemState=false
   elseIf !bMemState and isPowered()
     pHere2=here(flange,world)
-    l_sMsg="上电位置:"+toString(".2",pHere1.trsf.x)+","+toString(".2",pHere1.trsf.y)+","+toString(".2",pHere1.trsf.rz)
+    l_sMsg="上电位置:"+toString(".2",pHere2.trsf.x)+","+toString(".2",pHere2.trsf.y)+","+toString(".2",pHere2.trsf.rz)
     logMsg(l_sMsg)
     bMemState=true
   endIf

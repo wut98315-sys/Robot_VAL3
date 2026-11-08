@@ -1,24 +1,43 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
   <Program name="kill">
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
     <Code><![CDATA[begin
-  //kill all task
-  taskKill("safeCheck")
-  taskKill("Reset")
-  taskKill("Start")
-  taskKill("Stop")
-  taskKill("cycleCtrl")
-  taskKill("plc")
-  taskKill("lifebit")
-  taskKill("actCtrl")
-  taskKill("appMain")
-  taskKill("HMI")
-
-  //
-  rs:bQuitApp=false
+  //退出前先让机器人安全停下
+  //注意：本程序由 appMain 任务调用，不能先杀掉自己，否则后面的指令不会执行
   stopMove()
   resetMotion()
   disablePower()
+  l_bResult=watch(isPowered()==false,2)
+
+  //kill all task（含 appLauncher 与 valGI 两代的运行时任务名）
+  taskKill("safeCheck")
+  taskKill("supervisorTask")
+  taskKill("cycleCtrl")
+  taskKill("cycle")
+  taskKill("productCycle")
+  taskKill("getForce")
+  taskKill("Reset")
+  taskKill("Start")
+  taskKill("Stop")
+  taskKill("Hold")
+  taskKill("Unhold")
+  taskKill("End")
+  taskKill("Abort")
+  taskKill("RotGoHome")
+  taskKill("GoHome")
+  taskKill("plc")
+  taskKill("lifebit")
+  taskKill("actCtrl")
+  taskKill("HMI")
+
+  //状态复位
+  rs:bQuitApp=false
+  rs:bIsPause=false
+  rs:bIsCycle=false
+  rs:bIsError=false
 end]]></Code>
   </Program>
 </Programs>

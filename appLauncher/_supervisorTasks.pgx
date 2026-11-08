@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
   <Program name="_supervisorTasks" access="public">
     <Locals>
@@ -11,17 +11,22 @@
   endFor
   do
     //任务监控
-    if taskStatus("plc")>1 and (clock()-_nClock[1]>5)
-      _nClock[1]=clock()
-      taskResume("plc",0)
-      rs:bIsError=true
+    //注意：计时器只能在任务正常时刷新，否则"异常持续5s"的条件永远不会成立
+    if taskStatus("plc")>1
+      if clock()-_nClock[1]>5
+        _nClock[1]=clock()
+        taskResume("plc",0)
+        rs:bIsError=true
+      endIf
     else
       _nClock[1]=clock()
     endIf
-    if taskStatus("appMain")>1 and (clock()-_nClock[2]>5)
-      _nClock[2]=clock()
-      rs:bIsError=true
-      taskResume("appMain",0)
+    if taskStatus("appMain")>1
+      if clock()-_nClock[2]>5
+        _nClock[2]=clock()
+        rs:bIsError=true
+        taskResume("appMain",0)
+      endIf
     else
       _nClock[2]=clock()
     endIf

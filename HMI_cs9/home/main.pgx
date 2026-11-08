@@ -27,7 +27,8 @@
     sLib=toString("",saveData:nLibIndex)
     if rs:_nOmacStat!=nLastStat
       nLastStat=rs:_nOmacStat
-      if rs:_nOmacStat<9
+      //2~8 为启动/运行/暂停/停止过程中的"生产未退出"状态；1=准备就绪，9=已停止
+      if rs:_nOmacStat>1 and rs:_nOmacStat<9
         userPageAlert("未退出生产模式，主界面按钮锁定！")
         userPageSet("home","btn1","disabled",true)
         userPageSet("home","btn2","disabled",true)
@@ -37,6 +38,7 @@
         userPageSet("home","btn8","disabled",true)
         userPageSet("home","btn9","disabled",true)
         userPageSet("home","btn10","disabled",true)
+        userPageSet("home","btn11","disabled",true)
       else
         userPageSet("home","btn1","disabled",false)
         userPageSet("home","btn2","disabled",false)
@@ -46,6 +48,7 @@
         userPageSet("home","btn8","disabled",false)
         userPageSet("home","btn9","disabled",false)
         userPageSet("home","btn10","disabled",false)
+        userPageSet("home","btn11","disabled",false)
       endIf
     endIf
     //btn

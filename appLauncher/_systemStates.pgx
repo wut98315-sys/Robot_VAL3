@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
   <Program name="_systemStates" access="public">
     <Code><![CDATA[begin
@@ -19,6 +19,21 @@
   rs:bIsReady=!rs:bIsCycle and rs:bIsHome and rs:bPowerON and !rs:bIsEstop and  rs:bIsRemoteAuto
   //程序报错
   rs:bIsError=(taskStatus("cycle")>1)
+
+  //OMAC 运行状态：5.0 没有 valGI 那套 cycle_* 任务，用运行标志派生
+  //1-准备就绪  3-运行中  6-已暂停  9-已停止
+  //HMI 的状态文字（currentState）与主页按钮锁定都依赖这个值
+  if rs:bIsCycle
+    if rs:bIsPause
+      rs:_nOmacStat=6
+    else
+      rs:_nOmacStat=3
+    endIf
+  elseIf rs:bIsReady
+    rs:_nOmacStat=1
+  else
+    rs:_nOmacStat=9
+  endIf
    
   // delay(0)
   // endWhile

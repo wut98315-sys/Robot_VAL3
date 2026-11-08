@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="putMessage" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sMsg" type="string" xsi:type="element" />
+      <Parameter name="x_sMsgType" type="string" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin  
+  switch x_sMsgType
+    case "info"
+      utTxt_popUpMsg.Appearance.sBackgroundColour="#7C95FF"
+    break
+    //
+    case "warning"
+      utTxt_popUpMsg.Appearance.sBackgroundColour="#EEFB45"      
+    break
+    //
+    case "confirm"
+      utTxt_popUpMsg.Appearance.sBackgroundColour="#FFFFFF"      
+    break
+    //  
+    default
+      utTxt_popUpMsg.Appearance.sBackgroundColour="#ADADB2"
+    break
+  endSwitch
+  utTxt_popUpMsg.Common.sValue=x_sMsg
+  delay(0.2)
+  utCtn_Message.Appearance.bVisibility=true
+end]]></Code>
+  </Program>
+</Programs>

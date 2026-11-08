@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertIF">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_scbx" type="string" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_snmb" type="string" xsi:type="array" size="1" />
+      <Local name="l_nPoint" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="insertIF"
+      util:sPage="insertIF"
+      
+      for l_i = 0 to 2
+        sANDOR[0]=""
+        sANDOR[1]=""
+        nIOindex[l_i]=0
+        nIFtype[l_i]=0
+        sIFIndex[l_i]=""
+        sIFtype[l_i]=""
+        nIFvalue[l_i]=0
+        l_scbx="cbx"+toString("",l_i)
+        userPageBind("insertIF",l_scbx,"value",sIFtype[l_i],1,"rw")
+        l_scbx="cbx1"+toString("",l_i)
+        userPageBind("insertIF",l_scbx,"value",sIFIndex[l_i],1,"rw")
+        l_snmb="nmb"+toString("",l_i)
+        userPageBind("insertIF",l_snmb,"value",nIFvalue[l_i],1,"rw")
+      endFor
+      userPageBind("insertIF","cbx7","value",sANDOR[0],1,"rw")
+      userPageBind("insertIF","cbx8","value",sANDOR[1],1,"rw")
+      userPageBindClick("insertIF","btn1",bConfirmIF,true)
+      userPageBindClick("insertIF","btn2",bBackIF,true)
+      userPage(util:sPage)
+      delay(0.5)
+      
+    endIf
+    for l_i = 0 to 2
+      toNum(sIFIndex[l_i],nIOindex[l_i],l_bResult)
+      switch sIFtype[l_i]
+        case "DIN"
+          nIFtype[l_i]=1
+        break
+        case "DOUT"
+          nIFtype[l_i]=2
+        break
+        case "AIN"
+          nIFtype[l_i]=3
+        break
+        case "AOUT"
+          nIFtype[l_i]=4
+        break
+      endSwitch
+    endFor
+    for l_i = 0 to 1
+      switch sANDOR[l_i]
+        case "AND"
+          nANDOR[l_i]=1
+        break
+        case "OR"
+          nANDOR[l_i]=2
+        break
+        default
+          nANDOR[l_i]=0
+        break
+      endSwitch
+    endFor
+    //button
+    if bConfirmIF
+      bConfirmIF=false
+       call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+     
+      call trajectory:insertIF(sTrajItem,l_nPoint,nIFtype,nIOindex,nIFvalue,nANDOR,bToSave)
+      l_bExit=true
+    elseIf bBackIF
+      bBackIF=false
+      l_bExit=true
+    endIf
+    
+    
+    
+    
+    
+    
+    delay(0)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

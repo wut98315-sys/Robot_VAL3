@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_getForce">
+    <Locals>
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nForce" type="num" xsi:type="array" size="6" />
+    </Locals>
+    <Code><![CDATA[begin
+  for i=0 to 5
+    nForce[i]=0
+  endFor
+
+  do
+    getJointForce(l_nForce)
+    for i=0 to 5
+      if abs(l_nForce[i])>nForce[i]
+        nForce[i]=abs(l_nForce[i])
+      endIf
+    endFor
+    //      if abs(l_nForce[4])>nForce[4]
+    //        nForce[4]=abs(l_nForce[4])
+    //      endIf
+    //      if abs(l_nForce[5])>nForce[5]
+    //        nForce[5]=abs(l_nForce[5])
+    //      endIf
+    delay(0)
+  until rs:_nOmacStat==1
+  //logMsg("程序号"+toString(".",rs:nProgCode)+"最大J5扭矩："+toString(".3",nForce[4])+",最大J6扭矩："+toString(".3",nForce[5]))
+  rs:_sRobotStatus="程序号:"+toString(".",rs:nProgCode)+",J1MaxForce："+toString(".2",nForce[0])+",J2MaxForce："+toString(".2",nForce[1])+",J3MaxForce："+toString(".2",nForce[2])+",J4MaxForce："+toString(".2",nForce[3])+",J5MaxForce："+toString(".2",nForce[4])+",J6MaxForce："+toString(".2",nForce[5])
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.8.3Cs9_BS1660" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="Atan2.pgx" />
+    <Program file="InverseMatrix.pgx" />
+    <Program file="Matrix2Trsf.pgx" />
+    <Program file="MutliMatrix.pgx" />
+    <Program file="Point2Trsf.pgx" />
+    <Program file="Trsf2Matrix.pgx" />
+  </Programs>
+  <Database>
+    <Data file="MatrixLib.dtx" />
+  </Database>
+  <Libraries />
+</Project>

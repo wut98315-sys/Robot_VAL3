@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="initButton" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_utButton" type="utButton" xsi:type="array" use="reference" />
+      <Parameter name="x_sPage" type="string" xsi:type="element" />
+      <Parameter name="x_sId" type="string" xsi:type="element" />
+      <Parameter name="x_sText" type="string" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin  
+  x_utButton.Common.sPage=x_sPage
+  x_utButton.Common.sID=x_sId
+  x_utButton.Common.sText=x_sText
+  //
+  //userPageBind(x_sPage,x_utButton.Common.sID,"style.backgroundColor",x_utButton.Appearance.sBackgroundColour,1,"r")  
+  userPageBind(x_utButton.Common.sPage,x_utButton.Common.sID,"innerHTML",x_utButton.Common.sText,1,"r")  
+  userPageBind(x_utButton.Common.sPage,x_utButton.Common.sID,"style.visibility",x_utButton.Appearance.bVisibility,1,"r") 
+  userPageBindClick(x_utButton.Common.sPage,x_utButton.Common.sID,x_utButton.Events.bClick,true)
+  //
+  x_utButton.Appearance.bVisibility=(x_sText!="")
+  x_utButton.Events.bClick=false
+end]]></Code>
+  </Program>
+</Programs>

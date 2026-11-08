@@ -1,0 +1,649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="refreshBtn0_CaliTcp" access="public">
+    <Code><![CDATA[begin
+  if db:utBtn_Step[0].Events.bClick==true
+    db:utCtn_Function.Common.sSource="Page_Container_Teach.html"  
+    //**********************************************************************************************************************************
+    //2点法标定TCP
+    if db:utImg_CheckBox_a[0].Data.bStatus==true
+      switch db:nStep0
+        case 10
+          call db:updateStr(31,db:utLbl_Point.Common.sText,"Point：P1")
+          call db:updateStr(41,db:utLbl_Step.Common.sText,"Step：1/2")
+          //
+          db:utImg_Example.Common.sSourceImage="images/4AxisTeach_1.jpg"
+          //
+          call db:updateTeachPos(db:pTeach1,db:bTeach1)
+          //
+          call db:updateBtn(80,"Null,Here,Move,Null,Null,Null,Prev.,Next")
+          //
+          call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+          call db:updateInfo(102,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Touch to reference pointer in vertical attitude")
+          call db:updateInfo(105,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Press Here button to save the position")
+          call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+          //
+          call db:updateTool(0,false)
+          db:nStep0=11
+        break
+        //
+        case 11
+          if db:utBtn_Bottom[1].Events.bClick==true
+            db:utBtn_Bottom[1].Events.bClick=false
+            //Press F2
+            db:bTeach1=true              
+            db:pTeach1=here(flange,world)
+            db:jTeach1=herej()
+            call db:updateTeachPos(db:pTeach1,db:bTeach1)           
+            call db:hmiAlert("First","info")
+            call saveCall()
+          endIf
+          if db:utBtn_Bottom[2].Events.bClick==true
+            db:utBtn_Bottom[2].Events.bClick=false
+            //Press F3
+            call moveRecPos("pTeach1")
+          endIf
+          if db:utBtn_Bottom[6].Events.bClick==true
+            db:utBtn_Bottom[6].Events.bClick=false
+            //Press F7
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=99
+          endIf
+          if db:utBtn_Bottom[7].Events.bClick==true
+            db:utBtn_Bottom[7].Events.bClick=false
+            //Press F8
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=20
+          endIf
+        break
+        //
+        case 20
+          call db:updateStr(32,db:utLbl_Point.Common.sText,"Point：P2")
+          call db:updateStr(42,db:utLbl_Step.Common.sText,"Step：2/2")
+          //
+          db:utImg_Example.Common.sSourceImage="images/4AxisTeach_2.jpg"
+           //
+          call db:updateTeachPos(db:pTeach2,db:bTeach2)
+          //
+          call db:updateBtn(82,"Null,Here,Move,Null,Null,Calc.,Prev.,Done")
+          //
+          call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+          call db:updateInfo(103,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Touch to reference pointer in any attitude")
+          call db:updateInfo(105,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Press Here button to save the position")
+          call db:updateInfo(104,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","Press Calc. button to get the TCP value")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+          db:nStep0=21
+        break
+        //
+        case 21
+          if db:utBtn_Bottom[1].Events.bClick==true
+            db:utBtn_Bottom[1].Events.bClick=false
+            //Press F2
+            db:bTeach2=true
+            db:pTeach2=here(flange,world)
+            db:jTeach2=herej()
+            call db:updateTeachPos(db:pTeach2,db:bTeach2)            
+            call db:hmiAlert("Second","info")
+            call saveCall()
+          endIf
+          if db:utBtn_Bottom[2].Events.bClick==true
+            db:utBtn_Bottom[2].Events.bClick=false
+            //Press F3
+            call moveRecPos("pTeach2")
+          endIf
+          if db:utBtn_Bottom[5].Events.bClick==true
+            db:utBtn_Bottom[5].Events.bClick=false
+            //Press F6              
+            call algorithm:CalToolPos2(db:tTool1)
+          endIf
+          if db:utBtn_Bottom[6].Events.bClick==true
+            db:utBtn_Bottom[6].Events.bClick=false
+            //Press F7
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=10
+          endIf
+          if db:utBtn_Bottom[7].Events.bClick==true
+            db:utBtn_Bottom[7].Events.bClick=false
+            //Press F8
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=99  
+          endIf
+        break
+        //
+        case 99
+          db:utCtn_Function.Common.sSource="Page_Container_Main.html"
+          //
+          call db:updateBtn(83,"Null,Null,Null,Null,Null,Null,Null,Quit")
+          //
+          call db:updateInfo(99,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","")
+          call db:updateInfo(99,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","")
+          call db:updateInfo(100,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"0","TCP calibration application for TX2/TS2 robot")
+          call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+          db:utBtn_Step[0].Events.bClick=false
+          db:nStep0=10
+        break
+        //
+      endSwitch
+    endIf
+    //**********************************************************************************************************************************
+    //
+    //
+    //**********************************************************************************************************************************
+    //3点法标定TCP
+    if db:utImg_CheckBox_a[1].Data.bStatus==true
+      switch db:nStep0
+        case 10
+          call db:updateStr(31,db:utLbl_Point.Common.sText,"Point：P1")
+          call db:updateStr(43,db:utLbl_Step.Common.sText,"Step：1/3")
+          //
+          db:utImg_Example.Common.sSourceImage="images/4AxisTeach_1.jpg"
+          //
+          call db:updateTeachPos(db:pTeach1,db:bTeach1)
+          //
+          call db:updateBtn(80,"Null,Here,Move,Null,Null,Null,Prev.,Next")
+          //
+          call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+          call db:updateInfo(102,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Touch to reference pointer in vertical attitude")
+          call db:updateInfo(105,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Press Here button to save the position")
+          call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+          //
+          call db:updateTool(0,false)
+          db:nStep0=11
+        break
+        //
+        case 11
+          if db:utBtn_Bottom[1].Events.bClick==true
+            db:utBtn_Bottom[1].Events.bClick=false
+            //Press F2
+            db:bTeach1=true              
+            db:pTeach1=here(flange,world)
+            db:jTeach1=herej()
+            call db:updateTeachPos(db:pTeach1,db:bTeach1)           
+            call db:hmiAlert("First","info")
+            call saveCall()
+          endIf
+          if db:utBtn_Bottom[2].Events.bClick==true
+            db:utBtn_Bottom[2].Events.bClick=false
+            //Press F3
+            call moveRecPos("pTeach1")
+          endIf
+          if db:utBtn_Bottom[6].Events.bClick==true
+            db:utBtn_Bottom[6].Events.bClick=false
+            //Press F7
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=99
+          endIf
+          if db:utBtn_Bottom[7].Events.bClick==true
+            db:utBtn_Bottom[7].Events.bClick=false
+            //Press F8
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=20
+          endIf
+        break
+        //
+        case 20
+          call db:updateStr(32,db:utLbl_Point.Common.sText,"Point：P2")
+          call db:updateStr(44,db:utLbl_Step.Common.sText,"Step：2/3")
+          //
+          db:utImg_Example.Common.sSourceImage="images/4AxisTeach_2.jpg"
+          //
+          call db:updateTeachPos(db:pTeach2,db:bTeach2)
+          //
+          call db:updateBtn(81,"Null,Here,Move,Null,Null,Null,Prev.,Next")
+          //
+          call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+          call db:updateInfo(103,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Touch to reference pointer in any attitude")
+          call db:updateInfo(105,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Press Here button to save the position")
+          call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+          db:nStep0=21
+        break
+        //
+        case 21
+          if db:utBtn_Bottom[1].Events.bClick==true
+            db:utBtn_Bottom[1].Events.bClick=false
+            //Press F2
+            db:bTeach2=true
+            db:pTeach2=here(flange,world)
+            db:jTeach2=herej()
+            call db:updateTeachPos(db:pTeach2,db:bTeach2)            
+            call db:hmiAlert("Second","info")
+            call saveCall()
+          endIf
+          if db:utBtn_Bottom[2].Events.bClick==true
+            db:utBtn_Bottom[2].Events.bClick=false
+            //Press F3
+            call moveRecPos("pTeach2")
+          endIf
+          if db:utBtn_Bottom[6].Events.bClick==true
+            db:utBtn_Bottom[6].Events.bClick=false
+            //Press F7
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=10
+          endIf
+          if db:utBtn_Bottom[7].Events.bClick==true
+            db:utBtn_Bottom[7].Events.bClick=false
+            //Press F8
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=30
+          endIf
+        break
+        //
+        case 30
+          call db:updateStr(33,db:utLbl_Point.Common.sText,"Point：P3")
+          call db:updateStr(45,db:utLbl_Step.Common.sText,"Step：3/3")
+          //
+          db:utImg_Example.Common.sSourceImage="images/4AxisTeach_3.jpg"
+           //
+          call db:updateTeachPos(db:pTeach3,db:bTeach3)
+          //
+          call db:updateBtn(82,"Null,Here,Move,Null,Null,Calc.,Prev.,Done")
+          //
+          call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+          call db:updateInfo(103,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Touch to reference pointer in any attitude")
+          call db:updateInfo(105,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Press Here button to save the position")
+          call db:updateInfo(104,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","Press Calc. button to get the TCP value")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+          db:nStep0=31
+        break
+        //
+        case 31
+          if db:utBtn_Bottom[1].Events.bClick==true
+            db:utBtn_Bottom[1].Events.bClick=false
+            //Press F2
+            db:bTeach3=true
+            db:pTeach3=here(flange,world)
+            db:jTeach3=herej()
+            call db:updateTeachPos(db:pTeach3,db:bTeach3)            
+            call db:hmiAlert("Third","info")
+            call saveCall()
+          endIf
+          if db:utBtn_Bottom[2].Events.bClick==true
+            db:utBtn_Bottom[2].Events.bClick=false
+            //Press F3
+            call moveRecPos("pTeach3")
+          endIf
+          if db:utBtn_Bottom[5].Events.bClick==true
+            db:utBtn_Bottom[5].Events.bClick=false
+            //Press F6              
+            call algorithm:CalToolPos3(db:tTool1)
+          endIf
+          if db:utBtn_Bottom[6].Events.bClick==true
+            db:utBtn_Bottom[6].Events.bClick=false
+            //Press F7
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=20
+          endIf
+          if db:utBtn_Bottom[7].Events.bClick==true
+            db:utBtn_Bottom[7].Events.bClick=false
+            //Press F8
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=99  
+          endIf
+        break
+        //
+        case 99
+          db:utCtn_Function.Common.sSource="Page_Container_Main.html"
+          //
+          call db:updateBtn(83,"Null,Null,Null,Null,Null,Null,Null,Quit")
+          //
+          call db:updateInfo(99,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","")
+          call db:updateInfo(99,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","")
+          call db:updateInfo(100,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"0","TCP calibration application for TX2/TS2 robot")
+          call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+          db:utBtn_Step[0].Events.bClick=false
+          db:nStep0=10
+        break
+        //
+      endSwitch
+    endIf
+    //**********************************************************************************************************************************
+    //
+    //
+    //**********************************************************************************************************************************
+    //6点法标定TCP
+    if db:utImg_CheckBox_a[2].Data.bStatus==true
+      switch db:nStep0
+        case 10
+          call db:updateStr(31,db:utLbl_Point.Common.sText,"Point：P1")
+          call db:updateStr(50,db:utLbl_Step.Common.sText,"Step：1/6")
+          //
+          db:utImg_Example.Common.sSourceImage="images/4AxisTeach_1.jpg"
+          //
+          call db:updateTeachPos(db:pTeach1,db:bTeach1)
+          //
+          call db:updateBtn(80,"Null,Here,Move,Null,Null,Null,Prev.,Next")
+          //
+          call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+          call db:updateInfo(102,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Touch to reference pointer in vertical attitude")
+          call db:updateInfo(105,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Press Here button to save the position")
+          call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+          //
+          call db:updateTool(0,false)
+          db:nStep0=11
+        break
+        //
+        case 11
+          if db:utBtn_Bottom[1].Events.bClick==true
+            db:utBtn_Bottom[1].Events.bClick=false
+            //Press F2
+            db:bTeach1=true              
+            db:pTeach1=here(flange,world)
+            db:jTeach1=herej()
+            call db:updateTeachPos(db:pTeach1,db:bTeach1)
+            call db:hmiAlert("First","info")
+            call saveCall()
+          endIf
+          if db:utBtn_Bottom[2].Events.bClick==true
+            db:utBtn_Bottom[2].Events.bClick=false
+            //Press F3
+            call moveRecPos("pTeach1")
+          endIf
+          if db:utBtn_Bottom[6].Events.bClick==true
+            db:utBtn_Bottom[6].Events.bClick=false
+            //Press F7
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=99
+          endIf
+          if db:utBtn_Bottom[7].Events.bClick==true
+            db:utBtn_Bottom[7].Events.bClick=false
+            //Press F8
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=20
+          endIf
+        break
+        //
+        case 20
+          call db:updateStr(32,db:utLbl_Point.Common.sText,"Point：P2")
+          call db:updateStr(51,db:utLbl_Step.Common.sText,"Step：2/6")
+          db:utImg_Example.Common.sSourceImage="images/4AxisTeach_2.jpg"
+          
+          //
+          call db:updateTeachPos(db:pTeach2,db:bTeach2)
+          //
+          call db:updateBtn(81,"Null,Here,Move,Null,Null,Null,Prev.,Next")
+          //
+          call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+          call db:updateInfo(103,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Touch to reference pointer in any attitude")
+          call db:updateInfo(105,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Press Here button to save the position")
+          call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+          db:nStep0=21
+        break
+        //
+        case 21
+          if db:utBtn_Bottom[1].Events.bClick==true
+            db:utBtn_Bottom[1].Events.bClick=false
+            //Press F2
+            db:bTeach2=true
+            db:pTeach2=here(flange,world)
+            db:jTeach2=herej()
+            call db:updateTeachPos(db:pTeach2,db:bTeach2)              
+            call db:hmiAlert("Second","info")
+            call saveCall()
+          endIf
+          if db:utBtn_Bottom[2].Events.bClick==true
+            db:utBtn_Bottom[2].Events.bClick=false
+            //Press F3
+            call moveRecPos("pTeach2")
+          endIf
+          if db:utBtn_Bottom[6].Events.bClick==true
+            db:utBtn_Bottom[6].Events.bClick=false
+            //Press F7
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=10
+          endIf
+          if db:utBtn_Bottom[7].Events.bClick==true
+            db:utBtn_Bottom[7].Events.bClick=false
+            //Press F8
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=30
+          endIf
+        break
+        //
+        case 30
+          call db:updateStr(33,db:utLbl_Point.Common.sText,"Point：P3")
+          call db:updateStr(52,db:utLbl_Step.Common.sText,"Step：3/6")
+          //
+          db:utImg_Example.Common.sSourceImage="images/4AxisTeach_3.jpg"
+          
+          //
+          call db:updateTeachPos(db:pTeach3,db:bTeach3)
+          //   
+          call db:updateBtn(81,"Null,Here,Move,Null,Null,Null,Prev.,Next")
+          //
+          call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+          call db:updateInfo(103,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Touch to reference pointer in any attitude")
+          call db:updateInfo(105,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Press Here button to save the position")
+          call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+          db:nStep0=31
+        break
+        //
+        case 31
+          if db:utBtn_Bottom[1].Events.bClick==true
+            db:utBtn_Bottom[1].Events.bClick=false
+            //Press F2
+            db:bTeach3=true
+            db:pTeach3=here(flange,world)
+            db:jTeach3=herej()
+            call db:updateTeachPos(db:pTeach3,db:bTeach3)              
+            call db:hmiAlert("Third","info")
+            call saveCall()
+          endIf
+          if db:utBtn_Bottom[2].Events.bClick==true
+            db:utBtn_Bottom[2].Events.bClick=false
+            //Press F3
+            call moveRecPos("pTeach3")
+          endIf
+          if db:utBtn_Bottom[6].Events.bClick==true
+            db:utBtn_Bottom[6].Events.bClick=false
+            //Press F7
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=20
+          endIf
+          if db:utBtn_Bottom[7].Events.bClick==true
+            db:utBtn_Bottom[7].Events.bClick=false
+            //Press F8
+            call algorithm:CalToolPos3(db:tTool1)
+            call db:updateTool(1,false)
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=40
+          endIf
+        break
+        //       
+        case 40
+          call db:updateStr(34,db:utLbl_Point.Common.sText,"Point：P4")
+          call db:updateStr(53,db:utLbl_Step.Common.sText,"Step：4/6")
+          //
+          db:utImg_Example.Common.sSourceImage="images/4AxisTeach_4.jpg"
+          
+          //
+          call db:updateTeachPos(db:pTeach4,db:bTeach4)
+          // 
+          call db:updateBtn(81,"Null,Here,Move,Null,Null,Null,Prev.,Next")
+          //
+          call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+          call db:updateInfo(102,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Touch to reference pointer in vertical attitude")
+          call db:updateInfo(106,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Press Here button to save the position (Frame Origin)")
+          call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")  
+          db:nStep0=41
+        break
+        //
+        case 41
+          if db:utBtn_Bottom[1].Events.bClick==true
+            db:utBtn_Bottom[1].Events.bClick=false
+            //Press F2
+            db:bTeach4=true              
+            db:pTeach4=here(flange,world)
+            db:jTeach4=herej()
+            call db:updateTeachPos(db:pTeach4,db:bTeach4)
+            call db:hmiAlert("Fourth","info")
+            call saveCall()
+          endIf
+          if db:utBtn_Bottom[2].Events.bClick==true
+            db:utBtn_Bottom[2].Events.bClick=false
+            //Press F3
+            call moveRecPos("pTeach4")
+          endIf
+          if db:utBtn_Bottom[6].Events.bClick==true
+            db:utBtn_Bottom[6].Events.bClick=false
+            call db:updateTool(0,false)
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=30
+          endIf
+          if db:utBtn_Bottom[7].Events.bClick==true
+            db:utBtn_Bottom[7].Events.bClick=false
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=50
+          endIf
+        break
+        //
+        case 50
+          call db:updateStr(35,db:utLbl_Point.Common.sText,"Point：P5")
+          call db:updateStr(54,db:utLbl_Step.Common.sText,"Step：5/6")
+          //
+          db:utImg_Example.Common.sSourceImage="images/4AxisTeach_5.jpg"
+          
+          //
+          call db:updateTeachPos(db:pTeach5,db:bTeach5)
+          // 
+          call db:updateBtn(81,"Null,Here,Move,Null,Null,Null,Prev.,Next")
+          //
+          call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+          call db:updateInfo(109,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Keep the current attitude moving in X direction")
+          call db:updateInfo(107,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Press Here button to save the position (Frame Axis OX)")
+          call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")  
+          db:nStep0=51
+        break
+        //
+        case 51
+          if db:utBtn_Bottom[1].Events.bClick==true
+            db:utBtn_Bottom[1].Events.bClick=false
+            //Press F2
+            db:bTeach5=true              
+            db:pTeach5=here(flange,world)
+            db:jTeach5=herej()
+            call db:updateTeachPos(db:pTeach5,db:bTeach5)            
+            call db:hmiAlert("Fifth","info")
+            call saveCall()
+          endIf
+          if db:utBtn_Bottom[2].Events.bClick==true
+            db:utBtn_Bottom[2].Events.bClick=false
+            //Press F3
+            call moveRecPos("pTeach5")
+          endIf
+          if db:utBtn_Bottom[6].Events.bClick==true
+            db:utBtn_Bottom[6].Events.bClick=false
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=40
+          endIf
+          if db:utBtn_Bottom[7].Events.bClick==true
+            db:utBtn_Bottom[7].Events.bClick=false
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=60 
+          endIf
+        break
+        //
+        case 60
+          call db:updateStr(36,db:utLbl_Point.Common.sText,"Point：P6")
+          call db:updateStr(55,db:utLbl_Step.Common.sText,"Step：6/6")
+          //
+          db:utImg_Example.Common.sSourceImage="images/4AxisTeach_6.jpg"
+          
+          //
+          call db:updateTeachPos(db:pTeach6,db:bTeach6)
+          // 
+          call db:updateBtn(82,"Null,Here,Move,Null,Null,Calc.,Prev.,Done")
+          //
+          call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+          call db:updateInfo(110,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Keep the current attitude moving in Y direction")
+          call db:updateInfo(108,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Press Here button to save the position (Frame Plane OXY)")
+          call db:updateInfo(104,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","Press Calc. button to get the TCP value")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","") 
+          db:nStep0=61
+        break
+        //
+        case 61
+          if db:utBtn_Bottom[1].Events.bClick==true
+            db:utBtn_Bottom[1].Events.bClick=false
+            //Press F2
+            db:bTeach6=true
+            db:pTeach6=here(flange,world)
+            db:jTeach6=herej()
+            call db:updateTeachPos(db:pTeach6,db:bTeach6)             
+            call db:hmiAlert("Sixth","info")
+            call saveCall()
+          endIf
+          if db:utBtn_Bottom[2].Events.bClick==true
+            db:utBtn_Bottom[2].Events.bClick=false
+            //Press F3
+            call moveRecPos("pTeach6")
+          endIf
+          if db:utBtn_Bottom[5].Events.bClick==true
+            db:utBtn_Bottom[5].Events.bClick=false
+            //Press F6              
+            call algorithm:CalToolPos6(db:tTool1)
+          endIf
+          if db:utBtn_Bottom[6].Events.bClick==true
+            db:utBtn_Bottom[6].Events.bClick=false
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=50
+          endIf
+          if db:utBtn_Bottom[7].Events.bClick==true
+            db:utBtn_Bottom[7].Events.bClick=false
+            resetMotion()
+            db:utCtn_Message.Appearance.bVisibility=false
+            db:nStep0=99  
+          endIf
+        break
+        //
+        case 99
+          db:utCtn_Function.Common.sSource="Page_Container_Main.html"
+          //
+          call db:updateBtn(83,"Null,Null,Null,Null,Null,Null,Null,Quit")
+          //
+          call db:updateInfo(99,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","")
+          call db:updateInfo(99,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","")
+          call db:updateInfo(100,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"0","TCP calibration application for TX2/TS2 robot")
+          call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+          db:utBtn_Step[0].Events.bClick=false
+          db:nStep0=10
+        break
+        //
+      endSwitch
+    endIf
+    //**********************************************************************************************************************************
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

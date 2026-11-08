@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="modifyPara" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_nMoveType" type="num" xsi:type="element" />
+      <Parameter name="x_nParaSpeed" type="num" xsi:type="element" />
+      <Parameter name="x_nParaBlend" type="num" xsi:type="element" />
+      <Parameter name="x_nParaPercent" type="num" xsi:type="element" />
+      <Parameter name="x_sComment" type="string" xsi:type="element" />
+      <Parameter name="x_bSafePoint" type="bool" xsi:type="element" />
+      <Parameter name="x_sBlend" type="string" xsi:type="element" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+      <Parameter name="x_nValue" type="num" xsi:type="array" use="reference" />
+      <Parameter name="x_nParaAcel" type="num" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].sID=x_sComment
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nMoveType=x_nMoveType
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.mMdesc.vel=x_nParaSpeed
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.mMdesc.accel=x_nParaAcel
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.mMdesc.leave=x_nParaBlend
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nPercentage=x_nParaPercent
+  trajTemp:tTrajItem[x_sKey].pPointItem.pParaItem.bSafePoint=(x_bSafePoint==true)
+  switch x_sBlend
+    case "OFF"
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.mMdesc.blend=off
+    break
+    case "关节"
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.mMdesc.blend=joint
+    break
+    case "笛卡尔"
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.mMdesc.blend=Cartesian
+    break
+    
+  endSwitch
+  switch x_nMoveType
+    case 0
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].jJointRx.j1=x_nValue[0]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].jJointRx.j2=x_nValue[1]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].jJointRx.j3=x_nValue[2]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].jJointRx.j4=x_nValue[3]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].jJointRx.j5=x_nValue[4]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].jJointRx.j6=x_nValue[5]
+    break
+    case 1
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf.x=x_nValue[0]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf.y=x_nValue[1]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf.z=x_nValue[2]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf.rx=x_nValue[3]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf.ry=x_nValue[4]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf.rz=x_nValue[5]
+    break
+    case 2
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf.x=x_nValue[0]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf.y=x_nValue[1]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf.z=x_nValue[2]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf.rx=x_nValue[3]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf.ry=x_nValue[4]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf.rz=x_nValue[5]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pInter.trsf.x=x_nValue[6]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pInter.trsf.y=x_nValue[7]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pInter.trsf.z=x_nValue[8]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pInter.trsf.rx=x_nValue[9]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pInter.trsf.ry=x_nValue[10]
+      trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pInter.trsf.rz=x_nValue[11]
+    break
+  endSwitch
+  //trajTemp:libSave()
+  //delay(0.5)
+  logMsg("参数已修改")
+  x_bToSave=true
+end]]></Code>
+  </Program>
+</Programs>

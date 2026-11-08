@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="setPage" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nType" type="num" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  switch x_nType
+    case 0,1
+ 
+      nPage=roundUp(io:nMaxdigital/16)
+   
+    break
+    case 2,3
+      nPage=roundUp(io:nMaxAnalog/16)
+      if nPageIndex>nPage-1
+        nPageIndex=0
+      endIf
+    break
+  endSwitch
+  sPageNum=toString("",nPage)
+  sShowPageIndex=toString("",nPageIndex+1)
+end]]></Code>
+  </Program>
+</Programs>

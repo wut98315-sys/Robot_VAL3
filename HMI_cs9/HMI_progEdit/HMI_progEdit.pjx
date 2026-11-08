@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.12.2Cs9_BS2561" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="_bindPROG.pgx" />
+    <Program file="_bindTRAJ.pgx" />
+    <Program file="_btnColor.pgx" />
+    <Program file="_onStartPROG.pgx" />
+    <Program file="_onStartTRAJ.pgx" />
+    <Program file="bind.pgx" />
+    <Program file="IFedit.pgx" />
+    <Program file="insertCASE.pgx" />
+    <Program file="insertFOR.pgx" />
+    <Program file="insertIF.pgx" />
+    <Program file="insertSwitch.pgx" />
+    <Program file="insetProg.pgx" />
+    <Program file="main.pgx" />
+    <Program file="onStart.pgx" />
+    <Program file="refreshlist.pgx" />
+    <Program file="resfreshPROG.pgx" />
+    <Program file="resfreshTRAJ.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+    <Program file="unbind.pgx" />
+  </Programs>
+  <Database>
+    <Data file="HMI_progEdit.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+    <Library alias="prog" path="Disk://source/projectSource/program/program.pjx" />
+    <Library alias="util" path="Disk://HMI_cs9/HMI_util/HMI_util.pjx" />
+    <Library alias="progTemp" path="Disk://source/template/progTemp/progTemp.pjx" />
+    <Library alias="simulate" path="Disk://HMI_cs9/simulate/simulate.pjx" />
+    <Library alias="trajectory" path="Disk://source/projectSource/trajectory/trajectory.pjx" />
+    <Library alias="io" path="Disk://source/projectSource/io/io.pjx" />
+  </Libraries>
+</Project>

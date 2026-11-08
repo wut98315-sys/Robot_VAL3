@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="loadSAFE" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nLib" type="num" xsi:type="element" />
+      <Parameter name="x_nResult" type="num" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sPath" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_sPath="Disk://data/CustomerLib/lib"+toString("",x_nLib)+"/safeData/safeData.pjx"
+  x_nResult=safeTemp:libLoad(l_sPath)
+  delay(0)
+  logMsg(toString("",x_nResult))
+end]]></Code>
+  </Program>
+</Programs>

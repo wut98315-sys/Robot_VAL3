@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="onStart">
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_sPath" type="string" xsi:type="array" size="1" />
+      <Local name="i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_sPath="Disk://data/CustomerLib"
+  libList(l_sPath,sLibList)
+  
+  resize(sList,1,size(savedata:tToolItem))
+  
+  bIsDoing=false
+  for l_i = 0 to size(sList)-1
+    sList[l_i]=toString("",l_i)+","+savedata:tToolItem[l_i].sName
+  endFor
+  
+  sSelTool=toString("",savedata:nUsingTool)+","+savedata:tToolItem[savedata:nUsingTool].sName
+  sLastTool=""
+//  bLock=true
+//  sBtnUnLock="解锁"
+//  //获取机器人类型
+//  call libTqe:_getArmType(sArmType,sArmDetail)
+//  if sArmType=="4_Axis"
+//    resize(bDisable,1,4)
+//    resize(nMaxJntForec,1,4)
+//    bSix_Axis=false
+//  elseIf sArmType=="6_Axis"
+//    resize(bDisable,1,6)
+//    resize(nMaxJntForec,1,6)
+//    bSix_Axis=true
+//  endIf
+//  //初始化扭矩设置解锁按钮
+//  for i=0 to size(bDisable)-1
+//    bDisable[i]=true
+//  endFor
+  //  call libTqe:_getSetForce(nMaxJntForec)
+  call libTqe:initParameter()
+end]]></Code>
+  </Program>
+</Programs>

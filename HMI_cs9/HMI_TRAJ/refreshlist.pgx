@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="refreshlist">
+    <Locals>
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_sTrajList" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nCount" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  call trajectory:getTrajSize(l_nSize)
+  call trajectory:getTrajList(sTrajList)
+  //page
+  if l_nSize<50
+    nPageNum=1
+  else
+    nPageNum=roundUp(l_nSize/49)
+  endIf
+  
+  //list
+  if nPageNum==1
+    if l_nSize<1
+      for l_i = 0 to size(sList)-1
+        sList[l_i]=""
+      endFor
+    else
+      resize(sList,1,l_nSize)
+      for l_i = 0 to size(sList)-1
+        sList[l_i]=""
+      endFor
+      for l_i = 0 to l_nSize-1
+        sList[l_i]=sTrajList[l_i]
+      endFor
+    endIf
+    
+  else
+    if nPageIndex<nPageNum-1
+      resize(sList,1,49)
+      for l_i = 0 to size(sList)-1
+        sList[l_i]=sTrajList[nPageIndex*49+l_i]
+      endFor
+    else
+      for l_i = 0 to size(sList)-1
+        sList[l_i]=""
+      endFor
+      if l_nSize%49==0
+        l_nCount=49
+      else
+        l_nCount=l_nSize%49
+      endIf
+      resize(sList,1,l_nCount)
+      for l_i = 0 to l_nCount-1
+        sList[l_i]=sTrajList[l_i+nPageIndex*49]
+      endFor
+    endIf
+  endIf
+  userPageBind("traj","lst1","options",sList,size(sList),"r")
+  sPageIndex=toString("",nPageIndex+1)
+  sPageNum=toString("",nPageNum)
+end]]></Code>
+  </Program>
+</Programs>

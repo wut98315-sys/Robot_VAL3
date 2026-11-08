@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_bindTRAJ">
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_sbtn" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  for l_i = 1 to 6
+    l_sbtn="btn"+toString("",l_i)
+    userPageBindClick("insertTRAJ",l_sbtn,bInsert[l_i],true)
+  endFor
+  
+  userPageBind("insertTRAJ","lbl1","innerHTML",sPgIndexTRAJ,1,"r")
+  userPageBind("insertTRAJ","lbl2","innerHTML",sPageTRAJ,1,"r")
+  
+  
+  userPageBind("insertTRAJ","lst1","value",sInsertItem,1,"rw")
+end]]></Code>
+  </Program>
+</Programs>

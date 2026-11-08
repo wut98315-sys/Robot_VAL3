@@ -1,0 +1,19 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "getTool",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "getFrame",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "setBaseJOG",
+      "nodes": []
+    }
+  ]
+}

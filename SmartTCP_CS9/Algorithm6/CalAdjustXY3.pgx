@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="CalAdjustXY3" access="public">
+    <Locals>
+      <Local name="l_trFlange" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_trTCP" type="trsf" xsi:type="array" size="1" />
+      <Local name="x" type="num" xsi:type="array" size="1" />
+      <Local name="y" type="num" xsi:type="array" size="1" />
+      <Local name="z" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_trFlange={0,0,0,0,0,0}
+  l_trTCP={0,0,0,0,0,0}
+  x=db:pAdjustXY_3_2.trsf.x+db:pAdjustXY_3_3.trsf.x-db:pAdjustXY_3_1.trsf.x
+  y=db:pAdjustXY_3_2.trsf.y+db:pAdjustXY_3_3.trsf.y-db:pAdjustXY_3_1.trsf.y
+  z=db:pAdjustXY_3_1.trsf.z
+  //
+  l_trFlange=db:pAdjustXY_3_1.trsf*!db:utCurrentTool.tValue.trsf
+  if db:sMounting=="Floor"
+    l_trTCP={x,y,z,0,180,0}
+  elseIf db:sMounting=="Ceiling"
+    l_trTCP={x,y,z,0,0,0}
+  endIf
+  db:tTool2.trsf=!l_trFlange*l_trTCP
+  //
+  db:tTool2.trsf.rx=db:tTool1.trsf.rx
+  db:tTool2.trsf.ry=db:tTool1.trsf.ry
+  db:tTool2.trsf.rz=db:tTool1.trsf.rz
+  call db:hmiAlert("SaveInTool2","info")
+end]]></Code>
+  </Program>
+</Programs>

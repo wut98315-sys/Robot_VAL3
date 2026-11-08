@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Locals>
+      <Local name="l_j" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  for l_i = 0 to size(aActItem)-1
+    aActItem[l_i].sComment="Action"+toString("",l_i)
+    for l_j = 0 to size(aActItem[l_i].aActItem)-1
+      aActItem[l_i].aActItem[l_j].nIOindex=-1
+    endFor
+    
+  endFor
+  libSave()
+end]]></Code>
+  </Program>
+</Programs>

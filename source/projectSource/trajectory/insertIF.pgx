@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertIF" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_nMoveType" type="num" xsi:type="array" use="reference" />
+      <Parameter name="x_nIOIndex" type="num" xsi:type="array" use="reference" />
+      <Parameter name="x_nValue" type="num" xsi:type="array" use="reference" />
+      <Parameter name="x_nANDOR" type="num" xsi:type="array" use="reference" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_j" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // insert(trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1])
+  append(trajTemp:tTrajItem[x_sKey].pPointItem)
+  
+  for l_i = (size(trajTemp:tTrajItem[x_sKey].pPointItem)-1) to(x_nIndex+1) step -1
+    // logMsg(toString("",l_i))
+    call copyPoint3(x_sKey,l_i,l_i-1)
+  endFor
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.nMoveType=8
+  for l_i =0 to 2
+    trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.iIfItem.nSigType[l_i]=x_nMoveType[l_i]
+    trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.iIfItem.nSigIndex[l_i]=x_nIOIndex[l_i]
+    trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.iIfItem.nValue[l_i]=x_nValue[l_i]
+  endFor
+  for l_i = 0 to 1
+    trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.iIfItem.bANDOR[l_i]=(x_nANDOR[l_i]==2)
+  endFor
+ 
+  //trajTemp:libSave()
+  x_bToSave=true
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="start">
+    <Locals>
+      <Local name="l_sPath" type="string" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_nI" type="num" xsi:type="array" size="1" />
+      <Local name="l_nJ" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //修改结构体程序
+  //根据原有存放数据点位的用户库来修改下面的路径！
+  l_sPath="Disk://data/CustomerLib/lib1"+"/saveTRAJ"
+  l_nResult=trajTemp:libLoad(l_sPath)
+  if l_nResult==0
+    //获取结构体键值
+    call getSize(l_nSize)
+    call getTrajList(sList,l_nSize)
+    //清空缓存结构体
+    for l_nI=0 to l_nSize-1
+      if isDefined(tTrajBuffer[sList[l_nI]])==true
+        delete(tTrajBuffer[sList[l_nI]])
+      endIf
+    endFor
+    //新建缓存结构体
+    for l_nI=0 to l_nSize-1
+      if insert(tTrajBuffer[sList[l_nI]])
+        resize(tTrajBuffer[sList[l_nI]].nFrameIndex,1,size(trajTemp:tTrajItem[sList[l_nI]].nFrameIndex))
+        resize(tTrajBuffer[sList[l_nI]].nToolIndex,1,size(trajTemp:tTrajItem[sList[l_nI]].nToolIndex))
+        resize(tTrajBuffer[sList[l_nI]].sID,1,size(trajTemp:tTrajItem[sList[l_nI]].sID))
+        resize(tTrajBuffer[sList[l_nI]].nMoveID,1,size(trajTemp:tTrajItem[sList[l_nI]].nMoveID))
+        resize(tTrajBuffer[sList[l_nI]].pPointItem,1,size(trajTemp:tTrajItem[sList[l_nI]].pPointItem))    
+      endIf
+    endFor
+    
+    for l_nI=0 to l_nSize-1
+      for l_nJ=0 to size(tTrajBuffer[sList[l_nI]].pPointItem)-1
+        //结构体数据存入缓存
+        call copyPoint3(sList[l_nI],l_nJ,l_nJ)
+        //修改结构体元素
+        resize(trajTemp:tTrajItem[sList[l_nI]].pPointItem[l_nJ].pPointRx,1,2)
+      endFor
+    endFor
+    
+    for l_nI=0 to l_nSize-1
+      for l_nJ=0 to size(tTrajBuffer[sList[l_nI]].pPointItem)-1
+        //缓存回传到结构体
+        call copyPoint31(sList[l_nI],l_nJ,l_nJ)
+      endFor
+    endFor
+    libSave()
+    trajTemp:libSave()
+  else
+    popUpMsg("CustomerLib库加载出错！")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

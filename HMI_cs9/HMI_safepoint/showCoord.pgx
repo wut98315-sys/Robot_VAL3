@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="showCoord">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  sTRSF[0]=toString(".2",safeTemp:sSPoint[x_nIndex].pPointRx.trsf.x)
+  sTRSF[1]=toString(".2",safeTemp:sSPoint[x_nIndex].pPointRx.trsf.y)
+  sTRSF[2]=toString(".2",safeTemp:sSPoint[x_nIndex].pPointRx.trsf.z)
+  sTRSF[3]=toString(".2",safeTemp:sSPoint[x_nIndex].pPointRx.trsf.rx)
+  sTRSF[4]=toString(".2",safeTemp:sSPoint[x_nIndex].pPointRx.trsf.ry)
+  sTRSF[5]=toString(".2",safeTemp:sSPoint[x_nIndex].pPointRx.trsf.rz)
+end]]></Code>
+  </Program>
+</Programs>

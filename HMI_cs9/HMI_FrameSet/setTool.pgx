@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="setTool">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nUsingTool" type="num" xsi:type="array" size="1" />
+      <Local name="l_sNmb" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="toolSetting"
+      util:sPage="toolSetting"
+      l_nUsingTool=x_nIndex
+      nTool[0]=savedata:tToolItem[x_nIndex].tTool.trsf.x
+      nTool[1]=savedata:tToolItem[x_nIndex].tTool.trsf.y
+      nTool[2]=savedata:tToolItem[x_nIndex].tTool.trsf.z
+      nTool[3]=savedata:tToolItem[x_nIndex].tTool.trsf.rx
+      nTool[4]=savedata:tToolItem[x_nIndex].tTool.trsf.ry
+      nTool[5]=savedata:tToolItem[x_nIndex].tTool.trsf.rz
+      for l_i = 0 to 5
+        l_sNmb="nmb"+toString("",l_i+1)
+        userPageBind("toolSetting",l_sNmb,"value",nTool[l_i],1,"rw")
+      endFor
+      userPageBindClick("toolSetting","btn1",bModifyTool,true)
+      userPageBindClick("toolSetting","btn2",bCancelTool,true)
+      userPageBind("toolSetting","lbltitle","innerHTML",sTitle,1,"r")
+      sTitle="设定工具："+toString("",l_nUsingTool)
+      userPage(util:sPage)
+      delay(0.5)
+      //l_bExit=true
+    endIf
+    
+    if bModifyTool
+      bModifyTool=false
+      savedata:tToolItem[x_nIndex].tTool.trsf.x=nTool[0]
+      savedata:tToolItem[x_nIndex].tTool.trsf.y=nTool[1]
+      savedata:tToolItem[x_nIndex].tTool.trsf.z=nTool[2]
+      savedata:tToolItem[x_nIndex].tTool.trsf.rx=nTool[3]
+      savedata:tToolItem[x_nIndex].tTool.trsf.ry=nTool[4]
+      savedata:tToolItem[x_nIndex].tTool.trsf.rz=nTool[5]
+      savedata:libSave()
+      l_bExit=true
+      delay(0.1)
+    elseIf bCancelTool
+      bCancelTool=false
+      l_bExit=true
+    endIf
+    delay(0)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

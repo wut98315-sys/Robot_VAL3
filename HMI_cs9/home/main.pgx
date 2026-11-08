@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  util:sPage=""
+  do
+    if util:sPage!="home"
+      util:sPage="home"
+      call util:loadingPage()
+      call util:initJogMode()
+      
+     
+      sLib=toString("",saveData:nLibIndex)
+      call bind()
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    sLib=toString("",saveData:nLibIndex)
+    if rs:_nOmacStat!=nLastStat
+      nLastStat=rs:_nOmacStat
+      if rs:_nOmacStat<9
+        userPageAlert("未退出生产模式，主界面按钮锁定！")
+        userPageSet("home","btn1","disabled",true)
+        userPageSet("home","btn2","disabled",true)
+        userPageSet("home","btn3","disabled",true)
+        userPageSet("home","btn4","disabled",true)
+        userPageSet("home","btn7","disabled",true)
+        userPageSet("home","btn8","disabled",true)
+        userPageSet("home","btn9","disabled",true)
+        userPageSet("home","btn10","disabled",true)
+      else
+        userPageSet("home","btn1","disabled",false)
+        userPageSet("home","btn2","disabled",false)
+        userPageSet("home","btn3","disabled",false)
+        userPageSet("home","btn4","disabled",false)
+        userPageSet("home","btn7","disabled",false)
+        userPageSet("home","btn8","disabled",false)
+        userPageSet("home","btn9","disabled",false)
+        userPageSet("home","btn10","disabled",false)
+      endIf
+    endIf
+    //btn
+    if bEditIO
+      bEditIO=false
+      call IO:main()
+    elseIf bEditAction
+      bEditAction=false
+      call action:main()
+    elseIf bEditTRAJ
+      bEditTRAJ=false
+      call HMI_TRAJ:main()
+    elseIf bEditPROG
+      bEditPROG=false
+      call prog:main()
+    elseIf bEditFrame
+      bEditFrame=false
+      call HMI_frame:main()
+    elseIf bEditCycle
+      bEditCycle=false
+      call HMI_cycle:main()
+    elseIf bEditSetting
+      bEditSetting=false
+      call HMI_setting:main()
+    elseIf bEditSpoint
+      bEditSpoint=false
+      call HMI_safepoint:main()
+    elseIf bEditSzone
+      bEditSzone=false
+      call HMI_safezone:main()
+      //guohangxin add 20230323
+    elseIf bEditTcpTool
+      bEditTcpTool=false
+      call util:loadingPage()
+      call SmartTcp:start()
+      util:sPage=""
+    elseIf bLogMsg
+      bLogMsg=false
+      call HMI_message:main()
+    elseIf bExit
+      bExit=false
+      l_bResult=userPageConfirm("是否退出当前应用？")
+      if l_bResult
+        rs:bQuitApp=true
+      endIf
+    endIf
+    
+    //rob state
+    sRobState=toString(".9",rs:nHWState)
+    //jogmode
+    call util:jogMode(saveData:nUsingTool,0)
+    delay(0)
+  until rs:bQuitApp==true
+  //rs:bQuitApp=false
+  
+end]]></Code>
+  </Program>
+</Programs>

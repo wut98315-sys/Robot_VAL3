@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.21Cs9_BS4703" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="bind.pgx" />
+    <Program file="copy.pgx" />
+    <Program file="deleteItem.pgx" />
+    <Program file="getTrajID.pgx" />
+    <Program file="main.pgx" />
+    <Program file="new.pgx" />
+    <Program file="onStart.pgx" />
+    <Program file="refreshlist.pgx" />
+    <Program file="simulateTRAJ.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="HMI_TRAJ.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="trajectory" path="Disk://source/projectSource/trajectory/trajectory.pjx" />
+    <Library alias="util" path="Disk://HMI_cs9/HMI_util/HMI_util.pjx" />
+    <Library alias="saveData" path="Disk://source/saveData/saveData.pjx" />
+    <Library alias="HMI_point" path="Disk://HMI_cs9/HMI_pointEdit/HMI_pointEdit.pjx" />
+    <Library alias="simulate" path="Disk://HMI_cs9/simulate/simulate.pjx" />
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+  </Libraries>
+  <Types>
+    <Type name="trajItem" path="Disk://source/template/trajItem/trajItem.pjx" />
+  </Types>
+</Project>

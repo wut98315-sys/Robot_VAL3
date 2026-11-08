@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "bindings": [
+    {
+      "id": "lst1",
+      "attribute": "value",
+      "data": "sLstValue[0]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "obj1",
+      "attribute": "style.visibility",
+      "data": "rs:bIsSaving[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    }
+  ],
+  "callbacks": [],
+  "events": []
+}

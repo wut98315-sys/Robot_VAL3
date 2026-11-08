@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="commentIO" access="public">
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  
+  for l_i = 0 to size(dInItem)-1
+    dInItem[l_i].sComment=sCommentDin[l_i]
+  endFor
+  
+  for l_i = 0 to size(dOutItem)-1
+    dOutItem[l_i].sComment=sCommentDout[l_i]
+  endFor
+  
+  for l_i = 0 to size(aInItem)-1
+    aInItem[l_i].sComment=sCommentAin[l_i]
+  endFor
+  
+  for l_i = 0 to size(aOutItem)-1
+    aOutItem[l_i].sComment=sCommentAout[l_i]
+  endFor
+  
+end]]></Code>
+  </Program>
+</Programs>

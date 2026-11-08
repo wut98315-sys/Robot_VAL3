@@ -1,0 +1,67 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "CalAdjustXY2",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "CalAdjustXY3",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "CalToolPos3",
+      "nodes": [
+        {
+          "start": 170,
+          "end": 320,
+          "isCollapsed": false
+        },
+        {
+          "start": 265,
+          "end": 312,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "CalToolPos6",
+      "nodes": [
+        {
+          "start": 470,
+          "end": 788,
+          "isCollapsed": false
+        },
+        {
+          "start": 499,
+          "end": 697,
+          "isCollapsed": false
+        },
+        {
+          "start": 706,
+          "end": 773,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "CalToolPos2",
+      "nodes": [
+        {
+          "start": 2157,
+          "end": 2489,
+          "isCollapsed": false
+        },
+        {
+          "start": 2260,
+          "end": 2481,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}

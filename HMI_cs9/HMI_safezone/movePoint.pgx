@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="movePoint" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_pPoint" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+
+  l_bResult=userPageConfirm("是否移动到此点位？")
+
+  if l_bResult
+    resetMotion()
+    link(l_pPoint,fFrame)
+    call saveData:getTool(saveData:nJogTool,l_tTool)
+    l_pPoint.trsf=safeTemp:zZoneItem[x_nIndex].pFirst.trsf
+    l_pPoint.config=safeTemp:zZoneItem[x_nIndex].pFirst.config
+    movej(l_pPoint,l_tTool,mNomSpeed)
+    delay(0)
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_systemStates" access="public">
+    <Code><![CDATA[begin
+  // while true
+  //程序运行中
+  rs:bIsCycle=(taskStatus("cycle")>-1)
+  //home
+  rs:bIsHome=(abs(herej()-saveData:jHome)<{2,2,2,2,2,2})
+  //使能上电
+  rs:bPowerON=(isPowered()==true)
+  //远程模式
+  rs:bIsRemoteAuto=(workingMode()==4)
+  //机器人正在移动
+  rs:bIsMoving=(isSettled()==false)
+  //机器人急停
+  rs:bIsEstop=(esStatus()!=0)
+  //
+  rs:bIsReady=!rs:bIsCycle and rs:bIsHome and rs:bPowerON and !rs:bIsEstop and  rs:bIsRemoteAuto
+  //程序报错
+  rs:bIsError=(taskStatus("cycle")>1)
+   
+  // delay(0)
+  // endWhile
+  
+end]]></Code>
+  </Program>
+</Programs>

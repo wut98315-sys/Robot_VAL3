@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="main" access="public" >
+    <Locals>
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bLstPower" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bValueIn" type="bool" xsi:type="array" size="128" />
+      <Local name="l_bValueInLst" type="bool" xsi:type="array" size="128" />
+      <Local name="l_bValueOut" type="bool" xsi:type="array" size="128" />
+      <Local name="l_bValueOutLst" type="bool" xsi:type="array" size="128" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+      <Local name="l_nValue" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+
+  call init()
+  //call iolink()
+  do
+    //心跳
+    call lifebit()
+    //    //硬件检测
+    //    call HWcheck()
+
+    //接收信号
+    call receive()
+
+
+    //发送状态
+    call send()
+
+    //    //切换数据库
+    //    //切换库需要对savedata:nLibIndex做赋值
+    //    //库调用函数
+    //    //guohangxin modified 20230323
+    //    call io:getAnaIO(io:aInput[2],l_nValue,l_bErr)
+    //    if workingMode()==4 and l_nValue>0 and l_bErr==false
+    //      savedata:nLibIndex=l_nValue
+    //      if nLastLib!=savedata:nLibIndex
+    //        nLastLib=savedata:nLibIndex
+    //        call changeDataLib1(savedata:nLibIndex)
+    //        call io:setAnaOutput(io:aOutput[3],savedata:nLibIndex,l_bErr)
+    //        //        aioSet(io:aOutput[3],savedata:nLibIndex)
+    //        //上位机需要等待发出的lib与收到的反馈lib一致
+    //      endIf
+    //    else
+    //      if nLastLib!=savedata:nLibIndex
+    //        nLastLib=savedata:nLibIndex
+    //      endIf
+    //    endIf
+    //    //add by guohangxin 20240408 获取上升沿下降沿信号
+    //    for i=0 to size(io:dInput)-1
+    //      call io:getDigIO(io:dInput[i],l_bValueIn[i],l_bErr)
+    //      if l_bValueIn[i]==true and l_bValueInLst[i]==false
+    //        l_bValueInLst[i]=l_bValueIn[i]
+    //        rs:sIOStatus="dIn"+toString("",i)+"=ON"
+    //      endIf
+    //      if l_bValueIn[i]==false and l_bValueInLst[i]==true
+    //        l_bValueInLst[i]=l_bValueIn[i]
+    //        rs:sIOStatus="dIn"+toString("",i)+"=OFF"
+    //      endIf
+    //    endFor
+
+    //    for i=0 to size(io:dOutput)-1
+    //      //排除掉心跳信号的上升沿下降沿
+    //      if i!=7
+    //        call io:getDigIO(io:dOutput[i],l_bValueOut[i],l_bErr)
+    //        if l_bValueOut[i]==true and l_bValueOutLst[i]==false
+    //          l_bValueOutLst[i]=l_bValueOut[i]
+    //          rs:sIOStatus="dOut"+toString("",i)+"=ON"
+    //        endIf
+    //        if l_bValueOut[i]==false and l_bValueOutLst[i]==true
+    //          l_bValueOutLst[i]=l_bValueOut[i]
+    //          rs:sIOStatus="dOut"+toString("",i)+"=OFF"
+    //        endIf
+    //      endIf
+    //    endFor
+    //    //机器人异常检测（碰撞给出信号等）
+    //    //如果机器人处于running或held暂停状态，且工作模式未远程自动
+    //    //此时如果从上电状态到下点状态，则说明有异常
+    //    if(rs:_nOmacStat==3 or rs:_nOmacStat==6) and workingMode()==4 and isPowered()==false and l_bLstPower==true
+    //      l_bLstPower=false
+    //      //观察1秒钟查看当前工作模式有没有切换，如果有切换，说明认为切换到了手动，此时不做报警处理
+    //      if watch(workingMode()!=4,1)==false
+    //        call rs:setAlarm(303,0)
+    //        call rs:saveLog("",l_nResult)
+    //      endIf
+    //    elseIf isPowered()==true
+    //      l_bLstPower=true
+    //    endIf
+    delay(0)
+  until false
+end]]></Code>
+  </Program>
+</Programs>

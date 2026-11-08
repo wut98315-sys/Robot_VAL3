@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="do_for" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nIOindex" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nLoop" type="num" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bActive" type="bool" xsi:type="array" size="1" />
+      <Local name="l_skey" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_sType" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  waitEndMove()
+  l_bActive=false
+  if progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].fForItem.sIOindex=="value"
+    l_nLoop=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].fForItem.nLoopValue
+    l_bActive=true
+  else
+    toNum(progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].fForItem.sIOindex,l_nIOindex,l_bResult)
+    if l_bResult
+      call io:getAnaIO(io:aInItem[l_nIOindex].aAio,l_nLoop,l_bErr)
+      l_bActive=true
+    endIf
+  endIf
+  l_skey=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].fForItem.sForTRAJ
+  l_sType=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sTRAJname
+  switch l_sType
+    case "PROG"
+      if l_bActive
+        for l_i = 0 to l_nLoop
+          call makeTraj(l_skey)
+        endFor
+      endIf
+    break
+    case "TRAJ"
+      if l_bActive
+        for l_i = 0 to l_nLoop
+          call trajectory:makeTraj(l_skey)
+        endFor
+      endIf
+    break
+  endSwitch
+ 
+end]]></Code>
+  </Program>
+</Programs>

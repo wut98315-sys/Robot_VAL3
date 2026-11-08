@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="safezone"
+      util:sPage="safezone"
+      call util:loadingPage()
+      call onStart()
+      call bind()
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    
+    if sSelZone!=sLastZone and sSelZone!=""
+      sLastZone=sSelZone
+      toNum(sLastZone,_nZoneIndex,l_bResult)
+      bActive=(safeTemp:zZoneItem[_nZoneIndex].bActive==true)
+      call refreshData(_nZoneIndex)
+    endIf
+    if bSetFrame
+      //      util:sPage="Wizard"
+      //      userPage(util:sPage)
+      bSetFrame=false
+      //      popUpMsg("设定坐标系")
+      //      call refreshData(_nZoneIndex)
+    elseIf bSetFrameData
+      bSetFrameData=false
+      call setFrameData(_nZoneIndex)
+      call refreshData(_nZoneIndex)
+      
+    elseIf bTeach1
+      bTeach1=false
+      call teachPoint(_nZoneIndex)
+      call refreshData(_nZoneIndex)
+    elseIf bMove
+      bMove=false
+      call movePoint(_nZoneIndex)
+    elseIf bConfirm
+      bConfirm=false
+      call setData(_nZoneIndex)
+      call refreshData(_nZoneIndex)
+    elseIf bBack
+      bBack=false
+      l_bExit=true
+    endIf
+
+    delay(0)
+  until l_bExit==true
+  call saveData:setBaseJOG(saveData:nJogTool)
+end]]></Code>
+  </Program>
+</Programs>

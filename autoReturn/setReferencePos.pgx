@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="setReferencePos" access="public">
+    <Description><![CDATA[// 定义一个参考位置
+// x_jPoint: 设定的参考位置的值
+// x_nDeviate: 相对于reference point，允许的误差]]></Description>
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_jPoint" type="jointRx" xsi:type="element" />
+      <Parameter name="x_nDeviate" type="num" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin  
+  // ---------------------------------------------------------------------------- //
+  // 定义一个参考位置
+  // x_jPoint: 设定的参考位置的值
+  // x_nDeviate: 相对于reference point，允许的误差
+  // ---------------------------------------------------------------------------- //
+  jRefPoint=x_jPoint
+  nRefDeviate=x_nDeviate
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="modifyAll" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nMoveType" type="num" xsi:type="element" />
+      <Parameter name="x_nParaSpeed" type="num" xsi:type="element" />
+      <Parameter name="x_nParaBlend" type="num" xsi:type="element" />
+      <Parameter name="x_nParaPercent" type="num" xsi:type="element" />
+      <Parameter name="x_sBlend" type="string" xsi:type="element" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+      <Parameter name="x_nParaAcel" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  call getPointSize(x_sKey,l_nSize)
+  for l_i = 0 to l_nSize-1
+    if trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nMoveType==x_nMoveType
+      // trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nMoveType=x_nMoveType
+      trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.mMdesc.vel=x_nParaSpeed
+      trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.mMdesc.accel=x_nParaAcel
+      trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.mMdesc.leave=x_nParaBlend
+      trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nPercentage=x_nParaPercent
+      switch x_sBlend
+        case "OFF"
+          trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.mMdesc.blend=off
+        break
+        case "关节"
+          trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.mMdesc.blend=joint
+        break
+        case "笛卡尔"
+          trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.mMdesc.blend=Cartesian
+        break
+      endSwitch
+    endIf
+  endFor
+  //trajTemp:libSave()
+  //delay(0.5)
+  logMsg("参数已修改")
+  x_bToSave=true
+end]]></Code>
+  </Program>
+</Programs>

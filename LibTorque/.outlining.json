@@ -1,0 +1,206 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "refresh",
+      "nodes": [
+        {
+          "start": 30,
+          "end": 99,
+          "isCollapsed": false
+        },
+        {
+          "start": 67,
+          "end": 91,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "unLock",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 551,
+          "isCollapsed": false
+        },
+        {
+          "start": 74,
+          "end": 116,
+          "isCollapsed": false
+        },
+        {
+          "start": 121,
+          "end": 192,
+          "isCollapsed": false
+        },
+        {
+          "start": 226,
+          "end": 288,
+          "isCollapsed": false
+        },
+        {
+          "start": 333,
+          "end": 543,
+          "isCollapsed": false
+        },
+        {
+          "start": 342,
+          "end": 403,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "_setMaxJntForce",
+      "nodes": [
+        {
+          "start": 90,
+          "end": 576,
+          "isCollapsed": false
+        },
+        {
+          "start": 105,
+          "end": 235,
+          "isCollapsed": false
+        },
+        {
+          "start": 408,
+          "end": 526,
+          "isCollapsed": false
+        },
+        {
+          "start": 529,
+          "end": 568,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "initParameter",
+      "nodes": [
+        {
+          "start": 134,
+          "end": 815,
+          "isCollapsed": false
+        },
+        {
+          "start": 149,
+          "end": 681,
+          "isCollapsed": false
+        },
+        {
+          "start": 257,
+          "end": 671,
+          "isCollapsed": false
+        },
+        {
+          "start": 704,
+          "end": 765,
+          "isCollapsed": false
+        },
+        {
+          "start": 768,
+          "end": 807,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "readme",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "_getSetForce",
+      "nodes": [
+        {
+          "start": 469,
+          "end": 1744,
+          "isCollapsed": false
+        },
+        {
+          "start": 504,
+          "end": 1032,
+          "isCollapsed": false
+        },
+        {
+          "start": 539,
+          "end": 1021,
+          "isCollapsed": false
+        },
+        {
+          "start": 1035,
+          "end": 1736,
+          "isCollapsed": false
+        },
+        {
+          "start": 1044,
+          "end": 1736,
+          "isCollapsed": false
+        },
+        {
+          "start": 1079,
+          "end": 1725,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "getArmTypeList",
+      "nodes": [
+        {
+          "start": 265,
+          "end": 370,
+          "isCollapsed": false
+        },
+        {
+          "start": 373,
+          "end": 491,
+          "isCollapsed": false
+        },
+        {
+          "start": 494,
+          "end": 542,
+          "isCollapsed": false
+        },
+        {
+          "start": 545,
+          "end": 597,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "setPageMaxJntForce",
+      "nodes": [
+        {
+          "start": 22,
+          "end": 279,
+          "isCollapsed": false
+        },
+        {
+          "start": 48,
+          "end": 143,
+          "isCollapsed": false
+        },
+        {
+          "start": 146,
+          "end": 271,
+          "isCollapsed": false
+        },
+        {
+          "start": 176,
+          "end": 271,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}

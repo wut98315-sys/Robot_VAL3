@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="do_CASE" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nValue" type="num" xsi:type="array" size="1" />
+      <Local name="l_sProg" type="string" xsi:type="array" size="1" />
+      <Local name="l_sType" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_nValue=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sSwitchItem.nSwitchValue
+  l_sProg=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sSwitchItem.sIOValue
+  l_sType=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sTRAJname
+  if l_nValue==rs:nSetSwitchValue
+    switch l_sType
+      case "PROG"
+        call makeTraj(l_sProg)
+      break
+      case "TRAJ"
+        call trajectory:makeTraj(l_sProg)
+      break
+    endSwitch
+    
+    rs:nSetSwitchValue=0
+    rs:bInSwitch=false
+  endIf
+ 
+end]]></Code>
+  </Program>
+</Programs>

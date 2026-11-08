@@ -1,0 +1,13 @@
+# Windows / Office noise that must not reach the controller
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.DS_Store
+~$*
+*.tmp
+*.log
+
+# Editor / SRS local state
+.vscode/
+*.suo
+*.user

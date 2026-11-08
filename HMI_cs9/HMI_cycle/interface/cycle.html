@@ -1,0 +1,58 @@
+<!DOCTYPE html SYSTEM "-//W3C//DTD VALHTML Strict//EN">
+  <html xmlns="http://www.staubli.com/robotics/2016/03/valhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"></meta>
+      <meta http-equiv="Pragma" content="no-cache"></meta>
+      <meta http-equiv="Expires" content="0"></meta>
+      <script type="text/javascript" src="/vendor/libs/stblUserPage.min.js"></script>
+      <link href="/vendor/libs/up.min.v2.css" rel="stylesheet" media="all" type="text/css"></link>
+      <meta name="src-version" content="8.10.3"></meta>
+    </head>
+    <body style="width: 480px; height: 690px; margin: 0">
+      <label style="width: 480px; text-align: center; font-size: 26px; height: 50px; padding: 6px 0px 0px 0px; font-weight: bold; position: absolute; left: 0px; top: 0px; background-color: #FFE766; color: #9116F1" id="lblTitle">ProductCycle</label>
+      <button style="height: 40px; width: 40px; background-image: url('../../image/point/home.png'); background-color: #FFFFFF; position: absolute; left: 10px; top: 5px" id="btnback"></button>
+      <hr id="rec1" style="left: 10px; position: absolute; top: 58px; border-color: #ABB0B3; background-color: rgba(212,212,212,0.0); width: 231px; height: 200px"></hr>
+      <hr style="border-color: #ABB0B3; background-color: rgba(212,212,212,0.0); top: 266px; position: absolute; left: 10px; width: 462px; height: 132px" id="rec1_Copy1"></hr>
+      <label id="lbl1" style="top: 65px; position: absolute; left: 20px; width: 106px; height: 20px">机器人状态：</label>
+      <label style="width: 85px; height: 20px; left: 20px; position: absolute; top: 273px" id="lbl1_Copy1">报错列表：</label>
+      <hr style="border-color: #ABB0B3; background-color: rgba(255,166,112,0.42); left: 8px; width: 464px; height: 36px; position: absolute; top: 442px" id="rec1_Copy2"></hr>
+      <label style="width: 85px; height: 20px; font-weight: bold; top: 418px; position: absolute; left: 8px" id="lbl1_Copy2">生产流程：</label>
+      <label id="lbl2" style="left: 20px; width: 155px; height: 20px; position: absolute; top: 88px">在home位置：</label>
+      <label style="width: 155px; height: 20px; left: 20px; position: absolute; top: 114px" id="lbl2_Copy1">机器人急停：</label>
+      <label style="width: 155px; height: 20px; left: 20px; position: absolute; top: 142px" id="lbl2_Copy2">机器人在生产状态：</label>
+      <label style="width: 155px; height: 20px; left: 20px; position: absolute; top: 170px" id="lbl2_Copy3">机器人准备就绪：</label>
+      <button id="btn1" style="left: 195px; height: 20px; width: 20px; position: absolute; top: 86px"></button>
+      <button style="height: 20px; width: 20px; left: 195px; position: absolute; top: 142px" id="btn3"></button>
+      <button style="height: 20px; width: 20px; left: 195px; position: absolute; top: 114px" id="btn2"></button>
+      <button style="height: 20px; width: 20px; left: 195px; position: absolute; top: 170px" id="btn4"></button>
+      <hr style="border-color: #ABB0B3; background-color: rgba(212,212,212,0.0); width: 462px; height: 50px; top: 640px; position: absolute; left: 8px" id="rec1_Copy3"></hr>
+      <button id="btn5" style="font-weight: bold; background-image: url('null'); width: 80px; height: 40px; text-align: center; left: 10px; position: absolute; top: 592px">复位</button>
+      <button style="font-weight: bold; background-image: url('null'); width: 80px; height: 40px; left: 105px; position: absolute; top: 592px" id="btn6">启动</button>
+      <button style="font-weight: bold; background-image: url('null'); width: 80px; height: 40px; left: 201px; position: absolute; top: 592px" id="btn7">暂停</button>
+      <button style="font-weight: bold; background-image: url('null'); width: 80px; height: 40px; left: 296px; position: absolute; top: 592px" id="btn8">结束</button>
+      <button style="font-weight: bold; background-image: url('null'); width: 80px; height: 40px; left: 392px; position: absolute; top: 592px" id="btn9">停止</button>
+      <button id="btn10" style="width: 80px; height: 40px; color: #FFFFFF; background-color: #F7C248; font-weight: bold; top: 645px; position: absolute; left: 56px">HOME</button>
+      <button style="width: 80px; height: 40px; color: #FFFFFF; background-color: #F7C248; font-weight: bold; top: 645px; position: absolute; left: 342px" id="btn6_Copy1">清除报错</button>
+      <hr style="border-color: #ABB0B3; background-color: rgba(212,212,212,0.0); width: 231px; height: 200px; top: 58px; position: absolute; left: 241px" id="rec1_Copy4"></hr>
+      <label style="top: 65px; position: absolute; left: 254px; width: 102px; height: 20px" id="lbl1_Copy3">cycle data：</label>
+      <label style="width: 87px; height: 20px; top: 96px; position: absolute; left: 254px" id="lbl2_Copy4">当前产能：</label>
+      <label style="width: 87px; height: 20px; top: 124px; position: absolute; left: 254px" id="lbl2_Copy5">平均产能：</label>
+      <label style="width: 87px; height: 20px; top: 152px; position: absolute; left: 254px" id="lbl2_Copy6">最佳产能：</label>
+      <label style="width: 107px; height: 20px; top: 96px; position: absolute; left: 335px" id="lbl8"></label>
+      <label style="width: 107px; height: 20px; top: 124px; position: absolute; left: 335px" id="lbl9"></label>
+      <label style="width: 107px; height: 20px; top: 152px; position: absolute; left: 335px" id="lbl10"></label>
+      <label style="width: 155px; height: 20px; left: 20px; position: absolute; top: 198px" id="lbl2_Copy7">机器人报错：</label>
+      <button style="height: 20px; width: 20px; left: 195px; position: absolute; top: 198px" id="btn4_Copy1"></button>
+      <select id="lst1" size="2" style="top: 301px; position: absolute; left: 18px; width: 442px; height: 89px"></select>
+      <label style="left: 254px; position: absolute; top: 180px; width: 102px; height: 20px" id="lbl2_Copy8">当前数据库：</label>
+      <label style="top: 180px; text-align: center; font-weight: bold; background-color: #FFFFFF; width: 51px; height: 20px; position: absolute; left: 350px" id="lbl10_Copy1"></label>
+      <label style="left: 20px; position: absolute; top: 228px; width: 122px; height: 20px" id="lbl2_Copy9">机器人当前状态：</label>
+      <label style="width: 73px; height: 20px; top: 238px; position: absolute; left: 142px" id="lbl10_Copy2"></label>
+      <label id="lbl3" style="top: 228px; position: absolute; left: 148px; width: 85px; height: 20px"></label>
+      <label style="text-align: left; left: 18px; width: 442px; height: 20px; position: absolute; top: 450px; font-size: 12px" id="lblStatus"></label>
+      <label style="width: 102px; height: 20px; left: 254px; position: absolute; top: 210px" id="lbl2_Copy10">当前产品ID：</label>
+      <label style="text-align: center; font-weight: bold; background-color: #FFFFFF; width: 51px; height: 20px; left: 350px; position: absolute; top: 210px" id="lbl10_Copy3"></label>
+      <button style="width: 80px; height: 40px; color: #FFFFFF; background-color: #F7C248; font-weight: bold; left: 193px; position: absolute; top: 645px" id="btnRotback">路径回原</button>
+    </body>
+  </html>

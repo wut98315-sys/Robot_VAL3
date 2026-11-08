@@ -1,0 +1,748 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "_bindTRAJ",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 128,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "unbind",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "IFedit",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "insertIF",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 1937,
+          "isCollapsed": false
+        },
+        {
+          "start": 15,
+          "end": 1265,
+          "isCollapsed": false
+        },
+        {
+          "start": 75,
+          "end": 801,
+          "isCollapsed": false
+        },
+        {
+          "start": 1683,
+          "end": 1900,
+          "isCollapsed": false
+        },
+        {
+          "start": 1833,
+          "end": 1890,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "insertSwitch",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 1088,
+          "isCollapsed": false
+        },
+        {
+          "start": 15,
+          "end": 663,
+          "isCollapsed": false
+        },
+        {
+          "start": 83,
+          "end": 178,
+          "isCollapsed": false
+        },
+        {
+          "start": 192,
+          "end": 308,
+          "isCollapsed": false
+        },
+        {
+          "start": 692,
+          "end": 1046,
+          "isCollapsed": false
+        },
+        {
+          "start": 795,
+          "end": 947,
+          "isCollapsed": false
+        },
+        {
+          "start": 892,
+          "end": 935,
+          "isCollapsed": false
+        },
+        {
+          "start": 971,
+          "end": 1036,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "onStart",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "bind",
+      "nodes": [
+        {
+          "start": 72,
+          "end": 188,
+          "isCollapsed": false
+        },
+        {
+          "start": 194,
+          "end": 313,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "refreshlist",
+      "nodes": [
+        {
+          "start": 105,
+          "end": 181,
+          "isCollapsed": false
+        },
+        {
+          "start": 136,
+          "end": 173,
+          "isCollapsed": false
+        },
+        {
+          "start": 198,
+          "end": 256,
+          "isCollapsed": false
+        },
+        {
+          "start": 264,
+          "end": 913,
+          "isCollapsed": false
+        },
+        {
+          "start": 320,
+          "end": 739,
+          "isCollapsed": false
+        },
+        {
+          "start": 366,
+          "end": 503,
+          "isCollapsed": false
+        },
+        {
+          "start": 508,
+          "end": 729,
+          "isCollapsed": false
+        },
+        {
+          "start": 550,
+          "end": 729,
+          "isCollapsed": false
+        },
+        {
+          "start": 742,
+          "end": 905,
+          "isCollapsed": false
+        },
+        {
+          "start": 774,
+          "end": 905,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "resfreshPROG",
+      "nodes": [
+        {
+          "start": 157,
+          "end": 237,
+          "isCollapsed": false
+        },
+        {
+          "start": 208,
+          "end": 229,
+          "isCollapsed": false
+        },
+        {
+          "start": 268,
+          "end": 717,
+          "isCollapsed": false
+        },
+        {
+          "start": 302,
+          "end": 587,
+          "isCollapsed": false
+        },
+        {
+          "start": 354,
+          "end": 445,
+          "isCollapsed": false
+        },
+        {
+          "start": 450,
+          "end": 577,
+          "isCollapsed": false
+        },
+        {
+          "start": 486,
+          "end": 577,
+          "isCollapsed": false
+        },
+        {
+          "start": 590,
+          "end": 709,
+          "isCollapsed": false
+        },
+        {
+          "start": 622,
+          "end": 709,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "resfreshTRAJ",
+      "nodes": [
+        {
+          "start": 87,
+          "end": 167,
+          "isCollapsed": false
+        },
+        {
+          "start": 138,
+          "end": 159,
+          "isCollapsed": false
+        },
+        {
+          "start": 198,
+          "end": 647,
+          "isCollapsed": false
+        },
+        {
+          "start": 232,
+          "end": 517,
+          "isCollapsed": false
+        },
+        {
+          "start": 284,
+          "end": 375,
+          "isCollapsed": false
+        },
+        {
+          "start": 380,
+          "end": 507,
+          "isCollapsed": false
+        },
+        {
+          "start": 416,
+          "end": 507,
+          "isCollapsed": false
+        },
+        {
+          "start": 520,
+          "end": 639,
+          "isCollapsed": false
+        },
+        {
+          "start": 552,
+          "end": 639,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "_onStartPROG",
+      "nodes": [
+        {
+          "start": 106,
+          "end": 205,
+          "isCollapsed": false
+        },
+        {
+          "start": 151,
+          "end": 197,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "_bindPROG",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 123,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "_onStartTRAJ",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "_btnColor",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 583,
+          "isCollapsed": false
+        },
+        {
+          "start": 30,
+          "end": 298,
+          "isCollapsed": false
+        },
+        {
+          "start": 303,
+          "end": 571,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "insertCASE",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 1806,
+          "isCollapsed": false
+        },
+        {
+          "start": 15,
+          "end": 506,
+          "isCollapsed": false
+        },
+        {
+          "start": 214,
+          "end": 309,
+          "isCollapsed": false
+        },
+        {
+          "start": 316,
+          "end": 432,
+          "isCollapsed": false
+        },
+        {
+          "start": 526,
+          "end": 729,
+          "isCollapsed": false
+        },
+        {
+          "start": 623,
+          "end": 719,
+          "isCollapsed": false
+        },
+        {
+          "start": 752,
+          "end": 1041,
+          "isCollapsed": false
+        },
+        {
+          "start": 837,
+          "end": 1031,
+          "isCollapsed": false
+        },
+        {
+          "start": 861,
+          "end": 921,
+          "isCollapsed": false
+        },
+        {
+          "start": 930,
+          "end": 1015,
+          "isCollapsed": false
+        },
+        {
+          "start": 1051,
+          "end": 1746,
+          "isCollapsed": false
+        },
+        {
+          "start": 1205,
+          "end": 1264,
+          "isCollapsed": false
+        },
+        {
+          "start": 1269,
+          "end": 1351,
+          "isCollapsed": false
+        },
+        {
+          "start": 1356,
+          "end": 1489,
+          "isCollapsed": false
+        },
+        {
+          "start": 1403,
+          "end": 1468,
+          "isCollapsed": false
+        },
+        {
+          "start": 1494,
+          "end": 1638,
+          "isCollapsed": false
+        },
+        {
+          "start": 1541,
+          "end": 1617,
+          "isCollapsed": false
+        },
+        {
+          "start": 1643,
+          "end": 1736,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "insertFOR",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 1973,
+          "isCollapsed": false
+        },
+        {
+          "start": 15,
+          "end": 646,
+          "isCollapsed": false
+        },
+        {
+          "start": 210,
+          "end": 305,
+          "isCollapsed": false
+        },
+        {
+          "start": 312,
+          "end": 428,
+          "isCollapsed": false
+        },
+        {
+          "start": 666,
+          "end": 869,
+          "isCollapsed": false
+        },
+        {
+          "start": 763,
+          "end": 859,
+          "isCollapsed": false
+        },
+        {
+          "start": 896,
+          "end": 1185,
+          "isCollapsed": false
+        },
+        {
+          "start": 981,
+          "end": 1175,
+          "isCollapsed": false
+        },
+        {
+          "start": 1005,
+          "end": 1065,
+          "isCollapsed": false
+        },
+        {
+          "start": 1074,
+          "end": 1159,
+          "isCollapsed": false
+        },
+        {
+          "start": 1195,
+          "end": 1913,
+          "isCollapsed": false
+        },
+        {
+          "start": 1356,
+          "end": 1415,
+          "isCollapsed": false
+        },
+        {
+          "start": 1420,
+          "end": 1502,
+          "isCollapsed": false
+        },
+        {
+          "start": 1507,
+          "end": 1648,
+          "isCollapsed": false
+        },
+        {
+          "start": 1554,
+          "end": 1642,
+          "isCollapsed": false
+        },
+        {
+          "start": 1653,
+          "end": 1805,
+          "isCollapsed": false
+        },
+        {
+          "start": 1700,
+          "end": 1799,
+          "isCollapsed": false
+        },
+        {
+          "start": 1810,
+          "end": 1903,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "insetProg",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 1652,
+          "isCollapsed": false
+        },
+        {
+          "start": 15,
+          "end": 195,
+          "isCollapsed": false
+        },
+        {
+          "start": 215,
+          "end": 418,
+          "isCollapsed": false
+        },
+        {
+          "start": 312,
+          "end": 408,
+          "isCollapsed": false
+        },
+        {
+          "start": 441,
+          "end": 730,
+          "isCollapsed": false
+        },
+        {
+          "start": 526,
+          "end": 720,
+          "isCollapsed": false
+        },
+        {
+          "start": 550,
+          "end": 610,
+          "isCollapsed": false
+        },
+        {
+          "start": 619,
+          "end": 704,
+          "isCollapsed": false
+        },
+        {
+          "start": 752,
+          "end": 1608,
+          "isCollapsed": false
+        },
+        {
+          "start": 793,
+          "end": 1058,
+          "isCollapsed": false
+        },
+        {
+          "start": 840,
+          "end": 1039,
+          "isCollapsed": false
+        },
+        {
+          "start": 935,
+          "end": 1027,
+          "isCollapsed": false
+        },
+        {
+          "start": 1063,
+          "end": 1122,
+          "isCollapsed": false
+        },
+        {
+          "start": 1127,
+          "end": 1210,
+          "isCollapsed": false
+        },
+        {
+          "start": 1215,
+          "end": 1349,
+          "isCollapsed": false
+        },
+        {
+          "start": 1262,
+          "end": 1327,
+          "isCollapsed": false
+        },
+        {
+          "start": 1354,
+          "end": 1499,
+          "isCollapsed": false
+        },
+        {
+          "start": 1401,
+          "end": 1477,
+          "isCollapsed": false
+        },
+        {
+          "start": 1504,
+          "end": 1598,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "main",
+      "nodes": [
+        {
+          "start": 31,
+          "end": 2515,
+          "isCollapsed": false
+        },
+        {
+          "start": 38,
+          "end": 233,
+          "isCollapsed": false
+        },
+        {
+          "start": 243,
+          "end": 2378,
+          "isCollapsed": false
+        },
+        {
+          "start": 323,
+          "end": 440,
+          "isCollapsed": false
+        },
+        {
+          "start": 445,
+          "end": 488,
+          "isCollapsed": false
+        },
+        {
+          "start": 493,
+          "end": 595,
+          "isCollapsed": false
+        },
+        {
+          "start": 600,
+          "end": 677,
+          "isCollapsed": false
+        },
+        {
+          "start": 682,
+          "end": 806,
+          "isCollapsed": false
+        },
+        {
+          "start": 725,
+          "end": 784,
+          "isCollapsed": false
+        },
+        {
+          "start": 811,
+          "end": 944,
+          "isCollapsed": false
+        },
+        {
+          "start": 854,
+          "end": 922,
+          "isCollapsed": false
+        },
+        {
+          "start": 949,
+          "end": 1035,
+          "isCollapsed": false
+        },
+        {
+          "start": 1040,
+          "end": 1217,
+          "isCollapsed": false
+        },
+        {
+          "start": 1222,
+          "end": 1405,
+          "isCollapsed": false
+        },
+        {
+          "start": 1410,
+          "end": 1494,
+          "isCollapsed": false
+        },
+        {
+          "start": 1499,
+          "end": 1678,
+          "isCollapsed": false
+        },
+        {
+          "start": 1683,
+          "end": 1771,
+          "isCollapsed": false
+        },
+        {
+          "start": 1776,
+          "end": 1932,
+          "isCollapsed": false
+        },
+        {
+          "start": 1937,
+          "end": 2120,
+          "isCollapsed": false
+        },
+        {
+          "start": 2125,
+          "end": 2280,
+          "isCollapsed": false
+        },
+        {
+          "start": 2285,
+          "end": 2368,
+          "isCollapsed": false
+        },
+        {
+          "start": 2388,
+          "end": 2465,
+          "isCollapsed": false
+        },
+        {
+          "start": 2518,
+          "end": 2566,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}

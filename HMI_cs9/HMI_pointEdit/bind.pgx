@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="bind" access="public">
+    <Locals>
+      <Local name="l_sbtn" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  userPageBindClick("point","btnback",bBack,true)
+  userPageBind("point","lbl2","innerHTML",sTrajItem,1,"r")
+  userPageBind("point","lbllib","innerHTML",sUsingLib,1,"r")
+  userPageBind("point","lblframe","innerHTML",sUsingFrame,1,"r")
+  userPageBind("point","lbltool","innerHTML",sUsingTool,1,"r")
+  
+  userPageBind("point","lblpageindex","innerHTML",sPageIndex,1,"r")
+  userPageBind("point","lblpagenum","innerHTML",sPageNum,1,"r")
+  
+  //click
+  for l_i = 0 to size(bBool)-1
+    l_sbtn="btn"+toString("",l_i)
+    userPageBindClick("point",l_sbtn,bBool[l_i],true)
+  endFor
+  
+  //lst
+  //userPageBind("point","lst1","options",sList,49,"r")
+  
+  userPageBind("point","lst1","value",sSelPoint,1,"rw")
+end]]></Code>
+  </Program>
+</Programs>

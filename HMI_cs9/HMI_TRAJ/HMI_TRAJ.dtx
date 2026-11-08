@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Data/2">
+  <Datas>
+    <Data name="mNomSpeed" access="private" xsi:type="array" type="mdesc" size="1" />
+    <Data name="sUsingLib" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="sList" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="bBack" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="bBool" access="private" xsi:type="array" type="bool" size="12" />
+    <Data name="sPageIndex" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="sPageNum" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="nPageIndex" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="nPageNum" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="sNewName" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="sFrameList" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="sToolList" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="bConfirm" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="bCancel" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="nMoveID" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="sSelFrame" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="sSelTool" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="sSelTraj" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="bRefresh" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="bToSave" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="tEditItem" access="public" xsi:type="array" type="trajItem" size="1">
+      <Value key="0">
+        <Field name="nFrameIndex" xsi:type="array" type="num" size="1" />
+        <Field name="nToolIndex" xsi:type="array" type="num" size="1" />
+        <Field name="sID" xsi:type="array" type="string" size="1" />
+        <Field name="nMoveID" xsi:type="array" type="num" size="1" />
+        <Field name="pPointItem" xsi:type="array" type="pointItem" size="1">
+          <Value key="0">
+            <Field name="pPointRx" xsi:type="array" type="pointRx" size="2" />
+            <Field name="jJointRx" xsi:type="array" type="jointRx" size="1" />
+            <Field name="pParaItem" xsi:type="array" type="paraItem" size="1">
+              <Value key="0">
+                <Field name="mMdesc" xsi:type="array" type="mdesc" size="1" />
+                <Field name="nMoveType" xsi:type="array" type="num" size="1" />
+                <Field name="nActionIndex" xsi:type="array" type="num" size="1" />
+                <Field name="nPercentage" xsi:type="array" type="num" size="1" />
+                <Field name="iIfItem" xsi:type="array" type="ifItem" size="1">
+                  <Value key="0">
+                    <Field name="nSigType" xsi:type="array" type="num" size="3" />
+                    <Field name="nSigIndex" xsi:type="array" type="num" size="3" />
+                    <Field name="nValue" xsi:type="array" type="num" size="3" />
+                    <Field name="bANDOR" xsi:type="array" type="bool" size="2" />
+                  </Value>
+                </Field>
+                <Field name="nDelay" xsi:type="array" type="num" size="1" />
+                <Field name="nSigValue" xsi:type="array" type="num" size="1" />
+                <Field name="bSafePoint" xsi:type="array" type="bool" size="1" />
+              </Value>
+            </Field>
+            <Field name="sID" xsi:type="array" type="string" size="1" />
+            <Field name="bMarked" xsi:type="array" type="bool" size="1" />
+            <Field name="pInter" xsi:type="array" type="pointRx" size="1" />
+          </Value>
+        </Field>
+      </Value>
+    </Data>
+    <Data name="sTrajList" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="sTrajList1" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="sSessionList" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="nIDIsExit" access="private" xsi:type="array" type="num" size="1" />
+  </Datas>
+</Database>

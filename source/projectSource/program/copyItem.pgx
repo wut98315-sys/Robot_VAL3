@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="copyItem" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sTarget" type="string" xsi:type="element" />
+      <Parameter name="x_sSource" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_j" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_nSize=size(progTemp:pProgItem[x_sSource].pProgTemplate)
+  resize(progTemp:pProgItem[x_sTarget].pProgTemplate,1,l_nSize)
+  for l_i = 0 to l_nSize-1
+    progTemp:pProgItem[x_sTarget].pProgTemplate[l_i].sTRAJname=progTemp:pProgItem[x_sSource].pProgTemplate[l_i].sTRAJname
+    progTemp:pProgItem[x_sTarget].pProgTemplate[l_i].nType=progTemp:pProgItem[x_sSource].pProgTemplate[l_i].nType
+    for l_j=0 to 2
+      progTemp:pProgItem[x_sTarget].pProgTemplate[l_i].iIfItem.nSigType[l_j]=progTemp:pProgItem[x_sSource].pProgTemplate[l_i].iIfItem.nSigType[l_j]
+      progTemp:pProgItem[x_sTarget].pProgTemplate[l_i].iIfItem.nSigIndex[l_j]=progTemp:pProgItem[x_sSource].pProgTemplate[l_i].iIfItem.nSigIndex[l_j]
+      progTemp:pProgItem[x_sTarget].pProgTemplate[l_i].iIfItem.nValue[l_j]=progTemp:pProgItem[x_sSource].pProgTemplate[l_i].iIfItem.nValue[l_j]
+    endFor
+    progTemp:pProgItem[x_sTarget].pProgTemplate[l_i].iIfItem.bANDOR[0]=(progTemp:pProgItem[x_sSource].pProgTemplate[l_i].iIfItem.bANDOR[0]==true)
+    progTemp:pProgItem[x_sTarget].pProgTemplate[l_i].iIfItem.bANDOR[1]=(progTemp:pProgItem[x_sSource].pProgTemplate[l_i].iIfItem.bANDOR[1]==true)
+  endFor
+end]]></Code>
+  </Program>
+</Programs>

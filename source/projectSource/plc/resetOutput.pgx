@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="resetOutput" access="public" >
+    <Locals>
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nI" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //2025.7.21 add 复位输出信号
+  for l_nI=9 to size(io:dOutput)-1
+    call io:setDigOutput(io:dOutput[l_nI],false,l_bErr)
+  endFor
+  for l_nI=0 to size(io:aOutput)-1
+    call io:setAnaOutput(io:aOutput[l_nI],0,l_bErr)
+  endFor
+end]]></Code>
+  </Program>
+</Programs>

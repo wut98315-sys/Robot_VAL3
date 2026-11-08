@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="action">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nActID" type="num" xsi:type="element" />
+      <Parameter name="x_bFinish" type="bool" xsi:type="array" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_n" type="num" xsi:type="array" size="1" />
+      <Local name="l_nActIO" type="num" xsi:type="array" size="1" />
+      <Local name="l_nActRslt" type="num" xsi:type="array" size="1" />
+      <Local name="l_nActType" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //类型nType      结果nResult 含义如下     l_nActIO
+  //	1=out	       0=false 1=true          IO的索引号
+  //	2=Pulse	     l_nActRslt 延时n s      IO的索引号
+
+  if x_nActID>=0 and x_nActID<size(actCmd)
+    //execute action group x_nActID
+    l_n=0
+    if x_bFinish[l_n]==false
+      l_nActIO=actPrt[x_nActID].nActIO[l_n]
+      l_nActType=actPrt[x_nActID].nActType[l_n]
+      l_nActRslt=actPrt[x_nActID].nActResult[l_n]
+      //
+      if l_nActIO>=0
+        switch l_nActType
+          case 1
+            //set output
+            if l_nActRslt==0
+              call io:setDigOutput(io:dOutput[l_nActIO],false,l_bErr)
+            elseIf l_nActRslt==1
+              call io:setDigOutput(io:dOutput[l_nActIO],true,l_bErr)
+            endIf
+            x_bFinish[l_n]=true
+          break
+            
+          case 2
+            //pulse ouput
+            if l_nActRslt>0
+              if _nPuleStartClk[l_nActIO]<0
+                call io:setDigOutput(io:dOutput[l_nActIO],true,l_bErr)
+                _nPuleStartClk[l_nActIO]=clock()
+              else
+                if clock()-_nPuleStartClk[l_nActIO]>l_nActRslt
+                  call io:setDigOutput(io:dOutput[l_nActIO],false,l_bErr)
+                  _nPuleStartClk[l_nActIO]=-1
+                  x_bFinish[l_n]=true
+                endIf
+              endIf
+            endIf
+          break
+          
+        endSwitch
+      else
+        //none
+        x_bFinish[l_n]=true
+      endIf
+    endIf
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

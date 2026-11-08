@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="Init" access="private" >
+    <Locals>
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="l_sArmType" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //dio
+
+  //****************bool*****************
+  _bEndCycle=false
+  _bAtHome=false
+  _bHeavyAlarm=false
+  //判断是否是4轴机器人
+  l_sArmType=left(getVersion("Arm Type"),2)
+  _bIsScara=(l_sArmType=="rs" or l_sArmType=="ts" or l_sArmType=="tp")
+
+
+  call rs:init()
+
+end]]></Code>
+  </Program>
+</Programs>

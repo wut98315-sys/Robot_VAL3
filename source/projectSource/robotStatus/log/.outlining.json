@@ -1,0 +1,40 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "addlog",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "getlog",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 526,
+          "isCollapsed": false
+        },
+        {
+          "start": 97,
+          "end": 517,
+          "isCollapsed": false
+        },
+        {
+          "start": 189,
+          "end": 507,
+          "isCollapsed": false
+        },
+        {
+          "start": 216,
+          "end": 338,
+          "isCollapsed": false
+        },
+        {
+          "start": 378,
+          "end": 421,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}

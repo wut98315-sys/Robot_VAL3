@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="returnMove" access="public">
+    <Description><![CDATA[// 开始执行回退运动]]></Description>
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_bToRefOnly" type="bool" xsi:type="element" />
+      <Parameter name="x_jHome" type="jointRx" xsi:type="element" />
+      <Parameter name="x_bGetMovId" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nCurrMoveId" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nI" type="num" xsi:type="array" size="1" />
+      <Local name="l_jPos" type="jointRx" xsi:type="array" size="1" />
+      <Local name="l_nJ" type="num" xsi:type="array" size="1" />
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+      <Local name="l_pPos" type="pointRx" xsi:type="array" size="5" />
+      <Local name="l_nEndIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_bAtHome" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // ---------------------------------------------------------------------------- //
+  // 开始执行回退运动
+  // 2023.03.16 新增x_bToRefOnly，是否回到参考点即结束
+  //x_jHome 机器人Home点
+  // ---------------------------------------------------------------------------- //
+  // 只有在机器人停止状态下，才能执行
+  x_bGetMovId=false
+  if isSettled()
+    // 1.获取当前moveid
+    if !bInterrupt
+      //l_nCurrMoveId=getMoveId()
+      //nCurrentMoveID=l_nCurrMoveId
+      x_bGetMovId=true
+      l_nCurrMoveId=nCurrentMoveID
+      resetMotion()
+    else
+      l_nCurrMoveId=nCurrentMoveID
+    endIf
+    logMsg("Current move ID="+toString(".3",l_nCurrMoveId))
+    // 当只记录过点个数<=1时，或运动还没到第一个点时，无法执行回退动作
+    // 注：如果需要自动回到初始点，在resetReturnStack()之后，先MoveJ(herej())记录第一个点即可
+    if nMoveTypeRec[1]!=-1 or l_nCurrMoveId<=nMoveIdRec[0]
+      // 2.和堆栈中的moveid比较，找到介于哪两个点之间
+      l_bResult=false
+      l_nI=-1
+      do
+        l_nI=l_nI+1
+        if(nMoveIdRec[l_nI]+1>=l_nCurrMoveId) and (nMoveTypeRec>0)
+          l_bResult=true
+        endIf
+      until l_bResult==true or l_nI>=size(nMoveTypeRec)-1
+      //
+      if l_bResult==true
+        logMsg("Find current trajectory index:("+toString("",l_nI-1)+" to "+toString("",l_nI)+"]")
+        // moveId正在处于(nMoveIdRec[l_nI-1]和nMoveIdRec[l_nI]]之间
+        // 3.回退，先move here，然后第一个点从[l_nI-1]开始
+        // 3.1 move here first
+        wait(isPowered())
+        delay(0.5)
+        link(l_tTool,flange)
+        //resetMotion()
+        l_jPos=herej()
+        movej(l_jPos,flange,mReturn)
+        waitEndMove()
+        // 2023.03.16 判断是否回到ref就结束，寻找堆栈里是否有ref点
+        l_nEndIndex=-1
+        if x_bToRefOnly==true
+          for l_nJ=0 to l_nI-1
+            if abs(jPointRec[l_nJ,1]-jRefPoint)<{nRefDeviate,nRefDeviate,nRefDeviate,nRefDeviate,nRefDeviate,nRefDeviate}
+              l_nEndIndex=l_nJ
+            endIf
+          endFor
+          if l_nEndIndex<0
+            popUpMsg("Can't find reference point in stack, end this program.")
+            return
+          endIf
+        else
+          // 直接运动到堆栈的第一个点
+          l_nEndIndex=1
+        endIf
+        //
+        // 3.2 判断一个[l_nI-1]到[l_nI]这段轨迹的运动类型，倒走到前一个点[l_nI-1]
+        //        for l_nJ=l_nI to l_nEndIndex step -1
+        if bInterrupt
+          //bInterrupt=false
+          l_nJ=nIndex
+        else
+          l_nJ=l_nI
+        endIf
+        do
+          l_tTool.trsf=trToolRec[l_nJ]
+          // 得到基于当前参考joint的正确joint位置
+          //          if l_nJ==l_nI
+          //            // 回退的第一个点，是基于当前位置的joint
+          //            bFirstUpdate=true
+          //          else
+          //            bFirstUpdate=false
+          //          endIf
+          //          call updateJointPos(l_nJ-1)
+          //
+          if nMoveTypeRec[l_nJ]==1
+            // movel
+            // 往回直线运动，点位是[l_nJ-1]的数据，其他诸如工具都应该是[l_nJ]的数据
+            l_pPos=jointToPoint(l_tTool,world,jPointRec[l_nJ-1,1])
+            //movel(l_pPos,l_tTool,mSpeedRec[l_nJ])
+            movel(l_pPos,l_tTool,mReturn)
+            //if bExact[l_nJ-1]
+            nIndex=l_nJ
+            waitEndMove()
+            nIndex=l_nJ-1
+            call bIsHome(x_jHome,l_bAtHome)
+            //endIf
+          elseIf nMoveTypeRec[l_nJ]==2
+            // movej
+            //movej(jPointRec[l_nJ-1,1],l_tTool,mSpeedRec[l_nJ])
+            movej(jPointRec[l_nJ-1,1],l_tTool,mReturn)
+            //if bExact[l_nJ-1]
+            nIndex=l_nJ
+            waitEndMove()
+            nIndex=l_nJ-1
+            call bIsHome(x_jHome,l_bAtHome)
+            //endIf
+          elseIf nMoveTypeRec[l_nJ]==3
+            // movec
+            // find middle point 
+            link(l_pPos[0],world)
+            link(l_pPos[1],world)
+            link(l_pPos[2],world)
+            l_pPos[0]=jointToPoint(l_tTool,world,jPointRec[l_nJ-1,1])
+            l_pPos[1]=jointToPoint(l_tTool,world,jPointRec[l_nJ,0])
+            l_pPos[2]=jointToPoint(l_tTool,world,jPointRec[l_nJ,1])
+            link(l_pPos[3],world)
+            if l_nJ==l_nI
+              l_pPos[3].trsf=interpolateC(l_pPos[0].trsf,l_pPos[1].trsf,l_pPos[2].trsf,sel((l_nCurrMoveId-roundDown(l_nCurrMoveId))==0,1,l_nCurrMoveId-roundDown(l_nCurrMoveId))/2)
+              movec(l_pPos[3],l_pPos[0],l_tTool,mSpeedRec[l_nJ])
+            else
+              //l_pPos[3].trsf=interpolateC(l_pPos[0].trsf,l_pPos[1].trsf,l_pPos[2].trsf,0.5)
+              movec(l_pPos[1],l_pPos[0],l_tTool,mSpeedRec[l_nJ]) 
+            endIf
+            //
+            
+          endIf
+          l_nJ=l_nJ-1
+          //endFor
+        until(l_nJ==l_nEndIndex-1 or l_bAtHome)
+        //
+        waitEndMove()
+        wait(isSettled())
+        // ---- 这里是否需要resetMotion()？待斟酌
+        //resetMotion()
+        bInterrupt=false
+        logMsg("Auto return finished.")
+        x_bGetMovId=false
+      endIf
+    else
+      //
+      popUpMsg("Only recorded/move one point or less! Please move to the beginning directly!")
+    endIf
+  else
+    //
+    popUpMsg("Robot is moving! Please settled robot first!")
+  endIf
+  
+end]]></Code>
+  </Program>
+</Programs>

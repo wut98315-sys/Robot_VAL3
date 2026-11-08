@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.15.3Cs9_BS3337" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="_clickAlarmAck.pgx" />
+    <Program file="bind.pgx" />
+    <Program file="click_End.pgx" />
+    <Program file="click_Hold.pgx" />
+    <Program file="click_Reset.pgx" />
+    <Program file="click_RotHome.pgx" />
+    <Program file="click_Start.pgx" />
+    <Program file="click_Stop.pgx" />
+    <Program file="currentState.pgx" />
+    <Program file="cycletime.pgx" />
+    <Program file="main.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="HMI_cycle.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="util" path="Disk://HMI_cs9/HMI_util/HMI_util.pjx" />
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+    <Library alias="simulate" path="Disk://HMI_cs9/simulate/simulate.pjx" />
+    <Library alias="saveData" path="Disk://source/saveData/saveData.pjx" />
+  </Libraries>
+</Project>

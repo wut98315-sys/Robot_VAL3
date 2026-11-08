@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3" >
+  <Parameters version="s8.21cs9_BS4703" stackSize="200000" millimeterUnit="true" />
+  <Programs>
+    <Program file="addLog.pgx" />
+    <Program file="getAlarmMsg.pgx" />
+    <Program file="getLog.pgx" />
+    <Program file="init.pgx" />
+    <Program file="resetAlarm.pgx" />
+    <Program file="robotStatus.pgx" />
+    <Program file="saveLog.pgx" />
+    <Program file="setAlarm.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="robotStatus.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="Log" path="./log/log.pjx" autoload="true" password="" />
+  </Libraries>
+  <Types>
+  </Types>
+</Project>

@@ -1,0 +1,307 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "click_End",
+      "nodes": [
+        {
+          "start": 63,
+          "end": 136,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "currentState",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 455,
+          "isCollapsed": false
+        },
+        {
+          "start": 33,
+          "end": 69,
+          "isCollapsed": false
+        },
+        {
+          "start": 74,
+          "end": 110,
+          "isCollapsed": false
+        },
+        {
+          "start": 115,
+          "end": 150,
+          "isCollapsed": false
+        },
+        {
+          "start": 155,
+          "end": 190,
+          "isCollapsed": false
+        },
+        {
+          "start": 195,
+          "end": 230,
+          "isCollapsed": false
+        },
+        {
+          "start": 236,
+          "end": 271,
+          "isCollapsed": false
+        },
+        {
+          "start": 276,
+          "end": 314,
+          "isCollapsed": false
+        },
+        {
+          "start": 319,
+          "end": 355,
+          "isCollapsed": false
+        },
+        {
+          "start": 360,
+          "end": 395,
+          "isCollapsed": false
+        },
+        {
+          "start": 400,
+          "end": 438,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "cycletime",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 689,
+          "isCollapsed": false
+        },
+        {
+          "start": 56,
+          "end": 182,
+          "isCollapsed": false
+        },
+        {
+          "start": 146,
+          "end": 172,
+          "isCollapsed": false
+        },
+        {
+          "start": 244,
+          "end": 416,
+          "isCollapsed": false
+        },
+        {
+          "start": 286,
+          "end": 405,
+          "isCollapsed": false
+        },
+        {
+          "start": 421,
+          "end": 528,
+          "isCollapsed": false
+        },
+        {
+          "start": 489,
+          "end": 518,
+          "isCollapsed": false
+        },
+        {
+          "start": 610,
+          "end": 681,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "_clickAlarmAck",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "click_RotHome",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 76,
+          "isCollapsed": false
+        },
+        {
+          "start": 137,
+          "end": 210,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "bind",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "click_Start",
+      "nodes": [
+        {
+          "start": 58,
+          "end": 146,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "click_Stop",
+      "nodes": [
+        {
+          "start": 62,
+          "end": 148,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "click_Hold",
+      "nodes": [
+        {
+          "start": 59,
+          "end": 137,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "click_Reset",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "main",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 2269,
+          "isCollapsed": false
+        },
+        {
+          "start": 15,
+          "end": 261,
+          "isCollapsed": false
+        },
+        {
+          "start": 320,
+          "end": 887,
+          "isCollapsed": false
+        },
+        {
+          "start": 378,
+          "end": 435,
+          "isCollapsed": false
+        },
+        {
+          "start": 440,
+          "end": 494,
+          "isCollapsed": false
+        },
+        {
+          "start": 499,
+          "end": 550,
+          "isCollapsed": false
+        },
+        {
+          "start": 555,
+          "end": 610,
+          "isCollapsed": false
+        },
+        {
+          "start": 615,
+          "end": 664,
+          "isCollapsed": false
+        },
+        {
+          "start": 669,
+          "end": 738,
+          "isCollapsed": false
+        },
+        {
+          "start": 743,
+          "end": 806,
+          "isCollapsed": false
+        },
+        {
+          "start": 811,
+          "end": 877,
+          "isCollapsed": false
+        },
+        {
+          "start": 1041,
+          "end": 1148,
+          "isCollapsed": false
+        },
+        {
+          "start": 1210,
+          "end": 2234,
+          "isCollapsed": false
+        },
+        {
+          "start": 1296,
+          "end": 1472,
+          "isCollapsed": false
+        },
+        {
+          "start": 1386,
+          "end": 1460,
+          "isCollapsed": false
+        },
+        {
+          "start": 1479,
+          "end": 1656,
+          "isCollapsed": false
+        },
+        {
+          "start": 1570,
+          "end": 1644,
+          "isCollapsed": false
+        },
+        {
+          "start": 1663,
+          "end": 1840,
+          "isCollapsed": false
+        },
+        {
+          "start": 1754,
+          "end": 1828,
+          "isCollapsed": false
+        },
+        {
+          "start": 1847,
+          "end": 2024,
+          "isCollapsed": false
+        },
+        {
+          "start": 1938,
+          "end": 2012,
+          "isCollapsed": false
+        },
+        {
+          "start": 2031,
+          "end": 2224,
+          "isCollapsed": false
+        },
+        {
+          "start": 2132,
+          "end": 2212,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}

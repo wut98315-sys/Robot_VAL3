@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="HWcheck" access="public" >
+    <Locals>
+      <Local name="l_nNum" type="num" xsi:type="array" size="1" />
+      <Local name="l_nState" type="num" xsi:type="array" size="1" />
+      <Local name="l_nState1" type="num" xsi:type="array" size="1" />
+      <Local name="l_sState" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //  rs:nHWState=$getState()
+  //  l_nState=rs:nHWState
+  //  if l_nState<0
+  //    if !bReset
+  //      l_nState=abs(l_nState)-90
+  //      l_nState1=roundDown(l_nState)
+  //      switch l_nState1
+  //        case 0
+
+  //          call rs:setAlarm(400,0)
+  //        break
+  //        case 1
+  //          l_nNum= aioGet(ainRSI)
+  //          if l_nNum!=0
+  //            call rs:setAlarm(401,0)
+  //          endIf
+  //        break
+  //        case 2
+  //          call rs:setAlarm(402,0)
+  //        break
+  //        case 3
+  //          call rs:setAlarm(403,0)
+  //        break
+  //        case 4
+  //          call rs:setAlarm(404,0)
+  //        break
+  //        case 5
+  //          call rs:setAlarm(405,0)
+  //        break
+
+  //      endSwitch
+  //      bReset=true
+  //    endIf
+  //  else
+  //    bReset=false
+  //  endIf
+end]]></Code>
+  </Program>
+</Programs>

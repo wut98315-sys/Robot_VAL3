@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sSelProg" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bRefresh" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //x_sSelProg-选中的prog
+  do
+    if util:sPage!="editProg"
+      util:sPage="editProg"
+      sSelProg= x_sSelProg
+      call onStart()
+      call bind()
+      userPage(util:sPage)
+      delay(0.5)
+      l_bRefresh=true
+    endIf
+    
+    if bBool[1]
+      bBool[1]=false
+      call simulate:simulatePROG(sSelProg)
+    elseIf bBool[2]
+      bBool[2]=false
+      call prog:deleteProgItem(sSelProg,sLstValue,bToSave)
+      l_bRefresh=true
+    elseIf bBool[3]
+      bBool[3]=false
+      
+    elseIf bBool[4]
+      bBool[4]=false
+      progTemp:libSave()
+      delay(0.1)
+      popUpMsg("数据已保存")
+    elseIf bBool[5]
+      bBool[5]=false
+      nPageIndex=0
+      l_bRefresh=true
+    elseIf bBool[6]
+      bBool[6]=false
+      if nPageIndex>0
+        nPageIndex=nPageIndex-1
+      endIf
+      l_bRefresh=true
+    elseIf bBool[7]
+      bBool[7]=false
+      if nPageIndex<nPageNum-1
+        nPageIndex=nPageIndex+1
+      endIf
+      l_bRefresh=true
+    elseIf bBool[8]
+      bBool[8]=false
+      nPageIndex=nPageNum-1
+      l_bRefresh=true
+    elseIf bInsert[0]
+      bInsert[0]=false
+      call unbind()
+      call prog:getProgItemIndex(sSelProg,sLstValue,l_nIndex)
+      //call insetTRAJ(l_nIndex)
+      l_bRefresh=true
+    elseIf bInsert[1]
+      bInsert[1]=false
+      call unbind()
+      call prog:getProgItemIndex(sSelProg,sLstValue,l_nIndex)
+      call insetProg(l_nIndex,bToSave)
+      l_bRefresh=true
+    elseIf bInsert[2]
+      bInsert[2]=false
+      call insertIF()
+      l_bRefresh=true
+    elseIf bInsert[3]
+      bInsert[3]=false
+      call prog:getProgItemIndex(sSelProg,sLstValue,l_nIndex)
+      call prog:insertENDIF(sSelProg,l_nIndex,bToSave)
+      l_bRefresh=true
+    elseIf bInsert[4]
+      bInsert[4]=false
+      call insertSwitch()
+      l_bRefresh=true
+    elseIf bInsert[5]
+      bInsert[5]=false
+      call prog:getProgItemIndex(sSelProg,sLstValue,l_nIndex)
+      call insertCASE(l_nIndex)
+      l_bRefresh=true
+    elseIf bInsert[6]
+      bInsert[6]=false
+      call prog:getProgItemIndex(sSelProg,sLstValue,l_nIndex)
+      call prog:insertENDSwitch(sSelProg,l_nIndex,bToSave)
+      l_bRefresh=true
+    elseIf bInsert[7]
+      bInsert[7]=false
+      call prog:getProgItemIndex(sSelProg,sLstValue,l_nIndex)
+      call insertFOR(l_nIndex)
+      l_bRefresh=true
+    elseIf bBack
+      bBack=false
+      //call prog:onSave(bToSave)
+      l_bExit=true
+    endIf
+    
+    if l_bRefresh
+      l_bRefresh=false
+      call refreshlist()
+     
+    endIf
+    
+    
+    
+    delay(0)
+  until l_bExit==true
+  if bToSave
+    call prog:onSave(bToSave)
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

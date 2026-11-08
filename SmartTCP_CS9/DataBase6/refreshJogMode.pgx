@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="refreshJogMode" access="public">
+    <Locals>
+      <Local name="l_nI" type="num" xsi:type="array" size="1" />
+      <Local name="l_pHere" type="point" xsi:type="array" size="1" />
+      <Local name="l_jHere" type="jointRx" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  if workingMode()==1 or workingMode()==2
+    for l_nI= 0 to size(utImg_JogMode)-1
+      if utImg_JogMode[l_nI].Events.bClick==true
+        utImg_JogMode[l_nI].Events.bClick=false
+        $jogMode(l_nI)
+        nJogMode=$getJogmode()
+        switch nJogMode
+          case 1
+            bShowJpos=true
+          break
+          case 2,3
+            bShowJpos=false
+          break
+        endSwitch
+      endIf
+    endFor
+  endIf
+  //*********************************************************     
+  if utImg_PosSwitch.Events.bClick==true
+    utImg_PosSwitch.Events.bClick=false
+    bShowJpos=!bShowJpos
+  endIf
+  //*********************************************************
+  l_pHere=here(utCurrentTool.tValue,world)
+  l_jHere=herej()  
+  if bShowJpos==true
+    utLbl_CurrentPos_Name[0].Common.sText="J1:"
+    utLbl_CurrentPos_Name[1].Common.sText="J2:"
+    utLbl_CurrentPos_Name[2].Common.sText="J3:"
+    utLbl_CurrentPos_Name[3].Common.sText="J4:"
+    utLbl_CurrentPos_Name[4].Common.sText="J5:"
+    utLbl_CurrentPos_Name[5].Common.sText="J6:"
+    //
+    utLbl_CurrentPos_Data[0].Common.sText=toString(".3",l_jHere.j1)
+    utLbl_CurrentPos_Data[1].Common.sText=toString(".3",l_jHere.j2)
+    utLbl_CurrentPos_Data[2].Common.sText=toString(".3",l_jHere.j3)
+    utLbl_CurrentPos_Data[3].Common.sText=toString(".3",l_jHere.j4)
+    utLbl_CurrentPos_Data[4].Common.sText=toString(".3",l_jHere.j5)
+    utLbl_CurrentPos_Data[5].Common.sText=toString(".3",l_jHere.j6)
+  else
+    utLbl_CurrentPos_Name[0].Common.sText="X:"
+    utLbl_CurrentPos_Name[1].Common.sText="Y:"
+    utLbl_CurrentPos_Name[2].Common.sText="Z:"
+    utLbl_CurrentPos_Name[3].Common.sText="RX:"
+    utLbl_CurrentPos_Name[4].Common.sText="RY:"
+    utLbl_CurrentPos_Name[5].Common.sText="RZ:"
+    //
+    utLbl_CurrentPos_Data[0].Common.sText=toString(".3",l_pHere.trsf.x)
+    utLbl_CurrentPos_Data[1].Common.sText=toString(".3",l_pHere.trsf.y)
+    utLbl_CurrentPos_Data[2].Common.sText=toString(".3",l_pHere.trsf.z)
+    utLbl_CurrentPos_Data[3].Common.sText=toString(".3",l_pHere.trsf.rx)
+    utLbl_CurrentPos_Data[4].Common.sText=toString(".3",l_pHere.trsf.ry)
+    utLbl_CurrentPos_Data[5].Common.sText=toString(".3",l_pHere.trsf.rz)   
+  endIf
+  //*********************************************************
+  nJogMode=$getJogmode()   
+  for l_nI= 0 to size(utImg_JogMode)-1
+    if l_nI==nJogMode
+      //utImg_JogMode[l_nI].Border.sBorderStyle="Solid"
+      //utImg_JogMode[l_nI].Border.sBorderColour="#000000"
+      utImg_JogMode[l_nI].Common.sClass="selected"
+    else
+      //utImg_JogMode[l_nI].Border.sBorderStyle="None"
+      //utImg_JogMode[l_nI].Border.sBorderColour="#FFFFFF"
+      utImg_JogMode[l_nI].Common.sClass="clickable"
+    endIf
+  endFor
+end]]></Code>
+  </Program>
+</Programs>

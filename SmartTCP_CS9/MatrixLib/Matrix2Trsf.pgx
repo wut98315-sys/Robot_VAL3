@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="Matrix2Trsf" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nMatrix" type="num" xsi:type="array" use="reference" dimensions="2" />
+      <Parameter name="x_trTrsf" type="trsf" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="ax" type="num" xsi:type="array" size="1" />
+      <Local name="ay" type="num" xsi:type="array" size="1" />
+      <Local name="az" type="num" xsi:type="array" size="1" />
+      <Local name="nx" type="num" xsi:type="array" size="1" />
+      <Local name="ny" type="num" xsi:type="array" size="1" />
+      <Local name="nz" type="num" xsi:type="array" size="1" />
+      <Local name="ox" type="num" xsi:type="array" size="1" />
+      <Local name="oy" type="num" xsi:type="array" size="1" />
+      <Local name="oz" type="num" xsi:type="array" size="1" />
+      <Local name="px" type="num" xsi:type="array" size="1" />
+      <Local name="py" type="num" xsi:type="array" size="1" />
+      <Local name="pz" type="num" xsi:type="array" size="1" />
+      <Local name="rx1" type="num" xsi:type="array" size="1" />
+      <Local name="rx2" type="num" xsi:type="array" size="1" />
+      <Local name="ry1" type="num" xsi:type="array" size="1" />
+      <Local name="ry2" type="num" xsi:type="array" size="1" />
+      <Local name="rz1" type="num" xsi:type="array" size="1" />
+      <Local name="rz2" type="num" xsi:type="array" size="1" />
+      <Local name="x" type="num" xsi:type="array" size="1" />
+      <Local name="y" type="num" xsi:type="array" size="1" />
+      <Local name="z" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //Matrik转换成Trsf
+  nx=x_nMatrix[0,0]
+  ny=x_nMatrix[0,1]
+  nz=x_nMatrix[0,2]
+  ox=x_nMatrix[1,0]
+  oy=x_nMatrix[1,1]
+  oz=x_nMatrix[1,2]
+  ax=x_nMatrix[2,0]
+  ay=x_nMatrix[2,1]
+  az=x_nMatrix[2,2]
+  px=x_nMatrix[3,0]
+  py=x_nMatrix[3,1]
+  pz=x_nMatrix[3,2]
+  //求解Rx、Ry、Rz
+  x_trTrsf.x=px
+  x_trTrsf.y=py
+  x_trTrsf.z=pz
+  //求解Rx、Ry、Rz
+  call Atan2(ax,sqrt(power(nx,2)+power(ox,2)),ry1)
+  if ry1==90
+    rx1=0
+    call Atan2(ny,-nz,rz1)
+  elseIf ry1==-90
+    rx1=0
+    call Atan2(ny,nz,rz1)
+  else
+    call Atan2(-ay/cos(ry1),az/cos(ry1),rx1)
+    call Atan2(-ox/cos(ry1),nx/cos(ry1),rz1)
+  endIf
+  
+  call Atan2(ax,sqrt(power(nx,2)+power(ox,2)),ry2)
+  if ry2==90
+    rx2=0
+    call Atan2(ny,-nz,rz2)
+  elseIf ry2==-90
+    rx2=0
+    call Atan2(ny,nz,rz2)
+  else
+    call Atan2(-ay/cos(ry2),az/cos(ry2),rx2)
+    call Atan2(-ox/cos(ry2),nx/cos(ry2),rz2)
+  endIf
+  
+  if abs(rx1)+abs(ry1)+abs(rz1)<=abs(rx2)+abs(ry2)+abs(rz2)
+    x_trTrsf.rx=rx1
+    x_trTrsf.ry=ry1
+    x_trTrsf.rz=rz1
+  else
+    x_trTrsf.rx=rx2
+    x_trTrsf.ry=ry2
+    x_trTrsf.rz=rz2
+  endIf
+end
+]]></Code>
+  </Program>
+</Programs>

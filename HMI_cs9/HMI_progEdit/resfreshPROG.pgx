@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="resfreshPROG">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sHtml" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSize1" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //call PROGectory:getSize(l_nSize)
+  //  call PROGectory:getPROGList(sPROGList)
+  call prog:getSize(l_nSize)
+  call prog:getProgList(sPROGList)
+  
+  if l_nSize>49
+    nPgNumPROG=roundUp(l_nSize/49)
+  else
+    nPgNumPROG=1
+  endIf
+  
+  l_nSize1=l_nSize%49
+  
+  if nPgIndexPROG==nPgNumPROG-1
+    if l_nSize1!=0
+      resize(sList,1,l_nSize1)
+      for l_i = 0 to size(sList)-1
+        sList[l_i]=sPROGList[l_i+nPgIndexPROG*49]
+      endFor
+    else
+      resize(sList,1,49)
+      for l_i = 0 to size(sList)-1
+        sList[l_i]=sPROGList[l_i+nPgIndexPROG*49]
+      endFor
+    endIf
+  else
+    resize(sList,1,49)
+    for l_i = 0 to size(sList)-1
+      sList[l_i]=sPROGList[l_i+nPgIndexPROG*49]
+    endFor
+  endIf
+  userPageBind(x_sHtml,"lst1","options",sList,size(sList),"r")
+  sPagePROG=toString("",nPgNumPROG)
+  sPgIndexPROG=toString("",nPgIndexPROG+1)
+end]]></Code>
+  </Program>
+</Programs>

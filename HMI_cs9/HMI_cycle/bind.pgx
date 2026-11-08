@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="bind">
+    <Code><![CDATA[begin
+  userPageBindClick("cycle","btn5",bReset,true)
+  userPageBindClick("cycle","btn6",bStart,true)
+  userPageBindClick("cycle","btn7",bHold,true)
+  userPageBindClick("cycle","btn8",bEnd,true)
+  userPageBindClick("cycle","btn9",bStop,true)
+  userPageBindClick("cycle","btn10",bToHome,true)
+  userPageBindClick("cycle","btnback",bBack,true)
+  userPageBindClick("cycle","btn6_Copy1",bClearErr,true)
+  userPageBindClick("cycle","btnRotback",bRotBack,true)
+  userPageBind("cycle","lblStatus","innerHTML",sTrajStatus,1,"r")
+  userPageBind("cycle","lbl8","innerHTML",sCapacity,1,"r")
+  userPageBind("cycle","lbl9","innerHTML",sAvgCapacity,1,"r")
+  userPageBind("cycle","lbl10","innerHTML",sBestCapacity,1,"r")
+  userPageBind("cycle","lbl10_Copy1","innerHTML",sLib,1,"r")
+  userPageBind("cycle","lbl10_Copy3","innerHTML",sProgCode,1,"r")
+  userPageBind("cycle","lbl3","innerHTML",sState,1,"r")
+  
+  
+  userPageBind("cycle","lst1","options",rs:sAlarmMes,size(rs:sAlarmMes),"r")
+  
+  
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="paraEdit" access="public">
+    <Locals>
+      <Local name="l_nPoint" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_snmb" type="string" xsi:type="array" size="1" />
+      <Local name="l_slbl" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  call trajectory:getPointIndex(sTrajItem,sSelPoint,_nPointIndex,l_bResult)
+  if l_bResult
+ 
+    do
+      if util:sPage!="paraEdit"
+        util:sPage="paraEdit"
+        call paraStart(_nPointIndex) 
+        call paraBind()
+        userPage(util:sPage)         
+        delay(0.5)
+        //sLastMtype=""
+        sLastType=""
+      endIf
+      
+      if sParaType!=sLastType and sParaType!=""
+        sLastType=sParaType
+        call trajectory:pointEditValue(sParaType,sTrajItem,_nPointIndex,nTRSF,sTRSF,bShow2Point)   
+        call paraBind()
+      endIf
+    
+      if sParaType=="POINT" or sParaType==""
+        nMoveType=1
+      elseIf sParaType=="JOINT"
+        nMoveType=0
+      elseIf sParaType=="CIRCLE"
+        nMoveType=2
+      endIf
+ 
+      //button
+      if bParaConfirm
+        bParaConfirm=false
+        //call trajectory:getPointIndex(sTrajItem,sSelPoint,_nPointIndex,l_bResult)      
+        call trajectory:modifyPara(sTrajItem,_nPointIndex,nMoveType,nParaSpeed,nParaBlend,nParaPercent,sComment,bSafePoint,sBlendType,bToSave,nTRSF,nParaAccel)   
+        
+        l_bExit=true        
+      elseIf bPAllModify
+        bPAllModify=false
+        //call trajectory:getPointIndex(sTrajItem,sSelPoint,_nPointIndex,l_bResult)        
+        call trajectory:modifyAll(sTrajItem,nMoveType,nParaSpeed,nParaBlend,nParaPercent,sBlendType,bToSave,nParaAccel)   
+        l_bExit=true
+      elseIf bParaBack
+        bParaBack=false
+        l_bExit=true
+      endIf      
+      delay(0)
+    until l_bExit==true
+    //    l_bResult=userPageConfirm("数据已修改，是否需要保存数据？")
+    //    if l_bResult 
+    //      call trajectory:onSave(bToSave)
+    //    endIf
+  else
+    userPageAlert("未选择有效点位！")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

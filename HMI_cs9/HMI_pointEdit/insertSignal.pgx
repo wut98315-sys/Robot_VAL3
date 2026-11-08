@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertSignal" access="public">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nPoint" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult1" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="insertSignal"
+      util:sPage="insertSignal"
+      sSignalType=""
+      sSignalIndex=""
+      nSignalValue=0
+      
+      userPageBindClick("insertSignal","btn1",bConfirm,true)
+      userPageBindClick("insertSignal","btn2",bBackSignal,true)
+      userPageBind("insertSignal","cbx1","value",sSignalType,1,"rw")
+      userPageBind("insertSignal","cbx2","value",sSignalIndex,1,"rw")
+      userPageBind("insertSignal","nmb1","value",nSignalValue,1,"rw")
+      
+      userPage(util:sPage)
+      delay(0.5)
+      sLastType=""
+    endIf
+    //
+    if sSignalType!=sLastType
+      sLastType=sSignalType
+      switch sSignalType
+        case "DIN","DOUT"
+          resize(sIOList,1,1)
+          sIOList=""
+          //userPageUnbind("insertSignal","cbx2","options")
+        break
+        case "AIN"
+          call io:setAngINList(sIOList)
+          // userPageBind("insertSignal","cbx2","options",sIOList,size(sIOList),"r")
+        break
+        case "AOUT"
+          call io:setAngOUTList(sIOList)
+          //userPageBind("insertSignal","cbx2","options",sIOList,size(sIOList),"r")
+        break
+      endSwitch
+      switch sSignalType
+        case "DIN"
+          nSignalType=3
+        break
+        case "DOUT"
+          nSignalType=4
+        break
+        case "AIN"
+          nSignalType=5
+        break
+        case "AOUT"
+          nSignalType=6
+        break
+        default
+          nSignalType=0
+        break
+      endSwitch
+      
+    
+    endIf
+    //signal type
+   
+    
+    
+    //btn
+    if bConfirm
+      bConfirm=false
+      call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+      toNum(sSignalIndex,l_nIndex,l_bResult1)
+      if l_nIndex>io:nMaxAnalog-1 and (nSignalType==5 or nSignalType==6)
+        userPageAlert("信号索引大于模拟量最大个数")
+      else
+        call trajectory:insertSignal(sTrajItem,l_nPoint,bToSave,nSignalType,l_nIndex,nSignalValue)
+        l_bExit=true
+      endIf
+     
+    
+    elseIf bBackSignal
+      bBackSignal=false
+      l_bExit=true
+    endIf
+    
+    //
+    
+    delay(0)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

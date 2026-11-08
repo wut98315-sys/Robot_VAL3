@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="onStart" access="public">
+    <Locals>
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_sMsg" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  sLstValue=""
+  nPageIndex=0
+  nPageNum=1
+  call refreshlist()
+ 
+  sPageIndex=toString("",nPageIndex+1)
+  sPageNum=toString("",nPageNum)
+end]]></Code>
+  </Program>
+</Programs>

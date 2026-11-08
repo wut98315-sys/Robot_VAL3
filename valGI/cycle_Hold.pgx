@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="cycle_Hold">
+    <Code><![CDATA[begin
+  //cycle进程:Holding
+  rs:_nOmacStat=5
+  //if isPowered()
+  //    disablePower()
+  //    watch(isPowered()==false,2)
+  //  endIf
+  stopMove()
+  wait(isSettled())
+  //cycle进程:Held
+  rs:_nOmacStat=6
+  logMsg("当前处于暂停状态 "+toString(".2",clock()))
+  rs:_sRobotStatus="当前处于暂停状态"
+end]]></Code>
+  </Program>
+</Programs>

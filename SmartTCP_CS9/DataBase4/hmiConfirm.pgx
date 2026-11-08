@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="hmiConfirm" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sMsg" type="string" xsi:type="element" />
+      <Parameter name="x_sMsgType" type="string" xsi:type="element" />
+      <Parameter name="x_bOK" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sMsg" type="string" xsi:type="array" size="1" />
+      <Local name="l_bOut" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  switch sLanguage
+    case "english"
+      l_sMsg=sAlertEN[x_sMsg]
+    break
+    case "chinese"
+      l_sMsg=sAlertCN[x_sMsg]
+    break
+  endSwitch
+  //*************************************************************
+  utCtn_Message.Common.sSource="Page_Container_Confirm.html"
+  utTxt_popUpMsg.Common.sValue=l_sMsg
+  //*************************************************************
+  switch x_sMsgType
+    case "info"
+      utTxt_popUpMsg.Appearance.sBackgroundColour="#7C95FF"
+    break
+    //
+    case "warning"
+      utTxt_popUpMsg.Appearance.sBackgroundColour="#EEFB45"      
+    break
+    //
+    case "confirm"
+      utTxt_popUpMsg.Appearance.sBackgroundColour="#FFFFFF"      
+    break
+    //  
+    default
+      utTxt_popUpMsg.Appearance.sBackgroundColour="#ADADB2"
+    break
+  endSwitch
+  delay(0.2)
+  //
+  utCtn_Message.Appearance.bVisibility=true
+  //
+  utBtn_Yes.Events.bClick=false
+  utBtn_No.Events.bClick=false
+  l_bOut=false
+  do
+    if utBtn_Yes.Events.bClick==true
+      utBtn_Yes.Events.bClick=false
+      l_bOut=true
+      x_bOK=true
+    elseIf utBtn_No.Events.bClick==true
+      utBtn_No.Events.bClick=false
+      l_bOut=true    
+      x_bOK=false
+    endIf
+  until l_bOut
+  delay(0)
+  utCtn_Message.Appearance.bVisibility=false  
+end
+
+]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="initParameter" access="public">
+    <Locals>
+      <Local name="l_sKey" type="string" xsi:type="array" size="1" />
+      <Local name="l_bFind" type="bool" xsi:type="array" size="1" />
+      <Local name="i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //功能：设置扭矩限值界面初始化调用
+  bLock=true
+  sBtnUnLock="解锁"
+  //获取机器人类型
+  call _getSetForce(nMaxJntForce,sArmDetail,sArmType,l_bFind)
+  if l_bFind
+    if sArmType=="4_Axis"
+      resize(bDisable,1,4)
+      //resize(nMaxJntForce,1,4)
+      bSix_Axis=false
+    elseIf sArmType=="6_Axis"
+      resize(bDisable,1,6)
+      //resize(nMaxJntForce,1,6)
+      userPageBind("setJntForce","nmb1_Copy3","disabled",bDisable[4],1,"r")
+      userPageBind("setJntForce","nmb1_Copy3","value",nMaxJntForce[4],1,"rw")
+      userPageBind("setJntForce","nmb1_Copy5","disabled",bDisable[5],1,"r")
+      userPageBind("setJntForce","nmb1_Copy5","value",nMaxJntForce[5],1,"rw")
+      bSix_Axis=true
+    endIf
+    //初始化扭矩设置解锁按钮
+    for i=0 to size(bDisable)-1
+      bDisable[i]=true
+    endFor
+  else
+    logMsg("扭矩库中缺少当前机器人型号，请添加!!!")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

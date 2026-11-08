@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="getAngIOSize" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nSize" type="num" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  switch rs:sBusUsing
+    case "MODBUS"
+      l_nSize=size(_aInModbus)
+    break
+    case "PROFINET"
+      l_nSize=size(_aInProfinet)
+    break
+    case "PROFIBUS"
+      l_nSize=size(_aInProfibus)
+    break
+    case "ETHERCAT"
+      l_nSize=size(_aInEthercat)
+    break
+    case "ETHERNET"
+      l_nSize=size(_aInEthernet)
+    break
+  endSwitch
+  x_nSize=l_nSize
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="cycle_RotGoHome">
+    <Locals>
+      <Local name="l_bContain" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //  stopMove()
+  //  resetMotion()
+  //检查堆栈是否存有点位
+  call ar:getMotCount(l_bContain)
+  if !l_bContain
+    //popUpMsg("无法路径回原，请手动回原点！")
+    return
+  endIf
+
+  rs:_nOmacStat=11
+  // Stop task
+  taskKill("Reset")
+  taskKill("Start")
+  taskKill("Stop")
+  taskKill("End")
+  taskKill("GoHome")
+  taskKill("Monitor")
+  taskKill("productCycle")
+
+  wait(isSettled())
+  //  if !isPowered()
+  //    enablePower()
+  //    wait(isPowered()==true)
+  //  endIf
+  if !isPowered()
+    popUpMsg("请先手动上电！")
+    rs:_nOmacStat=9
+    return
+  endIf
+
+  //2024.12.02 add 监控IO程序
+  rs:sTrajStatus="路径回原点过程中"
+  if rs:nCycleCmd!=7
+    taskCreate "Monitor1",20,MonitorIO1()
+    wait(taskStatus("Monitor1")==1)
+  endIf
+
+  call ar:returnMove(false,savedata:jHome,bGetMovId)
+
+
+  if rs:bIsHome
+    rs:sTrajStatus="路径回原点完成"
+    bGetMovId=false
+    ar:bInterrupt=false
+  endIf
+
+  if rs:nCycleCmd!=7
+    taskKill("Monitor1")
+    wait(taskStatus("Monitor1")<0)
+  endIf
+  disablePower()
+  rs:_nOmacStat=9
+  delay(0)
+
+end]]></Code>
+  </Program>
+</Programs>

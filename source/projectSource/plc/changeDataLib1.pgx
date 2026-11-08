@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="changeDataLib1" access="public" >
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1" >
+      <Parameter name="x_nLib" type="num" use="value" xsi:type="element" dimensions="1" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nClock" type="num" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //形参：x_nLib
+  //对应实参：savedata:nLibIndex
+  //  bTosave=true
+  //  call trajectory:onSave(bTosave)
+  //  bTosave=true
+  //  call prog:onSave(bTosave)
+  l_nClock=clock()
+  logMsg("自动开始切换库:"+toString(".2",clock()))
+  call trajectory:loadTRAJ(x_nLib,l_nResult)
+  call prog:loadPROG(x_nLib,l_nResult)
+
+  delay(1)
+  logMsg(toString(".3",clock()-l_nClock))
+end]]></Code>
+  </Program>
+</Programs>

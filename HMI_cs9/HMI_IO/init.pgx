@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="init" access="public">
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  nPage=0
+  nPageIndex=0
+  nItemIndex=0
+  
+  nPage=roundUp(size(io:dInItem)/16)
+  sShowPageIndex=toString("",nPageIndex+1)
+  sPageNum=toString("",nPage)
+  sUsingBus=rs:sBusUsing
+  nSelType=0
+  call SetbtnColor(nSelType)
+  for l_i = 0 to 15
+    sLabel[l_i]=""
+    sComment[l_i]=""
+  endFor
+  if io:nMaxAnalog<=0
+    userPageSet("IO","btn3","disabled",true)
+    userPageSet("IO","btn4","disabled",true)
+    popUpMsg("模拟量数量未设置")
+  endIf
+  //  //list
+  //  for l_i = 0 to 15
+  //    sLabel[l_i]="dIn["+toString("",l_i+16*nPageIndex)+"]"
+  //    sComment[l_i]=io:dInItem[l_i+16*nPageIndex].sComment
+  //  endFor
+  
+end]]></Code>
+  </Program>
+</Programs>

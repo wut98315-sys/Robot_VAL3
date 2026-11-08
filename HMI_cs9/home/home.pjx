@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.15.3Cs9_BS3337" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="bind.pgx" />
+    <Program file="main.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="home.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="util" path="Disk://HMI_cs9/HMI_util/HMI_util.pjx" />
+    <Library alias="action" path="Disk://HMI_cs9/HMI_action/HMI_action.pjx" />
+    <Library alias="IO" path="Disk://HMI_cs9/HMI_IO/HMI_IO.pjx" />
+    <Library alias="HMI_TRAJ" path="Disk://HMI_cs9/HMI_TRAJ/HMI_TRAJ.pjx" />
+    <Library alias="prog" path="Disk://HMI_cs9/HMI_prog/HMI_prog.pjx" />
+    <Library alias="program" path="Disk://source/projectSource/program/program.pjx" />
+    <Library alias="trajectory" path="Disk://source/projectSource/trajectory/trajectory.pjx" />
+    <Library alias="saveData" path="Disk://source/saveData/saveData.pjx" />
+    <Library alias="HMI_frame" path="Disk://HMI_cs9/HMI_FrameSet/HMI_FrameSet.pjx" />
+    <Library alias="HMI_cycle" path="Disk://HMI_cs9/HMI_cycle/HMI_cycle.pjx" />
+    <Library alias="HMI_setting" path="Disk://HMI_cs9/HMI_setting/HMI_setting.pjx" />
+    <Library alias="HMI_safepoint" path="Disk://HMI_cs9/HMI_safepoint/HMI_safepoint.pjx" />
+    <Library alias="HMI_safezone" path="Disk://HMI_cs9/HMI_safezone/HMI_safezone.pjx" />
+    <Library alias="safecheck" path="Disk://source/projectSource/safeCheck/safeCheck.pjx" />
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+    <Library alias="SmartTcp" path="Disk://SmartTCP_CS9/SmartTCP_CS9.pjx" />
+    <Library alias="HMI_message" path="Disk://HMI_cs9/HMI_message/HMI_message.pjx" />
+  </Libraries>
+</Project>

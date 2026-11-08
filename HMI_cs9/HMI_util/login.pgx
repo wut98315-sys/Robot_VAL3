@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="login" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_bResult" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bCancel" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  sPage=""
+  x_bResult=false
+  do
+    if sPage!="login"
+      sPage="login"
+      //init
+      sInputPswd=""
+      //bind
+      userPageBind("login","pwd1","value",sInputPswd,1,"rw")
+      userPageBindClick("login","btn1",bConfirm,true)
+      userPageBindClick("login","btn2",bCancel,true)
+      //
+      userPage(sPage)
+      delay(0.5)
+    endIf
+    //button
+    if bConfirm
+      bConfirm=false
+      if sInputPswd==sPassword
+        x_bResult=true
+      else
+        userPageAlert("invalid password!")
+      endIf
+    elseIf bCancel
+      bCancel=false
+      l_bCancel=true
+    endIf
+    
+    
+    
+    
+    delay(0)
+  until l_bCancel==true
+end]]></Code>
+  </Program>
+</Programs>

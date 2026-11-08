@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.21Cs9_BS4703" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="initlib.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="initLib.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="lib1_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib1_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib2_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib2_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib3_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib3_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib4_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib4_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib5_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib5_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib6_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib6_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib7_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib7_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib8_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib8_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib9_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib9_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib10_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib10_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib11_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib11_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib12_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib12_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib13_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib13_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib14_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib14_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib15_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib15_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib16_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib16_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib17_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib17_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib18_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib18_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+    <Library alias="lib19_Prog" path="Disk://data/CustomerLib/default/savePROG/savePROG.pjx" />
+    <Library alias="lib19_Traj" path="Disk://data/CustomerLib/default/saveTRAJ/saveTRAJ.pjx" />
+  </Libraries>
+</Project>

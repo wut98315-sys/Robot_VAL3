@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="initArmInfo">
+    <Locals>
+      <Local name="l_sLanguage" type="string" xsi:type="array" size="1" />
+      <Local name="l_sMounting" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //*******************************************************
+  db:utLbl_Axis_Data.Common.sText="6axis"
+  //*******************************************************
+  //Get mounting property
+  //*******************************************************
+  l_sMounting=getVersion("Arm Mounting")
+  switch l_sMounting
+    case "floor"
+      db:sMounting="Floor"
+      db:utCbx_Mounting_Data.Common.sValue="Floor"
+    break
+    case "ceiling"
+      db:sMounting="Ceiling"
+      db:utCbx_Mounting_Data.Common.sValue="Ceiling"
+    break
+    default
+      db:sMounting="Null"
+      db:utCbx_Mounting_Data.Common.sValue=""
+    break
+  endSwitch
+  //*******************************************************  
+  //Get system language
+  //*******************************************************
+  l_sLanguage=getLanguage()
+  switch l_sLanguage
+    case "chinese"
+      db:sLanguage="chinese"
+      db:utCbx_Language_Data.Common.sValue="Chinese"
+    break
+    case "english"
+      db:sLanguage="english"
+      db:utCbx_Language_Data.Common.sValue="English"
+    break
+    default
+      db:sLanguage="english"
+      db:utCbx_Language_Data.Common.sValue="English"
+    break
+  endSwitch
+  //
+  //*******************************************************
+  //Initialize the flange as the current tool
+  //*******************************************************
+  call db:updateTool(0,false)
+end]]></Code>
+  </Program>
+</Programs>

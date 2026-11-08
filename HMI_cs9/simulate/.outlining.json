@@ -1,0 +1,104 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "simulateHome",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 288,
+          "isCollapsed": false
+        },
+        {
+          "start": 95,
+          "end": 231,
+          "isCollapsed": false
+        },
+        {
+          "start": 234,
+          "end": 280,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "goHome",
+      "nodes": [
+        {
+          "start": 23,
+          "end": 62,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "simulate_UI",
+      "nodes": [
+        {
+          "start": 10,
+          "end": 408,
+          "isCollapsed": false
+        },
+        {
+          "start": 17,
+          "end": 241,
+          "isCollapsed": false
+        },
+        {
+          "start": 270,
+          "end": 329,
+          "isCollapsed": false
+        },
+        {
+          "start": 449,
+          "end": 528,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "simulateTRAJ",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 410,
+          "isCollapsed": false
+        },
+        {
+          "start": 103,
+          "end": 353,
+          "isCollapsed": false
+        },
+        {
+          "start": 356,
+          "end": 402,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "simulatePROG",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 407,
+          "isCollapsed": false
+        },
+        {
+          "start": 103,
+          "end": 350,
+          "isCollapsed": false
+        },
+        {
+          "start": 353,
+          "end": 399,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}

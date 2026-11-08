@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="click_logSave">
+    <Locals>
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+      <Local name="l_sDate" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //  l_sDate=getDate("%m_%d %H_%M_%S")
+  //  call rs:saveLog("./LOG_"+l_sDate,l_nResult)
+  call rs:saveLog(""+l_sDate,l_nResult)
+  if l_nResult!=0
+    popUpMsg("保存失败:"+toString("",l_nResult))
+    return
+  endIf
+  popUpMsg("保存成功")
+end]]></Code>
+  </Program>
+</Programs>

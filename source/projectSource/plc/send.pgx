@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="send" access="private" >
+    <Locals>
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="l_bEnabling" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bLastPower" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bMcpEstop" type="bool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //远程模式
+  dOutWorkingMode=rs:bIsRemoteAuto
+  //上电
+  dOutIsPowerd=isPowered()
+  //程序运行
+  dOutCycle=rs:bIsCycle
+  //机器人报警
+  dOutError=rs:bIsError
+  //机器人急停
+  dOutEstop=rs:bIsEstop
+  //机器人在原点
+  dOutIsHome=rs:bIsHome
+  //机器人通讯故障
+  if ioStatus(dOutIsHome)<0
+    rs:bIsError=true
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

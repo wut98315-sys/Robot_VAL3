@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "bindings": [
+    {
+      "id": "lst1",
+      "attribute": "value",
+      "data": "sCurrentMsg[0]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    }
+  ],
+  "callbacks": [
+    {
+      "id": "btnTrajMsg",
+      "event": "click",
+      "data": "click_refreshTrajMsg",
+      "priority": 10
+    },
+    {
+      "id": "btnRobotMsg",
+      "event": "click",
+      "data": "click_refreshRobotMsg",
+      "priority": 10
+    },
+    {
+      "id": "btnAllMsg",
+      "event": "click",
+      "data": "click_refreshAllMsg",
+      "priority": 10
+    },
+    {
+      "id": "btnRefresh",
+      "event": "click",
+      "data": "click_refresh",
+      "priority": 10
+    },
+    {
+      "id": "btnLogSave",
+      "event": "click",
+      "data": "click_logSave",
+      "priority": 10
+    },
+    {
+      "id": "btnLogExport",
+      "event": "click",
+      "data": "click_logExport",
+      "priority": 10
+    },
+    {
+      "id": "btnIOMsg",
+      "event": "click",
+      "data": "click_refreshIOMsg",
+      "priority": 10
+    }
+  ],
+  "events": []
+}

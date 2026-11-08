@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="logicIF" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nResult1" type="num" xsi:type="element" />
+      <Parameter name="x_nResult2" type="num" xsi:type="element" />
+      <Parameter name="x_nResult3" type="num" xsi:type="element" />
+      <Parameter name="x_bANDOR1" type="bool" xsi:type="element" />
+      <Parameter name="x_bANDOR2" type="bool" xsi:type="element" />
+      <Parameter name="x_bFinalResult" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bFinalResult1" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bFinalResult2" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  if x_nResult1==0 and x_nResult2==0 and x_nResult3==0
+    x_bFinalResult=false
+  elseIf x_nResult1==0 and x_nResult2==0 and x_nResult3!=0
+    x_bFinalResult=(x_nResult3==1)
+  elseIf x_nResult1==0 and x_nResult2!=0 and x_nResult3==0
+    x_bFinalResult=(x_nResult2==1)
+  elseIf x_nResult1!=0 and x_nResult2==0 and x_nResult3==0
+    x_bFinalResult=(x_nResult1==1)
+  elseIf x_nResult1!=0 and x_nResult2!=0 and x_nResult3==0
+    if x_bANDOR1
+      x_bFinalResult=(x_nResult1==1 or x_nResult2==1)
+    else
+      x_bFinalResult=(x_nResult1==1 and x_nResult2==1)
+    endIf
+  elseIf x_nResult1==0 and x_nResult2!=0 and x_nResult3!=0
+    if x_bANDOR2
+      x_bFinalResult=(x_nResult1==1 or x_nResult2==1)
+    else
+      x_bFinalResult=(x_nResult1==1 and x_nResult2==1)
+    endIf
+  elseIf x_nResult1!=0 and x_nResult2!=0 and x_nResult3!=0
+    if x_bANDOR1 and x_bANDOR2
+      x_bFinalResult=(x_nResult1==1 or x_nResult2==1 or x_nResult3==1)
+    elseIf !x_bANDOR1 and !x_bANDOR2
+      x_bFinalResult=(x_nResult1==1 and x_nResult2==1 and x_nResult3==1)
+    elseIf !x_bANDOR1 and x_bANDOR2
+      x_bFinalResult=(x_nResult1==1 and x_nResult2==1 or x_nResult3==1)
+    elseIf x_bANDOR1 and !x_bANDOR2
+      x_bFinalResult=((x_nResult1==1 or x_nResult2==1) and x_nResult3==1)
+    endIf
+   
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

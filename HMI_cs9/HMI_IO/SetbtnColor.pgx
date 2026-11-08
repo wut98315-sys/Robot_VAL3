@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="SetbtnColor" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nNum" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_selColor" type="string" xsi:type="array" size="1" />
+      <Local name="l_sNULLcolor" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_selColor="#9999FF"
+  l_sNULLcolor="#FFFFFF"
+  switch x_nNum
+    case 0
+      userPageSet("IO","btn1","style.backgroundColor",l_selColor)
+      userPageSet("IO","btn2","style.backgroundColor",l_sNULLcolor)
+      userPageSet("IO","btn3","style.backgroundColor",l_sNULLcolor)
+      userPageSet("IO","btn4","style.backgroundColor",l_sNULLcolor)
+    break
+    case 1
+      userPageSet("IO","btn1","style.backgroundColor",l_sNULLcolor)
+      userPageSet("IO","btn2","style.backgroundColor",l_selColor)
+      userPageSet("IO","btn3","style.backgroundColor",l_sNULLcolor)
+      userPageSet("IO","btn4","style.backgroundColor",l_sNULLcolor)
+    break
+    case 2
+      userPageSet("IO","btn1","style.backgroundColor",l_sNULLcolor)
+      userPageSet("IO","btn2","style.backgroundColor",l_sNULLcolor)
+      userPageSet("IO","btn3","style.backgroundColor",l_selColor)
+      userPageSet("IO","btn4","style.backgroundColor",l_sNULLcolor)
+    break
+    case 3
+      userPageSet("IO","btn1","style.backgroundColor",l_sNULLcolor)
+      userPageSet("IO","btn2","style.backgroundColor",l_sNULLcolor)
+      userPageSet("IO","btn3","style.backgroundColor",l_sNULLcolor)
+      userPageSet("IO","btn4","style.backgroundColor",l_selColor)
+    break
+  endSwitch
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,71 @@
+<!DOCTYPE html SYSTEM "-//W3C//DTD VALHTML Strict//EN">
+  <html xmlns="http://www.staubli.com/robotics/2016/03/valhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"></meta>
+      <meta http-equiv="Pragma" content="no-cache"></meta>
+      <meta http-equiv="Expires" content="0"></meta>
+      <script type="text/javascript" src="/vendor/libs/stblUserPage.min.js"></script>
+      <link href="/vendor/libs/up.min.v2.css" rel="stylesheet" media="all" type="text/css"></link>
+      <meta name="src-version" content="8.10.3"></meta>
+    </head>
+    <body style="width: 480px; height: 690px; margin: 0">
+      <label style="height: 20px; width: 35px; top: 209px; position: absolute; left: 8px" id="lbl5_Copy12">rx：</label>
+      <input value="0" type="number" style="width: 60px; height: 26px; top: 205px; position: absolute; left: 40px" id="nmb3"></input>
+      <input value="0" type="number" style="width: 60px; height: 26px; top: 205px; position: absolute; left: 160px" id="nmb4"></input>
+      <label style="height: 20px; width: 35px; top: 209px; position: absolute; left: 128px" id="lbl5_Copy13">ry：</label>
+      <input value="0" type="number" style="width: 60px; height: 26px; top: 205px; position: absolute; left: 284px" id="nmb5"></input>
+      <label style="height: 20px; width: 35px; top: 209px; position: absolute; left: 252px" id="lbl5_Copy14">rz：</label>
+      <label style="height: 20px; width: 35px; top: 177px; position: absolute; left: 252px" id="lbl5_Copy15">z：</label>
+      <input value="0" type="number" style="width: 60px; height: 26px; top: 175px; position: absolute; left: 284px" id="nmb2"></input>
+      <label style="height: 20px; width: 35px; top: 177px; position: absolute; left: 128px" id="lbl5_Copy16">y：</label>
+      <input value="0" type="number" style="width: 60px; height: 26px; top: 175px; position: absolute; left: 160px" id="nmb1"></input>
+      <input value="0" type="number" style="width: 60px; height: 26px; top: 175px; position: absolute; left: 40px" id="nmb0"></input>
+      <label style="height: 20px; width: 35px; top: 177px; position: absolute; left: 8px" id="lbl5_Copy17">x：</label>
+      <hr style="width: 396px; height: 115px; left: 45px; position: absolute; top: 404px; background-color: rgba(212,212,212,0.0)" id="rec1_Copy1"></hr>
+      <hr id="rec1" style="top: 284px; position: absolute; left: 45px; width: 396px; height: 115px; background-color: rgba(212,212,212,0.0)"></hr>
+      <label style="width: 480px; text-align: center; font-size: 26px; height: 50px; padding: 6px 0px 0px 0px; color: #FFFFFF; font-weight: bold; background-color: #6EB6FF; position: absolute; left: 0px; top: 0px" id="lblTitle">safeZone Edit</label>
+      <button style="height: 40px; width: 40px; background-image: url('../../image/point/home.png'); background-color: #FFFFFF; position: absolute; left: 10px; top: 5px" id="btnback"></button>
+      <label id="lbl1" style="width: 78px; height: 20px; left: 7px; position: absolute; top: 68px">选择区域：</label>
+      <label id="lbl2" style="width: 86px; height: 20px; left: 10px; position: absolute; top: 147px">基坐标系：</label>
+      <button id="btn1" style="width: 80px; height: 26px; left: 88px; position: absolute; top: 144px" disabled="disabled">示教</button>
+      <label style="width: 86px; height: 20px; left: 9px; position: absolute; top: 254px" id="lbl2_Copy1">基工具：</label>
+      <label style="width: 80px; height: 20px; top: 254px; left: 72px; position: absolute" id="lbl3"></label>
+      <label id="lbl4" style="width: 86px; height: 20px; left: 69px; position: absolute; top: 298px">对角点位1：</label>
+      <button id="btn2" style="width: 80px; height: 30px; left: 155px; position: absolute; top: 293px">记录</button>
+      <label id="lbl5" style="height: 20px; width: 35px; left: 75px; position: absolute; top: 333px">x：</label>
+      <input value="0" type="number" style="width: 60px; height: 26px; left: 107px; position: absolute; top: 330px" id="nmb10"></input>
+      <input value="0" type="number" style="width: 60px; height: 26px; left: 227px; position: absolute; top: 330px" id="nmb11"></input>
+      <label style="height: 20px; width: 35px; left: 195px; position: absolute; top: 333px" id="lbl5_Copy1">y：</label>
+      <input value="0" type="number" style="width: 60px; height: 26px; left: 351px; position: absolute; top: 330px" id="nmb12"></input>
+      <label style="height: 20px; width: 35px; left: 319px; position: absolute; top: 333px" id="lbl5_Copy2">z：</label>
+      <label style="height: 20px; width: 35px; left: 319px; position: absolute; top: 364px" id="lbl5_Copy3">rz：</label>
+      <input value="0" type="number" style="width: 60px; height: 26px; left: 351px; position: absolute; top: 361px" id="nmb15"></input>
+      <label style="height: 20px; width: 35px; left: 195px; position: absolute; top: 364px" id="lbl5_Copy4">ry：</label>
+      <input value="0" type="number" style="width: 60px; height: 26px; left: 227px; position: absolute; top: 361px" id="nmb14"></input>
+      <input value="0" type="number" style="width: 60px; height: 26px; left: 107px; position: absolute; top: 361px" id="nmb13"></input>
+      <label style="height: 20px; width: 35px; left: 75px; position: absolute; top: 364px" id="lbl5_Copy5">rx：</label>
+      <label style="height: 20px; width: 35px; left: 75px; position: absolute; top: 473px" id="lbl5_Copy6">rx：</label>
+      <input value="0" type="number" style="width: 60px; height: 26px; left: 107px; position: absolute; top: 470px" id="nmb23"></input>
+      <input value="0" type="number" style="width: 60px; height: 26px; left: 227px; position: absolute; top: 470px" id="nmb24"></input>
+      <label style="height: 20px; width: 35px; left: 195px; position: absolute; top: 473px" id="lbl5_Copy7">ry：</label>
+      <input value="0" type="number" style="width: 60px; height: 26px; left: 351px; position: absolute; top: 470px" id="nmb25"></input>
+      <label style="height: 20px; width: 35px; left: 319px; position: absolute; top: 473px" id="lbl5_Copy8">rz：</label>
+      <label style="height: 20px; width: 35px; left: 319px; position: absolute; top: 442px" id="lbl5_Copy9">z：</label>
+      <input value="0" type="number" style="width: 60px; height: 26px; left: 351px; position: absolute; top: 439px" id="nmb22"></input>
+      <label style="height: 20px; width: 35px; left: 195px; position: absolute; top: 442px" id="lbl5_Copy10">y：</label>
+      <input value="0" type="number" style="width: 60px; height: 26px; left: 227px; position: absolute; top: 439px" id="nmb21"></input>
+      <input value="0" type="number" style="width: 60px; height: 26px; left: 107px; position: absolute; top: 439px" id="nmb20"></input>
+      <label style="height: 20px; width: 35px; left: 75px; position: absolute; top: 442px" id="lbl5_Copy11">x：</label>
+      <label style="width: 86px; height: 20px; left: 69px; position: absolute; top: 407px" id="lbl4_Copy1">对角点位2：</label>
+      <button style="width: 80px; height: 30px; left: 257px; position: absolute; top: 293px" id="btn2_Copy1">移动</button>
+      <input id="chk1" type="checkbox" style="transform: scale(1.0); left: 9px; position: absolute; top: 107px"></input>
+      <label id="lbl6" style="width: 89px; height: 20px; left: 37px; position: absolute; top: 107px">激活此区域</label>
+      <select id="cbx1" size="1" style="width: 120px; height: 26px; top: 65px; position: absolute; left: 86px"></select>
+      <button id="btn4" style="height: 40px; width: 160px; top: 530px; position: absolute; left: 160px; background-color: #E7B811; color: #E7EAED">设定</button>
+      <label style="width: 86px; height: 20px; left: 187px; position: absolute; top: 107px" id="lbl2_Copy2">区域名称：</label>
+      <input id="txt1" style="width: 120px; height: 26px; top: 104px; position: absolute; left: 277px" value=""></input>
+      <label id="lbl7" style="top: 147px; position: absolute; left: 176px; width: 296px; height: 20px; color: #E70F0B">首先示教frame，不示教默认为world</label>
+      <button style="width: 80px; height: 26px; left: 371px; position: absolute; top: 206px" id="btnSetFrame">设定坐标系</button>
+    </body>
+  </html>

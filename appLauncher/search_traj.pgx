@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="search_traj">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_bFounded" type="bool" xsi:type="element" use="reference" />
+      <Parameter name="x_sSessionName" type="string" xsi:type="element" use="reference" />
+      <Parameter name="x_nSession" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sEmpty" type="string" xsi:type="array" size="1" />
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSession" type="num" xsi:type="array" size="1" />
+      <Local name="l_bOk" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // init
+  x_bFounded=false
+  x_sSessionName=""
+  //
+  // get the list
+  //
+  l_sEmpty=""
+  call trajectory:getTrajList(sSessionList)
+  //
+  // search the program from a number:
+  //
+  // "number+space+name"
+  //
+  // 01 MyPart
+  // 10 YourPart
+  //
+  for i=0 to size(sSessionList)-1
+    if sSessionList[i]!=""
+      // convert the string "00 name" into a num
+      toNum(sSessionList[i],l_nSession,l_bOk)
+      if l_bOk and l_nSession==x_nSession
+        x_sSessionName=sSessionList[i]
+        x_bFounded=true
+        // exit
+        i=size(sSessionList)-1
+      endIf
+    endIf
+  endFor
+end]]></Code>
+  </Program>
+</Programs>

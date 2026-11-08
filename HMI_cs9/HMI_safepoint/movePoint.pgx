@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="movePoint">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_joint" type="jointRx" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_bResult=userPageConfirm("是否移动到点位："+toString("",x_nIndex)+"?")
+  if l_bResult and rs:_nOmacStat==9
+    resetMotion()
+    l_bResult=pointToJoint(flange,herej(),safeTemp:sSPoint[x_nIndex].pPointRx,l_joint)
+    if l_bResult
+      movej(safeTemp:sSPoint[x_nIndex].pPointRx,flange,mSimulate)
+    else
+      popUpMsg("无法移动到该安全点位")
+    endIf
+  endIf
+  if rs:_nOmacStat!=9
+    userPageAlert("机器人当前状态不满足，无法执行移动")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

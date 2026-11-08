@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_scbx" type="string" xsi:type="array" size="1" />
+      <Local name="l_snmb" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="action"
+      util:sPage="action"
+      call onStart()
+      call bind()
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    //list
+    if sSelList!=sLastList and sSelList!="--"
+      sLastList=sSelList
+      toNum(sSelList,nSelList,l_bResult)
+      call onShow()
+    endIf
+    //
+    for l_i = 0 to size(aEditItem.aActItem)-1
+      l_scbx="cbx"+toString("",20+l_i)
+      l_snmb="nmb"+toString("",l_i)
+      switch aEditItem.aActItem[l_i].sIOtype
+        case "PULSE"
+          userPageSet("action",l_scbx,"disabled",true)
+          userPageSet("action",l_snmb,"disabled",false)
+        break
+        case "IN","OUT"
+          userPageSet("action",l_scbx,"disabled",false)
+          userPageSet("action",l_snmb,"disabled",true)
+        break
+        default
+        break
+      endSwitch
+    endFor
+    //button
+    if bBack==true
+      bBack=false
+      
+      l_bExit=true
+    elseIf bConfirm==true
+      bConfirm=false
+      call onSave()
+    endIf
+    delay(0)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

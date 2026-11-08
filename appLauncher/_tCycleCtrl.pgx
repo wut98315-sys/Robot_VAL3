@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_tCycleCtrl">
+    <Locals>
+      <Local name="l_bAckAlarm" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bEndCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bHoldCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bPowerOff" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bPowerOn" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResetCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResetIO" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bStartCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bStopCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_n" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //启动程序
+  if rs:bToStartCycle and rs:bIsReady
+    rs:bToStartCycle=false
+    taskCreate "cycle",100,_productCycle()
+    wait(taskStatus("cycle")>-1)
+  endIf
+  //停止程序
+  if(rs:bToStopCycle or rs:bIsEstop) and rs:bIsCycle
+    rs:bToStopCycle=false
+    resetMotion()
+    stopMove()
+    taskKill("cycle")
+    wait(taskStatus("cycle")==-1)
+  endIf
+  //暂停程序
+  if((rs:bToPause) and rs:bIsCycle) or taskStatus("cycle")>1
+    rs:bToPause=false
+    stopMove()
+    rs:bIsPause=true
+  endIf
+  //暂停恢复程序
+  if rs:bIsPause and rs:bIsCycle and rs:bToStartCycle
+    rs:bToStartCycle=false
+    rs:bIsPause=false
+    if !isPowered()
+      enablePower()
+      l_bResult=watch(isPowered(),1)
+      if !l_bResult
+        logMsg("恢复生产任务上电超时")
+        return
+      endIf
+     
+    endIf
+    autoConnectMove(true)
+    restartMove()
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

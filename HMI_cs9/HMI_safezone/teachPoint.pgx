@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="teachPoint">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_pPoint" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_bResult=userPageConfirm("是否记录当前点位？")
+  if l_bResult
+    call saveData:getTool(saveData:nJogTool,l_tTool)
+    fFrame.trsf.x=nFrame[0]
+    fFrame.trsf.y=nFrame[1]
+    fFrame.trsf.z=nFrame[2]
+    fFrame.trsf.rx=nFrame[3]
+    fFrame.trsf.ry=nFrame[4]
+    fFrame.trsf.rz=nFrame[5]
+    
+    l_pPoint=here(l_tTool,fFrame)
+    safeTemp:zZoneItem[x_nIndex].pFirst.trsf=l_pPoint.trsf
+    safeTemp:zZoneItem[x_nIndex].pFirst.config=l_pPoint.config
+    safeTemp:libSave()
+    
+    
+    
+    
+    delay(0.1)
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

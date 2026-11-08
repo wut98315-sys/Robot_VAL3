@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="click_End">
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+   //循环停止机器人
+  l_bResult=userPageConfirm("确认循环停止机器人？")
+  if l_bResult
+    rs:nCycleCmd=5
+    delay(0.2)
+    rs:nCycleCmd=0
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

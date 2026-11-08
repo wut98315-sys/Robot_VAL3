@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="getTrajID">
+    <Locals>
+      <Local name="l_nSession" type="num" xsi:type="array" size="1" />
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="l_sEmpty" type="string" xsi:type="array" size="1" />
+      <Local name="l_bOk" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // init
+  //  x_bFounded=false
+  //  x_sSessionName=""
+  //  //
+  // get the list
+  //
+  //  l_sEmpty=""
+  call trajectory:getTrajList(sSessionList)
+  //
+  // search the program from a number:
+  //
+  // "number+space+name"
+  //
+  // 01 MyPart
+  // 10 YourPart
+  //
+  resize(nIDIsExit,1,size(sSessionList))
+  for i=0 to size(sSessionList)-1
+    if sSessionList[i]!=""
+      // convert the string "00 name" into a num
+      toNum(sSessionList[i],l_nSession,l_bOk)
+      if l_bOk
+        nIDIsExit[i]=l_nSession
+        endIf
+    endIf
+  endFor
+end]]></Code>
+  </Program>
+</Programs>

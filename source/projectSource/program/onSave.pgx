@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="onSave" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_bTosave" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Code><![CDATA[begin
+  if x_bTosave
+    rs:bIsSaving=true
+    progTemp:libSave()
+    x_bTosave=false
+    rs:bIsSaving=false
+    delay(0.1)
+    popUpMsg("数据已保存")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

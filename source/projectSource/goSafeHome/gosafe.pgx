@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="gosafe" access="public" >
+    <Locals>
+      <Local name="l_pHere" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_pHome" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_pMiddle" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_pTrans" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  rs:sTrajStatus="自动回原点过程中"
+  setMoveId(1000)
+  $jogMode(0)
+  link(l_tTool,flange)
+  link(l_pTrans,world)
+  call saveData:getTool(1,l_tTool)
+  l_pHere=here(l_tTool,world)
+  l_pHome=jointToPoint(l_tTool,world,saveData:jHome)
+  //l_pMiddle=jointToPoint(l_tTool,world,saveData:jMiddle)
+  l_pHere.trsf.z=l_pHome.trsf.z
+
+
+  l_pTrans=l_pHere
+  movel(l_pHere,l_tTool,mHome)
+  waitEndMove()
+
+  l_pTrans.trsf.x=623
+  l_pTrans.trsf.y=0
+  l_pTrans.trsf.rx=l_pHere.trsf.rx
+  l_pTrans.trsf.ry=l_pHere.trsf.ry
+  l_pTrans.trsf.rz=l_pHere.trsf.rz
+  movel(l_pTrans,l_tTool,mHome)
+  waitEndMove()
+  movej(l_pHome,l_tTool,mHome)
+  waitEndMove()
+  // delay(0)
+  rs:sTrajStatus="自动回原点完成,已在待产状态"
+end]]></Code>
+  </Program>
+</Programs>

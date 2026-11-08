@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="copy" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sSource" type="string" xsi:type="element" />
+      <Parameter name="x_sTarget" type="string" xsi:type="element" use="reference" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_j" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  trajTemp:tTrajItem[x_sTarget].nFrameIndex=trajTemp:tTrajItem[x_sSource].nFrameIndex
+  trajTemp:tTrajItem[x_sTarget].nToolIndex=trajTemp:tTrajItem[x_sSource].nToolIndex
+  trajTemp:tTrajItem[x_sTarget].nMoveID=trajTemp:tTrajItem[x_sSource].nMoveID
+  trajTemp:tTrajItem[x_sTarget].sID=trajTemp:tTrajItem[x_sTarget].sID
+  resize(trajTemp:tTrajItem[x_sTarget].pPointItem,1,size(trajTemp:tTrajItem[x_sSource].pPointItem))
+  for l_i = 0 to size(trajTemp:tTrajItem[x_sSource].pPointItem)-1
+    trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].pParaItem.mMdesc=trajTemp:tTrajItem[x_sSource].pPointItem[l_i].pParaItem.mMdesc
+    trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].pParaItem.nMoveType=trajTemp:tTrajItem[x_sSource].pPointItem[l_i].pParaItem.nMoveType
+    trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].pPointRx=trajTemp:tTrajItem[x_sSource].pPointItem[l_i].pPointRx
+    //2025.03.18 add mlc  2025.10.16 modify by liu zhengang 
+    trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].pInter=trajTemp:tTrajItem[x_sSource].pPointItem[l_i].pInter
+    trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].jJointRx=trajTemp:tTrajItem[x_sSource].pPointItem[l_i].jJointRx
+    for l_j = 0 to 0
+      trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].pParaItem.nActionIndex[l_j]=trajTemp:tTrajItem[x_sSource].pPointItem[l_i].pParaItem.nActionIndex[l_j]
+      trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].pParaItem.nPercentage[l_j]=trajTemp:tTrajItem[x_sSource].pPointItem[l_i].pParaItem.nPercentage[l_j]
+      trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].pParaItem.iIfItem.bANDOR[l_j]=(trajTemp:tTrajItem[x_sSource].pPointItem[l_i].pParaItem.iIfItem.bANDOR[l_j]==true)
+    endFor
+    for l_j = 0 to 2
+      trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].pParaItem.iIfItem.nSigType[l_j]=trajTemp:tTrajItem[x_sSource].pPointItem[l_i].pParaItem.iIfItem.nSigType[l_j]
+      trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].pParaItem.iIfItem.nSigIndex[l_j]=trajTemp:tTrajItem[x_sSource].pPointItem[l_i].pParaItem.iIfItem.nSigIndex[l_j]
+      trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].pParaItem.iIfItem.nValue[l_j]=trajTemp:tTrajItem[x_sSource].pPointItem[l_i].pParaItem.iIfItem.nValue[l_j]
+    endFor
+    //
+    trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].pParaItem.nDelay=trajTemp:tTrajItem[x_sSource].pPointItem[l_i].pParaItem.nDelay
+    trajTemp:tTrajItem[x_sTarget].pPointItem[l_i].pParaItem.nSigValue=trajTemp:tTrajItem[x_sSource].pPointItem[l_i].pParaItem.nSigValue
+  endFor
+  x_bToSave=true
+end]]></Code>
+  </Program>
+</Programs>

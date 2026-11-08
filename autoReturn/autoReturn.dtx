@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Data/2">
+  <Datas>
+    <Data name="mNomSpeed" access="private" xsi:type="array" type="mdesc" size="1" />
+    <Data name="nRecIndex" access="public" xsi:type="array" type="num" size="1" />
+    <Data name="nMoveIdRec" access="private" xsi:type="array" type="num" size="200" />
+    <Data name="trToolRec" access="private" xsi:type="array" type="trsf" size="200" />
+    <Data name="jPointRec" access="private" xsi:type="array" type="jointRx" size="200 2" />
+    <Data name="nMoveTypeRec" access="private" xsi:type="array" type="num" size="200" />
+    <Data name="mReturn" access="private" xsi:type="array" type="mdesc" size="1">
+      <Value key="0" accel="5" vel="10" decel="5" leave="1" reach="1" />
+    </Data>
+    <Data name="bFirstUpdate" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="mSpeedRec" access="private" xsi:type="array" type="mdesc" size="200" />
+    <Data name="jRefPoint" access="private" xsi:type="array" type="jointRx" size="1" />
+    <Data name="nRefDeviate" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="bPushToStack" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="bExact" access="private" xsi:type="array" type="bool" size="200" />
+    <Data name="nCurrentMoveID" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="bInterrupt" access="public" xsi:type="array" type="bool" size="1" />
+    <Data name="nIndex" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="bHaveGetMoveID" access="private" xsi:type="array" type="bool" size="1" />
+  </Datas>
+</Database>

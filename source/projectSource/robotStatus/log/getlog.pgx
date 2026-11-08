@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="getlog" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sLog" type="string" xsi:type="array" use="reference" />
+      <Parameter name="x_nType" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="j" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  for i=0 to size(x_sLog)-1
+    //获取当前日志
+    //如果是类型0，表示筛选全部类型的日志，如果是其他类型，则根据当前的日志类型筛选
+    if x_nType==0
+      x_sLog[i]=sLog[sel(nIndex-1-i>=0,nIndex-1-i,nIndex-1-i+size(sLog))]
+    else
+      //筛选需要的类型
+      while nLogType[sel(nIndex-1-j>=0,nIndex-1-j,nIndex-1-j+size(sLog))]!=x_nType and j<size(sLog)
+        j=j+1
+      endWhile
+      //超过了全部日志数组的大小，说明遍历了一遍，则跳出
+      if j>=size(sLog)
+        return
+      endIf
+      x_sLog[i]=sLog[sel(nIndex-1-j>=0,nIndex-1-j,nIndex-1-j+size(sLog))]
+      j=j+1
+    endIf
+  endFor
+end]]></Code>
+  </Program>
+</Programs>

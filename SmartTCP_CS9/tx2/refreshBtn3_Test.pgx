@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="refreshBtn3_Test" access="public">
+    <Locals>
+      <Local name="l_nStep" type="num" xsi:type="array" size="1" />
+      <Local name="l_bOut" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bTaskStatusErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nI" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  if db:utBtn_Step[3].Events.bClick==true
+    db:utCtn_Function.Common.sSource="Page_Container_Test.html"    
+    //**********************************************************************************************************************************
+    switch db:nStep3
+      case 10
+        call db:updateBtn(89,"Align,Here,Move,Change,Null,Null,Prev.,Next")
+        //
+        call db:updateTool(db:utCurrentTool.nItem,true)
+        //
+        db:utLbl_ToolValue_Data[0].Common.sText=toString(".3",db:utCurrentTool.tValue.trsf.x)
+        db:utLbl_ToolValue_Data[1].Common.sText=toString(".3",db:utCurrentTool.tValue.trsf.y)
+        db:utLbl_ToolValue_Data[2].Common.sText=toString(".3",db:utCurrentTool.tValue.trsf.z)
+        db:utLbl_ToolValue_Data[3].Common.sText=toString(".3",db:utCurrentTool.tValue.trsf.rx)
+        db:utLbl_ToolValue_Data[4].Common.sText=toString(".3",db:utCurrentTool.tValue.trsf.ry)
+        db:utLbl_ToolValue_Data[5].Common.sText=toString(".3",db:utCurrentTool.tValue.trsf.rz)
+        //
+        db:utTxt_OffsetValue_Data[0].Common.nValue=round(db:trOffset.x*1000)/1000
+        db:utTxt_OffsetValue_Data[1].Common.nValue=round(db:trOffset.y*1000)/1000
+        db:utTxt_OffsetValue_Data[2].Common.nValue=round(db:trOffset.z*1000)/1000
+        db:utTxt_OffsetValue_Data[3].Common.nValue=round(db:trOffset.rx*1000)/1000
+        db:utTxt_OffsetValue_Data[4].Common.nValue=round(db:trOffset.ry*1000)/1000
+        db:utTxt_OffsetValue_Data[5].Common.nValue=round(db:trOffset.rz*1000)/1000
+        db:nStep3=20
+      break
+      //   
+      case 20
+        //**********************************************************************************************************************************
+        //刷新当前工具值
+        if db:utCurrentTool.nItem!=db:utCurrentTool.nItemM or db:bRefresh==true
+          db:utCurrentTool.nItemM=db:utCurrentTool.nItem
+          db:bRefresh=false
+          call db:updateTool(db:utCurrentTool.nItem,true)
+        db:utLbl_ToolValue_Data[0].Common.sText=toString(".3",db:utCurrentTool.tValue.trsf.x)
+        db:utLbl_ToolValue_Data[1].Common.sText=toString(".3",db:utCurrentTool.tValue.trsf.y)
+        db:utLbl_ToolValue_Data[2].Common.sText=toString(".3",db:utCurrentTool.tValue.trsf.z)
+        db:utLbl_ToolValue_Data[3].Common.sText=toString(".3",db:utCurrentTool.tValue.trsf.rx)
+        db:utLbl_ToolValue_Data[4].Common.sText=toString(".3",db:utCurrentTool.tValue.trsf.ry)
+        db:utLbl_ToolValue_Data[5].Common.sText=toString(".3",db:utCurrentTool.tValue.trsf.rz)    
+        endIf
+        //刷新当前工具序号（Previous）
+        if db:utImg_Previous.Events.bClick==true
+          db:utImg_Previous.Events.bClick=false
+          switch db:utCurrentTool.nItem
+            case 1,2,3
+              db:utCurrentTool.nItem=db:utCurrentTool.nItem-1
+            break
+            case 0
+              db:utCurrentTool.nItem=3
+            break
+            default
+              db:utCurrentTool.nItem=0
+            break
+          endSwitch
+        endIf
+        //刷新当前工具序号（Next）
+        if db:utImg_Next.Events.bClick==true
+          db:utImg_Next.Events.bClick=false
+          switch db:utCurrentTool.nItem
+            case 0,1,2
+              db:utCurrentTool.nItem=db:utCurrentTool.nItem+1
+            break
+            case 3
+              db:utCurrentTool.nItem=0
+            break
+            default
+              db:utCurrentTool.nItem=0
+            break
+          endSwitch
+        endIf
+
+        //**********************************************************************************************************************************
+        //
+        //
+        //********************************************************************************************************************************** 
+        //刷新当前偏移值        
+        l_nStep=0
+        l_bOut=false
+        do
+          switch l_nStep
+            case 0
+              if db:utTxt_OffsetValue_Data[0].Common.nValue==db:trOffset.x
+                l_nStep=1
+              else
+                l_nStep=99
+              endIf
+            break
+            case 1
+              if db:utTxt_OffsetValue_Data[1].Common.nValue==db:trOffset.y
+                l_nStep=2
+              else
+                l_nStep=99
+              endIf
+            break
+            case 2
+              if db:utTxt_OffsetValue_Data[2].Common.nValue==db:trOffset.z
+                l_nStep=3
+              else
+                l_nStep=99
+              endIf
+            break
+            case 3
+              if db:utTxt_OffsetValue_Data[3].Common.nValue==db:trOffset.rx
+                l_nStep=4
+              else
+                l_nStep=99
+              endIf
+            break
+            case 4
+              if db:utTxt_OffsetValue_Data[4].Common.nValue==db:trOffset.ry
+                l_nStep=5
+              else
+                l_nStep=99
+              endIf
+            break
+            case 5
+              if db:utTxt_OffsetValue_Data[5].Common.nValue==db:trOffset.rz
+                l_nStep=100
+              else
+                l_nStep=99
+              endIf
+            break
+            case 99
+              db:utTxt_OffsetValue_Data[0].Common.nValue=round(db:utTxt_OffsetValue_Data[0].Common.nValue*1000)/1000
+              db:utTxt_OffsetValue_Data[1].Common.nValue=round(db:utTxt_OffsetValue_Data[1].Common.nValue*1000)/1000
+              db:utTxt_OffsetValue_Data[2].Common.nValue=round(db:utTxt_OffsetValue_Data[2].Common.nValue*1000)/1000
+              db:utTxt_OffsetValue_Data[3].Common.nValue=round(db:utTxt_OffsetValue_Data[3].Common.nValue*1000)/1000
+              db:utTxt_OffsetValue_Data[4].Common.nValue=round(db:utTxt_OffsetValue_Data[4].Common.nValue*1000)/1000
+              db:utTxt_OffsetValue_Data[5].Common.nValue=round(db:utTxt_OffsetValue_Data[5].Common.nValue*1000)/1000
+              //
+              db:trOffset.x=db:utTxt_OffsetValue_Data[0].Common.nValue
+              db:trOffset.y=db:utTxt_OffsetValue_Data[1].Common.nValue
+              db:trOffset.z=db:utTxt_OffsetValue_Data[2].Common.nValue
+              db:trOffset.rx=db:utTxt_OffsetValue_Data[3].Common.nValue
+              db:trOffset.ry=db:utTxt_OffsetValue_Data[4].Common.nValue
+              db:trOffset.rz=db:utTxt_OffsetValue_Data[5].Common.nValue
+              //
+              db:bRefresh=true
+              l_bOut=true
+            break
+            case 100
+              l_bOut=true
+            break
+          endSwitch
+        until l_bOut
+        //********************************************************************************************************************************** 
+        if db:utImg_Switch.Events.bClick==true
+          db:utImg_Switch.Events.bClick=false
+          if db:utImg_Switch.Data.bStatus==false
+            db:utImg_Switch.Common.sSourceImage=db:utImg_Switch.Data.sSourceImg1
+            db:utImg_Switch.Data.bStatus=true
+            db:bRefresh=true
+            for l_nI=0 to 5
+              db:utTxt_OffsetValue_Data[l_nI].Appearance.sBackgroundColour="#7CFA3F"
+            endFor
+          else
+            db:utImg_Switch.Common.sSourceImage=db:utImg_Switch.Data.sSourceImg2
+            db:utImg_Switch.Data.bStatus=false
+            db:bRefresh=true
+            for l_nI=0 to 5
+              db:utTxt_OffsetValue_Data[l_nI].Appearance.sBackgroundColour="#EEFF00"
+            endFor
+          endIf
+        endIf        
+        //********************************************************************************************************************************** 
+        if db:utBtn_Bottom[0].Events.bClick==true
+          db:utBtn_Bottom[0].Events.bClick=false
+          //Press F1
+          call moveCalPos("Align")
+        endIf
+        //
+        if db:utBtn_Bottom[7].Events.bClick==true
+          db:utBtn_Bottom[7].Events.bClick=false
+          //Press F8
+          db:utCtn_Function.Common.sSource="Page_Container_Main.html"
+          //
+          call db:updateBtn(83,"Null,Null,Null,Null,Null,Null,Null,Quit")
+          //
+          call db:updateInfo(99,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","")
+          call db:updateInfo(99,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","")
+          call db:updateInfo(100,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"0","TCP calibration application for TX2/TS2 robot")
+          call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+          call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+          db:utBtn_Step[3].Events.bClick=false
+          db:nStep3=10
+          resetMotion()
+          db:utCtn_Message.Appearance.bVisibility=false
+        endIf
+      break
+    endSwitch
+  endIf
+  
+end
+
+
+]]></Code>
+  </Program>
+</Programs>

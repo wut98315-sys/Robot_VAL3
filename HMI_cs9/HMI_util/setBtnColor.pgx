@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="setBtnColor" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nJogmode" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sNULLcolor" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_sbtn" type="string" xsi:type="array" size="1" />
+      <Local name="l_sSELcolor" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_sNULLcolor="#FFFFFF"
+  l_sSELcolor="#3399FF"
+ 
+  switch x_nJogmode
+    case 0
+      for l_i = 1 to 4 step 1
+        l_sbtn="btn"+toString("",l_i)
+        userPageSet("jogmode",l_sbtn,"style.backgroundColor",l_sNULLcolor)
+      endFor
+    break
+    case 1
+      userPageSet("jogmode","btn1","style.backgroundColor",l_sNULLcolor)
+      userPageSet("jogmode","btn2","style.backgroundColor",l_sSELcolor)
+      userPageSet("jogmode","btn3","style.backgroundColor",l_sNULLcolor)
+      userPageSet("jogmode","btn4","style.backgroundColor",l_sNULLcolor)
+    break
+    case 2
+      userPageSet("jogmode","btn1","style.backgroundColor",l_sNULLcolor)
+      userPageSet("jogmode","btn3","style.backgroundColor",l_sSELcolor)
+      userPageSet("jogmode","btn2","style.backgroundColor",l_sNULLcolor)
+      userPageSet("jogmode","btn4","style.backgroundColor",l_sNULLcolor)
+    break
+    case 3
+      userPageSet("jogmode","btn1","style.backgroundColor",l_sNULLcolor)
+      userPageSet("jogmode","btn2","style.backgroundColor",l_sNULLcolor)
+      userPageSet("jogmode","btn3","style.backgroundColor",l_sNULLcolor)
+      userPageSet("jogmode","btn4","style.backgroundColor",l_sSELcolor)
+    break
+      
+  endSwitch
+end]]></Code>
+  </Program>
+</Programs>

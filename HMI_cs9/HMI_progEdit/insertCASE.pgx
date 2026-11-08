@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertCASE" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nProgIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bRefreh" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nProgIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_bRefresh" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="insertCASE"
+      util:sPage="insertCASE"
+      call _onStartPROG(util:sPage)
+      call _bindPROG(util:sPage)
+      userPageBind("insertCASE","nmb1","value",nCaseValue,1,"rw")
+      if size(sIOList)!=(size(io:aInItem)+1)
+        resize(sIOList,1,size(io:aInItem)+1)
+      endIf
+      for l_i = 1 to size(sIOList)-1
+        sIOList[l_i-1]=toString("",l_i-1)+","+io:aInItem[l_i-1].sComment
+      endFor
+      sIOList[0]=""
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    
+    //btn
+    if bSelProg
+      bSelProg=false
+      nSelType=1
+      l_bRefresh=true
+      nPgIndexPROG=0
+    elseIf bSelTraj
+      bSelTraj=false
+      nSelType=2
+      l_bRefresh=true
+      nPgIndexPROG=0
+    endIf
+   
+    //refresh
+    if l_bRefresh
+      l_bRefresh=false
+      call _btnColor(nSelType,util:sPage)
+      switch nSelType
+        case 1
+          call resfreshPROG(util:sPage)
+        break
+        case 2
+          nPgIndexTRAJ=0
+          call resfreshTRAJ(util:sPage)
+        break
+      endSwitch
+    endIf
+    
+    if bInsert[1]
+      bInsert[1]=false
+
+      call prog:insertCASE(sSelProg,x_nProgIndex,sInsertItem,bToSave,nCaseValue,nSelType)
+  
+      l_bExit=true
+    elseIf bInsert[2]
+      bInsert[2]=false
+      l_bExit=true
+    elseIf bInsert[3]
+      bInsert[3]=false
+      nPgIndexPROG=0
+      l_bRefreh=true
+    elseIf bInsert[4]
+      bInsert[4]=false
+      if nPgIndexPROG>0
+        nPgIndexPROG=nPgIndexPROG-1
+      endIf
+      l_bRefreh=true
+    elseIf bInsert[5]
+      bInsert[5]=false
+      if nPgIndexPROG<nPgNumPROG-1
+        nPgIndexPROG=nPgIndexPROG+1
+      endIf
+      l_bRefreh=true
+    elseIf bInsert[6]
+      bInsert[6]=false
+      nPgIndexPROG=nPgNumPROG-1
+      l_bRefreh=true
+    endIf
+    
+    
+    
+    
+    
+    delay(0)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ 正确引入脚本（请确保路径存在） -->
+  <script src="./js/requests.js"></script>
+  <script src="./js/external-library.js"></script>
+
+  <style>
+    :root {
+      --baseW: 450;
+      --kbW: 450px;
+      --u: 1;
+
+      --bg: #f6f7fb;
+      --panel: rgba(255, 255, 255, .92);
+      --stroke: rgba(15, 23, 42, .12);
+      --text: #0f172a;
+      --muted: rgba(15, 23, 42, .55);
+
+      --shadow: 0 14px 28px rgba(15, 23, 42, .10);
+      --shadowKey: 0 8px 16px rgba(15, 23, 42, .10);
+
+      --keyTop: #ffffff;
+      --keyBot: #eef2f7;
+
+      --blue: #2563eb;
+      --purple: #7c3aed;
+      --red: #dc2626;
+      --green: #16a34a;
+
+      --radius: 18px;
+      --radiusKey: 14px;
+    }
+
+    /* ✅ 禁止页面右侧纵向滚动条 */
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(1100px 520px at 20% 0%, rgba(37, 99, 235, .10), transparent 55%),
+        radial-gradient(900px 480px at 90% 10%, rgba(22, 163, 74, .08), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    /* 舞台 */
+    .kb-stage {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      box-sizing: border-box;
+      padding: 5px;
+      /* 需要留白放这里，不影响滚动 */
+    }
+
+    .kb-wrap {
+      width: var(--kbW);
+      max-width: 100%;
+      box-sizing: border-box;
+
+      position: relative;
+      display: block;
+      /* ✅ 改回普通布局，避免“推底裁切” */
+    }
+
+    .topbar {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: calc(6px * var(--u));
+      align-items: center;
+      flex: 0 0 auto;
+    }
+
+    input {
+      height: calc(36px * var(--u));
+      border-radius: calc(14px * var(--u));
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, .95);
+      color: var(--text);
+      padding: 0 calc(12px * var(--u));
+      outline: none;
+      box-shadow: 0 10px 18px rgba(15, 23, 42, .06);
+      caret-color: transparent;
+      /* ✅ 用自绘光标更稳定 */
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input::placeholder {
+      color: var(--muted);
+    }
+
+    #chineseOutput {
+      cursor: text;
+      user-select: text;
+    }
+
+    /* 输出框外层：自绘光标 */
+    .outWrap {
+      position: relative;
+      width: 100%;
+    }
+
+    #caretOverlay {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2px;
+      height: calc(18px * var(--u));
+      background: var(--blue);
+      border-radius: 2px;
+      pointer-events: none;
+      opacity: 0;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .okBtn {
+      height: calc(36px * var(--u));
+      padding: 0 calc(14px * var(--u));
+      border-radius: calc(14px * var(--u));
+      border: 1px solid rgba(22, 163, 74, .30);
+      background: linear-gradient(180deg, rgba(22, 163, 74, .22), rgba(22, 163, 74, .12));
+      color: var(--green);
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: var(--shadowKey);
+      transition: transform .08s ease;
+    }
+
+    .okBtn:active {
+      transform: translateY(1px) scale(.99);
+    }
+
+    /* ✅ 候选区：改为浮层（absolute），出现时不占布局空间 -> 不挤压键盘 */
+    #candidateArea {
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: 20;
+
+      height: calc(44px * var(--u));
+      /* ✅ 固定单行高度 */
+      border-radius: calc(16px * var(--u));
+      border: 1px solid var(--stroke);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+
+      display: none;
+      align-items: center;
+      padding: 0 calc(40px * var(--u));
+      box-sizing: border-box;
+      overflow: hidden;
+      /* ✅ 不出现滚动条 */
+    }
+
+    #candidateArea button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: calc(32px * var(--u));
+      height: calc(32px * var(--u));
+      border: 1px solid var(--stroke);
+      border-radius: calc(12px * var(--u));
+      background: rgba(241, 245, 249, .95);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    #btnPrev {
+      left: calc(8px * var(--u));
+    }
+
+    #btnNext {
+      right: calc(8px * var(--u));
+    }
+
+    /* ✅ 单行候选：不换行、不横向滚动条、超出直接隐藏 */
+    #candidateList {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: calc(10px * var(--u));
+      align-items: center;
+      white-space: nowrap;
+      overflow: hidden;
+      /* ✅ 不显示横向滚动条 */
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #candidateList span {
+      flex: 0 0 auto;
+      /* ✅ 保持单项不被压扁 */
+      padding: calc(6px * var(--u)) calc(10px * var(--u));
+      border-radius: calc(12px * var(--u));
+      border: 1px solid rgba(15, 23, 42, .10);
+      background: rgba(241, 245, 249, .92);
+      cursor: pointer;
+      user-select: none;
+      transition: transform .08s ease, background .12s ease;
+      color: var(--text);
+      font-size: calc(14px * var(--u));
+    }
+
+    #candidateList span:hover {
+      transform: translateY(-1px);
+      background: rgba(226, 232, 240, .96);
+    }
+
+    /* ✅ 键盘：放到底部，不受候选区影响（候选区是浮层） */
+    #virtualKeyboard {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: calc(4px * var(--u));
+      display: flex;
+      flex-direction: column;
+      gap: calc(4px * var(--u));
+      box-sizing: border-box;
+    }
+
+    .kb-row {
+      display: flex;
+      gap: calc(0px * var(--u));
+      justify-content: center;
+    }
+
+    /* .key {
+      height: calc(46px * var(--u));
+      border-radius: calc(var(--radiusKey) * var(--u));
+      border: 1px solid rgba(15, 23, 42, .12);
+      background: linear-gradient(180deg, var(--keyTop), var(--keyBot));
+      color: var(--text);
+      font-weight: 700;
+      box-shadow: var(--shadowKey);
+      cursor: pointer;
+      user-select: none;
+      padding: 0 calc(10px * var(--u));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      transition: transform .08s ease, filter .12s ease;
+      font-size: calc(15px * var(--u));
+    } */
+
+    .key {
+      height: calc(54px * var(--u));
+      font-size: calc(18px * var(--u));
+      border-radius: calc(16px * var(--u));
+      padding: 0 calc(10px * var(--u));
+
+      border: 1px solid rgba(15, 23, 42, .12);
+      background: linear-gradient(180deg, var(--keyTop), var(--keyBot));
+      color: var(--text);
+      font-weight: 700;
+      box-shadow: 0 7px 14px rgba(15, 23, 42, .10);
+      /* ✅ 稍微收一点，避免太“松” */
+      cursor: pointer;
+      user-select: none;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      transition: transform .08s ease, filter .12s ease;
+    }
+
+
+    .key:hover {
+      filter: brightness(1.03);
+    }
+
+    .key:active {
+      transform: translateY(1px) scale(.99);
+    }
+
+    .key--wide {
+      flex: 1.4;
+    }
+
+    .key--wider {
+      flex: 1.8;
+    }
+
+    .key--space {
+      flex: 4.6;
+    }
+
+    .key--mode {
+      color: var(--blue);
+      border-color: rgba(37, 99, 235, .22);
+      background: linear-gradient(180deg, rgba(37, 99, 235, .08), rgba(37, 99, 235, .04));
+    }
+
+    .key--symbol {
+      color: var(--purple);
+      border-color: rgba(124, 58, 237, .22);
+      background: linear-gradient(180deg, rgba(124, 58, 237, .08), rgba(124, 58, 237, .04));
+    }
+
+    .key--delete {
+      color: var(--red);
+      border-color: rgba(220, 38, 38, .22);
+      background: linear-gradient(180deg, rgba(220, 38, 38, .08), rgba(220, 38, 38, .04));
+    }
+
+    .key--submit {
+      color: var(--green);
+      border-color: rgba(22, 163, 74, .22);
+      background: linear-gradient(180deg, rgba(22, 163, 74, .10), rgba(22, 163, 74, .05));
+    }
+
+    .key--capsOn {
+      outline: 2px solid rgba(37, 99, 235, .25);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, .08), var(--shadowKey);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="kb-stage" id="kbStage">
+    <div class="kb-wrap" id="kbWrap">
+
+      <div class="topbar" id="topbar">
+        <input id="pinyinInput" type="text" placeholder="输入拼音" readonly />
+
+        <div class="outWrap">
+          <input id="chineseOutput" type="text" placeholder="汉字输出" readonly />
+          <div id="caretOverlay"></div>
+        </div>
+
+        <button class="okBtn" onclick="readInputValue()">&#10004;</button>
+      </div>
+
+      <!-- ✅ 浮层候选区（absolute），不会占位挤压键盘 -->
+      <div id="candidateArea">
+        <button id="btnPrev" onclick="changePage(-1)">&#9664;</button>
+        <div id="candidateList"></div>
+        <button id="btnNext" onclick="changePage(1)">&#9654;</button>
+      </div>
+
+      <div id="virtualKeyboard"></div>
+    </div>
+  </div>
+
+  <script>
+    // =========================
+    // 0) 尺寸：真实宽度自适应（不做 transform 缩放）
+    // =========================
+    function updateKeyboardSize() {
+      const stage = document.getElementById('kbStage');
+      const baseW = 450;
+
+      const available = Math.max(280, stage.clientWidth);
+      const w = Math.min(baseW, available);
+      const u = Math.max(0.78, Math.min(1, w / baseW));
+
+      document.documentElement.style.setProperty('--kbW', w + 'px');
+      document.documentElement.style.setProperty('--u', u.toFixed(3));
+
+      // ✅ 尺寸变化时，重新定位候选区浮层
+      positionCandidateArea();
+    }
+    window.addEventListener('resize', updateKeyboardSize);
+
+    // =========================
+    // 1) DOM
+    // =========================
+    const kbWrap = document.getElementById('kbWrap');
+    const topbar = document.getElementById('topbar');
+
+    const pinyinInput = document.getElementById('pinyinInput');
+    const chineseOutput = document.getElementById('chineseOutput');
+    const inputElement = chineseOutput;
+
+    const virtualKeyboard = document.getElementById('virtualKeyboard');
+    const candidateArea = document.getElementById('candidateArea');
+    const candidateList = document.getElementById('candidateList');
+
+    // =========================
+    // 1.5) 自绘光标
+    // =========================
+    const caretOverlay = document.getElementById('caretOverlay');
+
+    function measureTextWidth(text, inputEl) {
+      const style = getComputedStyle(inputEl);
+      const canvas = measureTextWidth._c || (measureTextWidth._c = document.createElement('canvas'));
+      const ctx = canvas.getContext('2d');
+      ctx.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+      return ctx.measureText(text).width;
+    }
+
+    function updateCaretOverlay() {
+      if (document.activeElement !== chineseOutput) {
+        caretOverlay.style.opacity = 0;
+        return;
+      }
+      caretOverlay.style.opacity = 1;
+
+      const pos = chineseOutput.selectionStart ?? chineseOutput.value.length;
+      const before = chineseOutput.value.slice(0, pos);
+
+      const style = getComputedStyle(chineseOutput);
+      const paddingLeft = parseFloat(style.paddingLeft) || 0;
+      const paddingRight = parseFloat(style.paddingRight) || 0;
+
+      const scrollLeft = chineseOutput.scrollLeft || 0;
+      const textW = measureTextWidth(before, chineseOutput);
+
+      const inputW = chineseOutput.clientWidth;
+      const maxX = inputW - paddingRight - 2;
+
+      const x = Math.min(paddingLeft + textW - scrollLeft, maxX);
+      caretOverlay.style.left = Math.max(paddingLeft, x) + "px";
+    }
+
+    ['focus', 'click', 'keyup', 'keydown', 'input', 'pointerdown', 'pointerup'].forEach(evt => {
+      chineseOutput.addEventListener(evt, () => setTimeout(updateCaretOverlay, 0));
+    });
+    document.addEventListener('selectionchange', () => setTimeout(updateCaretOverlay, 0));
+    window.addEventListener('resize', () => setTimeout(updateCaretOverlay, 0));
+
+    chineseOutput.addEventListener('pointerdown', () => {
+      setTimeout(() => {
+        chineseOutput.focus({ preventScroll: true });
+        const pos = chineseOutput.selectionStart ?? chineseOutput.value.length;
+        chineseOutput.setSelectionRange(pos, pos);
+        updateCaretOverlay();
+      }, 0);
+    });
+
+    // =========================
+    // 2) 光标插入/删除（按 selectionRange）
+    // =========================
+    function insertTextAtCursor(text) {
+      chineseOutput.focus({ preventScroll: true });
+      const start = chineseOutput.selectionStart ?? chineseOutput.value.length;
+      const end = chineseOutput.selectionEnd ?? chineseOutput.value.length;
+
+      const before = chineseOutput.value.slice(0, start);
+      const after = chineseOutput.value.slice(end);
+      chineseOutput.value = before + text + after;
+
+      const newPos = start + text.length;
+      chineseOutput.setSelectionRange(newPos, newPos);
+
+      updateCaretOverlay();
+    }
+
+    function deleteInOutputByCaret() {
+      chineseOutput.focus({ preventScroll: true });
+      const start = chineseOutput.selectionStart ?? 0;
+      const end = chineseOutput.selectionEnd ?? 0;
+
+      if (end > start) {
+        chineseOutput.value = chineseOutput.value.slice(0, start) + chineseOutput.value.slice(end);
+        chineseOutput.setSelectionRange(start, start);
+        updateCaretOverlay();
+        return;
+      }
+
+      if (start > 0) {
+        chineseOutput.value = chineseOutput.value.slice(0, start - 1) + chineseOutput.value.slice(start);
+        chineseOutput.setSelectionRange(start - 1, start - 1);
+        updateCaretOverlay();
+      }
+    }
+
+    // =========================
+    // 2.5) ✅ 候选区浮层定位：不挤压键盘且不覆盖键盘
+    // =========================
+    function positionCandidateArea() {
+      // 没显示时不处理
+      if (candidateArea.style.display === 'none') return;
+
+      const u = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--u')) || 1;
+      const gap = 10 * u;
+      const caH = candidateArea.getBoundingClientRect().height || (44 * u);
+
+      const wrapRect = kbWrap.getBoundingClientRect();
+      const topbarRect = topbar.getBoundingClientRect();
+      const kbRect = virtualKeyboard.getBoundingClientRect();
+
+      // 默认放在 topbar 下方
+      let top = (topbarRect.bottom - wrapRect.top) + gap;
+
+      // 键盘顶部相对 wrap 的位置
+      const kbTop = (kbRect.top - wrapRect.top);
+
+      // 如果候选区会压到键盘，就把候选区贴到键盘上方
+      if (top + caH > kbTop - gap) {
+        top = Math.max(gap, kbTop - caH - gap);
+      }
+
+      candidateArea.style.top = `${top}px`;
+    }
+
+    // =========================
+    // 3) 布局（按行 + ⇧）
+    // =========================
+    const chineseLayoutRows = [
+      ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+      ['中文', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+      ['⇧', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '删除'],
+      ['符号', '空格', '提交']
+    ];
+
+    const englishLayoutRows = [
+      ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+      ['英文', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+      ['⇧', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '删除'],
+      ['符号', '空格', '提交']
+    ];
+
+    const symbolLayoutRows = [
+      ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
+      ['-', '/', '：', '；', '(', ')', '¥', '@', '"'],
+      ['语言', '。', '，', '、', '？', '！', '…', '删除'],
+      ['英文', '空格', '提交']
+    ];
+
+    // =========================
+    // 4) 状态
+    // =========================
+    let inputMode = 'chinese';
+    let currentLayoutRows = chineseLayoutRows;
+
+    let currentPage = 0;
+    const candidatesPerPage = 8;
+    let isCaps = false;
+
+    // =========================
+    // 5) 候选
+    // =========================
+    function getCandidates(pinyin) {
+      if (typeof pinyinToChineseMap === 'undefined') {
+        console.error('pinyinToChineseMap 未定义：请确认 external-library.js 正常加载且非 module。');
+        return [];
+      }
+      return pinyinToChineseMap[pinyin] || [];
+    }
+
+    function renderCandidates(candidates, page) {
+      candidateList.innerHTML = '';
+      const startIndex = page * candidatesPerPage;
+      const endIndex = Math.min(startIndex + candidatesPerPage, candidates.length);
+
+      for (let i = startIndex; i < endIndex; i++) {
+        const span = document.createElement('span');
+        span.textContent = candidates[i];
+        candidateList.appendChild(span);
+      }
+
+      const show = candidates.length > 0;
+      candidateArea.style.display = show ? 'flex' : 'none';
+
+      // ✅ 显示/翻页后重新定位浮层
+      if (show) positionCandidateArea();
+    }
+
+    function updateCandidates(pinyin) {
+      const candidates = getCandidates(pinyin);
+      currentPage = 0;
+      renderCandidates(candidates, currentPage);
+    }
+
+    function changePage(direction) {
+      const pinyin = pinyinInput.value.trim();
+      const candidates = getCandidates(pinyin);
+      const maxPage = Math.max(Math.ceil(candidates.length / candidatesPerPage) - 1, 0);
+
+      currentPage = Math.min(Math.max(currentPage + direction, 0), maxPage);
+      renderCandidates(candidates, currentPage);
+    }
+
+    function clearPinyinAndCandidates() {
+      pinyinInput.value = '';
+      candidateList.innerHTML = '';
+      candidateArea.style.display = 'none';
+      currentPage = 0;
+    }
+
+    function hasCurrentCandidates() {
+      const pinyin = pinyinInput.value.trim();
+      return pinyin && getCandidates(pinyin).length > 0;
+    }
+
+    function pickCandidateByIndex(indexInPage) {
+      const pinyin = pinyinInput.value.trim();
+      const candidates = getCandidates(pinyin);
+      if (!candidates.length) return;
+
+      const startIndex = currentPage * candidatesPerPage;
+      const realIndex = startIndex + indexInPage;
+
+      if (realIndex >= 0 && realIndex < candidates.length) {
+        insertTextAtCursor(candidates[realIndex]);
+        clearPinyinAndCandidates();
+      }
+    }
+
+    function tryPickFirstCandidate() {
+      if (!hasCurrentCandidates()) return false;
+      pickCandidateByIndex(0);
+      return true;
+    }
+
+    candidateArea.addEventListener('click', (e) => {
+      if (e.target.tagName === 'SPAN' && inputMode === 'chinese') {
+        insertTextAtCursor(e.target.textContent);
+        clearPinyinAndCandidates();
+      }
+    });
+
+    // =========================
+    // 6) 渲染键盘
+    // =========================
+    function renderKeyboard(layoutRows) {
+      virtualKeyboard.innerHTML = '';
+
+      const displayLetter = (s) => {
+        if (!/^[a-z]$/i.test(s)) return s;
+        if (inputMode === 'chinese') return s.toLowerCase();
+        return isCaps ? s.toUpperCase() : s.toLowerCase();
+      };
+
+      layoutRows.forEach(row => {
+        const rowEl = document.createElement('div');
+        rowEl.className = 'kb-row';
+
+        row.forEach(keyText => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'key';
+          btn.textContent = displayLetter(keyText);
+          btn.dataset.key = keyText;
+
+          if (keyText === '⇧') {
+            btn.classList.add('key--mode', 'key--wide');
+            if (isCaps) btn.classList.add('key--capsOn');
+          }
+          if (['中文', '英文', '语言'].includes(keyText)) btn.classList.add('key--mode', 'key--wider');
+          if (keyText === '符号') btn.classList.add('key--symbol', 'key--wide');
+          if (keyText === '删除') btn.classList.add('key--delete', 'key--wider');
+          if (keyText === '提交') btn.classList.add('key--submit', 'key--wide');
+          if (keyText === '空格') btn.classList.add('key--space');
+
+          rowEl.appendChild(btn);
+        });
+
+        virtualKeyboard.appendChild(rowEl);
+      });
+
+      // 键盘渲染后，候选浮层位置也可能需要更新
+      positionCandidateArea();
+    }
+
+    renderKeyboard(currentLayoutRows);
+
+    // =========================
+    // 7) 虚拟键盘点击
+    // =========================
+    virtualKeyboard.addEventListener('click', (e) => {
+      const t = e.target;
+      if (!t.classList.contains('key')) return;
+
+      const rawKey = t.dataset.key || t.textContent;
+
+      if (rawKey === '⇧') {
+        isCaps = !isCaps;
+        renderKeyboard(currentLayoutRows);
+        return;
+      }
+
+      if (rawKey === '中文' || rawKey === '英文' || rawKey === '语言') { toggleLanguage(); return; }
+      if (rawKey === '符号') { toggleSymbols(); return; }
+      if (rawKey === '删除') { handleDelete(); return; }
+
+      if (rawKey === '空格') {
+        if (!tryPickFirstCandidate()) insertTextAtCursor(' ');
+        return;
+      }
+
+      if (rawKey === '提交') {
+        if (!tryPickFirstCandidate()) readInputValue();
+        return;
+      }
+
+      if (inputMode === 'chinese') {
+        if (/^[a-z]$/i.test(rawKey)) {
+          pinyinInput.value += rawKey.toLowerCase();
+          updateCandidates(pinyinInput.value.trim());
+        } else {
+          insertTextAtCursor(rawKey);
+        }
+        return;
+      }
+
+      if (inputMode === 'english') {
+        if (/^[a-z]$/i.test(rawKey)) {
+          const base = rawKey.toLowerCase();
+          insertTextAtCursor(isCaps ? base.toUpperCase() : base);
+        } else {
+          insertTextAtCursor(rawKey);
+        }
+        return;
+      }
+
+      insertTextAtCursor(rawKey); // symbol
+    });
+
+    // =========================
+    // 8) 删除：先删拼音，再删输出
+    // =========================
+    function handleDelete() {
+      if (pinyinInput.value) {
+        pinyinInput.value = pinyinInput.value.slice(0, -1);
+        updateCandidates(pinyinInput.value.trim());
+        return;
+      }
+      if (chineseOutput.value) {
+        deleteInOutputByCaret();
+        if (chineseOutput.value === "") inputElement.placeholder = "汉字输出";
+      }
+    }
+
+    // =========================
+    // 9) 实体键盘
+    // =========================
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey || e.metaKey) return;
+
+      if (e.key === 'Shift') {
+        if (!e.repeat) {
+          isCaps = !isCaps;
+          renderKeyboard(currentLayoutRows);
+        }
+        e.preventDefault();
+        return;
+      }
+
+      if (inputMode === 'chinese' && [' ', 'Backspace', 'Enter', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+        e.preventDefault();
+      }
+
+      if (e.key === 'Enter') {
+        if (!tryPickFirstCandidate()) readInputValue();
+        return;
+      }
+      if (e.key === 'Backspace') {
+        handleDelete();
+        return;
+      }
+      if (e.key === 'Escape') {
+        clearPinyinAndCandidates();
+        return;
+      }
+      if (inputMode === 'chinese' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+        changePage(e.key === 'ArrowLeft' ? -1 : 1);
+        return;
+      }
+      if (e.key === ' ') {
+        if (!tryPickFirstCandidate()) insertTextAtCursor(' ');
+        return;
+      }
+
+      if (/^[1-9]$/.test(e.key)) {
+        if (inputMode === 'chinese' && hasCurrentCandidates()) {
+          pickCandidateByIndex(parseInt(e.key, 10) - 1);
+        } else {
+          insertTextAtCursor(e.key);
+        }
+        return;
+      }
+
+      if (e.key.length === 1) handlePrintableKey(e.key);
+    });
+
+    function handlePrintableKey(ch) {
+      if (inputMode === 'chinese') {
+        const lower = ch.toLowerCase();
+        if (/^[a-z]$/.test(lower)) {
+          pinyinInput.value += lower;
+          updateCandidates(pinyinInput.value.trim());
+        }
+        return;
+      }
+
+      if (inputMode === 'english') {
+        if (/^[a-z]$/i.test(ch)) {
+          const base = ch.toLowerCase();
+          insertTextAtCursor(isCaps ? base.toUpperCase() : base);
+        } else {
+          insertTextAtCursor(ch);
+        }
+        return;
+      }
+
+      insertTextAtCursor(ch); // symbol
+    }
+
+    // =========================
+    // 10) 模式切换
+    // =========================
+    function toggleLanguage() {
+      inputMode = (inputMode === 'english') ? 'chinese' : 'english';
+      currentLayoutRows = (inputMode === 'english') ? englishLayoutRows : chineseLayoutRows;
+      renderKeyboard(currentLayoutRows);
+      clearPinyinAndCandidates();
+    }
+
+    function toggleSymbols() {
+      inputMode = (inputMode === 'symbol') ? 'english' : 'symbol';
+      currentLayoutRows = (inputMode === 'symbol') ? symbolLayoutRows : englishLayoutRows;
+      renderKeyboard(currentLayoutRows);
+      clearPinyinAndCandidates();
+    }
+
+    // =========================
+    // 11) 业务接口（保留）
+    // =========================
+    if (!isPromptMode()) {
+      dataRefresh();
+    } else {
+      // ✅ prompt 场景：不走绑定接口，不自动拉取默认值
+      // 如需从 prompt 输入框读取初始值，可用 postMessage 拉父页面（见下方可选增强）
+    }
+
+    async function dataRefresh() {
+      try {
+        const DataBacks = await getValue();
+        if (DataBacks !== "" && DataBacks !== "undefined" && DataBacks != null) {
+          inputElement.placeholder = DataBacks;
+
+          chineseOutput.focus({ preventScroll: true });
+          const len = chineseOutput.value.length;
+          chineseOutput.setSelectionRange(len, len);
+          insertTextAtCursor(DataBacks);
+
+          updateCaretOverlay();
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function isPromptMode() {
+      const id = getQueryParam('id');
+      return id === "sp2up-modal-osk";
+    }
+
+    function getQueryParam(param) {
+      return new URLSearchParams(window.location.search).get(param);
+    }
+
+
+    async function readInputValue() {
+      const v = chineseOutput.value;
+      const inputId = getQueryParam('id');
+
+      // 1) userPagePrompt：只写入 prompt 输入框，不点 OK
+      if (inputId === "sp2up-modal-osk") {
+        window.parent.postMessage(
+          { type: "IME_PROMPT_COMMIT", text: v, submit: false },
+          "*"
+        );
+        window.parent.postMessage({ type: "IME_HIDE_OVERLAY" }, "*");
+        return;
+      }
+
+      // 2) 普通输入框：先写回 DOM（立即可见）
+      if (inputId) {
+        window.parent.postMessage({ type: "IME_COMMIT_ID", id: inputId, text: v }, "*");
+      } else {
+        // 没有 id 的 input：写回当前焦点输入框
+        window.parent.postMessage({ type: "IME_COMMIT_ACTIVE", text: v }, "*");
+      }
+
+      // 3) 普通输入框：有 id 再走绑定 putValue（保持你原来的业务链路）
+      try {
+        if (inputId) {
+          await putValue(inputId, v);
+        }
+      } catch (e) {
+        console.error("putValue failed:", e);
+      }
+      window.parent.postMessage({ type: "IME_HIDE_OVERLAY" }, "*");
+    }
+
+    async function putValue(varName, values) {
+      try {
+        page = await getPage();
+        // put 请求需要发送的内容
+        let jsonData = {
+          "page": page,
+          "html_id": varName,
+          "value": [values],
+          "attribute": "value"
+        };
+        // 使用 put 函数来对内存中的变量赋值数据
+        let data = put("/api/applications/running/user_page_v3/binding", jsonData);
+      } catch (error) {
+        console.error("获取网络数据时出错：", error);
+      }
+    }
+    // async function readInputValue() {
+    //   const myVariable = chineseOutput.value;
+    //   const inputId = getQueryParam('id');
+    //   putValue(inputId, myVariable);
+    // }
+
+    // async function putValue(varName, values) {
+    //   try {
+    //     const page = await getPage();
+    //     const jsonData = { "page": page, "html_id": varName, "value": [values], "attribute": "value" };
+    //     put("/api/applications/running/user_page_v3/binding", jsonData);
+    //   } catch (error) {
+    //     console.error("获取网络数据时出错：", error);
+    //   }
+    // }
+
+    async function getValue() {
+      try {
+        const inputId = getQueryParam('id');
+        const page = await getPage();
+        const jsonData = { "page": page, "bindings": { [inputId]: ["value"] }, "answer": null };
+        const data = await post("/api/applications/running/user_page_v3/bindings", jsonData);
+        //return data.bindings[0].value[0].value;
+        const v = data?.bindings?.[0]?.value?.[0]?.value;
+        return (v === undefined || v === null) ? "" : v;
+
+      } catch (error) {
+        console.error("获取网络数据时出错：", error);
+      }
+    }
+
+    async function getPage() {
+      try {
+        const PageData = await get("/api/applications/running/user_page");
+        return PageData.page;
+      } catch (error) {
+        console.error("获取网络数据时出错：", error);
+      }
+    }
+
+    // 初始化
+    updateKeyboardSize();
+  </script>
+</body>
+
+</html>

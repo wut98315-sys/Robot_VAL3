@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="bind" access="public">
+    <Locals>
+      <Local name="l_sbtn" type="string" xsi:type="array" size="1" />
+      <Local name="l_slbl" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //btn bind
+  for l_i = 1 to 10 step 1
+    l_sbtn="btn"+toString("",l_i)
+    bBool[l_i]=false
+    userPageBindClick("IO",l_sbtn,bBool[l_i],true)
+  endFor
+  userPageBindClick("IO","btnback",bBack,true)
+  //label bind
+  userPageBind("IO","lblpageIndex","innerHTML",sShowPageIndex,1,"r")
+  userPageBind("IO","lblpage","innerHTML",sPageNum,1,"r")
+  //label Click
+  for l_i = 0 to 15
+    l_slbl="lbl"+toString("",20+l_i)
+    //comment
+    userPageBindClick("IO",l_slbl,bComment[l_i],true)
+  endFor
+  //innerHTML
+  for l_i = 0 to 15
+    l_slbl="lbl"+toString("",l_i)
+    //title
+    userPageBind("IO",l_slbl,"innerHTML",sLabel[l_i],1,"r")
+  endFor
+  for l_i = 0 to 15
+    l_slbl="lbl"+toString("",40+l_i)
+    //aio value
+    userPageBind("IO",l_slbl,"innerHTML",sValue[l_i],1,"r")
+  endFor
+  for l_i = 0 to 15
+    l_slbl="lbl"+toString("",20+l_i)
+    //comment
+    userPageBind("IO",l_slbl,"innerHTML",sComment[l_i],1,"r")
+  endFor
+  
+  //combox
+  userPageBind("IO","cbx1","value",sUsingBus,1,"rw")
+  
+end]]></Code>
+  </Program>
+</Programs>

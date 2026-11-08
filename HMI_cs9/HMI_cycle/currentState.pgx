@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="currentState">
+    <Code><![CDATA[begin
+  switch rs:_nOmacStat
+    case 1
+      sState="准备就绪"
+    break
+    case 2
+      sState="正在启动"
+    break
+    case 3
+      sState="运行中"
+    break
+    case 4
+      sState="复位中"
+    break
+    case 5
+      sState="暂停中"
+    break
+     case 6
+      sState="已暂停"
+    break
+    case 7
+      sState="正在结束周期"
+    break
+    case 8 
+      sState="停止中"
+    break
+    case 9
+      sState="已停止"
+    break
+    case 10
+      sState="任务终止中"
+    break
+    
+  endSwitch
+end]]></Code>
+  </Program>
+</Programs>

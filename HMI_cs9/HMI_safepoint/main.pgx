@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Locals>
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bRefresh" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="safepoint"
+      util:sPage="safepoint"
+      call onStart()
+      call bind()
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    if sLastPoint!=sSelPoint
+      sLastPoint=sSelPoint
+      toNum(sSelPoint,l_nIndex,l_bResult)
+      if l_bResult
+        l_bRefresh=true
+         call showActive(l_nIndex)
+      endIf
+    endIf
+    
+   
+    if bBack
+      bBack=false
+      safeTemp:libSave()
+      delay(0.1)
+      l_bExit=true
+    elseIf bTeach
+      bTeach=false
+      call teachPoint(l_nIndex)
+      l_bRefresh=true
+    elseIf bMove
+      bMove=false
+      call movePoint(l_nIndex)
+      l_bRefresh=true
+    elseIf bActive!= safeTemp:sSPoint[l_nIndex].bActive and sSelPoint!=""
+      safeTemp:sSPoint[l_nIndex].bActive=(bActive==true)
+      safeTemp:libSave()
+      delay(0.1)
+    endIf
+    if l_bRefresh
+      l_bRefresh=false  
+      call showCoord(l_nIndex)
+     
+    endIf
+    
+    call util:jogMode(0,0)
+    delay(0)
+  until l_bExit==true
+  
+end]]></Code>
+  </Program>
+</Programs>

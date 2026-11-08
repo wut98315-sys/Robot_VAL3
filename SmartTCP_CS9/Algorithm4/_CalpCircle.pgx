@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_CalpCircle">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_p1" type="pointRs" xsi:type="element" />
+      <Parameter name="x_p2" type="pointRs" xsi:type="element" />
+      <Parameter name="x_p3" type="pointRs" xsi:type="element" />
+      <Parameter name="x_pCenter" type="pointRs" xsi:type="element" use="reference" />
+      <Parameter name="x_bStatus" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="x1" type="num" xsi:type="array" size="1" />
+      <Local name="y1" type="num" xsi:type="array" size="1" />
+      <Local name="x2" type="num" xsi:type="array" size="1" />
+      <Local name="y2" type="num" xsi:type="array" size="1" />
+      <Local name="x3" type="num" xsi:type="array" size="1" />
+      <Local name="y3" type="num" xsi:type="array" size="1" />
+      <Local name="l_fFrame" type="frame" xsi:type="array" size="1" />
+      <Local name="l_nFrameStatus" type="num" xsi:type="array" size="1" />
+      <Local name="l_p3" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_p2" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_p1" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_pCenter" type="pointRs" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //圆心算法
+  link(l_fFrame,world)
+  l_nFrameStatus=setFrame(x_p1,x_p2,x_p3,l_fFrame)
+  if l_nFrameStatus!=0
+    //3点共线或任意2点过于接近
+    popUpMsg("Error!!")
+    x_bStatus=false
+    return
+  endIf  
+  link(l_p1,l_fFrame)
+  link(l_p2,l_fFrame)
+  link(l_p3,l_fFrame)
+  l_p1.trsf=position(x_p1,l_fFrame)
+  l_p2.trsf=position(x_p2,l_fFrame)
+  l_p3.trsf=position(x_p3,l_fFrame)
+  //
+  x1=l_p1.trsf.x
+  y1=l_p1.trsf.y
+  x2=l_p2.trsf.x
+  y2=l_p2.trsf.y  
+  x3=l_p3.trsf.x
+  y3=l_p3.trsf.y
+  //
+  if((x3-x1)*(y2-y1)-(x2-x1)*(y3-y1))!=0
+    link(l_pCenter,l_fFrame)
+    l_pCenter.trsf={0,0,0,0,0,0}
+    l_pCenter.trsf.x=((y2-y1)*(y3*y3-y1*y1+x3*x3-x1*x1)-(y3-y1)*(y2*y2-y1*y1+x2*x2-x1*x1))/(2*(x3-x1)*(y2-y1)-2*(x2-x1)*(y3-y1)) 
+    l_pCenter.trsf.y=((x2-x1)*(x3*x3-x1*x1+y3*y3-y1*y1)-(x3-x1)*(x2*x2-x1*x1+y2*y2-y1*y1))/(2*(y3-y1)*(x2-x1)-2*(y2-y1)*(x3-x1)) 
+    x_pCenter.trsf=position(l_pCenter,world)
+    x_bStatus=true
+  else
+    x_bStatus=false
+    return
+ endIf 
+end]]></Code>
+  </Program>
+</Programs>

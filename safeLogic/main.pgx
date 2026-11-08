@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Locals>
+      <Local name="l_pPoint" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //  nLastLib=-1
+  do
+//    call saveData:getTool(saveData:nJogTool,l_tTool)
+//    l_pPoint=here(l_tTool,world)    
+    
+    call areaCheck()
+    call checkPoint()
+    
+    
+    delay(0)
+  until false
+  
+end]]></Code>
+  </Program>
+</Programs>

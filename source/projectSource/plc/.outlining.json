@@ -1,0 +1,175 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "setSpeed",
+      "nodes": [
+        {
+          "start": 20,
+          "end": 284,
+          "isCollapsed": false
+        },
+        {
+          "start": 103,
+          "end": 276,
+          "isCollapsed": false
+        },
+        {
+          "start": 157,
+          "end": 266,
+          "isCollapsed": false
+        },
+        {
+          "start": 305,
+          "end": 401,
+          "isCollapsed": false
+        },
+        {
+          "start": 404,
+          "end": 499,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "changeDataLib",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "changeDataLib1",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "lifebit",
+      "nodes": [
+        {
+          "start": 33,
+          "end": 105,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "init",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "main",
+      "nodes": [
+        {
+          "start": 43,
+          "end": 2626,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "HWcheck",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "send",
+      "nodes": [
+        {
+          "start": 234,
+          "end": 289,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "resetOutput",
+      "nodes": [
+        {
+          "start": 35,
+          "end": 132,
+          "isCollapsed": false
+        },
+        {
+          "start": 135,
+          "end": 228,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "receive",
+      "nodes": [
+        {
+          "start": 18,
+          "end": 213,
+          "isCollapsed": false
+        },
+        {
+          "start": 156,
+          "end": 205,
+          "isCollapsed": false
+        },
+        {
+          "start": 229,
+          "end": 436,
+          "isCollapsed": false
+        },
+        {
+          "start": 449,
+          "end": 718,
+          "isCollapsed": false
+        },
+        {
+          "start": 474,
+          "end": 543,
+          "isCollapsed": false
+        },
+        {
+          "start": 548,
+          "end": 597,
+          "isCollapsed": false
+        },
+        {
+          "start": 600,
+          "end": 710,
+          "isCollapsed": false
+        },
+        {
+          "start": 646,
+          "end": 687,
+          "isCollapsed": false
+        },
+        {
+          "start": 730,
+          "end": 782,
+          "isCollapsed": false
+        },
+        {
+          "start": 815,
+          "end": 862,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "cycle_start",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "cycle_stop",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "cycle_pause",
+      "nodes": []
+    }
+  ]
+}

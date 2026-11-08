@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="UPInOutStatus" access="public">
+    <Locals>
+      <Local name="l_sOn" type="string" xsi:type="array" size="1" />
+      <Local name="l_sOff" type="string" xsi:type="array" size="1" />
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="l_sColor" type="string" xsi:type="array" size="1" />
+      <Local name="l_sInvalid" type="string" xsi:type="array" size="1" />
+      <Local name="l_sObjectID" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //系统控制信号输入
+  l_sOn="#00FF00"
+  l_sOff="#FFFFFF"
+  l_sInvalid="#ABB0B3"
+
+  //***************************ILLUSTRATION****************************
+  userPageSet("InOut","recStatusOn","style.backgroundColor",l_sOn)
+  userPageSet("InOut","recStatusOff","style.backgroundColor",l_sOff)
+  userPageSet("InOut","recStatusInvalid","style.backgroundColor",l_sInvalid)
+  
+  //******************************INPUT*********************************
+  for i=0 to 31
+    switch i
+      case 0,1,2,3,4,5,6,7,8,9,16,17,18
+        if ioStatus(dInput[i])>=0
+          if dInput[i]==true
+            l_sColor=l_sOn
+          else
+            l_sColor= l_sOff
+          endIf
+        else
+          //失效
+          l_sColor=l_sInvalid
+        endIf
+        l_sObjectID="recIn"+toString("",i)
+        userPageSet("InOut",l_sObjectID,"style.backgroundColor",l_sColor)
+      break
+    endSwitch
+  endFor
+  
+  //*****************************OUTPUT******************************
+  for i=0 to 13
+    if ioStatus(dOutput[i])>=0
+      if dOutput[i]==true
+        l_sColor=l_sOn
+      else
+        l_sColor= l_sOff
+      endIf
+    else
+      //失效
+      l_sColor=l_sInvalid
+    endIf
+    l_sObjectID="recOut"+toString("",i)
+    userPageSet("InOut",l_sObjectID,"style.backgroundColor",l_sColor)
+  endFor
+  
+  //*****************************Setting******************************
+  switch true
+    case bBusSelect[0]
+      call resetBusSelect(0)
+      rs:sBusUsing="Ethercat"
+    break
+    case bBusSelect[1]
+      call resetBusSelect(1)
+      rs:sBusUsing="Profinet"
+    break
+    case bBusSelect[2]
+      call resetBusSelect(2)
+      rs:sBusUsing="Modbus"
+    break
+    case bBusSelect[3]
+      call resetBusSelect(3)
+      rs:sBusUsing="Profibus"
+    break
+    case bBusSelect[4]
+      call resetBusSelect(4)
+      rs:sBusUsing="Ethernet"
+    break
+    case bBusSelect[5]
+      call resetBusSelect(5)
+      rs:sBusUsing="User"
+    break
+  endSwitch
+  
+end]]></Code>
+  </Program>
+</Programs>

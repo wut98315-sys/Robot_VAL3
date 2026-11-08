@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.15.3Cs9_BS3337" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="copy.pgx" />
+    <Program file="copyItem.pgx" />
+    <Program file="copyPara.pgx" />
+    <Program file="deleteProg.pgx" />
+    <Program file="deleteProgItem.pgx" />
+    <Program file="do_CASE.pgx" />
+    <Program file="do_endSwitch.pgx" />
+    <Program file="do_for.pgx" />
+    <Program file="do_if.pgx" />
+    <Program file="do_switch.pgx" />
+    <Program file="editIF.pgx" />
+    <Program file="getProgItemIndex.pgx" />
+    <Program file="getProgItemSize.pgx" />
+    <Program file="getProgList.pgx" />
+    <Program file="getSize.pgx" />
+    <Program file="if_check.pgx" />
+    <Program file="ifString.pgx" />
+    <Program file="insertCASE.pgx" />
+    <Program file="insertENDIF.pgx" />
+    <Program file="insertENDSwitch.pgx" />
+    <Program file="insertFOR.pgx" />
+    <Program file="insertItem.pgx" />
+    <Program file="insertPROG.pgx" />
+    <Program file="insertSwitch.pgx" />
+    <Program file="insertTRAJ.pgx" />
+    <Program file="loadPROG.pgx" />
+    <Program file="makeTraj.pgx" />
+    <Program file="new.pgx" />
+    <Program file="onSave.pgx" />
+    <Program file="pointToString.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+    <Program file="waitLoad.pgx" />
+  </Programs>
+  <Database>
+    <Data file="program.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="progTemp" path="Disk://source/template/progTemp/progTemp.pjx" />
+    <Library alias="trajectory" path="Disk://source/projectSource/trajectory/trajectory.pjx" />
+    <Library alias="action" path="Disk://source/projectSource/Action/Action.pjx" />
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+    <Library alias="io" path="Disk://source/projectSource/io/io.pjx" />
+    <Library alias="saveData" path="Disk://source/saveData/saveData.pjx" />
+    <Library alias="ar" path="Disk://autoReturn/autoReturn.pjx" />
+  </Libraries>
+</Project>

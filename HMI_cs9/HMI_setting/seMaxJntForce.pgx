@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="seMaxJntForce">
+    <Locals>
+      <Local name="i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+//  if sArmType=="4_Axis"
+//    for i=0 to 3
+//      libTqe:tArm4Force[sArmDetail].nMaxJnt4Force[i]=nMaxJntForec[i]
+//    endFor
+//  elseIf sArmType=="6_Axis"
+//    for i=0 to 5
+//      libTqe:tArm6Force[sArmDetail].nMaxJnt6Force[i]=nMaxJntForec[i]
+//    endFor
+//  endIf
+//  libTqe:libSave()
+//  delay(0.1)
+end]]></Code>
+  </Program>
+</Programs>

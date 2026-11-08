@@ -1,0 +1,11 @@
+2023.03.10 create
+回退需要的数据：1.运动类型L/J/C；2.joint值；3.工具值；4.moveID；5.运动速度（option）
+程序的参数，传递的point类型，是否会传递father frame？-----frame可以传递
+
+2023.03.13 v1.0
+1.初始化堆栈（需要resetMotion() or setMoveId(0)？）
+2.
+3.每次执行move库指令时，记录当前相关数据
+4.执行自动回退时，读取当前moveid，判断当前停的位置在哪两个点之间
+5.double check，根据moveid，估算一下机器人当前的大致位置（可选）
+6.倒退执行运动

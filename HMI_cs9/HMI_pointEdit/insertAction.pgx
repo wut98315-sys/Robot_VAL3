@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertAction" access="public">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nActionIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nPoint" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult1" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="insertAction"
+      util:sPage="insertAction"
+      resize(sActionList,1,size(actiondata:aActItem))
+      for l_i = 0 to size(sActionList)-1
+        sActionList[l_i]=toString("",l_i)+","+actiondata:aActItem[l_i].sComment
+      endFor
+      sSelAction=""
+      userPageBind("insertAction","cbx1","options",sActionList,size(sActionList),"r")
+      userPageBind("insertAction","cbx1","value",sSelAction,1,"rw")
+      userPageBindClick("insertAction","btn1",bAConfirm,true)
+      userPageBindClick("insertAction","btn2",bACancel,true)
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    //
+    if bAConfirm
+      bAConfirm=false
+      call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult1)
+      toNum(sSelAction,l_nActionIndex,l_bResult)
+      if l_bResult
+        call trajectory:insertAction(sTrajItem,l_nPoint,l_nActionIndex,bToSave)
+        l_bExit=true
+      else
+        userPageAlert("选择正确的action")
+      endIf
+    elseIf bACancel
+      bACancel=false
+      l_bExit=true
+      
+    endIf
+    
+    delay(0)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

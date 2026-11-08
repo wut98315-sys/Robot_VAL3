@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_btnColor" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nSelType" type="num" xsi:type="element" />
+      <Parameter name="x_sHtml" type="string" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  switch x_nSelType
+    case 1
+      userPageSet(x_sHtml,"btn7","style.backgroundColor","#7CB5FF")
+      userPageSet(x_sHtml,"btn7","style.color","#FFFFFF")
+      userPageSet(x_sHtml,"btn8","style.backgroundColor","#FFFFFF")
+      userPageSet(x_sHtml,"btn8","style.color","#838A8F")
+    break
+    case 2
+      userPageSet(x_sHtml,"btn8","style.backgroundColor","#7CB5FF")
+      userPageSet(x_sHtml,"btn8","style.color","#FFFFFF")
+      userPageSet(x_sHtml,"btn7","style.backgroundColor","#FFFFFF")
+      userPageSet(x_sHtml,"btn7","style.color","#838A8F")
+    break
+  endSwitch
+  
+end]]></Code>
+  </Program>
+</Programs>

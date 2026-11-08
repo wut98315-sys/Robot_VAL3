@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="MonitorIO1">
+    <Locals>
+      <Local name="l_bStopMove" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bToHome" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bRestartMove" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_bRestartMove=true
+  l_bStopMove=false
+  do
+    call io:getDigIO(io:dInput[10],l_bToHome,l_bErr)
+    if l_bToHome and (!l_bRestartMove or l_bStopMove)
+      l_bRestartMove=true
+      l_bStopMove=false
+      restartMove()
+    endIf
+
+    if !l_bToHome and !l_bStopMove
+      l_bStopMove=true
+      stopMove()
+    endIf
+
+//    if manual:bJogMove
+//      if taskStatus("RotGoHome")>=0
+//        taskKill("RotGoHome")
+//      endIf
+//      wait(taskStatus("RotGoHome")<0)
+
+//      stopMove()
+//      resetMotion()
+//      //2024.11.22 add初始化回零堆栈
+//      call ar:resetReturnStack(false)
+//      rs:_nOmacStat=9
+//      taskKill("Monitor1")
+//      wait(taskStatus("Monitor1")<0)
+//    endIf
+    delay(0)
+  until false
+
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="setAlarm" access="public" >
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1" >
+      <Parameter name="x_nAlarmCode" type="num" use="value" xsi:type="element" dimensions="1" />
+      <Parameter name="x_nErrIndex" type="num" use="value" xsi:type="element" dimensions="1" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bExist" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_sAlarmLevel" type="string" xsi:type="array" size="1" />
+      <Local name="l_sErrMsg" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //check if the alarm has existed in the list
+  do
+    l_bExist=(x_nAlarmCode==_nAlarmCode[l_nIndex] and x_nErrIndex==_nErrIndex[l_nIndex])
+    l_nIndex=l_nIndex+1
+  until l_bExist or l_nIndex>=size(_nAlarmCode)
+  //
+  if !l_bExist
+    //new alarm, add it
+    if _nAlarmCode[_nAlarmIndex]>0
+      _nAlarmIndex=(_nAlarmIndex+1)%size(_nAlarmCode)
+    endIf
+    _nAlarmCode[_nAlarmIndex]=x_nAlarmCode
+    _nErrIndex[_nAlarmIndex]=x_nErrIndex
+    call getAlarmMsg(x_nAlarmCode,l_sErrMsg)
+    //错误等级
+    if _nAlarmCode[_nAlarmIndex]>=0
+      if x_nAlarmCode>nHeavyAlarmLev
+        l_sAlarmLevel="错误："
+      else
+        l_sAlarmLevel="警告："
+      endIf
+      //错误消息
+      if x_nErrIndex>=0
+        sAlarmMes[_nAlarmIndex]=_sRobotStatus=l_sAlarmLevel+"-"+toString("",x_nAlarmCode)+". "+":"+toString("",x_nErrIndex)+l_sErrMsg
+      else
+        sAlarmMes[_nAlarmIndex]=_sRobotStatus=l_sAlarmLevel+"-"+toString("",x_nAlarmCode)+". "+l_sErrMsg
+      endIf
+      logMsg(sAlarmMes[_nAlarmIndex])
+    endIf
+    delay(0)
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

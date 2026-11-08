@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Data/2">
+  <Datas>
+    <Data name="sTRAJname" access="public" xsi:type="array" type="string" size="1" />
+    <Data name="nType" access="public" xsi:type="array" type="num" size="1" />
+    <Data name="iIfItem" access="public" xsi:type="array" type="ifItem" size="1">
+      <Value key="0">
+        <Field name="nSigType" xsi:type="array" type="num" size="3" />
+        <Field name="nSigIndex" xsi:type="array" type="num" size="3" />
+        <Field name="nValue" xsi:type="array" type="num" size="3" />
+        <Field name="bANDOR" xsi:type="array" type="bool" size="2" />
+      </Value>
+    </Data>
+    <Data name="sSwitchItem" access="public" xsi:type="array" type="switchItem" size="1">
+      <Value key="0">
+        <Field name="nSwitchValue" xsi:type="array" type="num" size="1" />
+        <Field name="sIOValue" xsi:type="array" type="string" size="1" />
+        <Field name="bIOdisable" xsi:type="array" type="bool" size="1" />
+      </Value>
+    </Data>
+    <Data name="fForItem" access="public" xsi:type="array" type="forItem" size="1">
+      <Value key="0">
+        <Field name="nLoopValue" xsi:type="array" type="num" size="1" />
+        <Field name="bIOdisable" xsi:type="array" type="bool" size="1" />
+        <Field name="sIOindex" xsi:type="array" type="string" size="1" />
+        <Field name="sForTRAJ" xsi:type="array" type="string" size="1" />
+      </Value>
+    </Data>
+  </Datas>
+</Database>

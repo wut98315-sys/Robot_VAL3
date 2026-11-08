@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="nmbValue">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nStep" type="num" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_trsf" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  switch x_nStep
+    
+    case 0
+      l_trsf=savedata:fFrameItem[x_nIndex].pPointRx[0].trsf
+      sUsingFrame=savedata:fFrameItem[x_nIndex].sName+" 坐标系O点"
+      nNmbValue[0]=l_trsf.x
+      nNmbValue[1]=l_trsf.y
+      nNmbValue[2]=l_trsf.z
+      nNmbValue[3]=l_trsf.rx
+      nNmbValue[4]=l_trsf.ry
+      nNmbValue[5]=l_trsf.rz
+    break
+    case 1
+      l_trsf=savedata:fFrameItem[x_nIndex].pPointRx[1].trsf
+      sUsingFrame=savedata:fFrameItem[x_nIndex].sName+" 坐标系X点"
+      nNmbValue[0]=l_trsf.x
+      nNmbValue[1]=l_trsf.y
+      nNmbValue[2]=l_trsf.z
+      nNmbValue[3]=l_trsf.rx
+      nNmbValue[4]=l_trsf.ry
+      nNmbValue[5]=l_trsf.rz
+    break
+    case 2
+      l_trsf=savedata:fFrameItem[x_nIndex].pPointRx[2].trsf
+      sUsingFrame=savedata:fFrameItem[x_nIndex].sName+" 坐标系Y点"
+      nNmbValue[0]=l_trsf.x
+      nNmbValue[1]=l_trsf.y
+      nNmbValue[2]=l_trsf.z
+      nNmbValue[3]=l_trsf.rx
+      nNmbValue[4]=l_trsf.ry
+      nNmbValue[5]=l_trsf.rz
+    break
+    
+    
+  endSwitch
+ 
+  
+  
+  
+end]]></Code>
+  </Program>
+</Programs>

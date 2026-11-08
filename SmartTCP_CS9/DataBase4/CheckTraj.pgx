@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="CheckTraj">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_pStart" type="point" xsi:type="element" />
+      <Parameter name="x_trOffset" type="trsf" xsi:type="element" />
+      <Parameter name="x_pEnd" type="point" xsi:type="element" />
+      <Parameter name="x_bTrajOK" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bOk" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bOut" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nStep" type="num" xsi:type="array" size="1" />
+      <Local name="l_trMiniOffset" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_trStepOffset" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_nVal" type="num" xsi:type="array" size="1" />
+      <Local name="l_pTarget" type="point" xsi:type="array" size="1" />
+      <Local name="l_jNearBy" type="jointRs" xsi:type="array" size="1" />
+      <Local name="l_jTarget" type="jointRs" xsi:type="array" size="1" />
+      <Local name="l_jStart" type="jointRs" xsi:type="array" size="1" />
+      <Local name="l_pNearBy" type="point" xsi:type="array" size="1" />
+      <Local name="l_sPopMsg" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_trMiniOffset={x_trOffset.x/1000,x_trOffset.y/1000,x_trOffset.z/1000,x_trOffset.rx/1000,x_trOffset.ry/1000,x_trOffset.rz/1000}
+  x_pEnd=appro(x_pStart,x_trOffset)
+  l_nStep=0
+  l_nVal=1
+  do
+    switch l_nStep
+      //****************************************************************** 
+      //Check NearBy Position
+      case 0
+        l_bOk=pointToJoint(utCurrentTool.tValue,herej(),x_pStart,l_jStart)
+        if l_bOk==true
+          l_nStep=1
+        else
+          l_nStep=99
+        endIf
+      break
+      //
+      case 1
+        l_pNearBy=appro(x_pStart,l_trMiniOffset)
+        l_bOk=pointToJoint(utCurrentTool.tValue,herej(),l_pNearBy,l_jNearBy)
+        if l_bOk==true
+          l_nStep=2
+        else
+          l_nStep=99
+        endIf
+      break
+      //******************************************************************   
+      //******************************************************************      
+      case 2
+        l_trStepOffset={x_trOffset.x*l_nVal/100,x_trOffset.y*l_nVal/100,x_trOffset.z*l_nVal/100,x_trOffset.rx*l_nVal/100,x_trOffset.ry*l_nVal/100,x_trOffset.rz*l_nVal/100}
+        l_pTarget=appro(x_pStart,l_trStepOffset)
+        l_bOk=pointToJoint(utCurrentTool.tValue,herej(),l_pTarget,l_jTarget)
+        if l_bOk==true
+          l_nStep=3
+        else
+          l_nStep=99
+        endIf
+      break
+      //
+      case 3
+        if l_jNearBy.j4-l_jStart.j4>=0 and l_jTarget.j4-l_jStart.j4<0
+          l_jTarget.j4=l_jTarget.j4+360
+        endIf
+        if l_jNearBy.j4-l_jStart.j4<0 and l_jTarget.j4-l_jStart.j4>=0
+          l_jTarget.j4=l_jTarget.j4-360
+        endIf
+        l_nStep=4
+      break
+      //
+      case 4
+        if isInRange(l_jTarget)==true
+          l_nStep=5
+        else
+          l_nStep=99
+        endIf
+      break
+      //
+      case 5
+        if l_nVal<100
+          l_nVal=l_nVal+1
+          l_nStep=2          
+        else
+          l_nStep=100
+        endIf
+      break
+      //******************************************************************   
+      case 99
+        call updateStr(121,l_sPopMsg,"The maximum rotation angle is only:")
+        l_nVal=l_nVal-1
+        l_sPopMsg=l_sPopMsg+toString(".",roundDown(l_nVal))+"°"
+        popUpMsg(l_sPopMsg)
+        //
+        x_bTrajOK=false
+        l_bOut=true
+      break
+      case 100
+        x_bTrajOK=true
+        l_bOut=true
+      break
+    endSwitch
+  until l_bOut
+end]]></Code>
+  </Program>
+</Programs>

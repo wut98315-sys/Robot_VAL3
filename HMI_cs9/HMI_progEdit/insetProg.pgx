@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insetProg" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nProgIndex" type="num" xsi:type="element" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bRefresh" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nProgIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_num" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="insertPROG"
+      util:sPage="insertPROG"
+      call _onStartPROG(util:sPage)
+      call _bindPROG(util:sPage)
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    
+    //btn
+    if bSelProg
+      bSelProg=false
+      nSelType=1
+      l_bRefresh=true
+      nPgIndexPROG=0
+    elseIf bSelTraj
+      bSelTraj=false
+      nSelType=2
+      l_bRefresh=true
+      nPgIndexPROG=0
+    endIf
+   
+    //refresh
+    if l_bRefresh
+      l_bRefresh=false
+      call _btnColor(nSelType,util:sPage)
+      switch nSelType
+        case 1
+          call resfreshPROG(util:sPage)
+        break
+        case 2
+          nPgIndexTRAJ=0
+          call resfreshTRAJ(util:sPage)
+        break
+      endSwitch
+    endIf
+    //insert btn
+    if bInsert
+      bInsert=false
+     
+    elseIf bInsert[1]
+      bInsert[1]=false
+      if nSelType==1
+        call prog:insertPROG(sSelProg,x_nProgIndex,sInsertItem,x_bToSave)
+      elseIf nSelType==2
+        call prog:insertTRAJ(sSelProg,x_nProgIndex,sInsertItem,x_bToSave)
+      endIf
+      l_bExit=true
+    elseIf bInsert[2]
+      bInsert[2]=false
+      l_bExit=true
+    elseIf bInsert[3]
+      bInsert[3]=false
+      nPgIndexPROG=0
+      l_bRefresh=true
+    elseIf bInsert[4]
+      bInsert[4]=false
+      if nPgIndexPROG>0
+        nPgIndexPROG=nPgIndexPROG-1
+      endIf
+      l_bRefresh=true
+    elseIf bInsert[5]
+      bInsert[5]=false
+      if nPgIndexPROG<nPgNumPROG-1
+        nPgIndexPROG=nPgIndexPROG+1
+      endIf
+      l_bRefresh=true
+    elseIf bInsert[6]
+      bInsert[6]=false
+      nPgIndexPROG=nPgNumPROG-1
+      l_bRefresh=true
+    endIf
+    
+   
+    delay(0)
+  until l_bExit==true
+ 
+end]]></Code>
+  </Program>
+</Programs>

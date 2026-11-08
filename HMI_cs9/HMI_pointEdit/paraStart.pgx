@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="paraStart">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nPoint" type="num" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  
+  //  call trajectory:getPointPara(sTrajItem,x_nPoint,nMoveType,nParaSpeed,nParaAccel,nParaBlend,nParaPercent,sComment,bSafePoint,sBlendType,nTRSF,sTRSF)
+  //  switch nMoveType
+  //    case 0
+  //      sParaType="POINT"
+  //    break
+  //    case 1
+  //      sParaType="JOINT"
+  //    break
+  //  endSwitch
+  
+  call trajectory:getPointPara(sTrajItem,x_nPoint,nMoveType,nParaSpeed,nParaAccel,nParaBlend,nParaPercent,sComment,bSafePoint,sBlendType,nTRSF,sTRSF)
+  switch nMoveType
+    case 1
+      bShow2Point=false
+      resize(sParaPointType,1,2)
+      sParaPointType[0]="POINT"
+      sParaPointType[1]="JOINT"
+      sParaType="POINT"
+    break
+    case 0
+      bShow2Point=false
+      resize(sParaPointType,1,2)
+      sParaPointType[0]="POINT"
+      sParaPointType[1]="JOINT"
+      sParaType="JOINT"
+    break
+    case 2
+      bShow2Point=true
+      resize(sParaPointType,1,1)
+      sParaPointType[0]="CIRCLE"
+      sParaType="CIRCLE"
+    break
+  endSwitch
+end]]></Code>
+  </Program>
+</Programs>

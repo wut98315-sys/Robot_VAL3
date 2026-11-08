@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="IO"
+      util:sPage="IO"
+      call util:loadingPage()
+      call bind()
+      call init()
+      userPage(util:sPage)
+      delay(0.5)
+      bRefresh=true
+    endIf
+    //btn click
+    if bBool[1]
+      bBool[1]=false
+      nSelType=0
+      bRefresh=true
+      call SetbtnColor(nSelType)
+      //din
+    elseIf bBool[2]
+      bBool[2]=false
+      nSelType=1
+      bRefresh=true
+      call SetbtnColor(nSelType)
+      //dout
+    elseIf bBool[3]
+      bBool[3]=false
+      nSelType=2
+      bRefresh=true
+      call SetbtnColor(nSelType)
+      //ain
+    elseIf bBool[4]
+      bBool[4]=false
+      nSelType=3
+      bRefresh=true
+      call SetbtnColor(nSelType)
+      //dout
+    elseIf bBool[5]
+      bBool[5]=false
+      //change bus
+      l_bResult=userPageConfirm("是否切换到总线协议："+sUsingBus)
+      if l_bResult     
+        call io:linkIO(sUsingBus)
+        rs:sBusUsing=sUsingBus
+        rs:libSave()
+        delay(0.1)
+        userPageAlert("通讯协议已切换到"+rs:sBusUsing+"重启app生效")
+      endIf
+    elseIf bBool[6]
+      bBool[6]=false
+      //head page    
+      nPageIndex=0
+      bRefresh=true    
+    elseIf bBool[7]
+      bBool[7]=false
+      //backward 
+      if nPageIndex>0
+        nPageIndex=nPageIndex-1
+      else
+        nPageIndex=0
+      endIf
+      bRefresh=true
+    elseIf bBool[8]
+      bBool[8]=false
+      //forward
+      if nPageIndex<nPage-1
+        nPageIndex=nPageIndex+1   
+      else
+        nPageIndex=nPage-1
+      endIf
+      bRefresh=true
+    elseIf bBool[9]
+      bBool[9]=false
+      //end page
+      nPageIndex=nPage-1
+      bRefresh=true
+    elseIf bBool[10]
+      bBool[10]=false
+      call setCount()
+    elseIf bBack==true
+      bBack=false
+      l_bExit=true
+    endIf
+    call comment(bRefresh)
+    //refresh
+    if bRefresh
+      bRefresh=false            
+      call setPage(nSelType)
+      call setLabelValue(nSelType) 
+      call setIOvisible(nSelType)
+      delay(0)
+    endIf
+    if clock()-_nClock>0.1
+      call setIOStatus(nSelType)
+      _nClock=clock()
+    endIf
+    delay(0.1)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

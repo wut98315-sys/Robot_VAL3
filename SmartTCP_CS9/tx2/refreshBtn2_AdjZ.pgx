@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="refreshBtn2_AdjZ" access="public">
+    <Code><![CDATA[begin
+  if db:utBtn_Step[2].Events.bClick==true
+    db:utCtn_Function.Common.sSource="Page_Container_Teach.html"    
+    //**********************************************************************************************************************************
+    //2点法修正TCP的Z    
+    switch db:nStep2
+      case 10
+        call db:updateStr(31,db:utLbl_Point.Common.sText,"Point：P1")
+        call db:updateStr(41,db:utLbl_Step.Common.sText,"Step：1/2")
+        //
+        db:utImg_Example.Common.sSourceImage="images/6AxisAdjustZ2_1.png"
+        //
+        call db:updateTeachPos(db:pAdjustZ_2_1,db:bAdjustZ_2_1)
+        //
+        call db:updateBtn(84,"Align,Here,Move,Change,Null,Null,Prev.,Next")
+        //
+        call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+        call db:updateInfo(102,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Touch to reference pointer in vertical attitude")
+        call db:updateInfo(118,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Ensure that the TCP(RX) or TCP(RY) can be rotated +60°")
+        call db:updateInfo(105,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","Press Here button to save the position")
+        call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+        //
+        call db:updateTool(2,false)
+        db:nStep2=11
+      break
+      //   
+      case 11
+        if db:utBtn_Bottom[0].Events.bClick==true
+          db:utBtn_Bottom[0].Events.bClick=false
+          //Press F1
+          call moveCalPos("Align")
+        endIf
+        if db:utBtn_Bottom[1].Events.bClick==true
+          db:utBtn_Bottom[1].Events.bClick=false
+          //Press F2
+          db:bAdjustZ_2_1=true              
+          db:pAdjustZ_2_1=here(db:utCurrentTool.tValue,world)
+          db:jAdjustZ_2_1=herej()
+          call db:updateTeachPos(db:pAdjustZ_2_1,db:bAdjustZ_2_1)
+          call db:hmiAlert("First","info")
+          call saveCall()
+        endIf
+        if db:utBtn_Bottom[2].Events.bClick==true
+          db:utBtn_Bottom[2].Events.bClick=false
+          //Press F3
+          call moveRecPos("pAdjustZ_2_1")
+        endIf
+        if db:utBtn_Bottom[3].Events.bClick==true
+          db:utBtn_Bottom[3].Events.bClick=false
+          //Press F4
+          switch db:utCurrentTool.nItem
+            case 2
+              if db:tTool3.trsf!={0,0,0,0,0,0}
+                call db:updateTool(3,false)
+              else
+                call db:hmiAlert("CantSwitchTool3","warning")
+              endIf
+            break
+            case 3
+              call db:updateTool(2,false)
+            break
+          endSwitch
+        endIf
+        //
+        if db:utBtn_Bottom[6].Events.bClick==true
+          db:utBtn_Bottom[6].Events.bClick=false
+          //Press F7
+          resetMotion()
+          db:utCtn_Message.Appearance.bVisibility=false
+          db:nStep2=99
+        endIf
+        if db:utBtn_Bottom[7].Events.bClick==true
+          db:utBtn_Bottom[7].Events.bClick=false
+          //Press F8
+          resetMotion()
+          db:utCtn_Message.Appearance.bVisibility=false
+          db:nStep2=20
+        endIf
+      break
+      //
+      case 20
+        call db:updateStr(32,db:utLbl_Point.Common.sText,"Point：P2")
+        call db:updateStr(42,db:utLbl_Step.Common.sText,"Step：2/2")
+        //
+        db:utImg_Example.Common.sSourceImage="images/6AxisAdjustZ2_2.png"
+        //
+        call db:updateTeachPos(db:pAdjustZ_2_2,db:bAdjustZ_2_2)
+        //
+        call db:updateBtn(88,"Reset,Here,Move,RX+,RY+,Calc.,Prev.,Done")
+        //
+        call db:updateInfo(101,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","Operation reminder：")
+        call db:updateInfo(119,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","Press the RX+(RY+) & Move/Hold to rotate TCP 60°")
+        call db:updateInfo(120,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"2","Touch to reference pointer in current attitude")
+        call db:updateInfo(105,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","Press Here button to save the position")
+        call db:updateInfo(104,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","Press Calc. button to get the TCP value")   
+        db:nStep2=21
+      break
+      //
+      case 21
+        if db:utBtn_Bottom[0].Events.bClick==true
+          db:utBtn_Bottom[0].Events.bClick=false
+          //Press F1
+          call moveCalPos("GoBack_pAdjustZ_2_1")
+        endIf
+        if db:utBtn_Bottom[1].Events.bClick==true
+          db:utBtn_Bottom[1].Events.bClick=false
+          //Press F2
+          db:bAdjustZ_2_2=true
+          db:pAdjustZ_2_2=here(db:utCurrentTool.tValue,world)
+          db:jAdjustZ_2_2=herej()
+          call db:updateTeachPos(db:pAdjustZ_2_2,db:bAdjustZ_2_2)
+          call db:hmiAlert("Second","info")
+          call saveCall()
+        endIf
+        if db:utBtn_Bottom[2].Events.bClick==true
+          db:utBtn_Bottom[2].Events.bClick=false
+          //Press F3
+          call moveRecPos("pAdjustZ_2_2")
+        endIf
+        if db:utBtn_Bottom[3].Events.bClick==true
+          db:utBtn_Bottom[3].Events.bClick=false
+          //Press F4
+          call moveCalPos("Rx+60_pAdjustZ_2_1")
+        endIf
+        if db:utBtn_Bottom[4].Events.bClick==true
+          db:utBtn_Bottom[4].Events.bClick=false
+          //Press F5
+          call moveCalPos("Ry+60_pAdjustZ_2_1")
+        endIf
+        if db:utBtn_Bottom[5].Events.bClick==true
+          db:utBtn_Bottom[5].Events.bClick=false
+          //Press F6              
+          call algorithm:CalAdjustZ()
+        endIf
+        if db:utBtn_Bottom[6].Events.bClick==true
+          db:utBtn_Bottom[6].Events.bClick=false
+          //Press F7
+          resetMotion()
+          db:utCtn_Message.Appearance.bVisibility=false
+          db:nStep2=10
+        endIf
+        if db:utBtn_Bottom[7].Events.bClick==true
+          db:utBtn_Bottom[7].Events.bClick=false
+          //Press F8
+          resetMotion()
+          db:utCtn_Message.Appearance.bVisibility=false
+          db:nStep2=99
+        endIf
+      break
+      //
+      case 99
+        db:utCtn_Function.Common.sSource="Page_Container_Main.html"
+        //
+        call db:updateBtn(83,"Null,Null,Null,Null,Null,Null,Null,Quit")
+        //
+        call db:updateInfo(99,db:utLbl_Info0.Data.nVal,db:utLbl_Info0.Common.sText,"0","")
+        call db:updateInfo(99,db:utLbl_Info1.Data.nVal,db:utLbl_Info1.Common.sText,"1","")
+        call db:updateInfo(100,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"0","TCP calibration application for TX2/TS2 robot")
+        call db:updateInfo(99,db:utLbl_Info3.Data.nVal,db:utLbl_Info3.Common.sText,"3","")
+        call db:updateInfo(99,db:utLbl_Info4.Data.nVal,db:utLbl_Info4.Common.sText,"4","")
+        db:utBtn_Step[2].Events.bClick=false
+        db:nStep2=10
+      break
+      //
+    endSwitch
+    //**********************************************************************************************************************************
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

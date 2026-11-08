@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertSwitch">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_nValue" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="insertSwitch"
+      util:sPage="insertSwitch"
+      if size(sIOList)!=(size(io:aInItem)+1)
+        resize(sIOList,1,size(io:aInItem)+1)
+      endIf
+      
+      for l_i = 1 to size(sIOList)-1
+        sIOList[l_i-1]=toString("",l_i-1)+","+io:aInItem[l_i-1].sComment
+      endFor
+    
+      sIOList[0]=""
+      userPageBind("insertSwitch","cbx1","options",sIOList,size(sIOList),"r")
+      userPageBind("insertSwitch","cbx1","value",sSwitchValue,1,"rw")
+      userPageBindClick("insertSwitch","btn1",bSwitchOK,true)
+      userPageBindClick("insertSwitch","btn2",bSwitchCancel,true)
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    //cbx
+
+    //button
+    if bSwitchOK
+      bSwitchOK=false
+      call prog:getProgItemIndex(sSelProg,sLstValue,l_nIndex)
+      if sSwitchValue!=""
+        call prog:insertSwitch(sSelProg,l_nIndex,sSwitchValue,bToSave)
+      else
+        userPageAlert("请选择正确的switch值")
+      endIf
+      l_bExit=true
+    elseIf bSwitchCancel
+      bSwitchCancel=false
+      l_bExit=true
+    endIf
+    
+    
+    
+    
+  until l_bExit==true
+  l_bExit=false
+end]]></Code>
+  </Program>
+</Programs>

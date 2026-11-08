@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="refreshlist" access="public">
+    <Locals>
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSize1" type="num" xsi:type="array" size="1" />
+      <Local name="l_sMsg" type="string" xsi:type="array" size="1" />
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //bulid list
+  call prog:getProgItemSize(sSelProg,l_nSize)
+  resize(sList,1,l_nSize)
+  //npage
+  if l_nSize<50
+    nPageNum=1
+  else
+    nPageNum=roundUp(l_nSize/49)
+  endIf
+  //pageindex
+  if nPageIndex>nPageNum-1
+    nPageIndex=nPageNum-1
+  endIf
+  //
+  if nPageIndex==(nPageNum-1)
+    l_nSize1=l_nSize%49
+    if l_nSize1==0
+      resize(sList,1,49)
+      for l_i = 0 to size(sList)-1
+        call prog:pointToString(l_sMsg,sSelProg,l_i)
+        sList[l_i]=toString("",l_i)+l_sMsg
+      endFor
+    else
+      resize(sList,1,l_nSize1)
+      for l_i = 0 to l_nSize1-1
+        l_nIndex=nPageIndex*49+l_i
+        call prog:pointToString(l_sMsg,sSelProg,l_nIndex)
+        sList[l_i]=toString("",l_nIndex)+l_sMsg
+      endFor
+    endIf
+  else
+    resize(sList,1,49)
+    for l_i = 0 to size(sList)-1
+      call prog:pointToString(l_sMsg,sSelProg,l_i)
+      sList[l_i]=toString("",l_i)+l_sMsg
+    endFor
+  endIf
+  userPageBind("editProg","lst1","options",sList,size(sList),"r")
+  sPageIndex=toString("",nPageIndex+1)
+  sPageNum=toString("",nPageNum)
+end]]></Code>
+  </Program>
+</Programs>

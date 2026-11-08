@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="refreshlist" access="public">
+    <Locals>
+      <Local name="l_skey" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  call program:getProgList(sProgLsit)
+  l_nSize=size(sProgLsit)
+  
+  if l_nSize<=49
+    nPageNum=1
+  else
+    nPageNum=roundUp(l_nSize/49)
+  endIf
+  
+  if nPageNum==1
+    for l_i = 0 to size(sList)-1
+      sList[l_i]=""
+    endFor
+    for l_i = 0 to l_nSize-1
+      sList[l_i]=sProgLsit[l_i]
+    endFor
+  else
+    if nPageIndex<nPageNum-1
+      for l_i = 0 to 48
+        sList[l_i]=sProgLsit[49*nPageIndex+l_i]
+      endFor
+    else
+      for l_i = 0 to size(sList)-1
+        sList[l_i]=""
+      endFor
+      for l_i = 0 to(l_nSize%49)-1
+        sList[l_i]=sProgLsit[49*nPageIndex+l_i]
+      endFor
+    endIf
+  endIf
+  userPageBind("prog","lst1","options",sList,size(sList),"r")
+  sPageIndex=toString("",nPageIndex+1)
+  sPageNum=toString("",nPageNum)
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="robotStatus" access="public" >
+    <Code><![CDATA[begin
+  //检测状态显示变化
+  if _sRobotStatus!=sLstRobStatus
+    sLstRobStatus=_sRobotStatus
+    call Log:addlog(toString(".3",clock())+" "+"[状态信息]:"+_sRobotStatus+getDate(" %m-%d %H:%M:%S"),1)
+  endIf
+
+  if sTrajStatus!=sLstTrajStatus
+    sLstTrajStatus=sTrajStatus
+    call Log:addlog(toString(".3",clock())+" "+"[路径信息]:"+sTrajStatus+getDate(" %m-%d %H:%M:%S"),2)
+  endIf
+
+  if sIOStatus!=sLstIOStatus
+    sLstIOStatus=sIOStatus
+    call Log:addlog(toString(".3",clock())+" "+"[信号信息]:"+sIOStatus+getDate(" %m-%d %H:%M:%S"),3)
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

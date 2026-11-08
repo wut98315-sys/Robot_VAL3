@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="makeTraj" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sType" type="string" xsi:type="array" size="1" />
+      <Local name="l_sTrajName" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nType" type="num" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //  if nLastIndex!=saveData:nLibIndex
+  //    nLastIndex=saveData:nLibIndex
+  //    call loadPROG(saveData:nLibIndex,l_nResult)
+  //    call trajectory:loadTRAJ(saveData:nLibIndex,l_nResult)
+  //    delay(1)
+  //  endIf
+  call ar:resetReturnStack(false)
+  if isDefined(progTemp:pProgItem[x_sKey])
+    // rs:bProgGOTO=false
+    for l_i = 0 to size(progTemp:pProgItem[x_sKey].pProgTemplate)-1
+      l_nType=progTemp:pProgItem[x_sKey].pProgTemplate[l_i].nType
+      l_sTrajName=progTemp:pProgItem[x_sKey].pProgTemplate[l_i].sTRAJname
+      if !rs:bProgGOTO
+        switch l_nType
+          case 0
+            call trajectory:makeTraj(l_sTrajName)
+          break
+          case 1
+            toNum(l_sTrajName,l_nIndex,l_bResult)
+            call action:action_do(l_nIndex)
+          break
+          case 2
+            call makeTraj(l_sTrajName)
+          break
+          case 3
+            waitEndMove()
+            call do_if(x_sKey,l_i,l_bResult)
+            rs:bProgGOTO=(l_bResult==false)
+          break
+          case 4
+            waitEndMove()
+            rs:bProgGOTO=false
+          break
+          case 5
+            call do_switch(x_sKey,l_i)
+          break
+          case 6
+            call do_CASE(x_sKey,l_i)
+          break
+          case 7
+            call do_endSwitch()
+          break
+          case 8
+            call do_for(x_sKey,l_i)
+          break
+          
+        endSwitch
+      else
+        if l_nType==4
+          rs:bProgGOTO=false
+        endIf
+      endIf
+      delay(0)
+    endFor
+  else
+    bError=true
+    popUpMsg("program:"+x_sKey+" 未定义")
+  endIf
+  waitEndMove()
+end]]></Code>
+  </Program>
+</Programs>

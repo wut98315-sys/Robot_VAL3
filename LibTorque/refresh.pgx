@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="refresh" access="public">
+    <Code><![CDATA[begin
+  //功能：设置扭矩限值界面实时刷新调用
+  if bLock==true
+    sBtnUnLock="解锁"
+  else
+    sBtnUnLock="保存"
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

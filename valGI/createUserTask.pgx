@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="createUserTask" access="private" >
+    <Code><![CDATA[begin
+  //作用：调用自定义的任务
+  //1.创建动作Action任务
+  call act:create()
+  //2.创建视觉任务
+end]]></Code>
+  </Program>
+</Programs>

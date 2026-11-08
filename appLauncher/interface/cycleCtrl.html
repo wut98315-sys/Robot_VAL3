@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "-//W3C//DTD VALHTML Strict//EN">
+  <html xmlns="http://www.staubli.com/robotics/2016/03/valhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"></meta>
+      <meta http-equiv="Pragma" content="no-cache"></meta>
+      <meta http-equiv="Expires" content="0"></meta>
+      <script type="text/javascript" src="/vendor/libs/stblUserPage.min.js"></script>
+      <link href="/vendor/libs/up.min.v2.css" rel="stylesheet" media="all" type="text/css"></link>
+      <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.css"></link>
+      <link rel="stylesheet" href="../web-fonts-with-css/css/font-awesome.css"></link>
+      <link rel="stylesheet" href="../CSS/USR.css"></link>
+      <meta name="src-version" content="8.8.3"></meta>
+    </head>
+    <body style="width: 480px; height: 690px; margin: 0;overflow-x: hidden;overflow-y: hidden;">
+      <button style="border-style: solid; border-color: #DFDFDF; height: 30px; background-color: #FF000E; font-weight: bold; font-size: 18px; width: 60px; left: 334px; position: absolute; top: 496px" id="bt_stop" class="">Stop</button>
+      <button style="border-style: solid; font-weight: bold; border-color: #E5E5E5; color: #000000; height: 30px; background-color: #0AF10A; font-size: 18px; width: 60px; left: 212px; position: absolute; top: 496px" id="bt_start" class="">Start</button>
+      <button style="border-style: solid; border-color: #000000; font-weight: bold; background-color: #FFFF00; font-size: 18px; height: 30px; visibility: visible; width: 60px; left: 92px; position: absolute; top: 496px" id="bt_reset" class="">Reset</button>
+      <label style="background-color: #E7E7E7; left: 19px; width: 435px; height: 20px; position: absolute; top: 255px" id="lb_CycleStatus">Cycle状态</label>
+      <label style="background-color: #FFFFFF; left: 19px; width: 435px; height: 20px; position: absolute; top: 275px" id="lb_RobotStatus">机器人状态</label>
+      <label style="width: 70px; height: 20px; left: 30px; position: absolute; top: 390px" id="lbCurrentCapacity">当前产能</label>
+      <label style="width: 70px; height: 20px; left: 30px; position: absolute; top: 410px" id="lbAverageCapacity">平均产能</label>
+      <label style="width: 70px; height: 20px; left: 30px; position: absolute; top: 430px" id="lbBestCapacity">最佳产能</label>
+      <button style="border-style: solid; font-weight: bold; border-color: #E5E5E5; color: #000000; height: 30px; background-color: ; font-size: 18px; width: 60px; left: 154px; position: absolute; top: 496px" id="bt_pause" class="">Pause</button>
+      <button style="border-style: solid; font-weight: bold; border-color: #E5E5E5; color: #000000; height: 30px; background-color: #FF000E; font-size: 18px; width: 60px; left: 274px; position: absolute; top: 496px" id="bt_end" class="">End</button>
+      <label style="background-color: ; border-color: ; font-weight: bold; font-size: 16px; top: 226px; position: absolute; left: 20px; width: 92px; height: 24px" id="lbl2_Copy6">机器人状态</label>
+      <hr id="hl1" style="left: 7px; width: 463px; height: 2px; position: absolute; top: 457px"></hr>
+      <hr style="width: 463px; left: 7px; height: 2px; position: absolute; top: 217px" id="hl1_Copy2"></hr>
+      <hr style="width: 463px; left: 0px; height: 2px; position: absolute; top: 354px" id="hl1_Copy3"></hr>
+      <label style="background-color: ; border-color: ; font-weight: bold; font-size: 16px; width: 72px; height: 24px; top: 365px; position: absolute; left: 30px" id="lbl2_Copy7">产能信息</label>
+      <label style="background-color: ; border-color: ; font-weight: bold; font-size: 16px; width: 92px; height: 24px; top: 464px; position: absolute; left: 20px" id="lbl2_Copy8">机器人控制</label>
+      <hr style="width: 463px; height: 2px; left: 7px; position: absolute; top: 107px" id="hl1_Copy4"></hr>
+      <label style="background-color: ; border-color: ; font-weight: bold; font-size: 16px; top: 116px; position: absolute; left: 22px; width: 88px; height: 24px" id="lbl2_Copy9">报警代码</label>
+      <label id="lbl1" style="font-size: 26px; width: 176px; height: 37px; left: 150px; position: absolute; top: 41px">生产控制页面</label>
+      <label style="left: 110px; width: 86px; height: 22px; position: absolute; top: 388px" id="lbl2">Label</label>
+      <label style="left: 110px; width: 86px; height: 22px; position: absolute; top: 408px" id="lbl2_Copy1">Label</label>
+      <label style="left: 110px; width: 86px; height: 22px; position: absolute; top: 428px" id="lbl2_Copy2">Label</label>
+      <button id="btn1" style="width: 67px; height: 26px; left: 387px; position: absolute; top: 175px">报警确认</button>
+      <input style="top: 138px; width: 323px; height: 21px; position: absolute; left: 46px" value="" id="txt1"></input>
+      <input style="background-color: #E6E6E6; top: 158px; width: 323px; height: 21px; position: absolute; left: 46px" value="" id="txt2"></input>
+      <input style="top: 178px; width: 323px; height: 21px; position: absolute; left: 46px" value="" id="txt1_Copy2"></input>
+      <label style="background-color: #FFFFFF; left: 19px; width: 435px; height: 20px; position: absolute; top: 315px" id="lb_RobotJoint">关节位置</label>
+      <label style="background-color: #FFFFFF; left: 19px; width: 435px; height: 20px; position: absolute; top: 295px" id="lb_RobotPosition">坐标位置</label>
+      <label style="background-color: ; border-color: ; font-weight: bold; font-size: 16px; width: 86px; height: 24px; left: 230px; position: absolute; top: 365px" id="lbl2_Copy10">机器人信息</label>
+      <label style="width: 202px; height: 20px; left: 230px; position: absolute; top: 390px" id="lbProfile">Profile</label>
+      <label style="width: 200px; height: 20px; left: 232px; position: absolute; top: 408px" id="lbSN">SN</label>
+      <button id="btn2" style="width: 80px; height: 40px; top: 642px; position: absolute; left: 156px">IO页面</button>
+      <button style="width: 80px; height: 40px; top: 642px; position: absolute; left: 236px" id="btn2_Copy1">控制页面</button>
+      <label style="width: 200px; height: 20px; left: 232px; position: absolute; top: 428px" id="lbArmType">Arm</label>
+      <hr style="width: 463px; height: 2px; left: 7px; position: absolute; top: 547px" id="hl1_Copy1"></hr>
+      <label style="background-color: ; border-color: ; font-weight: bold; font-size: 16px; width: 92px; height: 24px; top: 557px; position: absolute; left: 20px" id="lbl2_Copy11">页面切换</label>
+    </body>
+  </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html SYSTEM "-//W3C//DTD VALHTML Strict//EN">
+  <html xmlns="http://www.staubli.com/robotics/2016/03/valhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"></meta>
+      <meta http-equiv="Pragma" content="no-cache"></meta>
+      <meta http-equiv="Expires" content="0"></meta>
+      <script type="text/javascript" src="/vendor/libs/stblUserPage.min.js"></script>
+      <link href="/vendor/libs/up.min.v2.css" rel="stylesheet" media="all" type="text/css"></link>
+      <link rel="stylesheet" href="../../userType/CSS/USR.css"></link>
+      <meta name="src-version" content="8.10"></meta>
+    </head>
+    <body style="width: 480px; height: 690px; margin: 0; background-color: #F3F4F4">
+      <label style="font-size: 22px; text-align: center; border-style: solid; height: 40px; width: 480px; left: 0px; border-width: 0px 0px 0px 0px; padding: 5px 0px 0px 0px; position: absolute; top: 0px" id="lbl_Title">St&#228;ubli Tool Calibration - SmartTCP</label>
+      <label style="border-style: solid; position: absolute; width: 220px; left: 10px; text-align: left; border-width: 1px 1px 1px 1px; height: 30px; top: 46px; padding: 5px 0px 0px 5px" id="lbl_Language">Language：</label>
+      <label style="border-style: solid; position: absolute; border-width: 1px 1px 1px 1px; width: 220px; text-align: left; left: 245px; padding: 5px 0px 0px 5px; height: 30px; top: 46px" id="lbl_Axis">ArmType：</label>
+      <label style="border-style: solid; position: absolute; text-align: left; left: 10px; width: 220px; border-width: 1px 1px 1px 1px; top: 81px; height: 30px; padding: 5px 0px 0px 5px" id="lbl_Mounting">Mounting：</label>
+      <label style="border-style: solid; position: absolute; border-width: 1px 1px 1px 1px; text-align: left; width: 220px; left: 245px; padding: 5px 0px 0px 5px; height: 30px; top: 81px" id="lbl_Tool">Tool：</label>
+      <label style="border-style: solid; text-align: center; width: 100px; border-width: 0px 0px 0px 0px; padding: 5px 0px 0px 0px; position: absolute; left: 335px; top: 48px; height: 25px" id="lbl_Axis_Data"></label>
+      <label style="border-style: solid; border-width: 0px 0px 0px 0px; width: 100px; text-align: center; padding: 5px 0px 0px 0px; position: absolute; left: 335px; top: 83px; height: 25px" id="lbl_Tool_Data"></label>
+      <button style="text-align: center; padding: 1px 1px 1px 1px; border-width: 1px 1px 1px 1px; height: 30px; width: 50px; top: 650px; position: absolute; left: 420px" id="bottom_btn7">Quit</button>
+      <button style="text-align: center; padding: 1px 1px 1px 1px; border-width: 1px 1px 1px 1px; height: 30px; width: 50px; position: absolute; top: 650px; left: 361px" id="bottom_btn6"></button>
+      <button style="text-align: center; padding: 1px 1px 1px 1px; border-width: 1px 1px 1px 1px; height: 30px; width: 50px; position: absolute; top: 650px; left: 303px" id="bottom_btn5"></button>
+      <button style="text-align: center; padding: 1px 1px 1px 1px; height: 30px; width: 50px; position: absolute; border-width: 1px 1px 1px 1px; top: 650px; left: 244px" id="bottom_btn4"></button>
+      <button style="text-align: center; padding: 1px 1px 1px 1px; border-width: 1px 1px 1px 1px; height: 30px; width: 50px; position: absolute; top: 650px; left: 186px" id="bottom_btn3"></button>
+      <button style="text-align: center; padding: 1px 1px 1px 1px; height: 30px; width: 50px; position: absolute; border-width: 1px 1px 1px 1px; top: 650px; left: 127px" id="bottom_btn2"></button>
+      <button style="text-align: center; padding: 1px 1px 1px 1px; font-size: 15px; height: 30px; width: 50px; position: absolute; border-width: 1px 1px 1px 1px; top: 650px; left: 69px" id="bottom_btn1"></button>
+      <label style="border-style: solid; width: 460px; text-align: left; margin: 0px 0px 0px 0px; left: 10px; padding: 0px 0px 0px 10px; height: 18px; border-width: 1px 1px 0px 1px; position: absolute; top: 541px" id="lbl_info0"></label>
+      <button style="text-align: center; font-size: 15px; padding: 1px 1px 1px 1px; border-width: 1px 1px 1px 1px; width: 50px; height: 30px; top: 650px; position: absolute; left: 11px" id="bottom_btn0"></button>
+      <hr style="width: 480px; left: 0px; height: 1px; border-width: 1px 0px 0px 1px; position: absolute; top: 40px" id="hl_1"></hr>
+      <hr style="width: 480px; left: 0px; height: 1px; border-width: 1px 0px 0px 1px; position: absolute; top: 117px" id="hl_2"></hr>
+      <hr style="width: 480px; left: 0px; height: 1px; border-width: 1px 0px 0px 1px; position: absolute; top: 184px" id="hl_3"></hr>
+      <hr style="width: 480px; left: 0px; height: 1px; border-width: 1px 0px 0px 1px; position: absolute; top: 530px" id="hl_4"></hr>
+      <hr style="width: 480px; left: 0px; height: 1px; border-width: 1px 0px 0px 1px; position: absolute; top: 640px" id="hl_5"></hr>
+      <iframe style="border-style: solid; border-color: #FFFFFF; left: 0px; position: absolute; width: 420px; height: 344px; top: 185px" src="Page_Container_Main.html" id="ctn_Function"></iframe>
+      <select size="1" style="position: absolute; width: 100px; left: 105px; height: 25px; top: 48px" id="cbx_Language_D"></select>
+      <select size="1" style="width: 100px; position: absolute; left: 105px; top: 83px; height: 25px" id="cbx_Mounting_D"></select>
+      <label style="border-style: solid; width: 460px; text-align: left; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 10px; height: 18px; left: 10px; position: absolute; top: 558px; border-width: 0px 1px 0px 1px" id="lbl_info1"></label>
+      <label style="border-style: solid; width: 460px; text-align: left; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 10px; height: 18px; left: 10px; position: absolute; top: 576px; border-width: 0px 1px 0px 1px" id="lbl_info2"></label>
+      <label style="border-style: solid; width: 460px; text-align: left; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 10px; height: 18px; left: 10px; position: absolute; top: 594px; border-width: 0px 1px 0px 1px" id="lbl_info3"></label>
+      <label style="border-style: solid; width: 460px; text-align: left; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 10px; height: 18px; position: absolute; left: 10px; top: 612px; border-width: 0px 1px 1px 1px" id="lbl_info4"></label>
+      <hr id="vl1" style="width: 1px; border-width: 0px 1px 1px 0px; height: 346px; position: absolute; left: 420px; top: 184px"></hr>
+      <img style="border-style: none; position: absolute; top: 220px; height: 60px; width: 60; padding: 10px 10px 10px 10px; left: 420px" src="images/none.svg" id="img_None"></img>
+      <img style="position: absolute; top: 298px; height: 60px; width: 60; padding: 10px 10px 10px 10px; left: 420px" src="images/joint.svg" id="img_Joint"></img>
+      <img style="border-style: none; position: absolute; top: 376px; height: 60px; width: 60; padding: 10px 10px 10px 10px; left: 420px" id="img_Frame" src="images/frame.svg"></img>
+      <img style="position: absolute; top: 454px; height: 60px; width: 60; padding: 10px 10px 10px 10px; left: 420px" src="images/tool.svg" id="img_Tool"></img>
+      <label style="text-align: center; border-style: solid; border-width: 1px 0px 1px 1px; height: 25px; width: 45px; padding: 2px 0px 0px 5px; position: absolute; left: 10px; top: 123px" id="lbl_CurrentPos_Name0">J1：</label>
+      <label style="border-style: solid; border-width: 1px 1px 1px 0px; text-align: center; height: 25px; padding: 2px 0px 0px 0px; width: 80px; position: absolute; left: 55px; top: 123px" id="lbl_CurrentPos_Data0">1002.123</label>
+      <label style="text-align: center; border-style: solid; border-width: 1px 0px 1px 1px; height: 25px; padding: 2px 0px 0px 5px; width: 45px; position: absolute; left: 10px; top: 153px" id="lbl_CurrentPos_Name3">J4：</label>
+      <label style="border-style: solid; border-width: 1px 1px 1px 0px; text-align: center; height: 25px; padding: 2px 0px 0px 0px; width: 80px; position: absolute; left: 55px; top: 153px" id="lbl_CurrentPos_Data3">1002.123</label>
+      <label style="text-align: center; border-style: solid; border-width: 1px 0px 1px 1px; height: 25px; padding: 2px 0px 0px 5px; width: 45px; position: absolute; left: 145px; top: 153px" id="lbl_CurrentPos_Name4">J5：</label>
+      <label style="text-align: center; border-style: solid; border-width: 1px 0px 1px 1px; height: 25px; padding: 2px 0px 0px 5px; width: 45px; position: absolute; left: 145px; top: 123px" id="lbl_CurrentPos_Name1">J2：</label>
+      <label style="border-style: solid; border-width: 1px 1px 1px 0px; text-align: center; height: 25px; padding: 2px 0px 0px 0px; width: 80px; position: absolute; left: 190px; top: 123px" id="lbl_CurrentPos_Data1">1002.123</label>
+      <label style="border-style: solid; border-width: 1px 1px 1px 0px; text-align: center; height: 25px; padding: 2px 0px 0px 0px; width: 80px; position: absolute; left: 190px; top: 153px" id="lbl_CurrentPos_Data4">1002.123</label>
+      <label style="text-align: center; border-style: solid; border-width: 1px 0px 1px 1px; height: 25px; padding: 2px 0px 0px 5px; width: 45px; position: absolute; left: 280px; top: 153px" id="lbl_CurrentPos_Name5">J6：</label>
+      <label style="text-align: center; border-style: solid; border-width: 1px 0px 1px 1px; height: 25px; padding: 2px 0px 0px 5px; width: 45px; position: absolute; left: 280px; top: 123px" id="lbl_CurrentPos_Name2">J3：</label>
+      <label style="border-style: solid; border-width: 1px 1px 1px 0px; text-align: center; height: 25px; padding: 2px 0px 0px 0px; width: 80px; position: absolute; left: 325px; top: 123px" id="lbl_CurrentPos_Data2">1002.123</label>
+      <label style="border-style: solid; border-width: 1px 1px 1px 0px; text-align: center; height: 25px; padding: 2px 0px 0px 0px; width: 80px; position: absolute; left: 325px; top: 153px" id="lbl_CurrentPos_Data5">1002.123</label>
+      <img style="border-style: none; width: 40px; height: 40; position: absolute; left: 430px; top: 130px" src="images/switch.png" id="img_PosSwitch"></img>
+      <iframe style="width: 470px; height: 100px; border-style: solid; border-color: #FFFFFF; top: 200px; visibility: hidden; position: absolute; left: 5px" id="ctn_Message" src="Page_Container_Alert.html"></iframe>
+      <img style="width: 40px; height: 40px; position: absolute; left: 430px; top: 0px" src="images/info.png" id="img_info"></img>
+    </body>
+  </html>

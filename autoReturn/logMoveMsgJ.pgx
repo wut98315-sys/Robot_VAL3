@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="logMoveMsgJ">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_jPoint" type="jointRx" xsi:type="element" />
+      <Parameter name="x_tTool" type="tool" xsi:type="element" />
+      <Parameter name="x_mSpeed" type="mdesc" xsi:type="element" />
+      <Parameter name="x_nMoveId" type="num" xsi:type="element" />
+      <Parameter name="x_bExact" type="bool" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sCode" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+
+  //
+  if nRecIndex<200
+    // j
+    setMutex(bPushToStack)
+    jPointRec[nRecIndex,1]=x_jPoint
+    trToolRec[nRecIndex]=x_tTool.trsf
+    mSpeedRec[nRecIndex]=x_mSpeed
+    nMoveIdRec[nRecIndex]=x_nMoveId
+    bExact[nRecIndex]=x_bExact
+    nMoveTypeRec[nRecIndex]=2
+    //logMsg("record moveJ."+toString("",nMoveIdRec[nRecIndex]))
+    nRecIndex=nRecIndex+1
+    bPushToStack=false
+  else
+    //popUpMsg("记录点数超过容量.")
+  endIf
+  
+end]]></Code>
+  </Program>
+</Programs>

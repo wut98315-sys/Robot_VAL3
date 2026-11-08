@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertDelay" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+      <Parameter name="x_nMoveType" type="num" xsi:type="element" />
+      <Parameter name="x_nDelay" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_j" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //insert(trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1])
+  append(trajTemp:tTrajItem[x_sKey].pPointItem)
+  
+  for l_i = (size(trajTemp:tTrajItem[x_sKey].pPointItem)-1) to(x_nIndex+1) step -1
+   // logMsg(toString("",l_i))
+    call copyPoint3(x_sKey,l_i,l_i-1)
+  endFor
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.nMoveType=x_nMoveType
+
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.nDelay=x_nDelay
+
+ //trajTemp:libSave()
+  
+  x_bToSave=true
+end]]></Code>
+  </Program>
+</Programs>

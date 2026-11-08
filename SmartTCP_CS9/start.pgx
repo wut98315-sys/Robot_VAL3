@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="start" access="public">
+    <Locals>
+      <Local name="l_sArmType" type="string" xsi:type="array" size="1" />
+      <Local name="l_sSeries" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //****************************************************************************************
+  // +-----------------------------------------------------------------------------------+
+  // !                                 Stäubli SmartTCP                                  !
+  // !                                                                                   ! 
+  // !                Copyright by  Stäubli(Hagnzhou) Mechatronic Co.,Ltd.               !                           
+  // +-----------------------------------------------------------------------------------+
+  // General description：  Stäubli TCP calibration application for TX2/TS2 robot
+  // Developer:             ZhangHuaJun
+  // Application version：  V1.2
+  // Application Date:      February 24, 2020
+  // Hardware required：    TX2/TS2-CS9-SP2 Robot
+  // Software required：    Val3 s8.8.3+
+  // VAL3 Addons：          Expansion
+  // Fieldbus required:     None 
+  // VAL3 Options：         None
+  // Included libraries：   None
+  // Miscellaneous：        None
+  //****************************************************************************************
+  l_sArmType=getVersion("Arm Type")
+  if l_sArmType!=""
+    l_sSeries=left(l_sArmType,3)
+    switch l_sSeries
+      case "ts2"
+        call ts2:start()
+      break
+      case "tx2"
+        call tx2:start()
+      break
+    endSwitch
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

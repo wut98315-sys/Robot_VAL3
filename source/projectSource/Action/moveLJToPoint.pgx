@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="moveLJToPoint" access="public">
+    <Description><![CDATA[ //作用：用直线或者关节运动的方式移动到目标Point点。
+  //参数： 
+  //x_bMoveL: 为true时，直线运动到该点；为false时，关节运动到该Point点
+  //x_pPoint:目标点Point值
+  // x_tTool：去目标点使用的工具值
+  //x_bReference: 将点位转换为Joint来判断改为是否超限位，当该值为true时，使用jHome作为参考，为falses时，使用当前的关节值。
+  // x_mSpeed:去目标点使用的速度值
+   //x_bWaitEndmove:到达目标点，没有混合，为true则是严格到达目标点
+  //示例  call moveLJToPoint(true,data:pPointRx[0],data:tTool[0],false,data:mMdesc[0])]]></Description>
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_bMoveL" type="bool" xsi:type="element" />
+      <Parameter name="x_pPoint" type="point" xsi:type="element" />
+      <Parameter name="x_tTool" type="tool" xsi:type="element" />
+      <Parameter name="x_mSpeed" type="mdesc" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_jHere" type="joint" xsi:type="array" size="1" />
+      <Local name="l_bInRange" type="bool" xsi:type="array" size="1" />
+      <Local name="l_jTarget" type="jointRx" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //作用：用直线或者关节运动的方式移动到目标Point点。
+  //参数： 
+  //x_bMoveL: 为true时，直线运动到该点；为false时，关节运动到该Point点
+  //x_pPoint:目标点Point值
+  // x_tTool：去目标点使用的工具值
+  //x_bReference: 将点位转换为Joint来判断改为是否超限位，当该值为true时，使用jHome作为参考，为false时，使用当前的关节值。
+  // x_mSpeed:去目标点使用的速度值
+  // x_bWaitEndmove:到达目标点，没有混合，为true则是严格到达目标点
+  //示例  call moveLJToPoint(true,data:pPointRx[0],data:tTool[0],false,data:mMdesc[0])
+  l_jHere=herej()
+  l_bResult=pointToJoint(x_tTool,l_jHere,x_pPoint,l_jTarget)
+
+  //check in range
+  if l_bResult
+    l_bInRange=isInRange(l_jTarget)
+  else
+    l_bInRange=false
+  endIf
+
+  if l_bInRange==true
+    if x_bMoveL==true
+      nMoveIDRef=movel(x_pPoint,x_tTool,x_mSpeed)
+    else
+      nMoveIDRef=movej(x_pPoint,x_tTool,x_mSpeed)
+    endIf
+    call checkMoveId()
+  else
+    //超出机器人限位
+    call rs:setAlarm(220,-1)
+  endIf
+  
+end]]></Code>
+  </Program>
+</Programs>

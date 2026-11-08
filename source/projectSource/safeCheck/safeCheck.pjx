@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.10.3Cs9_BS2093" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="computeSPoint.pgx" />
+    <Program file="computeZone.pgx" />
+    <Program file="iolink.pgx" />
+    <Program file="loadSAFE.pgx" />
+    <Program file="main.pgx" />
+    <Program file="safePointCheck.pgx" />
+    <Program file="safeZoneCheck.pgx" />
+    <Program file="setZoneFrame.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="safeCheck.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="safeTemp" path="Disk://source/template/safeTemp/safeTemp.pjx" />
+    <Library alias="savedata" path="Disk://source/saveData/saveData.pjx" />
+    <Library alias="io" path="Disk://source/projectSource/io/io.pjx" />
+  </Libraries>
+</Project>

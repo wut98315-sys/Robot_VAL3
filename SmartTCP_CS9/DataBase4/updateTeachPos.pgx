@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="updateTeachPos" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_pteach" type="point" xsi:type="element" />
+      <Parameter name="x_bteach" type="bool" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  if x_bteach==true
+    utLbl_Point.Appearance.sBackgroundColour="#7CFA3F"
+  else
+    utLbl_Point.Appearance.sBackgroundColour="#FFFFFF"
+  endIf
+  utLbl_PosValue_Data[0].Common.sText=toString(".3",x_pteach.trsf.x)
+  utLbl_PosValue_Data[1].Common.sText=toString(".3",x_pteach.trsf.y)
+  utLbl_PosValue_Data[2].Common.sText=toString(".3",x_pteach.trsf.z)
+  utLbl_PosValue_Data[3].Common.sText=toString(".3",x_pteach.trsf.rx)
+  utLbl_PosValue_Data[4].Common.sText=toString(".3",x_pteach.trsf.ry)
+  utLbl_PosValue_Data[5].Common.sText=toString(".3",x_pteach.trsf.rz)
+end]]></Code>
+  </Program>
+</Programs>

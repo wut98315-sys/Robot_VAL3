@@ -1,0 +1,798 @@
+<?xml version="1.0"?>
+<ProcessData xmlns="x-schema:ProcessDataSchema.xml">
+	<Version major="1" minor="1"></Version>
+	<Adapter systemTag="9bc0ced1-cfdd-481f-89a6-d8d0796dfa38" displayName="J207J208 RE/OMB[NETX 51 RE/OMB]&lt;&gt;" byteOrder="big" deviceAccessPath="" stationAddress="192.168.1.254">
+		<Property id="6003" type="8" value="QwBJAEYAWABfAEQAUgBWAA=="/>
+		<Channel systemTag="83A05AF1-D4EB-4B6E-9C08-45D9118FDD85" displayName="CIFX RE/OMB"></Channel>
+		<Module systemTag="EF322A14-0738-4963-BC22-77E87D73F200" displayName="24 Registers In" moduleType="24 Registers In" moduleAddress="Slot 0">
+			<Property id="6102" type="19" value="AAAAAA=="/>
+			<Signal systemTag="14356f4e-f86a-436a-9f82-fe8c76384a64" displayName="24 InWORDs_Byte_0_Bit_0" signalType="output" signalAccessPath="0.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="AAAAAA=="/>
+			</Signal>
+			<Signal systemTag="b7739c66-9207-4425-9ae4-76f43c062726" displayName="24 InWORDs_Byte_0_Bit_1" signalType="output" signalAccessPath="0.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="AQAAAA=="/>
+			</Signal>
+			<Signal systemTag="90472b37-d41c-4f2a-9635-48673b29e85b" displayName="24 InWORDs_Byte_0_Bit_2" signalType="output" signalAccessPath="0.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="AgAAAA=="/>
+			</Signal>
+			<Signal systemTag="d83499d0-0265-408c-b941-606a7ff5773e" displayName="24 InWORDs_Byte_0_Bit_3" signalType="output" signalAccessPath="0.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="AwAAAA=="/>
+			</Signal>
+			<Signal systemTag="8f389a6a-93c7-4160-a3f5-0f62c759f0dc" displayName="24 InWORDs_Byte_0_Bit_4" signalType="output" signalAccessPath="0.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="BAAAAA=="/>
+			</Signal>
+			<Signal systemTag="383398b2-e704-44b9-a3eb-8eddfc4089a4" displayName="24 InWORDs_Byte_0_Bit_5" signalType="output" signalAccessPath="0.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="BQAAAA=="/>
+			</Signal>
+			<Signal systemTag="7a250b17-9c30-4b64-b5ad-0eeb18666cb6" displayName="24 InWORDs_Byte_0_Bit_6" signalType="output" signalAccessPath="0.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="BgAAAA=="/>
+			</Signal>
+			<Signal systemTag="b5a3cfd9-4d2a-4116-8cb2-e4ca30248e40" displayName="24 InWORDs_Byte_0_Bit_7" signalType="output" signalAccessPath="0.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="BwAAAA=="/>
+			</Signal>
+			<Signal systemTag="bced7186-82e4-4adf-a4c9-e0214e5962d1" displayName="24 InWORDs_Byte_1_Bit_0" signalType="output" signalAccessPath="1.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="CAAAAA=="/>
+			</Signal>
+			<Signal systemTag="7c65f4dc-b9ad-4875-800a-219f755beda7" displayName="24 InWORDs_Byte_1_Bit_1" signalType="output" signalAccessPath="1.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="CQAAAA=="/>
+			</Signal>
+			<Signal systemTag="4c933fc6-b0d1-4720-90a6-c20b15ba247c" displayName="24 InWORDs_Byte_1_Bit_2" signalType="output" signalAccessPath="1.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="CgAAAA=="/>
+			</Signal>
+			<Signal systemTag="d5e06ac8-2022-4c20-8d31-99d98b098029" displayName="24 InWORDs_Byte_1_Bit_3" signalType="output" signalAccessPath="1.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="CwAAAA=="/>
+			</Signal>
+			<Signal systemTag="9c734347-e414-4741-b96c-a8fb8f76b312" displayName="24 InWORDs_Byte_1_Bit_4" signalType="output" signalAccessPath="1.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="DAAAAA=="/>
+			</Signal>
+			<Signal systemTag="e495978c-939f-4ff9-93a2-9a31366f46d3" displayName="24 InWORDs_Byte_1_Bit_5" signalType="output" signalAccessPath="1.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="DQAAAA=="/>
+			</Signal>
+			<Signal systemTag="1e4f48f9-aee0-46c2-9468-96966b22e872" displayName="24 InWORDs_Byte_1_Bit_6" signalType="output" signalAccessPath="1.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="DgAAAA=="/>
+			</Signal>
+			<Signal systemTag="0a2e8800-d8f3-403e-abae-6accf20ac88b" displayName="24 InWORDs_Byte_1_Bit_7" signalType="output" signalAccessPath="1.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="DwAAAA=="/>
+			</Signal>
+			<Signal systemTag="43b4e5c0-9fac-40e6-9824-29f2d38c0027" displayName="24 InWORDs_Byte_2_Bit_0" signalType="output" signalAccessPath="2.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="EAAAAA=="/>
+			</Signal>
+			<Signal systemTag="03f2ea58-5e03-40f7-9565-dbe3be38a98d" displayName="24 InWORDs_Byte_2_Bit_1" signalType="output" signalAccessPath="2.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="EQAAAA=="/>
+			</Signal>
+			<Signal systemTag="701f8366-7c93-44a1-9a9a-3ae9079773f0" displayName="24 InWORDs_Byte_2_Bit_2" signalType="output" signalAccessPath="2.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="EgAAAA=="/>
+			</Signal>
+			<Signal systemTag="cbeb5172-7269-4597-8b08-320e63e04920" displayName="24 InWORDs_Byte_2_Bit_3" signalType="output" signalAccessPath="2.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="EwAAAA=="/>
+			</Signal>
+			<Signal systemTag="703fd1c8-8d86-4e99-8f28-007c7c0bd0ea" displayName="24 InWORDs_Byte_2_Bit_4" signalType="output" signalAccessPath="2.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="FAAAAA=="/>
+			</Signal>
+			<Signal systemTag="de54aa32-cd73-4d08-bf28-b125705f6100" displayName="24 InWORDs_Byte_2_Bit_5" signalType="output" signalAccessPath="2.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="FQAAAA=="/>
+			</Signal>
+			<Signal systemTag="116e1695-a194-4485-8833-f4e9228d6ca8" displayName="24 InWORDs_Byte_2_Bit_6" signalType="output" signalAccessPath="2.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="FgAAAA=="/>
+			</Signal>
+			<Signal systemTag="b5fe93cd-ea92-4da1-8f7c-776e9c5d1f1b" displayName="24 InWORDs_Byte_2_Bit_7" signalType="output" signalAccessPath="2.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="FwAAAA=="/>
+			</Signal>
+			<Signal systemTag="2b2826db-b489-4e4a-9637-f76eb0e363bb" displayName="24 InWORDs_Byte_3_Bit_0" signalType="output" signalAccessPath="3.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="GAAAAA=="/>
+			</Signal>
+			<Signal systemTag="2570d46f-fc60-4073-a1ad-b71c7a06ec08" displayName="24 InWORDs_Byte_3_Bit_1" signalType="output" signalAccessPath="3.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="GQAAAA=="/>
+			</Signal>
+			<Signal systemTag="710ad0dc-b6b1-4996-861a-ed078d980eb2" displayName="24 InWORDs_Byte_3_Bit_2" signalType="output" signalAccessPath="3.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="GgAAAA=="/>
+			</Signal>
+			<Signal systemTag="8663faf5-899e-4b44-8d2e-f3986eaa11ee" displayName="24 InWORDs_Byte_3_Bit_3" signalType="output" signalAccessPath="3.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="GwAAAA=="/>
+			</Signal>
+			<Signal systemTag="628f7b04-a70b-4586-8cb2-983258b058c1" displayName="24 InWORDs_Byte_3_Bit_4" signalType="output" signalAccessPath="3.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="HAAAAA=="/>
+			</Signal>
+			<Signal systemTag="bb4b1294-5077-47d9-8377-8b27fee05e8b" displayName="24 InWORDs_Byte_3_Bit_5" signalType="output" signalAccessPath="3.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="HQAAAA=="/>
+			</Signal>
+			<Signal systemTag="6b620c57-6938-4cba-9fae-bfa8f3b9eb73" displayName="24 InWORDs_Byte_3_Bit_6" signalType="output" signalAccessPath="3.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="HgAAAA=="/>
+			</Signal>
+			<Signal systemTag="45bc6515-6cbe-4209-80bc-90f75799759d" displayName="24 InWORDs_Byte_3_Bit_7" signalType="output" signalAccessPath="3.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="HwAAAA=="/>
+			</Signal>
+			<Signal systemTag="b4842581-bfa4-4324-ba14-d88dfa492df0" displayName="24 InWORDs_Byte_4_Bit_0" signalType="output" signalAccessPath="4.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="IAAAAA=="/>
+			</Signal>
+			<Signal systemTag="bbb4e63d-3d3d-4dcb-9152-0e0de4414d42" displayName="24 InWORDs_Byte_4_Bit_1" signalType="output" signalAccessPath="4.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="IQAAAA=="/>
+			</Signal>
+			<Signal systemTag="bf1a199a-ad7c-4bd9-a1c3-f2cb20795f17" displayName="24 InWORDs_Byte_4_Bit_2" signalType="output" signalAccessPath="4.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="IgAAAA=="/>
+			</Signal>
+			<Signal systemTag="e5e1b456-8c90-4997-bd9d-9f0ac1f61096" displayName="24 InWORDs_Byte_4_Bit_3" signalType="output" signalAccessPath="4.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="IwAAAA=="/>
+			</Signal>
+			<Signal systemTag="72860e66-6b78-49da-97fe-afb14dffc825" displayName="24 InWORDs_Byte_4_Bit_4" signalType="output" signalAccessPath="4.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="JAAAAA=="/>
+			</Signal>
+			<Signal systemTag="d91df4d3-44d1-4080-b300-4e4964681f2c" displayName="24 InWORDs_Byte_4_Bit_5" signalType="output" signalAccessPath="4.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="JQAAAA=="/>
+			</Signal>
+			<Signal systemTag="f3936585-f53c-41a7-ae70-010c72e51b1f" displayName="24 InWORDs_Byte_4_Bit_6" signalType="output" signalAccessPath="4.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="JgAAAA=="/>
+			</Signal>
+			<Signal systemTag="75220b9f-8123-4219-8c8c-97c43954a2cb" displayName="24 InWORDs_Byte_4_Bit_7" signalType="output" signalAccessPath="4.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="JwAAAA=="/>
+			</Signal>
+			<Signal systemTag="5b3f83c0-e543-46a3-9f2b-8e23fe6ff72b" displayName="24 InWORDs_Byte_5_Bit_0" signalType="output" signalAccessPath="5.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="KAAAAA=="/>
+			</Signal>
+			<Signal systemTag="fbaa6731-a4a3-4f0c-8386-d4cb70fdb37a" displayName="24 InWORDs_Byte_5_Bit_1" signalType="output" signalAccessPath="5.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="KQAAAA=="/>
+			</Signal>
+			<Signal systemTag="710cd347-55aa-4023-be06-9cbd8074b17c" displayName="24 InWORDs_Byte_5_Bit_2" signalType="output" signalAccessPath="5.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="KgAAAA=="/>
+			</Signal>
+			<Signal systemTag="23993d7a-be19-406e-ad9c-d4e46d28aeb3" displayName="24 InWORDs_Byte_5_Bit_3" signalType="output" signalAccessPath="5.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="KwAAAA=="/>
+			</Signal>
+			<Signal systemTag="475616f8-36b9-4623-9bcb-1b550ec64900" displayName="24 InWORDs_Byte_5_Bit_4" signalType="output" signalAccessPath="5.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="LAAAAA=="/>
+			</Signal>
+			<Signal systemTag="3c195977-6902-49f7-ab44-7c823345360a" displayName="24 InWORDs_Byte_5_Bit_5" signalType="output" signalAccessPath="5.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="LQAAAA=="/>
+			</Signal>
+			<Signal systemTag="ea891663-6c76-4499-9e96-1e9d72fa2fca" displayName="24 InWORDs_Byte_5_Bit_6" signalType="output" signalAccessPath="5.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="LgAAAA=="/>
+			</Signal>
+			<Signal systemTag="8a4c5933-5c09-488e-99cf-16513c475f48" displayName="24 InWORDs_Byte_5_Bit_7" signalType="output" signalAccessPath="5.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="LwAAAA=="/>
+			</Signal>
+			<Signal systemTag="d6e48380-fb52-47b6-aa7a-d26b71bb5c06" displayName="24 InWORDs_Byte_6_Bit_0" signalType="output" signalAccessPath="6.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="MAAAAA=="/>
+			</Signal>
+			<Signal systemTag="c8a99936-4623-43b9-a1e3-b89bc639e521" displayName="24 InWORDs_Byte_6_Bit_1" signalType="output" signalAccessPath="6.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="MQAAAA=="/>
+			</Signal>
+			<Signal systemTag="5bcf2362-9da8-4b10-9181-8c60260bb220" displayName="24 InWORDs_Byte_6_Bit_2" signalType="output" signalAccessPath="6.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="MgAAAA=="/>
+			</Signal>
+			<Signal systemTag="9600c2c7-1da0-4521-bc39-eafe760b8238" displayName="24 InWORDs_Byte_6_Bit_3" signalType="output" signalAccessPath="6.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="MwAAAA=="/>
+			</Signal>
+			<Signal systemTag="ae070d31-f522-4c5f-9908-9eab5cc72201" displayName="24 InWORDs_Byte_6_Bit_4" signalType="output" signalAccessPath="6.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="NAAAAA=="/>
+			</Signal>
+			<Signal systemTag="296abf06-0c04-42ad-8766-5ffb81102cd1" displayName="24 InWORDs_Byte_6_Bit_5" signalType="output" signalAccessPath="6.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="NQAAAA=="/>
+			</Signal>
+			<Signal systemTag="552d575f-93d1-4877-b81f-7137c7c7ae16" displayName="24 InWORDs_Byte_6_Bit_6" signalType="output" signalAccessPath="6.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="NgAAAA=="/>
+			</Signal>
+			<Signal systemTag="829ee6db-6d23-4a25-8151-c84dd5d38199" displayName="24 InWORDs_Byte_6_Bit_7" signalType="output" signalAccessPath="6.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="NwAAAA=="/>
+			</Signal>
+			<Signal systemTag="06f59538-cf63-4b83-88e0-ab1b4cf8ec69" displayName="24 InWORDs_Byte_7_Bit_0" signalType="output" signalAccessPath="7.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="OAAAAA=="/>
+			</Signal>
+			<Signal systemTag="10451175-e0a2-4166-bf92-170fd5fad3a2" displayName="24 InWORDs_Byte_7_Bit_1" signalType="output" signalAccessPath="7.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="OQAAAA=="/>
+			</Signal>
+			<Signal systemTag="8eec41db-303d-448d-92e3-79341db6b0e2" displayName="24 InWORDs_Byte_7_Bit_2" signalType="output" signalAccessPath="7.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="OgAAAA=="/>
+			</Signal>
+			<Signal systemTag="cdca47e6-6ed4-4f3f-ba3a-fed8d8ae6d68" displayName="24 InWORDs_Byte_7_Bit_3" signalType="output" signalAccessPath="7.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="OwAAAA=="/>
+			</Signal>
+			<Signal systemTag="48a1de6b-bfe3-45ef-a766-3bf9ebe5e605" displayName="24 InWORDs_Byte_7_Bit_4" signalType="output" signalAccessPath="7.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="PAAAAA=="/>
+			</Signal>
+			<Signal systemTag="a5cebe8c-3007-42d0-95c9-3356fb116b8c" displayName="24 InWORDs_Byte_7_Bit_5" signalType="output" signalAccessPath="7.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="PQAAAA=="/>
+			</Signal>
+			<Signal systemTag="85de0141-d365-4438-8f01-438fdf05e3e4" displayName="24 InWORDs_Byte_7_Bit_6" signalType="output" signalAccessPath="7.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="PgAAAA=="/>
+			</Signal>
+			<Signal systemTag="4d3e5825-71c5-4b02-ad43-a89c89fc7560" displayName="24 InWORDs_Byte_7_Bit_7" signalType="output" signalAccessPath="7.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="PwAAAA=="/>
+			</Signal>
+			<Signal systemTag="7c00d76b-b797-4cc7-a070-10f88cd3d601" displayName="24 InWORDs_Byte_8_Bit_0" signalType="output" signalAccessPath="8.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="QAAAAA=="/>
+			</Signal>
+			<Signal systemTag="f4c28711-2168-4a18-9a22-7251dac462ef" displayName="24 InWORDs_Byte_8_Bit_1" signalType="output" signalAccessPath="8.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="QQAAAA=="/>
+			</Signal>
+			<Signal systemTag="54726dd0-84a4-4072-9355-f832b8102717" displayName="24 InWORDs_Byte_8_Bit_2" signalType="output" signalAccessPath="8.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="QgAAAA=="/>
+			</Signal>
+			<Signal systemTag="8d25a39a-439f-4e86-be24-b013f39e03fd" displayName="24 InWORDs_Byte_8_Bit_3" signalType="output" signalAccessPath="8.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="QwAAAA=="/>
+			</Signal>
+			<Signal systemTag="cb8947a6-584d-4eec-9f38-6f73a4f646a0" displayName="24 InWORDs_Byte_8_Bit_4" signalType="output" signalAccessPath="8.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="RAAAAA=="/>
+			</Signal>
+			<Signal systemTag="9adb628d-2889-4c32-91f7-48830e5a4c3e" displayName="24 InWORDs_Byte_8_Bit_5" signalType="output" signalAccessPath="8.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="RQAAAA=="/>
+			</Signal>
+			<Signal systemTag="9e755b7b-cf9b-44d5-8a99-fe111ea7faad" displayName="24 InWORDs_Byte_8_Bit_6" signalType="output" signalAccessPath="8.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="RgAAAA=="/>
+			</Signal>
+			<Signal systemTag="44b0f4bc-5f78-4791-9bce-c612c2eaee6b" displayName="24 InWORDs_Byte_8_Bit_7" signalType="output" signalAccessPath="8.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="RwAAAA=="/>
+			</Signal>
+			<Signal systemTag="b0780c4b-e205-43a5-ab58-46c853d3dca5" displayName="24 InWORDs_Byte_9_Bit_0" signalType="output" signalAccessPath="9.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="SAAAAA=="/>
+			</Signal>
+			<Signal systemTag="ea60f233-2fca-4d6f-b51f-0c4c264b37f4" displayName="24 InWORDs_Byte_9_Bit_1" signalType="output" signalAccessPath="9.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="SQAAAA=="/>
+			</Signal>
+			<Signal systemTag="28cac167-f074-4b25-9546-3303c8928bb9" displayName="24 InWORDs_Byte_9_Bit_2" signalType="output" signalAccessPath="9.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="SgAAAA=="/>
+			</Signal>
+			<Signal systemTag="33131ae9-7a89-47a4-ac13-de87014c408c" displayName="24 InWORDs_Byte_9_Bit_3" signalType="output" signalAccessPath="9.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="SwAAAA=="/>
+			</Signal>
+			<Signal systemTag="dc711a4b-da3f-408e-b2cd-0369dd8cb206" displayName="24 InWORDs_Byte_9_Bit_4" signalType="output" signalAccessPath="9.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="TAAAAA=="/>
+			</Signal>
+			<Signal systemTag="e6d5a47f-0b96-4178-bbbd-469e52bc29e3" displayName="24 InWORDs_Byte_9_Bit_5" signalType="output" signalAccessPath="9.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="TQAAAA=="/>
+			</Signal>
+			<Signal systemTag="6e7bf6a2-6734-4d9b-bbe0-7c6f8479cddb" displayName="24 InWORDs_Byte_9_Bit_6" signalType="output" signalAccessPath="9.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="TgAAAA=="/>
+			</Signal>
+			<Signal systemTag="ee31c1b2-7c3a-45f5-90aa-ea4e8fb54084" displayName="24 InWORDs_Byte_9_Bit_7" signalType="output" signalAccessPath="9.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="TwAAAA=="/>
+			</Signal>
+			<Signal systemTag="ab0a6326-62c6-41ca-98d2-16f23b8e994f" displayName="24 InWORDs_Byte_10_Bit_0" signalType="output" signalAccessPath="10.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="UAAAAA=="/>
+			</Signal>
+			<Signal systemTag="19f6d1ce-cc6f-4d2c-9d30-c9dc25213e23" displayName="24 InWORDs_Byte_10_Bit_1" signalType="output" signalAccessPath="10.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="UQAAAA=="/>
+			</Signal>
+			<Signal systemTag="6f83df92-ef01-4a32-875a-6a708d35f327" displayName="24 InWORDs_Byte_10_Bit_2" signalType="output" signalAccessPath="10.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="UgAAAA=="/>
+			</Signal>
+			<Signal systemTag="59d84c3b-281a-49b7-adc8-07c0a208ed98" displayName="24 InWORDs_Byte_10_Bit_3" signalType="output" signalAccessPath="10.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="UwAAAA=="/>
+			</Signal>
+			<Signal systemTag="0648c5b9-7e34-4d6f-bdb3-a229098daf63" displayName="24 InWORDs_Byte_10_Bit_4" signalType="output" signalAccessPath="10.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="VAAAAA=="/>
+			</Signal>
+			<Signal systemTag="f2bdd84d-ae96-4a25-888c-b4d96e2a802d" displayName="24 InWORDs_Byte_10_Bit_5" signalType="output" signalAccessPath="10.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="VQAAAA=="/>
+			</Signal>
+			<Signal systemTag="99d64f2e-942d-453d-8f8f-752d20f0b408" displayName="24 InWORDs_Byte_10_Bit_6" signalType="output" signalAccessPath="10.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="VgAAAA=="/>
+			</Signal>
+			<Signal systemTag="d34ba5b0-344e-4ce0-be0f-c9d7e0dfe049" displayName="24 InWORDs_Byte_10_Bit_7" signalType="output" signalAccessPath="10.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="VwAAAA=="/>
+			</Signal>
+			<Signal systemTag="8552d61a-3210-400d-a127-ce6d2c17344d" displayName="24 InWORDs_Byte_11_Bit_0" signalType="output" signalAccessPath="11.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="WAAAAA=="/>
+			</Signal>
+			<Signal systemTag="a35ac4fa-041e-4b47-92d3-e449589a8a6c" displayName="24 InWORDs_Byte_11_Bit_1" signalType="output" signalAccessPath="11.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="WQAAAA=="/>
+			</Signal>
+			<Signal systemTag="39934e61-3513-4565-ae77-a3cd8906d411" displayName="24 InWORDs_Byte_11_Bit_2" signalType="output" signalAccessPath="11.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="WgAAAA=="/>
+			</Signal>
+			<Signal systemTag="fda2e661-cdc8-4235-b40f-0c724d296c16" displayName="24 InWORDs_Byte_11_Bit_3" signalType="output" signalAccessPath="11.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="WwAAAA=="/>
+			</Signal>
+			<Signal systemTag="1997235f-7b85-427a-820b-9aa942ad21d1" displayName="24 InWORDs_Byte_11_Bit_4" signalType="output" signalAccessPath="11.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="XAAAAA=="/>
+			</Signal>
+			<Signal systemTag="9cb7a84f-6da1-49a9-b8b9-65372e200da7" displayName="24 InWORDs_Byte_11_Bit_5" signalType="output" signalAccessPath="11.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="XQAAAA=="/>
+			</Signal>
+			<Signal systemTag="fc5431c8-206f-458a-ac3a-c91bc1c98c62" displayName="24 InWORDs_Byte_11_Bit_6" signalType="output" signalAccessPath="11.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="XgAAAA=="/>
+			</Signal>
+			<Signal systemTag="ac16232e-09dc-455f-9860-9550437e0da6" displayName="24 InWORDs_Byte_11_Bit_7" signalType="output" signalAccessPath="11.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="XwAAAA=="/>
+			</Signal>
+			<Signal systemTag="d6734342-cf73-44db-9007-553885c3af1e" displayName="24 InWORDs_Byte_12_Bit_0" signalType="output" signalAccessPath="12.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="YAAAAA=="/>
+			</Signal>
+			<Signal systemTag="89e3d814-759c-4ed6-93fe-b6db58be92b8" displayName="24 InWORDs_Byte_12_Bit_1" signalType="output" signalAccessPath="12.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="YQAAAA=="/>
+			</Signal>
+			<Signal systemTag="e5b362a3-ab63-4e24-8c57-13c3638cbf5e" displayName="24 InWORDs_Byte_12_Bit_2" signalType="output" signalAccessPath="12.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="YgAAAA=="/>
+			</Signal>
+			<Signal systemTag="941e68ec-c096-430d-af05-ef521772dedc" displayName="24 InWORDs_Byte_12_Bit_3" signalType="output" signalAccessPath="12.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="YwAAAA=="/>
+			</Signal>
+			<Signal systemTag="21b32404-48c4-41a1-9697-8c21510aded8" displayName="24 InWORDs_Byte_12_Bit_4" signalType="output" signalAccessPath="12.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="ZAAAAA=="/>
+			</Signal>
+			<Signal systemTag="00738e1c-3324-443e-8173-b2408a8ce781" displayName="24 InWORDs_Byte_12_Bit_5" signalType="output" signalAccessPath="12.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="ZQAAAA=="/>
+			</Signal>
+			<Signal systemTag="3ab08946-2936-44a3-abad-5c6cea117670" displayName="24 InWORDs_Byte_12_Bit_6" signalType="output" signalAccessPath="12.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="ZgAAAA=="/>
+			</Signal>
+			<Signal systemTag="49a8c63e-8930-4064-bb5c-c0872332cc0b" displayName="24 InWORDs_Byte_12_Bit_7" signalType="output" signalAccessPath="12.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="ZwAAAA=="/>
+			</Signal>
+			<Signal systemTag="75726218-d7c0-4c1b-996e-13ffffc626ab" displayName="24 InWORDs_Byte_13_Bit_0" signalType="output" signalAccessPath="13.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="aAAAAA=="/>
+			</Signal>
+			<Signal systemTag="86665bd1-7f7c-453d-bd40-f1ad66dda029" displayName="24 InWORDs_Byte_13_Bit_1" signalType="output" signalAccessPath="13.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="aQAAAA=="/>
+			</Signal>
+			<Signal systemTag="f4760493-f116-4c02-b013-c3a41b5d1439" displayName="24 InWORDs_Byte_13_Bit_2" signalType="output" signalAccessPath="13.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="agAAAA=="/>
+			</Signal>
+			<Signal systemTag="9586e907-b4f5-4e1f-a801-f7cb3e8213a3" displayName="24 InWORDs_Byte_13_Bit_3" signalType="output" signalAccessPath="13.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="awAAAA=="/>
+			</Signal>
+			<Signal systemTag="f0cef80e-ae00-41d4-9d90-76d1baaf3ad9" displayName="24 InWORDs_Byte_13_Bit_4" signalType="output" signalAccessPath="13.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="bAAAAA=="/>
+			</Signal>
+			<Signal systemTag="710205db-1216-496b-ae88-0b3c729bdb4a" displayName="24 InWORDs_Byte_13_Bit_5" signalType="output" signalAccessPath="13.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="bQAAAA=="/>
+			</Signal>
+			<Signal systemTag="21e1a052-3cad-47bd-959f-1f8978ca5725" displayName="24 InWORDs_Byte_13_Bit_6" signalType="output" signalAccessPath="13.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="bgAAAA=="/>
+			</Signal>
+			<Signal systemTag="f5dfd9aa-9a0c-48ae-b065-4df2a01da251" displayName="24 InWORDs_Byte_13_Bit_7" signalType="output" signalAccessPath="13.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="bwAAAA=="/>
+			</Signal>
+			<Signal systemTag="bc002212-ce94-4512-9786-ac3bd4a593b4" displayName="24 InWORDs_Byte_14_Bit_0" signalType="output" signalAccessPath="14.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="cAAAAA=="/>
+			</Signal>
+			<Signal systemTag="827da836-fe92-47ef-802f-bb7a15e9ffc1" displayName="24 InWORDs_Byte_14_Bit_1" signalType="output" signalAccessPath="14.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="cQAAAA=="/>
+			</Signal>
+			<Signal systemTag="f60c9c47-18f1-4ebb-9fde-a013197555bb" displayName="24 InWORDs_Byte_14_Bit_2" signalType="output" signalAccessPath="14.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="cgAAAA=="/>
+			</Signal>
+			<Signal systemTag="63292940-b645-431b-90b3-fe80824c99d4" displayName="24 InWORDs_Byte_14_Bit_3" signalType="output" signalAccessPath="14.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="cwAAAA=="/>
+			</Signal>
+			<Signal systemTag="62b7533d-559d-413e-94f3-7ef635c94f53" displayName="24 InWORDs_Byte_14_Bit_4" signalType="output" signalAccessPath="14.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="dAAAAA=="/>
+			</Signal>
+			<Signal systemTag="ecc4b952-c66f-47c7-a34a-19745872fd98" displayName="24 InWORDs_Byte_14_Bit_5" signalType="output" signalAccessPath="14.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="dQAAAA=="/>
+			</Signal>
+			<Signal systemTag="432f6fbd-1d88-4b77-b96e-ec30d4ed2f30" displayName="24 InWORDs_Byte_14_Bit_6" signalType="output" signalAccessPath="14.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="dgAAAA=="/>
+			</Signal>
+			<Signal systemTag="ab675db6-4325-4b7a-b037-ce0abdfc4a6b" displayName="24 InWORDs_Byte_14_Bit_7" signalType="output" signalAccessPath="14.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="dwAAAA=="/>
+			</Signal>
+			<Signal systemTag="7c2c39ef-a0b2-408e-94fd-d77986baecd8" displayName="24 InWORDs_Byte_15_Bit_0" signalType="output" signalAccessPath="15.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="eAAAAA=="/>
+			</Signal>
+			<Signal systemTag="cae02d60-9b09-4e1f-8f42-737572474962" displayName="24 InWORDs_Byte_15_Bit_1" signalType="output" signalAccessPath="15.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="eQAAAA=="/>
+			</Signal>
+			<Signal systemTag="6d9d424a-6aa6-404d-98ad-82a98da02b7b" displayName="24 InWORDs_Byte_15_Bit_2" signalType="output" signalAccessPath="15.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="egAAAA=="/>
+			</Signal>
+			<Signal systemTag="0cd1fde3-ac24-4b19-b858-223a277e5b83" displayName="24 InWORDs_Byte_15_Bit_3" signalType="output" signalAccessPath="15.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="ewAAAA=="/>
+			</Signal>
+			<Signal systemTag="94470a35-9cc9-4648-833d-6e74920d1454" displayName="24 InWORDs_Byte_15_Bit_4" signalType="output" signalAccessPath="15.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="fAAAAA=="/>
+			</Signal>
+			<Signal systemTag="0c5dde90-341c-4169-8485-d48e94ffcf62" displayName="24 InWORDs_Byte_15_Bit_5" signalType="output" signalAccessPath="15.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="fQAAAA=="/>
+			</Signal>
+			<Signal systemTag="0f5613ec-6ae1-452e-9e6d-499016f544a1" displayName="24 InWORDs_Byte_15_Bit_6" signalType="output" signalAccessPath="15.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="fgAAAA=="/>
+			</Signal>
+			<Signal systemTag="0fe771f6-25e5-4da4-806f-aafc059b349d" displayName="24 InWORDs_Byte_15_Bit_7" signalType="output" signalAccessPath="15.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="fwAAAA=="/>
+			</Signal>
+			<Signal systemTag="527df88a-8b0b-4db5-9eba-392a0a0c089f" displayName="24 InWORDs_Byte_16" signalType="output" signalAccessPath="16" dataType="word" opc="1" arrayElements="16">
+				<Property id="6103" type="19" value="gAAAAA=="/>
+			</Signal>
+		</Module>
+		<Module systemTag="ECB95880-80F9-4171-A772-7A544EA2C357" displayName="24 Registers Out" moduleType="24 Registers Out" moduleAddress="Slot 0">
+			<Property id="6101" type="19" value="AAAAAA=="/>
+			<Signal systemTag="c8c8cf7d-b973-4e3c-a490-688003a50eb1" displayName="24 OutWORDs_Byte_0_Bit_0" signalType="input" signalAccessPath="0.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="AAAAAA=="/>
+			</Signal>
+			<Signal systemTag="cbc901cd-088f-412e-a382-c94284651c8b" displayName="24 OutWORDs_Byte_0_Bit_1" signalType="input" signalAccessPath="0.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="AQAAAA=="/>
+			</Signal>
+			<Signal systemTag="e2e1c4a7-e182-48c2-b62f-21afe7aa96f7" displayName="24 OutWORDs_Byte_0_Bit_2" signalType="input" signalAccessPath="0.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="AgAAAA=="/>
+			</Signal>
+			<Signal systemTag="ea42bfc3-5fe7-4949-8cd0-e5af85aaa66f" displayName="24 OutWORDs_Byte_0_Bit_3" signalType="input" signalAccessPath="0.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="AwAAAA=="/>
+			</Signal>
+			<Signal systemTag="409bb8aa-9837-4db7-9c13-714fc8afa5d6" displayName="24 OutWORDs_Byte_0_Bit_4" signalType="input" signalAccessPath="0.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="BAAAAA=="/>
+			</Signal>
+			<Signal systemTag="3783493f-8d31-4130-a757-d3a0936516b6" displayName="24 OutWORDs_Byte_0_Bit_5" signalType="input" signalAccessPath="0.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="BQAAAA=="/>
+			</Signal>
+			<Signal systemTag="c8dd9f13-c50c-4188-9825-ae6b37dd397f" displayName="24 OutWORDs_Byte_0_Bit_6" signalType="input" signalAccessPath="0.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="BgAAAA=="/>
+			</Signal>
+			<Signal systemTag="cd0715ae-d28f-4433-92a7-106383e6c92f" displayName="24 OutWORDs_Byte_0_Bit_7" signalType="input" signalAccessPath="0.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="BwAAAA=="/>
+			</Signal>
+			<Signal systemTag="855de0ad-6b5c-400f-81a4-249e52d81879" displayName="24 OutWORDs_Byte_1_Bit_0" signalType="input" signalAccessPath="1.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="CAAAAA=="/>
+			</Signal>
+			<Signal systemTag="31fc595d-5853-4767-9f57-947931afbba4" displayName="24 OutWORDs_Byte_1_Bit_1" signalType="input" signalAccessPath="1.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="CQAAAA=="/>
+			</Signal>
+			<Signal systemTag="5af62f3b-9b93-4770-a3be-aa2f023e7450" displayName="24 OutWORDs_Byte_1_Bit_2" signalType="input" signalAccessPath="1.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="CgAAAA=="/>
+			</Signal>
+			<Signal systemTag="455727c9-d0e1-4358-8cb1-e5f00115fa36" displayName="24 OutWORDs_Byte_1_Bit_3" signalType="input" signalAccessPath="1.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="CwAAAA=="/>
+			</Signal>
+			<Signal systemTag="83baa3db-f31f-497d-8f5d-2d851c490c18" displayName="24 OutWORDs_Byte_1_Bit_4" signalType="input" signalAccessPath="1.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="DAAAAA=="/>
+			</Signal>
+			<Signal systemTag="e64ec506-2643-4871-9eb8-0d9d7310e866" displayName="24 OutWORDs_Byte_1_Bit_5" signalType="input" signalAccessPath="1.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="DQAAAA=="/>
+			</Signal>
+			<Signal systemTag="7ca6463e-9758-4ccf-9370-de7dad0a5af9" displayName="24 OutWORDs_Byte_1_Bit_6" signalType="input" signalAccessPath="1.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="DgAAAA=="/>
+			</Signal>
+			<Signal systemTag="cfa1189b-1d4d-41fe-b2cb-45a866946863" displayName="24 OutWORDs_Byte_1_Bit_7" signalType="input" signalAccessPath="1.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="DwAAAA=="/>
+			</Signal>
+			<Signal systemTag="30db2c4d-c83d-4361-8c59-07baee8b2f22" displayName="24 OutWORDs_Byte_2_Bit_0" signalType="input" signalAccessPath="2.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="EAAAAA=="/>
+			</Signal>
+			<Signal systemTag="b6f59327-ee25-4039-8581-e8777e6a07df" displayName="24 OutWORDs_Byte_2_Bit_1" signalType="input" signalAccessPath="2.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="EQAAAA=="/>
+			</Signal>
+			<Signal systemTag="c0ebce58-b6ac-42bd-a9b9-e269f46689d8" displayName="24 OutWORDs_Byte_2_Bit_2" signalType="input" signalAccessPath="2.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="EgAAAA=="/>
+			</Signal>
+			<Signal systemTag="65a26f3b-92f1-413e-a25d-a27e3dae4355" displayName="24 OutWORDs_Byte_2_Bit_3" signalType="input" signalAccessPath="2.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="EwAAAA=="/>
+			</Signal>
+			<Signal systemTag="55e9d52a-4716-4bf6-b0d7-3599fe61dac3" displayName="24 OutWORDs_Byte_2_Bit_4" signalType="input" signalAccessPath="2.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="FAAAAA=="/>
+			</Signal>
+			<Signal systemTag="3578fb44-461e-4483-855d-f5ca51d0dff4" displayName="24 OutWORDs_Byte_2_Bit_5" signalType="input" signalAccessPath="2.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="FQAAAA=="/>
+			</Signal>
+			<Signal systemTag="c0743e34-edd0-4def-b0d5-17e9ef2a3006" displayName="24 OutWORDs_Byte_2_Bit_6" signalType="input" signalAccessPath="2.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="FgAAAA=="/>
+			</Signal>
+			<Signal systemTag="c5e8a869-3b33-4b3a-9a61-469305edc2b2" displayName="24 OutWORDs_Byte_2_Bit_7" signalType="input" signalAccessPath="2.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="FwAAAA=="/>
+			</Signal>
+			<Signal systemTag="7c157e92-a6b2-42c5-9bc3-c7f9f6ae3b09" displayName="24 OutWORDs_Byte_3_Bit_0" signalType="input" signalAccessPath="3.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="GAAAAA=="/>
+			</Signal>
+			<Signal systemTag="c2f8504d-8c02-416f-b0ba-4fecb2165dd5" displayName="24 OutWORDs_Byte_3_Bit_1" signalType="input" signalAccessPath="3.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="GQAAAA=="/>
+			</Signal>
+			<Signal systemTag="5f66dfcf-4ffc-43b4-b20c-6e870e6f2fc9" displayName="24 OutWORDs_Byte_3_Bit_2" signalType="input" signalAccessPath="3.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="GgAAAA=="/>
+			</Signal>
+			<Signal systemTag="88082c73-0f93-46ec-9f64-021a23964ab8" displayName="24 OutWORDs_Byte_3_Bit_3" signalType="input" signalAccessPath="3.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="GwAAAA=="/>
+			</Signal>
+			<Signal systemTag="fd86b94d-a81a-4107-ac73-debd0cbc2d72" displayName="24 OutWORDs_Byte_3_Bit_4" signalType="input" signalAccessPath="3.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="HAAAAA=="/>
+			</Signal>
+			<Signal systemTag="a10409a7-9b24-4b2a-ac6f-019845e08c15" displayName="24 OutWORDs_Byte_3_Bit_5" signalType="input" signalAccessPath="3.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="HQAAAA=="/>
+			</Signal>
+			<Signal systemTag="62eeccdc-e114-4391-991e-dba8a9f8c455" displayName="24 OutWORDs_Byte_3_Bit_6" signalType="input" signalAccessPath="3.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="HgAAAA=="/>
+			</Signal>
+			<Signal systemTag="f242403f-1b2d-43a5-90c7-938f22e23107" displayName="24 OutWORDs_Byte_3_Bit_7" signalType="input" signalAccessPath="3.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="HwAAAA=="/>
+			</Signal>
+			<Signal systemTag="1427e128-ab1f-47d6-817a-e20877a4ade9" displayName="24 OutWORDs_Byte_4_Bit_0" signalType="input" signalAccessPath="4.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="IAAAAA=="/>
+			</Signal>
+			<Signal systemTag="8e6d2880-c1cf-4cff-89b3-0f506a88d6db" displayName="24 OutWORDs_Byte_4_Bit_1" signalType="input" signalAccessPath="4.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="IQAAAA=="/>
+			</Signal>
+			<Signal systemTag="77af5e3b-ebea-41db-9641-8649c86000a2" displayName="24 OutWORDs_Byte_4_Bit_2" signalType="input" signalAccessPath="4.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="IgAAAA=="/>
+			</Signal>
+			<Signal systemTag="cfa54158-9e76-4fab-9be0-168fcfb7af29" displayName="24 OutWORDs_Byte_4_Bit_3" signalType="input" signalAccessPath="4.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="IwAAAA=="/>
+			</Signal>
+			<Signal systemTag="3281e0e9-79ae-4c1e-88f6-f64ede6cf9ba" displayName="24 OutWORDs_Byte_4_Bit_4" signalType="input" signalAccessPath="4.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="JAAAAA=="/>
+			</Signal>
+			<Signal systemTag="da1d3cce-4b66-4c84-8f79-8a3a5af225b4" displayName="24 OutWORDs_Byte_4_Bit_5" signalType="input" signalAccessPath="4.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="JQAAAA=="/>
+			</Signal>
+			<Signal systemTag="8a989770-04f2-4f48-9737-4939172001bb" displayName="24 OutWORDs_Byte_4_Bit_6" signalType="input" signalAccessPath="4.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="JgAAAA=="/>
+			</Signal>
+			<Signal systemTag="ba8b95d1-5e6d-477f-a109-a436b0e164d1" displayName="24 OutWORDs_Byte_4_Bit_7" signalType="input" signalAccessPath="4.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="JwAAAA=="/>
+			</Signal>
+			<Signal systemTag="ea8cfc5e-377f-4434-9050-6b8e20024b3b" displayName="24 OutWORDs_Byte_5_Bit_0" signalType="input" signalAccessPath="5.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="KAAAAA=="/>
+			</Signal>
+			<Signal systemTag="0fe3fbfc-9404-495b-9f78-9e7db043163b" displayName="24 OutWORDs_Byte_5_Bit_1" signalType="input" signalAccessPath="5.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="KQAAAA=="/>
+			</Signal>
+			<Signal systemTag="5986ded5-00ac-4cfd-98ab-a561656b74a0" displayName="24 OutWORDs_Byte_5_Bit_2" signalType="input" signalAccessPath="5.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="KgAAAA=="/>
+			</Signal>
+			<Signal systemTag="0e63df49-c5a9-4f87-aa84-f4c1e0d87e73" displayName="24 OutWORDs_Byte_5_Bit_3" signalType="input" signalAccessPath="5.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="KwAAAA=="/>
+			</Signal>
+			<Signal systemTag="178b8093-9596-4c7b-920c-b90f27675d07" displayName="24 OutWORDs_Byte_5_Bit_4" signalType="input" signalAccessPath="5.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="LAAAAA=="/>
+			</Signal>
+			<Signal systemTag="69e228ce-d93e-4a9b-818f-fa70b5d3b69e" displayName="24 OutWORDs_Byte_5_Bit_5" signalType="input" signalAccessPath="5.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="LQAAAA=="/>
+			</Signal>
+			<Signal systemTag="d20d7d8c-ad30-4ec0-a9ce-98f74c0cde23" displayName="24 OutWORDs_Byte_5_Bit_6" signalType="input" signalAccessPath="5.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="LgAAAA=="/>
+			</Signal>
+			<Signal systemTag="3107b138-2581-4398-a754-1529cf53553d" displayName="24 OutWORDs_Byte_5_Bit_7" signalType="input" signalAccessPath="5.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="LwAAAA=="/>
+			</Signal>
+			<Signal systemTag="f2c14121-c93d-4f8a-8d21-fd03531974a6" displayName="24 OutWORDs_Byte_6_Bit_0" signalType="input" signalAccessPath="6.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="MAAAAA=="/>
+			</Signal>
+			<Signal systemTag="4796c5cd-a5ae-4bf6-9258-b121d0d541c6" displayName="24 OutWORDs_Byte_6_Bit_1" signalType="input" signalAccessPath="6.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="MQAAAA=="/>
+			</Signal>
+			<Signal systemTag="dc649b2e-176a-412e-9a06-c7a6120f798f" displayName="24 OutWORDs_Byte_6_Bit_2" signalType="input" signalAccessPath="6.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="MgAAAA=="/>
+			</Signal>
+			<Signal systemTag="5fab1954-7c8d-4a8f-9f5e-872bfa7fc37a" displayName="24 OutWORDs_Byte_6_Bit_3" signalType="input" signalAccessPath="6.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="MwAAAA=="/>
+			</Signal>
+			<Signal systemTag="8f7ada0a-0042-4d07-94fa-fdeb1d9bb86c" displayName="24 OutWORDs_Byte_6_Bit_4" signalType="input" signalAccessPath="6.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="NAAAAA=="/>
+			</Signal>
+			<Signal systemTag="e84ced46-67dc-4e7c-8b25-aafbddbecdc2" displayName="24 OutWORDs_Byte_6_Bit_5" signalType="input" signalAccessPath="6.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="NQAAAA=="/>
+			</Signal>
+			<Signal systemTag="8aec1641-04d3-4d8b-a82a-7d85aca8a59d" displayName="24 OutWORDs_Byte_6_Bit_6" signalType="input" signalAccessPath="6.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="NgAAAA=="/>
+			</Signal>
+			<Signal systemTag="97a15779-5665-4d5f-aa65-67f558ab1692" displayName="24 OutWORDs_Byte_6_Bit_7" signalType="input" signalAccessPath="6.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="NwAAAA=="/>
+			</Signal>
+			<Signal systemTag="626dd53a-429b-4fc8-8c0d-6e54ca058a9f" displayName="24 OutWORDs_Byte_7_Bit_0" signalType="input" signalAccessPath="7.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="OAAAAA=="/>
+			</Signal>
+			<Signal systemTag="ab46c7cd-aa99-4eae-bf48-1efa0bc93199" displayName="24 OutWORDs_Byte_7_Bit_1" signalType="input" signalAccessPath="7.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="OQAAAA=="/>
+			</Signal>
+			<Signal systemTag="157b8445-a0ca-412c-a454-f978998b27e6" displayName="24 OutWORDs_Byte_7_Bit_2" signalType="input" signalAccessPath="7.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="OgAAAA=="/>
+			</Signal>
+			<Signal systemTag="cc596dcb-b321-4098-9d38-8e770c8cf1a3" displayName="24 OutWORDs_Byte_7_Bit_3" signalType="input" signalAccessPath="7.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="OwAAAA=="/>
+			</Signal>
+			<Signal systemTag="12da9d4a-c61b-470b-a47b-9bfd84f980b7" displayName="24 OutWORDs_Byte_7_Bit_4" signalType="input" signalAccessPath="7.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="PAAAAA=="/>
+			</Signal>
+			<Signal systemTag="3eefbcf3-509c-42e2-b824-0232f28132da" displayName="24 OutWORDs_Byte_7_Bit_5" signalType="input" signalAccessPath="7.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="PQAAAA=="/>
+			</Signal>
+			<Signal systemTag="8503ece9-8a27-47f2-b570-03cc5b25ff69" displayName="24 OutWORDs_Byte_7_Bit_6" signalType="input" signalAccessPath="7.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="PgAAAA=="/>
+			</Signal>
+			<Signal systemTag="3a080263-9904-40ac-9756-f491c9af00ef" displayName="24 OutWORDs_Byte_7_Bit_7" signalType="input" signalAccessPath="7.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="PwAAAA=="/>
+			</Signal>
+			<Signal systemTag="26a2ae32-631b-4f4f-b5f7-6f5fc97073bc" displayName="24 OutWORDs_Byte_8_Bit_0" signalType="input" signalAccessPath="8.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="QAAAAA=="/>
+			</Signal>
+			<Signal systemTag="94fb5e44-e4d1-4039-ac58-fbc20cdc7cbd" displayName="24 OutWORDs_Byte_8_Bit_1" signalType="input" signalAccessPath="8.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="QQAAAA=="/>
+			</Signal>
+			<Signal systemTag="6556072b-6c44-43eb-8cfc-75cf88391576" displayName="24 OutWORDs_Byte_8_Bit_2" signalType="input" signalAccessPath="8.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="QgAAAA=="/>
+			</Signal>
+			<Signal systemTag="26b3cbbf-e523-450d-a400-7b5e8c4ff147" displayName="24 OutWORDs_Byte_8_Bit_3" signalType="input" signalAccessPath="8.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="QwAAAA=="/>
+			</Signal>
+			<Signal systemTag="cb0e2bfb-4a46-48b6-8b53-df1f4daf89b9" displayName="24 OutWORDs_Byte_8_Bit_4" signalType="input" signalAccessPath="8.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="RAAAAA=="/>
+			</Signal>
+			<Signal systemTag="0a0bdbab-854d-4078-8255-2d15aa2dc2c4" displayName="24 OutWORDs_Byte_8_Bit_5" signalType="input" signalAccessPath="8.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="RQAAAA=="/>
+			</Signal>
+			<Signal systemTag="05b5db63-190f-458e-be3f-c37c7ae609b1" displayName="24 OutWORDs_Byte_8_Bit_6" signalType="input" signalAccessPath="8.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="RgAAAA=="/>
+			</Signal>
+			<Signal systemTag="9972f350-4d67-4743-a801-9e4997a8db7e" displayName="24 OutWORDs_Byte_8_Bit_7" signalType="input" signalAccessPath="8.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="RwAAAA=="/>
+			</Signal>
+			<Signal systemTag="f1339001-e16e-465a-8f1b-bbace7d98cc7" displayName="24 OutWORDs_Byte_9_Bit_0" signalType="input" signalAccessPath="9.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="SAAAAA=="/>
+			</Signal>
+			<Signal systemTag="ed499540-edfc-405d-86ef-41914789861e" displayName="24 OutWORDs_Byte_9_Bit_1" signalType="input" signalAccessPath="9.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="SQAAAA=="/>
+			</Signal>
+			<Signal systemTag="234f2ba3-f58a-44d4-a92e-47d3734d587f" displayName="24 OutWORDs_Byte_9_Bit_2" signalType="input" signalAccessPath="9.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="SgAAAA=="/>
+			</Signal>
+			<Signal systemTag="e82cc94f-21ba-43dd-992b-e378eb2ea4c7" displayName="24 OutWORDs_Byte_9_Bit_3" signalType="input" signalAccessPath="9.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="SwAAAA=="/>
+			</Signal>
+			<Signal systemTag="352452a8-2677-41dc-8f31-598a603748c8" displayName="24 OutWORDs_Byte_9_Bit_4" signalType="input" signalAccessPath="9.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="TAAAAA=="/>
+			</Signal>
+			<Signal systemTag="fca33f91-5c89-45d6-9d1f-fc955f600d65" displayName="24 OutWORDs_Byte_9_Bit_5" signalType="input" signalAccessPath="9.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="TQAAAA=="/>
+			</Signal>
+			<Signal systemTag="72036e76-dfd6-4807-ad51-ba4ac479d219" displayName="24 OutWORDs_Byte_9_Bit_6" signalType="input" signalAccessPath="9.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="TgAAAA=="/>
+			</Signal>
+			<Signal systemTag="0fea0f46-ed89-4a4f-9c06-287b41d2cc04" displayName="24 OutWORDs_Byte_9_Bit_7" signalType="input" signalAccessPath="9.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="TwAAAA=="/>
+			</Signal>
+			<Signal systemTag="bacb2c67-2204-4d3d-8698-bfe5a7290edf" displayName="24 OutWORDs_Byte_10_Bit_0" signalType="input" signalAccessPath="10.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="UAAAAA=="/>
+			</Signal>
+			<Signal systemTag="d349cb0f-4ab3-46cd-9d7d-aa776509350d" displayName="24 OutWORDs_Byte_10_Bit_1" signalType="input" signalAccessPath="10.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="UQAAAA=="/>
+			</Signal>
+			<Signal systemTag="a758031e-bae5-47bc-ade0-bbc1d8cda788" displayName="24 OutWORDs_Byte_10_Bit_2" signalType="input" signalAccessPath="10.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="UgAAAA=="/>
+			</Signal>
+			<Signal systemTag="3e1f3a00-ee3e-4391-800e-e4ea2cfab167" displayName="24 OutWORDs_Byte_10_Bit_3" signalType="input" signalAccessPath="10.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="UwAAAA=="/>
+			</Signal>
+			<Signal systemTag="98195c8c-e598-4e8f-97c9-597bd4c7c0d9" displayName="24 OutWORDs_Byte_10_Bit_4" signalType="input" signalAccessPath="10.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="VAAAAA=="/>
+			</Signal>
+			<Signal systemTag="d331c8eb-aabb-4084-a31b-0f304a0bb785" displayName="24 OutWORDs_Byte_10_Bit_5" signalType="input" signalAccessPath="10.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="VQAAAA=="/>
+			</Signal>
+			<Signal systemTag="03846592-62ac-4548-b9cf-b9542f9118ef" displayName="24 OutWORDs_Byte_10_Bit_6" signalType="input" signalAccessPath="10.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="VgAAAA=="/>
+			</Signal>
+			<Signal systemTag="6ec64e92-461f-4087-9d19-3320db451df0" displayName="24 OutWORDs_Byte_10_Bit_7" signalType="input" signalAccessPath="10.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="VwAAAA=="/>
+			</Signal>
+			<Signal systemTag="35268da6-10a7-4cec-9526-09db4e5075da" displayName="24 OutWORDs_Byte_11_Bit_0" signalType="input" signalAccessPath="11.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="WAAAAA=="/>
+			</Signal>
+			<Signal systemTag="f7e87ceb-ed93-44f0-a033-9e432c63e534" displayName="24 OutWORDs_Byte_11_Bit_1" signalType="input" signalAccessPath="11.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="WQAAAA=="/>
+			</Signal>
+			<Signal systemTag="3464dfa0-1f03-4ad5-b0b1-6d71db66fe08" displayName="24 OutWORDs_Byte_11_Bit_2" signalType="input" signalAccessPath="11.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="WgAAAA=="/>
+			</Signal>
+			<Signal systemTag="2fc88c90-b03d-498a-8855-b5ad051a9f68" displayName="24 OutWORDs_Byte_11_Bit_3" signalType="input" signalAccessPath="11.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="WwAAAA=="/>
+			</Signal>
+			<Signal systemTag="502c0e92-1e01-46b1-a50d-658d4fefb512" displayName="24 OutWORDs_Byte_11_Bit_4" signalType="input" signalAccessPath="11.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="XAAAAA=="/>
+			</Signal>
+			<Signal systemTag="f1cc1ab1-c4cb-423c-945c-997e1e3b73f1" displayName="24 OutWORDs_Byte_11_Bit_5" signalType="input" signalAccessPath="11.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="XQAAAA=="/>
+			</Signal>
+			<Signal systemTag="691dc3c7-cf0e-4545-a7e4-bc0f91fb22c4" displayName="24 OutWORDs_Byte_11_Bit_6" signalType="input" signalAccessPath="11.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="XgAAAA=="/>
+			</Signal>
+			<Signal systemTag="8ec7a910-7383-41a0-9caf-5719d076b3cd" displayName="24 OutWORDs_Byte_11_Bit_7" signalType="input" signalAccessPath="11.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="XwAAAA=="/>
+			</Signal>
+			<Signal systemTag="38f79ca8-c094-4bdd-9101-5c6e3d18f625" displayName="24 OutWORDs_Byte_12_Bit_0" signalType="input" signalAccessPath="12.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="YAAAAA=="/>
+			</Signal>
+			<Signal systemTag="6f7e89bf-12cd-4a80-93d3-09048b5aca33" displayName="24 OutWORDs_Byte_12_Bit_1" signalType="input" signalAccessPath="12.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="YQAAAA=="/>
+			</Signal>
+			<Signal systemTag="5d4d5fd4-140e-4bb1-bd93-22e4927d2e43" displayName="24 OutWORDs_Byte_12_Bit_2" signalType="input" signalAccessPath="12.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="YgAAAA=="/>
+			</Signal>
+			<Signal systemTag="e6915910-b56e-45f7-9b08-76634afb8411" displayName="24 OutWORDs_Byte_12_Bit_3" signalType="input" signalAccessPath="12.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="YwAAAA=="/>
+			</Signal>
+			<Signal systemTag="5312d57d-215b-4d15-972d-e2dad72eb30f" displayName="24 OutWORDs_Byte_12_Bit_4" signalType="input" signalAccessPath="12.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="ZAAAAA=="/>
+			</Signal>
+			<Signal systemTag="3937810f-aa35-44df-a5a8-d86fb89fd531" displayName="24 OutWORDs_Byte_12_Bit_5" signalType="input" signalAccessPath="12.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="ZQAAAA=="/>
+			</Signal>
+			<Signal systemTag="dc42ff13-1ac8-40fe-8b84-9c140178503e" displayName="24 OutWORDs_Byte_12_Bit_6" signalType="input" signalAccessPath="12.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="ZgAAAA=="/>
+			</Signal>
+			<Signal systemTag="6b8b69ba-269c-4574-963c-f7d16c0a7d9d" displayName="24 OutWORDs_Byte_12_Bit_7" signalType="input" signalAccessPath="12.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="ZwAAAA=="/>
+			</Signal>
+			<Signal systemTag="6b922bb0-5daa-452f-bda4-94b064c35273" displayName="24 OutWORDs_Byte_13_Bit_0" signalType="input" signalAccessPath="13.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="aAAAAA=="/>
+			</Signal>
+			<Signal systemTag="3c811903-f1f2-47f8-886a-3221371d04a6" displayName="24 OutWORDs_Byte_13_Bit_1" signalType="input" signalAccessPath="13.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="aQAAAA=="/>
+			</Signal>
+			<Signal systemTag="8ece58ee-d0a2-46c5-aa64-6a9115785156" displayName="24 OutWORDs_Byte_13_Bit_2" signalType="input" signalAccessPath="13.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="agAAAA=="/>
+			</Signal>
+			<Signal systemTag="4058446f-e8ef-482a-9dc8-7e10364b5848" displayName="24 OutWORDs_Byte_13_Bit_3" signalType="input" signalAccessPath="13.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="awAAAA=="/>
+			</Signal>
+			<Signal systemTag="b0dfa928-fb1d-4883-8284-efaf677c2fa9" displayName="24 OutWORDs_Byte_13_Bit_4" signalType="input" signalAccessPath="13.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="bAAAAA=="/>
+			</Signal>
+			<Signal systemTag="22b29e52-8fca-498a-8c2c-aa3ee28b1660" displayName="24 OutWORDs_Byte_13_Bit_5" signalType="input" signalAccessPath="13.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="bQAAAA=="/>
+			</Signal>
+			<Signal systemTag="9016ee11-08ed-4fd5-b00a-923bdaf16e9a" displayName="24 OutWORDs_Byte_13_Bit_6" signalType="input" signalAccessPath="13.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="bgAAAA=="/>
+			</Signal>
+			<Signal systemTag="e8589459-6c4c-4c54-af8a-923fdef6abe3" displayName="24 OutWORDs_Byte_13_Bit_7" signalType="input" signalAccessPath="13.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="bwAAAA=="/>
+			</Signal>
+			<Signal systemTag="5121b213-a66e-4f2d-9054-1d46a8fe8b31" displayName="24 OutWORDs_Byte_14_Bit_0" signalType="input" signalAccessPath="14.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="cAAAAA=="/>
+			</Signal>
+			<Signal systemTag="fe466c3c-a255-4cab-b2d2-b46acf677638" displayName="24 OutWORDs_Byte_14_Bit_1" signalType="input" signalAccessPath="14.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="cQAAAA=="/>
+			</Signal>
+			<Signal systemTag="25a0af76-3a0e-421a-a302-1629444cbd76" displayName="24 OutWORDs_Byte_14_Bit_2" signalType="input" signalAccessPath="14.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="cgAAAA=="/>
+			</Signal>
+			<Signal systemTag="b6ff93cc-4f1b-4fc0-880c-54485fbc71fd" displayName="24 OutWORDs_Byte_14_Bit_3" signalType="input" signalAccessPath="14.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="cwAAAA=="/>
+			</Signal>
+			<Signal systemTag="3def4d53-5ebc-479c-a2a2-8ee0118d2c5f" displayName="24 OutWORDs_Byte_14_Bit_4" signalType="input" signalAccessPath="14.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="dAAAAA=="/>
+			</Signal>
+			<Signal systemTag="906a372a-e43b-474f-ad40-fbca9ecfbdfd" displayName="24 OutWORDs_Byte_14_Bit_5" signalType="input" signalAccessPath="14.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="dQAAAA=="/>
+			</Signal>
+			<Signal systemTag="5bab117a-51ca-4678-b0ea-4c15c0308c37" displayName="24 OutWORDs_Byte_14_Bit_6" signalType="input" signalAccessPath="14.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="dgAAAA=="/>
+			</Signal>
+			<Signal systemTag="c0f487d9-d3dd-4760-ac41-4d97288cceaa" displayName="24 OutWORDs_Byte_14_Bit_7" signalType="input" signalAccessPath="14.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="dwAAAA=="/>
+			</Signal>
+			<Signal systemTag="c4d35134-5b9b-4ff4-aaf2-00800e0d82d9" displayName="24 OutWORDs_Byte_15_Bit_0" signalType="input" signalAccessPath="15.0" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="eAAAAA=="/>
+			</Signal>
+			<Signal systemTag="673ad271-b0bb-4317-8309-c8e08adf3eb0" displayName="24 OutWORDs_Byte_15_Bit_1" signalType="input" signalAccessPath="15.1" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="eQAAAA=="/>
+			</Signal>
+			<Signal systemTag="34b9da84-32ec-4843-b437-b106f26f8cfc" displayName="24 OutWORDs_Byte_15_Bit_2" signalType="input" signalAccessPath="15.2" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="egAAAA=="/>
+			</Signal>
+			<Signal systemTag="e9f9108a-bec3-498e-b373-331841e42d1e" displayName="24 OutWORDs_Byte_15_Bit_3" signalType="input" signalAccessPath="15.3" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="ewAAAA=="/>
+			</Signal>
+			<Signal systemTag="01f47d8e-1a96-4b92-ae37-2b67182ac74c" displayName="24 OutWORDs_Byte_15_Bit_4" signalType="input" signalAccessPath="15.4" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="fAAAAA=="/>
+			</Signal>
+			<Signal systemTag="330abdd7-165e-425c-bc30-4e47046db3f7" displayName="24 OutWORDs_Byte_15_Bit_5" signalType="input" signalAccessPath="15.5" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="fQAAAA=="/>
+			</Signal>
+			<Signal systemTag="35d8e69d-2fd3-43f4-b690-a1f27de8f876" displayName="24 OutWORDs_Byte_15_Bit_6" signalType="input" signalAccessPath="15.6" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="fgAAAA=="/>
+			</Signal>
+			<Signal systemTag="b799a2ff-a498-4651-82b5-7dbd73f3a680" displayName="24 OutWORDs_Byte_15_Bit_7" signalType="input" signalAccessPath="15.7" dataType="bit" opc="1" arrayElements="1">
+				<Property id="6103" type="19" value="fwAAAA=="/>
+			</Signal>
+			<Signal systemTag="78db8426-f2b9-44f3-91b9-3de9633439cc" displayName="24 OutWORDs_Byte_16" signalType="input" signalAccessPath="16" dataType="word" opc="1" arrayElements="16">
+				<Property id="6103" type="19" value="gAAAAA=="/>
+			</Signal>
+		</Module>
+		<Status systemTag="CE219A49-85AF-4105-B2AD-94C502D4030E" displayName="Status">
+			<Signal systemTag="3601C79B-50A9-48D5-A129-F69AA4EF0932" displayName="Communication Change of State" signalType="input" signalAccessPath="0" dataType="unsigned32" opc="0" blockNumber="0"></Signal>
+			<Signal systemTag="F7B21E70-192F-4CB8-8F47-34B88AA24CC3" displayName="Communication State" signalType="input" signalAccessPath="4" dataType="unsigned32" opc="0" blockNumber="0"></Signal>
+			<Signal systemTag="7C1EBAAB-BD5B-457B-AD84-8E1C6A6A784C" displayName="Communication Error" signalType="input" signalAccessPath="8" dataType="unsigned32" opc="0" blockNumber="0"></Signal>
+			<Signal systemTag="3EEB403D-3876-4F85-90C8-282FB2307EE2" displayName="Version" signalType="input" signalAccessPath="12" dataType="unsigned16" opc="0" blockNumber="0"></Signal>
+			<Signal systemTag="DA3A00EE-C198-4B3E-86F7-53C3BB818366" displayName="Watchdog Timeout" signalType="input" signalAccessPath="14" dataType="unsigned16" opc="0" blockNumber="0"></Signal>
+			<Signal systemTag="C3E2FDCA-52FC-4C8F-8069-0790381E4BBE" displayName="Host Watchdog" signalType="input" signalAccessPath="20" dataType="unsigned32" opc="0" blockNumber="0"></Signal>
+			<Signal systemTag="07846B64-9189-432A-BB07-274C60AD512B" displayName="Error Count" signalType="input" signalAccessPath="24" dataType="unsigned32" opc="0" blockNumber="0"></Signal>
+			<Signal systemTag="1634AB3D-D367-413F-8A8B-454B08222767" displayName="Error Log Indicator" signalType="input" signalAccessPath="28" dataType="unsigned32" opc="0" blockNumber="0"></Signal>
+		</Status>
+	</Adapter>
+</ProcessData>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.15.3Cs9_BS3337" stackSize="5000" millimeterUnit="true" />
+  <Programs />
+  <Database>
+    <Data file="ForceData.dtx" />
+  </Database>
+  <Libraries />
+  <Types>
+    <Type name="tForce4Item" path="Disk://LibTorque/template/Force4Item/Force4Item.pjx" />
+    <Type name="tForce6Item" path="Disk://LibTorque/template/Force6Item/Force6Item.pjx" />
+  </Types>
+</Project>

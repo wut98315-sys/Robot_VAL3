@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_tActCtrl">
+    <Locals>
+      <Local name="l_n" type="num" xsi:type="array" size="1" />
+      <Local name="l_nMoveID" type="num" xsi:type="array" size="1" />
+      <Local name="l_nDeltaMoveId" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    for l_n=0 to size(actCmd)-1
+      //当moveID有值且没有将动作放入动作堆栈时：
+      if actCmd[l_n].nMoveID>=0 and bPushToStack==false
+        l_nMoveID=getMoveId()
+        if l_nMoveID<nMoveIdMax*0.2 and actCmd[l_n].nMoveID>nMoveIdMax*0.8
+          // l_nMoveID roll over
+          l_nDeltaMoveId=(l_nMoveID+nMoveIdMax)-actCmd[l_n].nMoveID
+        elseIf l_nMoveID>nMoveIdMax*0.8 and actCmd[l_n].nMoveID<nMoveIdMax*0.2
+          // actCmd[l_n].nMoveID roll over
+          l_nDeltaMoveId=l_nMoveID-(actCmd[l_n].nMoveID+nMoveIdMax)
+        else
+          //normal condition
+          l_nDeltaMoveId=(l_nMoveID-actCmd[l_n].nMoveID)
+        endIf
+        
+        if l_nDeltaMoveId>1 and actPrt[l_n].nActType!=2
+          // action control error, set alarm
+          call rs:setAlarm(209,l_nDeltaMoveId)
+        elseIf l_nDeltaMoveId>=0
+          if actCmd[l_n].nActionID>=0
+            //execute cmd
+            call action(actCmd[l_n].nActionID,actCmd[l_n].bActFinish)
+            if actCmd[l_n].bActFinish[0]
+              // action done,remove cmd
+              call removeActCmd(l_n)
+            endIf
+          else
+            //动作的范围超限
+            call rs:setAlarm(208,actCmd[l_n].nActionID)
+          endIf
+        endIf
+      endIf
+    endFor
+    delay(0)
+  until false
+end]]></Code>
+  </Program>
+</Programs>

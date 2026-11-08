@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="simulate_UI">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+ 
+  do
+    if util:sPage!="simulate"
+      util:sPage="simulate"
+      userPageBind("simulate","lbl2","innerHTML",sMsg,1,"r")
+      userPageBindClick("simulate","img1",bCancel,true)
+      userPage("simulate")
+      delay(0.1)
+    endIf
+    sMsg=rs:sTrajStatus
+    if bCancel
+      bCancel=false
+      l_bExit=true
+    endIf
+      
+      
+    delay(0)
+  until l_bExit==true or taskStatus("simulate")==-1
+  rs:bSimulate=false
+  rs:bGOTO=false
+  if taskStatus("simulate")>-1
+    taskKill("simulate")
+    resetMotion()
+  endIf
+ 
+end]]></Code>
+  </Program>
+</Programs>

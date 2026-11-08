@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="MonitorIO">
+    <Locals>
+      <Local name="l_bStopMove" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bToHome" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bRestartMove" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_bRestartMove=true
+  l_bStopMove=false
+  do
+    call io:getDigIO(io:dInput[9],l_bToHome,l_bErr)
+    if l_bToHome and (!l_bRestartMove or l_bStopMove)
+      l_bRestartMove=true
+      l_bStopMove=false
+      restartMove()
+    endIf
+
+    if !l_bToHome and !l_bStopMove
+      l_bStopMove=true
+      stopMove()
+    endIf
+
+//    if manual:bJogMove
+//      if taskStatus("GoHome")>=0
+//        taskKill("GoHome")
+//      endIf
+//      wait(taskStatus("GoHome")<0)
+
+//      stopMove()
+//      resetMotion()
+//      rs:_nOmacStat=9
+//      taskKill("Monitor")
+//      wait(taskStatus("Monitor")<0)
+//    endIf
+    delay(0)
+  until false
+
+end]]></Code>
+  </Program>
+</Programs>

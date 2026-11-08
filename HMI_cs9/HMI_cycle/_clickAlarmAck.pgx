@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_clickAlarmAck">
+    <Code><![CDATA[begin
+  rs:_sRobotStatus="收到页面点击清除报错!"
+  rs:bAlarmAck=true
+  delay(0.1)
+  rs:bAlarmAck=false
+end]]></Code>
+  </Program>
+</Programs>

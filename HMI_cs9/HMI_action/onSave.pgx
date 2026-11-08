@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="onSave">
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  actdata:aActItem[nSelList].sComment=aEditItem.sComment
+  for l_i = 0 to size(aEditItem.aActItem)-1
+    actdata:aActItem[nSelList].aActItem[l_i].sIOtype=aEditItem.aActItem[l_i].sIOtype
+    actdata:aActItem[nSelList].aActItem[l_i].sValue=aEditItem.aActItem[l_i].sValue
+    actdata:aActItem[nSelList].aActItem[l_i].bActive=(aEditItem.aActItem[l_i].bActive==true)
+    toNum(sSelIO[l_i],actdata:aActItem[nSelList].aActItem[l_i].nIOindex,l_bResult)
+    if !l_bResult
+      actdata:aActItem[nSelList].aActItem[l_i].nIOindex=-1
+    endIf
+    actdata:aActItem[nSelList].aActItem[l_i].nPulseValue=aEditItem.aActItem[l_i].nPulseValue
+  endFor
+  bOnsave=true
+  actdata:libSave()
+  delay(0.1)
+end]]></Code>
+  </Program>
+</Programs>

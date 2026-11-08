@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.12.2Cs9_BS2561" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="initJogMode.pgx" />
+    <Program file="jogMode.pgx" />
+    <Program file="loadingPage.pgx" />
+    <Program file="login.pgx" />
+    <Program file="setBtnColor.pgx" />
+    <Program file="setframemode.pgx" />
+    <Program file="setjointmode.pgx" />
+    <Program file="setnullmode.pgx" />
+    <Program file="settoolmode.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="HMI_util.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="savedata" path="Disk://source/saveData/saveData.pjx" />
+  </Libraries>
+</Project>

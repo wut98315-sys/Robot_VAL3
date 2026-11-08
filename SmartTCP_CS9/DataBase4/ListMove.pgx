@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="ListMove" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sM" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bA" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bB" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bC" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bEqual" type="bool" xsi:type="array" size="1" />
+      <Local name="l_fFrame" type="frame" xsi:type="array" size="1" />
+      <Local name="l_trA" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_pCurrentPosUp" type="point" xsi:type="array" size="1" />
+      <Local name="l_pTargetPosUp" type="point" xsi:type="array" size="1" />
+      <Local name="l_nJogMode" type="num" xsi:type="array" size="1" />
+      <Local name="l_jTargetPosUp" type="joint" xsi:type="array" size="1" />
+      <Local name="l_bOut" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nStep" type="num" xsi:type="array" size="1" />
+      <Local name="l_jStart" type="joint" xsi:type="array" size="1" />
+      <Local name="l_pTraj" type="point" xsi:type="array" size="1" />
+      <Local name="l_jPos" type="jointRs" xsi:type="array" size="1" />
+      <Local name="l_jCurrentPosUp" type="joint" xsi:type="array" size="1" />
+      <Local name="l_trB" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_pB" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_pA" type="pointRs" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  resetMotion()
+  link(l_pCurrentPosUp,world)
+  link(l_pTargetPosUp,world)
+  //
+  l_nJogMode=nJogMode
+  $jogMode(0)
+  wait($getJogmode()==0) 
+  delay(0.1)
+  //
+  //*******************************************************************************************
+  switch x_sM
+    case "pTeach1"
+    call moveTarget(pTeach1,jTeach1)
+    break
+    //
+    case "pTeach2"
+    call moveTarget(pTeach2,jTeach2)
+    break
+    //
+    case "pTeach3"
+     call moveTarget(pTeach3,jTeach3)
+    break
+    //
+    case "pTeach4"
+     call moveTarget(pTeach4,jTeach4)
+    break
+    //
+    case "pTeach5"
+      call moveTarget(pTeach5,jTeach5)
+    break
+    //
+    case "pTeach6"
+      call moveTarget(pTeach6,jTeach6)
+    break
+    //*******************************************************************************************
+    case "pAdjustXY_2_1"
+      call moveTarget(pAdjustXY_2_1,jAdjustXY_2_1)
+    break
+    //
+    case "pAdjustXY_2_2"
+      call moveTarget(pAdjustXY_2_2,jAdjustXY_2_2)     
+    break
+    //
+    case "pAdjustXY_3_1"
+      call moveTarget(pAdjustXY_3_1,jAdjustXY_3_1)      
+    break
+    //
+    case "pAdjustXY_3_2"
+      call moveTarget(pAdjustXY_3_2,jAdjustXY_3_2)  
+    break
+    //
+    case "pAdjustXY_3_3"
+      call moveTarget(pAdjustXY_3_3,jAdjustXY_3_3) 
+    break
+    //*******************************************************************************************
+  case "GoBack_pAdjustXY_2_1"
+      l_bOut=false
+      l_nStep=0
+      do
+        switch l_nStep
+          case 0
+            if pAdjustXY_2_1.trsf!={0,0,0,0,0,0}
+              l_nStep=1
+            else
+              l_nStep=99
+            endIf
+          break
+          //
+          case 1
+            call CheckPosEqual(pAdjustXY_2_1,l_bEqual)
+            if l_bEqual==true
+              l_nStep=100
+            else
+              l_nStep=2 
+            endIf
+          break
+          //
+          case 2
+            call CheckPosEqual(pAdjustXY_2_2,l_bEqual)
+            if l_bEqual==true
+              l_nStep=3
+            else
+              l_nStep=4 
+            endIf
+          break
+          //
+          case 3
+              call hmiAlert("GoBack","info") 
+              movel(_pA,utCurrentTool.tValue,mSpeed_C_blend)
+              movel(pAdjustXY_2_1,utCurrentTool.tValue,mSpeed_C_blend)
+              waitEndMove()
+              l_nStep=100
+          break
+          //
+          case 4
+            l_pCurrentPosUp=compose(here(utCurrentTool.tValue,world),world,{0,0,20,0,0,0})   
+            l_pTargetPosUp=appro(pAdjustXY_2_1,{0,0,-20,0,0,0})        
+            l_bA=pointToJoint(utCurrentTool.tValue,jAdjustXY_2_1,l_pTargetPosUp,l_jTargetPosUp)       
+            if l_bA==true
+              call hmiAlert("GoBack","info") 
+              movel(l_pCurrentPosUp,utCurrentTool.tValue,mSpeed_J_blend)
+              movej(l_jTargetPosUp,utCurrentTool.tValue,mSpeed_J_blend)   
+              movel(pAdjustXY_2_1,utCurrentTool.tValue,mSlow)
+              waitEndMove()
+              l_nStep=100
+            else
+              l_nStep=99              
+            endIf
+          break
+          //
+          case 99
+            call hmiAlert("CantGoBack","warning")
+            l_bOut=true
+          break
+          //
+          case 100
+            call hmiAlert("CompleteGoBack","info")
+            l_bOut=true
+          break
+        endSwitch
+      until l_bOut
+    break    
+    //
+    case "Rz+180_pAdjustXY_2_1"
+      l_bOut=false
+      l_nStep=0
+      do
+        switch l_nStep
+          case 0
+            l_trA={0,0,0,0,0,90}
+            l_trB={0,0,0,0,0,180}
+            l_pA=appro(pAdjustXY_2_1,l_trA)
+            l_pB=appro(pAdjustXY_2_1,l_trB)
+            l_pA.config=cConfigSame
+            l_pB.config=cConfigSame
+            //
+            call CheckPosEqual(l_pB,l_bEqual)
+            if l_bEqual==true
+              l_nStep=100
+            else
+              call CheckTraj(pAdjustXY_2_1,l_trA,l_pA,l_bA)
+              call CheckTraj(pAdjustXY_2_1,l_trB,l_pB,l_bB)
+              l_nStep=1
+            endIf
+          break
+          //
+          case 1
+            //whether the target position is reachable
+            if l_bA==true and l_bB==true
+              l_nStep=2
+            else
+              l_nStep=99
+            endIf
+          break
+          //
+          case 2
+            //Whether the robot is at the end position
+            call CheckPosEqual(l_pB,l_bEqual)
+            if !l_bEqual
+              l_nStep=3
+            else
+              l_nStep=100
+            endIf
+          break
+          //
+          case 3
+            call hmiAlert("Move","info")
+            _pA=l_pA      
+            _pB=l_pB
+            movel(_pA,utCurrentTool.tValue,mSpeed_C_blend)
+            movel(_pB,utCurrentTool.tValue,mSpeed_C_blend)
+            waitEndMove()
+            l_nStep=100
+          break          
+          //
+          case 99
+            call hmiAlert("CantMove1","warning")
+            l_bOut=true
+          break
+          //
+          case 100
+            call hmiAlert("CompleteMove","info")
+            l_bOut=true
+          break
+        endSwitch
+      until l_bOut
+    break
+    //
+    case "Rz-180_pAdjustXY_2_1"
+      l_bOut=false
+      l_nStep=0
+      do
+        switch l_nStep
+          case 0
+            l_trA={0,0,0,0,0,-90}
+            l_trB={0,0,0,0,0,-180}
+            l_pA=appro(pAdjustXY_2_1,l_trA)
+            l_pB=appro(pAdjustXY_2_1,l_trB)
+            l_pA.config=cConfigSame
+            l_pB.config=cConfigSame
+            //
+            call CheckPosEqual(l_pB,l_bEqual)
+            if l_bEqual==true
+              l_nStep=100
+            else
+              call CheckTraj(pAdjustXY_2_1,l_trA,l_pA,l_bA)
+              call CheckTraj(pAdjustXY_2_1,l_trB,l_pB,l_bB)
+              l_nStep=1
+            endIf
+          break
+          //
+          case 1
+            //whether the target position is reachable
+            if l_bA==true and l_bB==true
+              l_nStep=2
+            else
+              l_nStep=99
+            endIf
+          break
+          //
+          case 2
+            //Whether the robot is at the end position
+            call CheckPosEqual(l_pB,l_bEqual)
+            if !l_bEqual
+              l_nStep=3
+            else
+              l_nStep=100
+            endIf
+          break
+          //
+          case 3
+            call hmiAlert("Move","info")
+            _pA=l_pA      
+            _pB=l_pB
+            movel(_pA,utCurrentTool.tValue,mSpeed_C_blend)
+            movel(_pB,utCurrentTool.tValue,mSpeed_C_blend)
+            waitEndMove()
+            l_nStep=100
+          break
+          //
+          case 99
+            call hmiAlert("CantMove1","warning")
+            l_bOut=true
+          break
+          //
+          case 100
+            call hmiAlert("CompleteMove","info")
+            l_bOut=true
+          break
+        endSwitch
+      until l_bOut
+    break
+    //
+    case "GoBack_pAdjustXY_3_1"
+      if pAdjustXY_3_1.trsf!={0,0,0,0,0,0}
+        call CheckPosEqual(pAdjustXY_3_1,l_bEqual)
+        if l_bEqual
+          //At the starting positio
+          call hmiAlert("CompleteGoBack","info")
+        else
+          //Not At the starting position
+          call hmiAlert("GoBack","info")
+          movel(pAdjustXY_3_1,utCurrentTool.tValue,mSpeed_C_blend)
+          waitEndMove()
+          call hmiAlert("CompleteGoBack","info")
+        endIf
+      else
+        call hmiAlert("CantGoBack","warning")
+      endIf
+    break
+    //
+    case "Rz+60_pAdjustXY_3_1"
+      l_bOut=false
+      l_nStep=0
+      do
+        switch l_nStep
+          case 0
+            l_trA={0,0,0,0,0,60}
+            _pA=appro(pAdjustXY_3_1,l_trA)
+            _pA.config=cConfigSame
+            //
+            call CheckPosEqual(_pA,l_bEqual)
+            if l_bEqual==true
+              l_nStep=100
+            else
+              call CheckTraj(pAdjustXY_3_1,l_trA,_pA,l_bA)
+              l_nStep=1
+            endIf
+          break
+          //
+          case 1
+            //whether the target position is reachable
+            if l_bA==true
+              l_nStep=2
+            else
+              l_nStep=99
+            endIf
+          break
+          //
+          case 2
+            //Whether the robot is at the end position
+            call CheckPosEqual(_pA,l_bEqual)
+            if !l_bEqual
+              l_nStep=3
+            else
+              l_nStep=100
+            endIf
+          break
+          //
+          case 3
+            call hmiAlert("Move","info")
+            movel(_pA,utCurrentTool.tValue,mSpeed_C_blend)
+            waitEndMove()
+            l_nStep=100
+          break
+          //
+          case 99
+            call hmiAlert("CantMove1","warning")
+            l_bOut=true
+          break
+          //
+          case 100
+            call hmiAlert("CompleteMove","info")
+            l_bOut=true
+          break
+        endSwitch
+      until l_bOut
+    break
+    //
+    case "Rz-60_pAdjustXY_3_1"
+      l_bOut=false
+      l_nStep=0
+      do
+        switch l_nStep
+          case 0
+            l_trA={0,0,0,0,0,-60}
+            _pA=appro(pAdjustXY_3_1,l_trA)
+            _pA.config=cConfigSame
+            //
+            call CheckPosEqual(_pA,l_bEqual)
+            if l_bEqual==true
+              l_nStep=100
+            else
+              call CheckTraj(pAdjustXY_3_1,l_trA,_pA,l_bA)
+              l_nStep=1
+            endIf
+          break          
+          //
+          case 1
+            //whether the target position is reachable
+            if l_bA==true
+              l_nStep=2
+            else
+              l_nStep=99
+            endIf
+          break
+          //
+          case 2
+            //Whether the robot is at the end position
+            call CheckPosEqual(_pA,l_bEqual)
+            if !l_bEqual
+              l_nStep=3
+            else
+              l_nStep=100
+            endIf
+          break
+          //
+          case 3
+            call hmiAlert("Move","info")
+            movel(_pA,utCurrentTool.tValue,mSpeed_C_blend)
+            waitEndMove()
+            l_nStep=100
+          break
+          //
+          case 99
+            call hmiAlert("CantMove1","warning")
+            l_bOut=true
+          break
+          //
+          case 100
+            call hmiAlert("CompleteMove","info")
+            l_bOut=true
+          break
+        endSwitch
+      until l_bOut
+    break
+  endSwitch
+  $jogMode(l_nJogMode)
+end]]></Code>
+  </Program>
+</Programs>

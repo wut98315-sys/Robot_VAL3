@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "-//W3C//DTD VALHTML Strict//EN">
+  <html xmlns="http://www.staubli.com/robotics/2016/03/valhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"></meta>
+      <meta http-equiv="Pragma" content="no-cache"></meta>
+      <meta http-equiv="Expires" content="0"></meta>
+      <script type="text/javascript" src="/vendor/libs/stblUserPage.min.js"></script>
+      <link href="/vendor/libs/up.min.v2.css" rel="stylesheet" media="all" type="text/css"></link>
+      <link href="pointlist.css" rel="stylesheet" type="text/css" media="all"></link>
+      <meta name="src-version" content="8.10.3"></meta>
+    </head>
+    <body style="width: 480px; height: 690px; margin: 0">
+      <iframe style="position: absolute; height: 690px; left: 0px; top: 0px; width: 480px; visibility: hidden" src="../../HMI_util/interface/saving.html" id="obj1"></iframe>
+      <label style="width: 480px; text-align: center; font-size: 26px; height: 50px; padding: 6px 0px 0px 0px; color: #FFFFFF; font-weight: bold; position: absolute; left: 0px; top: 0px; background-color: #6EB6FF" id="lblTitle">point Edit</label>
+      <button style="height: 40px; width: 40px; position: absolute; left: 10px; top: 5px; background-image: url('../../image/back.svg'); background-color: rgba(255,255,255,0.0); border-style: none" id="btnback"></button>
+      <label style="width: 60px; height: 20px; background-color: #FFFFFF; top: 53px; position: absolute; left: 79px" id="lbllib"></label>
+      <label id="lbl3" style="width: 60px; height: 20px; top: 53px; position: absolute; left: 11px">调用库：</label>
+      <hr style="width: 472px; height: 2px; left: 5px; position: absolute; top: 81px" id="hl1_Copy1"></hr>
+      <select id="lst1" size="2" style="left: 0px; position: absolute; top: 101px; width: 480px; height: 297px"></select>
+      <button style="width: 60px; height: 28px; left: 69px; position: absolute; top: 401px" id="btn8">|&lt;</button>
+      <button style="width: 60px; height: 28px; left: 129px; position: absolute; top: 401px" id="btn9">&lt;</button>
+      <label style="border-style: solid; text-align: center; padding: 3px 0px 0px 0px; border-width: 1px 1px 1px 0px; width: 40px; height: 23px; left: 241px; position: absolute; top: 404px" id="lblpagenum"></label>
+      <label style="border-style: solid; text-align: center; padding: 3px 0px 0px 0px; border-width: 1px 0px 1px 1px; width: 40px; height: 23px; left: 197px; position: absolute; top: 404px" id="lblpageindex"></label>
+      <label style="border-style: solid; text-align: center; padding: 3px 0px 0px 0px; border-width: 1px 0px 1px 0px; width: 8px; height: 23px; left: 237px; position: absolute; top: 404px" id="lbl2_Copy2">/</label>
+      <button style="width: 60px; height: 28px; left: 292px; position: absolute; top: 401px" id="btn10">&gt;</button>
+      <button style="width: 60px; height: 28px; left: 351px; position: absolute; top: 401px" id="btn11">&gt;|</button>
+      <button style="height: 40px; top: 543px; width: 80px; position: absolute; left: 400px" id="btn7">保存</button>
+      <button style="height: 30px; width: 80px; left: 160px; position: absolute; top: 437px" id="btn6">信号</button>
+      <button style="height: 40px; width: 80px; left: 400px; position: absolute; top: 483px" id="btn5">删除</button>
+      <button style="left: 0px; width: 80px; height: 30px; position: absolute; top: 437px" id="btn4">直线点</button>
+      <button style="width: 81px; height: 40px; top: 543px; position: absolute; left: 80px" id="btn3">编辑</button>
+      <button style="height: 30px; width: 80px; left: 320px; position: absolute; top: 437px" id="btn2">if</button>
+      <button style="height: 40px; width: 80px; top: 543px; position: absolute; left: 160px" id="btn1">标记</button>
+      <button style="left: 0px; position: absolute; top: 543px; height: 40px; width: 80px; background-color: #39EC30; color: #FFFFFF" id="btn0">记录</button>
+      <label id="lbl1" style="width: 91px; height: 20px; top: 81px; position: absolute; left: 4px">点位列表：</label>
+      <label id="lbl2" style="top: 15px; position: absolute; left: 318px; width: 146px; height: 20px">Label</label>
+      <label style="width: 60px; height: 20px; background-color: #FFFFFF; top: 53px; position: absolute; left: 259px" id="lblframe"></label>
+      <label style="width: 94px; height: 20px; top: 53px; position: absolute; left: 165px" id="lbl3_Copy1">当前frame：</label>
+      <label style="width: 60px; height: 20px; background-color: #FFFFFF; top: 53px; position: absolute; left: 413px" id="lbltool"></label>
+      <label style="width: 84px; height: 20px; top: 53px; position: absolute; left: 333px" id="lbl3_Copy2">当前工具：</label>
+      <iframe style="height: 100px; width: 480px; left: 0px; border-style: none; top: 590px; position: absolute" src="../../HMI_util/interface/jogmode.html"></iframe>
+      <button style="height: 30px; width: 80px; left: 400px; position: absolute; top: 437px" id="btn12">endif</button>
+      <button style="height: 30px; width: 80px; left: 240px; position: absolute; top: 437px" id="btn13">延时</button>
+      <button style="height: 30px; width: 80px; left: 80px; position: absolute; top: 437px" id="btn14">关节点</button>
+      <button style="width: 80px; height: 30px; left: 0px; visibility: visible; position: absolute; top: 468px; font-size: 15px" id="btn16">圆弧点</button>
+      <button style="width: 80px; height: 30px; visibility: visible; font-size: 15px; left: 80px; position: absolute; top: 468px" id="btn17">喷淋延时</button>
+      <button style="width: 80px; height: 30px; font-size: 12px; left: 240px; position: absolute; top: 468px; visibility: visible" id="btn18"></button>
+      <button style="width: 80px; height: 30px; left: 160px; font-size: 12px; position: absolute; top: 468px; visibility: visible" id="btn15"></button>
+      <button id="btn19" style="width: 80px; height: 40px; left: 320px; position: absolute; top: 543px">粘贴</button>
+      <button id="btn20" style="width: 80px; height: 40px; top: 543px; position: absolute; left: 240px">复制</button>
+    </body>
+  </html>

@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="linkIO" access="public">
+    <Description><![CDATA[link the bus IO to the dInput and dOutPut]]></Description>
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sBusType" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  resize(dInItem,1,nMaxdigital)
+  resize(dOutItem,1,nMaxdigital)
+  resize(aInItem,1,nMaxAnalog)
+  resize(aOutItem,1,nMaxAnalog)
+  resize(dInput,1,nMaxdigital)
+  resize(dOutput,1,nMaxdigital)
+  resize(aInput,1,nMaxAnalog)
+  resize(aOutput,1,nMaxAnalog)
+  
+  switch x_sBusType
+    case "VirtualIO"
+      //Digital
+      // if ioStatus(_dInModbus[0])>-1
+      for i=0 to min(size(dInVirtual),nMaxdigital)-1
+        dioLink(dInItem[i].dDio,dInVirtual[i])
+        dioLink(dInput[i],dInVirtual[i])
+        if i<10
+          dInItem[i].sComment="VI_D00"+toString("",i)
+        elseIf 10<=i and i<100
+          dInItem[i].sComment="VI_D0"+toString("",i)
+        else
+          dInItem[i].sComment="VI_D"+toString("",i)
+        endIf
+        //dioLink(dInItem[i].dDio,_dInModbus[i])
+      endFor
+      for i=0 to min(size(dOutVirtual),nMaxdigital)-1
+        dioLink(dOutItem[i].dDio,dOutVirtual[i])
+        dioLink(dOutput[i],dOutVirtual[i])
+        if i<10
+          dOutItem[i].sComment="VO_D00"+toString("",i)
+        elseIf 10<=i and i<100
+          dOutItem[i].sComment="VO_D0"+toString("",i)
+        else
+          dOutItem[i].sComment="VO_D"+toString("",i)
+        endIf
+      endFor
+      //Analog
+      if bUseAnalog==true
+        for i=0 to min(size(aInVirtual),nMaxAnalog)-1
+          aioLink(aInItem[i].aAio,aInVirtual[i])
+          aioLink(aInput[i],aInVirtual[i])
+          if i<10
+            aInItem[i].sComment="VI_A00"+toString("",i)
+          elseIf 10<=i and i<100
+            aInItem[i].sComment="VI_A0"+toString("",i)
+          else
+            aInItem[i].sComment="VI_A"+toString("",i)
+          endIf
+          //aioLink(aInItem[i].aAio,_aInModbus[i])
+        endFor
+        for i=0 to min(size(aOutVirtual),nMaxAnalog)-1
+          aioLink(aOutItem[i].aAio,aOutVirtual[i])
+          aioLink(aOutput[i],aOutVirtual[i])
+          if i<10
+            aOutItem[i].sComment="VO_A00"+toString("",i)
+          elseIf 10<=i and i<100
+            aOutItem[i].sComment="VO_A0"+toString("",i)
+          else
+            aOutItem[i].sComment="VO_A"+toString("",i)
+          endIf
+        endFor
+      endIf
+      //      else
+      //        popUpMsg("选择的总线状态不可用，请检查配置")
+      //      endIf
+    break
+    case "MODBUS"
+      //Digital
+      // if ioStatus(_dInModbus[0])>-1
+      for i=0 to min(size(_dInModbus),nMaxdigital)-1
+        dioLink(dInItem[i].dDio,_dInModbus[i])
+        dioLink(dInput[i],_dInModbus[i])
+        if i<10
+          dInItem[i].sComment="MBI_D00"+toString("",i)
+        elseIf 10<=i and i<100
+          dInItem[i].sComment="MBI_D0"+toString("",i)
+        else
+          dInItem[i].sComment="MBI_D"+toString("",i)
+        endIf
+        //dioLink(dInItem[i].dDio,_dInModbus[i])
+      endFor
+      for i=0 to min(size(_dOModbus),nMaxdigital)-1
+        dioLink(dOutItem[i].dDio,_dOModbus[i])
+        dioLink(dOutput[i],_dOModbus[i])
+        if i<10
+          dOutItem[i].sComment="MBO_D00"+toString("",i)
+        elseIf 10<=i and i<100
+          dOutItem[i].sComment="MBO_D0"+toString("",i)
+        else
+          dOutItem[i].sComment="MBO_D"+toString("",i)
+        endIf
+      endFor
+      //Analog
+      if bUseAnalog==true
+        for i=0 to min(size(_aInModbus),nMaxAnalog)-1
+          aioLink(aInItem[i].aAio,_aInModbus[i])
+          aioLink(aInput[i],_aInModbus[i])
+          if i<10
+            aInItem[i].sComment="MBI_A00"+toString("",i)
+          elseIf 10<=i and i<100
+            aInItem[i].sComment="MBI_A0"+toString("",i)
+          else
+            aInItem[i].sComment="MBI_A"+toString("",i)
+          endIf
+          //aioLink(aInItem[i].aAio,_aInModbus[i])
+        endFor
+        for i=0 to min(size(_aOModbus),nMaxAnalog)-1
+          aioLink(aOutItem[i].aAio,_aOModbus[i])
+          aioLink(aOutput[i],_aOModbus[i])
+          if i<10
+            aOutItem[i].sComment="MBO_A00"+toString("",i)
+          elseIf 10<=i and i<100
+            aOutItem[i].sComment="MBO_A0"+toString("",i)
+          else
+            aOutItem[i].sComment="MBO_A"+toString("",i)
+          endIf
+        endFor
+      endIf
+      //      else
+      //        popUpMsg("选择的总线状态不可用，请检查配置")
+      //      endIf
+    break
+    
+    case "PROFINET"
+      // if ioStatus(_dInProfinet[0])>-1
+      //Digital
+      for i=0 to min(size(_dInProfinet),nMaxdigital)-1
+        dioLink(dInItem[i].dDio,_dInProfinet[i])
+        dioLink(dInput[i],_dInProfinet[i])
+        if i<10
+          dInItem[i].sComment="PFNI_D00"+toString("",i)
+        elseIf 10<=i and i<100
+          dInItem[i].sComment="PFNI_D0"+toString("",i)
+        else
+          dInItem[i].sComment="PFNI_D"+toString("",i)
+        endIf
+      endFor
+      for i=0 to min(size(_dOProfinet),nMaxdigital)-1
+        dioLink(dOutItem[i].dDio,_dOProfinet[i])   
+        dioLink(dOutput[i],_dOProfinet[i])   
+        if i<10
+          dOutItem[i].sComment="PFNO_D00"+toString("",i)
+        elseIf 10<=i and i<100
+          dOutItem[i].sComment="PFNO_D0"+toString("",i)
+        else
+          dOutItem[i].sComment="PFNO_D"+toString("",i)
+        endIf
+      endFor
+      //Analog
+      if bUseAnalog==true
+        for i=0 to min(size(_aInProfinet),nMaxAnalog)-1
+          aioLink(aInItem[i].aAio,_aInProfinet[i])
+          aioLink(aInput[i],_aInProfinet[i])
+          if i<10
+            aInItem[i].sComment="PFNI_A00"+toString("",i)
+          elseIf 10<=i and i<100
+            aInItem[i].sComment="PFNI_A0"+toString("",i)
+          else
+            aInItem[i].sComment="PFNI_A"+toString("",i)
+          endIf
+        endFor
+        for i=0 to min(size(_aOProfinet),nMaxAnalog)-1
+          aioLink(aOutItem[i].aAio,_aOProfinet[i])
+          aioLink(aOutput[i],_aOProfinet[i])
+          if i<10
+            aOutItem[i].sComment="PFNO_A00"+toString("",i)
+          elseIf 10<=i and i<100
+            aOutItem[i].sComment="PFNO_A0"+toString("",i)
+          else
+            aOutItem[i].sComment="PFNO_A"+toString("",i)
+          endIf
+        endFor
+      endIf
+      //      else
+      //        popUpMsg("选择的总线状态不可用，请检查配置")
+      //      endIf
+    break
+    
+    case "PROFIBUS"
+      //   if ioStatus(_dInProfibus[0])>-1
+      //Digital
+      for i=0 to min(size(_dInProfibus),nMaxdigital)-1
+        dioLink(dInItem[i].dDio,_dInProfibus[i])
+        dioLink(dInput[i],_dInProfibus[i])
+      endFor
+      for i=0 to min(size(_dOProfibus),nMaxdigital)-1
+        dioLink(dOutItem[i].dDio,_dOProfibus[i])
+      endFor
+      //Analog
+      if bUseAnalog==true
+        for i=0 to min(size(_aInProfibus),nMaxAnalog)-1
+          aioLink(aInItem[i].aAio,_aInProfibus[i])
+          aioLink(aInput[i],_aInProfibus[i])
+        endFor
+        for i=0 to min(size(_aOProfibus),nMaxAnalog)-1
+          aioLink(aOutItem[i].aAio,_aOProfibus[i])
+          aioLink(aOutput[i],_aOProfibus[i])
+        endFor
+      endIf
+      //      else
+      //        popUpMsg("选择的总线状态不可用，请检查配置")
+      //      endIf
+    break
+    
+    case "ETHERCAT"
+      if ioStatus(_dInEtherCat[0])>-1
+        //Digital
+        for i=0 to min(size(_dInEtherCat),nMaxdigital)-1
+          dioLink(dInItem[i].dDio,_dInEtherCat[i])
+          dioLink(dInput[i],_dInEtherCat[i])
+        endFor
+        for i=0 to min(size(_dOEtherCat),nMaxdigital)-1
+          dioLink(dOutItem[i].dDio,_dOEtherCat[i])
+          dioLink(dOutput[i],_dOEtherCat[i])
+        endFor
+        //Analog
+        if bUseAnalog==true
+          for i=0 to min(size(_aInEthercat),nMaxAnalog)-1
+            aioLink(aInItem[i].aAio,_aInEthercat[i])
+            aioLink(aInput[i],_aInEthercat[i])
+            
+          endFor
+          for i=0 to min(size(_aOEthercat),nMaxAnalog)-1
+            aioLink(aOutItem[i].aAio,_aOEthercat[i])
+            aioLink(aOutput[i],_aOEthercat[i])
+          endFor
+        endIf
+      else
+        popUpMsg("选择的总线状态不可用，请检查配置")
+      endIf
+    break
+    
+    case "ETHERNET"
+      if ioStatus(_dInEtherNet[0])>-1
+        //Digital
+        for i=0 to min(size(_dInEtherNet),nMaxdigital)-1
+          dioLink(dInItem[i].dDio,_dInEtherNet[i])
+          dioLink(dInput[i],_dInEtherNet[i])
+        endFor
+        for i=0 to min(size(_dOEtherNet),nMaxdigital)-1
+          dioLink(dOutItem[i].dDio,_dOEtherNet[i])
+          dioLink(dOutput[i],_dOEtherNet[i])
+        endFor
+        //Analog
+        if bUseAnalog==true
+          for i=0 to min(size(_aInEthernet),nMaxAnalog)-1
+            aioLink(aInItem[i].aAio,_aInEthernet[i])
+            aioLink(aInput[i],_aInEthernet[i])
+          endFor
+          for i=0 to min(size(_aOEthernet),nMaxAnalog)-1
+            aioLink(aOutItem[i].aAio,_aOEthernet[i])
+            aioLink(aOutput[i],_aOEthernet[i])
+          endFor
+        endIf
+      else
+        popUpMsg("选择的总线状态不可用，请检查配置")
+      endIf
+    break
+    
+    case "User"
+      if ioStatus(_dInUser[0])>-1
+        //Digital
+        for i=0 to min(size(_dInUser),nMaxdigital)-1
+          dioLink(dInItem[i].dDio,_dInUser[i])
+          dioLink(dInput[i],_dInUser[i])
+        endFor
+        for i=0 to min(size(_dOutUser),nMaxdigital)-1
+          dioLink(dOutItem[i].dDio,_dOutUser[i])
+          dioLink(dOutput[i],_dOutUser[i])
+        endFor
+        //Analog
+        if bUseAnalog==true
+          for i=0 to min(size(_aInUser),nMaxAnalog)-1
+            aioLink(aInItem[i].aAio,_aInEthernet[i])
+          endFor
+          for i=0 to min(size(_aOutUser),nMaxAnalog)-1
+            aioLink(aOutItem[i].aAio,_aOEthernet[i])
+          endFor
+        endIf
+      else
+        popUpMsg("选择的总线状态不可用，请检查配置")
+      endIf
+    break
+    
+  endSwitch
+  
+  call linkStatusIO()
+  //comment
+  call commentIO()
+  
+  
+  //save
+  l_nResult=libSave()
+  if l_nResult==0
+    logMsg("Save InputOutput Done")
+  else
+    logMsg("error "+toString("",l_nResult)+" saving the saveIO")
+    popUpMsg("error "+toString("",l_nResult)+" saving the saveIO")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

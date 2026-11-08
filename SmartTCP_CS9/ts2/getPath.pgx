@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="getPath">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sHmiName" type="string" xsi:type="element" />
+      <Parameter name="x_sHmiPath" type="string" xsi:type="element" use="reference" />
+    </Parameters>
+    <Code><![CDATA[begin
+  x_sHmiPath=libPath()+"/interface/"+x_sHmiName
+end]]></Code>
+  </Program>
+</Programs>

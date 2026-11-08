@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="onStart">
+    <Locals>
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_nSize=size(savedata:fFrameItem)
+  resize(sFrameList,1,l_nSize)
+  l_nSize=size(savedata:tToolItem)
+  resize(sToolList,1,l_nSize)
+  
+  for l_i = 0 to size(sFrameList)-1
+    sFrameList[l_i]=toString("",l_i)+","+savedata:fFrameItem[l_i].sName
+  endFor
+  
+  for l_i = 0 to size(sToolList)-1
+    sToolList[l_i]=toString("",l_i)+","+savedata:tToolItem[l_i].sName
+  endFor
+  
+  sSelFrame=sFrameList[0]
+  sSelTool=sToolList[0]
+  
+end]]></Code>
+  </Program>
+</Programs>

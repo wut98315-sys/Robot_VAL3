@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="computeFrame">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+
+  l_nResult= setFrame(savedata:fFrameItem[x_nIndex].pPointRx[0],savedata:fFrameItem[x_nIndex].pPointRx[1],savedata:fFrameItem[x_nIndex].pPointRx[2],savedata:fFrameItem[x_nIndex].fFrame)
+  popUpMsg("坐标系计算完成")
+  savedata:libSave()
+  delay(0.1)
+  if l_nResult<0
+    userPageAlert("坐标系示教不成功！请重新示教")
+  endIf
+
+end]]></Code>
+  </Program>
+</Programs>

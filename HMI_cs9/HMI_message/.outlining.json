@@ -1,0 +1,103 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "start",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "bind",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "click_logSave",
+      "nodes": [
+        {
+          "start": 138,
+          "end": 217,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "initMsg",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 65,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "main",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 701,
+          "isCollapsed": false
+        },
+        {
+          "start": 15,
+          "end": 479,
+          "isCollapsed": false
+        },
+        {
+          "start": 484,
+          "end": 604,
+          "isCollapsed": false
+        },
+        {
+          "start": 609,
+          "end": 664,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "click_refresh",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "click_refreshRobotMsg",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "click_refreshIOMsg",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "click_refreshTrajMsg",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "click_refreshAllMsg",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "click_logExport",
+      "nodes": [
+        {
+          "start": 102,
+          "end": 285,
+          "isCollapsed": false
+        },
+        {
+          "start": 186,
+          "end": 277,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="setLabelValue" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nType" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_slabel" type="string" xsi:type="array" size="1" />
+      <Local name="l_nSize1" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+
+  call getSize(l_nSize,l_nSize1)
+  //
+  switch x_nType
+    case 0
+      for l_i = 0 to l_nSize-1
+        sLabel[l_i]=toString("",l_i+16*nPageIndex)+".dIn["+toString("",l_i+16*nPageIndex)+"]"
+        sComment[l_i]=io:dInItem[l_i+16*nPageIndex].sComment
+      endFor
+    break
+    case 1
+      for l_i = 0 to l_nSize-1
+        sLabel[l_i]=toString("",l_i+16*nPageIndex)+".dOut["+toString("",l_i+16*nPageIndex)+"]"
+        sComment[l_i]=io:dOutItem[l_i+16*nPageIndex].sComment
+      endFor
+    break
+    case 2
+      for l_i = 0 to l_nSize1-1
+        sLabel[l_i]=toString("",l_i+16*nPageIndex)+".aIn["+toString("",l_i+16*nPageIndex)+"]"
+        sComment[l_i]=io:aInItem[l_i+16*nPageIndex].sComment
+      endFor
+    break
+    case 3
+      for l_i = 0 to l_nSize1-1
+        sLabel[l_i]=toString("",l_i+16*nPageIndex)+".aOut["+toString("",l_i+16*nPageIndex)+"]"
+        sComment[l_i]=io:aOutItem[l_i+16*nPageIndex].sComment
+      endFor
+ 
+    break
+  endSwitch
+ 
+end]]></Code>
+  </Program>
+</Programs>

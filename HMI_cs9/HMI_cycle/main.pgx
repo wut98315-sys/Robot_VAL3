@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_sTColor" type="string" xsi:type="array" size="1" />
+      <Local name="l_sEColor" type="string" xsi:type="array" size="1" />
+      <Local name="l_nClock" type="num" xsi:type="array" size="1" />
+      <Local name="l_sFColor" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="cycle"
+      util:sPage="cycle"
+      call util:loadingPage()
+      call bind()
+      userPage(util:sPage)
+      delay(0.5)
+      l_sTColor="#33FF33"
+      l_sFColor="#FFFFFF"
+      l_sEColor="#FF3366"
+      nLastProg=-1
+    endIf
+    
+    //机器人状态
+    call currentState()
+    //button
+    if bReset
+      bReset=false
+      call click_Reset()
+    elseIf bStart
+      bStart=false
+      call click_Start()
+    elseIf bHold
+      bHold=false
+      call click_Hold()
+    elseIf bEnd
+      bEnd=false
+      call click_End()
+    elseIf bStop
+      bStop=false
+      call  click_Stop()
+    elseIf bBack
+      bBack=false
+      l_bExit=true
+    elseIf bToHome
+      bToHome=false
+      call simulate:simulateHome()
+    elseIf bRotBack
+      bRotBack=false
+      call click_RotHome()
+    elseIf bClearErr
+      bClearErr=false
+      call _clickAlarmAck()
+    endIf
+    //数据库显示
+    //if saveData:nLibIndex!=nLastLib
+    //nLastLib=saveData:nLibIndex
+    sLib=toString("",saveData:nLibIndex)
+    //endIf
+    //程序号显示
+    if rs:nProgCode!=nLastProg
+      nLastProg=rs:nProgCode
+      sProgCode=toString("",rs:nProgCode)
+    endIf
+    //cycletime
+    call cycletime()
+    //500ms refresh
+    if clock()-l_nClock>0.5
+      l_nClock=clock()
+      sTrajStatus=rs:sTrajStatus
+      if rs:bIsHome
+        userPageSet("cycle","btn1","style.backgroundColor",l_sTColor)
+      else
+        userPageSet("cycle","btn1","style.backgroundColor",l_sFColor)
+      endIf
+      if rs:bIsEstop
+        userPageSet("cycle","btn2","style.backgroundColor",l_sEColor)
+      else
+        userPageSet("cycle","btn2","style.backgroundColor",l_sFColor)
+      endIf
+      if rs:bIsCycle
+        userPageSet("cycle","btn3","style.backgroundColor",l_sTColor)
+      else
+        userPageSet("cycle","btn3","style.backgroundColor",l_sFColor)
+      endIf
+      if rs:bIsReady
+        userPageSet("cycle","btn4","style.backgroundColor",l_sTColor)
+      else
+        userPageSet("cycle","btn4","style.backgroundColor",l_sFColor)
+      endIf
+      if rs:_bHeavyAlarm
+        userPageSet("cycle","btn4_Copy1","style.backgroundColor",l_sTColor)
+      else
+        userPageSet("cycle","btn4_Copy1","style.backgroundColor",l_sFColor)
+      endIf
+    endIf
+    delay(0)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

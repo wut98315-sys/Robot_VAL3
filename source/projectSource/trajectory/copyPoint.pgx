@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="copyPoint" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_bMark" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_j" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  resize(savedata:nMarkIndex,1,1)
+  savedata:nMarkIndex=-1
+  call getPointSize(x_sKey,l_nSize)
+  l_j = 0
+  for l_i = 0 to l_nSize-1
+    if trajTemp:tTrajItem[x_sKey].pPointItem[l_i].bMarked
+      l_j=l_j+1
+      insert(savedata:nMarkIndex[l_j])
+      savedata:nMarkIndex[l_j]=l_i
+      
+      
+    endIf
+  endFor
+  x_bMark=false
+end]]></Code>
+  </Program>
+</Programs>

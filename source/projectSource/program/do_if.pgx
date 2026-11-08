@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="do_if" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_bResult" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nType" type="num" xsi:type="array" size="3" />
+      <Local name="l_nIndex" type="num" xsi:type="array" size="3" />
+      <Local name="l_nValue" type="num" xsi:type="array" size="3" />
+      <Local name="l_bResult1" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bDisable1" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult2" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bDisable2" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult3" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bDisable3" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bANDOR1" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bANDOR2" type="bool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  for l_i = 0 to 2
+    l_nType[l_i]=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigType[l_i]
+    l_nIndex[l_i]=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigIndex[l_i]
+    l_nValue[l_i]=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nValue[l_i]
+  endFor
+  
+  l_bANDOR1=(progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.bANDOR[0]==true)
+  l_bANDOR2=(progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.bANDOR[1]==true)
+  
+  call if_check(l_nType[0],l_nIndex[0],l_nValue[0],l_bResult1,l_bDisable1)
+  call if_check(l_nType[1],l_nIndex[1],l_nValue[1],l_bResult2,l_bDisable2)
+  call if_check(l_nType[2],l_nIndex[2],l_nValue[2],l_bResult3,l_bDisable3)
+  
+  if l_bDisable2 
+    x_bResult=l_bResult1
+  else 
+    if l_bANDOR1
+      x_bResult=(l_bResult1 or l_bResult2)
+    else
+      x_bResult=(l_bResult1 and l_bResult2)
+    endIf
+    
+    if l_bDisable3 
+    else
+      if l_bANDOR2
+        x_bResult=(x_bResult and (l_bResult2 or l_bResult3))
+      else
+        x_bResult=x_bResult and (l_bResult2 and l_bResult3)
+      endIf
+    endIf
+  endIf
+
+  
+
+end]]></Code>
+  </Program>
+</Programs>

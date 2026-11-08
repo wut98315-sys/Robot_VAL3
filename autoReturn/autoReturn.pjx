@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.15.3Cs9_BS3337" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="bIsHome.pgx" />
+    <Program file="getCurMoveID.pgx" />
+    <Program file="getMotCount.pgx" />
+    <Program file="logMoveMsgC.pgx" />
+    <Program file="logMoveMsgJ.pgx" />
+    <Program file="logMoveMsgL.pgx" />
+    <Program file="MoveC.pgx" />
+    <Program file="MoveJ.pgx" />
+    <Program file="MoveL.pgx" />
+    <Program file="resetReturnStack.pgx" />
+    <Program file="returnMove.pgx" />
+    <Program file="setReferencePos.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+    <Program file="updateJointPos.pgx" />
+  </Programs>
+  <Database>
+    <Data file="autoReturn.dtx" />
+  </Database>
+  <Libraries />
+</Project>

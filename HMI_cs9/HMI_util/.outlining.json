@@ -1,0 +1,167 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "setframemode",
+      "nodes": [
+        {
+          "start": 22,
+          "end": 98,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "setjointmode",
+      "nodes": [
+        {
+          "start": 23,
+          "end": 95,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "settoolmode",
+      "nodes": [
+        {
+          "start": 23,
+          "end": 99,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "login",
+      "nodes": [
+        {
+          "start": 37,
+          "end": 650,
+          "isCollapsed": false
+        },
+        {
+          "start": 44,
+          "end": 353,
+          "isCollapsed": false
+        },
+        {
+          "start": 371,
+          "end": 593,
+          "isCollapsed": false
+        },
+        {
+          "start": 410,
+          "end": 523,
+          "isCollapsed": false
+        },
+        {
+          "start": 464,
+          "end": 511,
+          "isCollapsed": false
+        },
+        {
+          "start": 528,
+          "end": 583,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "setBtnColor",
+      "nodes": [
+        {
+          "start": 59,
+          "end": 1208,
+          "isCollapsed": false
+        },
+        {
+          "start": 81,
+          "end": 253,
+          "isCollapsed": false
+        },
+        {
+          "start": 94,
+          "end": 243,
+          "isCollapsed": false
+        },
+        {
+          "start": 258,
+          "end": 565,
+          "isCollapsed": false
+        },
+        {
+          "start": 570,
+          "end": 877,
+          "isCollapsed": false
+        },
+        {
+          "start": 882,
+          "end": 1189,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "jogMode",
+      "nodes": [
+        {
+          "start": 227,
+          "end": 1596,
+          "isCollapsed": false
+        },
+        {
+          "start": 249,
+          "end": 586,
+          "isCollapsed": false
+        },
+        {
+          "start": 591,
+          "end": 897,
+          "isCollapsed": false
+        },
+        {
+          "start": 902,
+          "end": 1239,
+          "isCollapsed": false
+        },
+        {
+          "start": 1244,
+          "end": 1584,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "setnullmode",
+      "nodes": [
+        {
+          "start": 23,
+          "end": 99,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "initJogMode",
+      "nodes": [
+        {
+          "start": 9,
+          "end": 85,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "loadingPage",
+      "nodes": []
+    }
+  ]
+}

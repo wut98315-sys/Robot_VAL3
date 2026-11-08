@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="onStart" access="public">
+    <Locals>
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // call program:loadPROG(0,l_nResult)
+  //  if l_nResult!=0
+  //    popUpMsg("库加载错误："+toString("",l_nResult))
+  //  endIf
+  
+  // call refreshproglist()
+  call program:getProgList(sProgLsit)
+  call refreshlist()
+  
+  nPageIndex=0
+  nPageNum=roundUp(size(sProgLsit)/49)
+  
+  if !isDefined(progTemp:pProgItem[sSelProg])
+    sSelProg=""
+  endIf
+  //
+  sPageIndex=toString("",nPageIndex+1)
+  sPageNum=toString("",nPageNum)
+end]]></Code>
+  </Program>
+</Programs>

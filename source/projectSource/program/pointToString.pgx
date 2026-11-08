@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="pointToString" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sMsg" type="string" xsi:type="element" use="reference" />
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sMsg" type="string" xsi:type="array" size="1" />
+      <Local name="l_nType" type="num" xsi:type="array" size="1" />
+      <Local name="l_sType" type="string" xsi:type="array" size="1" />
+      <Local name="l_sMsg1" type="string" xsi:type="array" size="1" />
+      <Local name="l_sTrajName" type="string" xsi:type="array" size="1" />
+      <Local name="l_sType1" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_nType=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].nType
+  l_sTrajName=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sTRAJname
+  if l_sTrajName!=""
+    switch l_nType
+      case 0
+        l_sType="TRAJ"
+      break
+      case 1
+        l_sType="ACTION"
+      break
+      case 2
+        l_sType="PROG"
+      break
+      case 3
+        l_sType="IF"
+      break
+      case 4
+        l_sType="ENDIF"
+      break
+      case 5
+        l_sType="SWITCH"
+      break
+      case 6
+        l_sType="---CASE"
+      break
+      case 7
+        l_sType="ENDSWITCH"
+      break
+      case 8
+        l_sType="FOR"
+      break
+      default
+      break
+    endSwitch
+    if l_nType<3
+      l_sMsg=" |"
+      l_sMsg=l_sMsg+l_sType
+      l_sMsg=l_sMsg+" -> "+progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sTRAJname
+      x_sMsg=l_sMsg
+    elseIf l_nType==3
+      call ifString(x_sKey,x_nIndex,l_sMsg1)
+      l_sMsg=" |IF "
+      l_sMsg=l_sMsg+l_sMsg1
+      x_sMsg=l_sMsg
+    elseIf l_nType==4
+      l_sMsg=" |"
+      l_sMsg=l_sMsg+"ENDIF"
+      x_sMsg=l_sMsg
+    elseIf l_nType==5
+      l_sMsg=" |"
+      l_sMsg=l_sMsg+l_sType+" ["+progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sSwitchItem.sIOValue+"]"
+      x_sMsg=l_sMsg
+    elseIf l_nType==7
+      l_sMsg=" |"+l_sType
+      x_sMsg=l_sMsg
+    elseIf l_nType==6
+      l_sType1=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sTRAJname
+      l_sMsg=" |"+l_sType+"  "+toString("",progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sSwitchItem.nSwitchValue)
+      l_sMsg=l_sMsg+" -> "+l_sType1+" ["+progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sSwitchItem.sIOValue+"]"
+      x_sMsg=l_sMsg
+    elseIf l_nType==8
+      if progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].fForItem.sIOindex=="value"
+        l_sMsg=" |"+l_sType+" to [value="+toString("",progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].fForItem.nLoopValue)+"]"
+      else
+        l_sMsg=" |"+l_sType+" to AIN｛"+progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].fForItem.sIOindex+"｝"
+      endIf
+      l_sMsg=l_sMsg+" -> "+progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].fForItem.sForTRAJ
+      x_sMsg=l_sMsg
+    endIf
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

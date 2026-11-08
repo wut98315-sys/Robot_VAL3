@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.10.5Cs9_BS2172" stackSize="20000" millimeterUnit="true" />
+  <Programs>
+    <Program file="getPath.pgx" />
+    <Program file="initArmInfo.pgx" />
+    <Program file="initDataBase.pgx" />
+    <Program file="initLibrary.pgx" />
+    <Program file="initWidget.pgx" />
+    <Program file="mainCycle.pgx" />
+    <Program file="moveCalPos.pgx" />
+    <Program file="moveRecPos.pgx" />
+    <Program file="refreshBtn0_CaliTcp.pgx" />
+    <Program file="refreshBtn1_AdjXY.pgx" />
+    <Program file="refreshBtn2_Test.pgx" />
+    <Program file="saveCall.pgx" />
+    <Program file="saveTask.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="ts2.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="db" path="Disk://SmartTCP_CS9/DataBase4/DataBase4.pjx" />
+    <Library alias="algorithm" path="Disk://SmartTCP_CS9/Algorithm4/Algorithm4.pjx" />
+  </Libraries>
+</Project>

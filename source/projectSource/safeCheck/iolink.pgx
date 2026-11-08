@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="iolink" access="public">
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  for l_i = 0 to size(O_safePoint)-1
+    dioLink(O_safePoint[l_i],io:dOutput[nIO_spindex[l_i]])
+  endFor
+  
+  for l_i =0 to size(O_safeZone)-1
+    dioLink(O_safeZone[l_i],io:dOutput[nIO_Zoneindex[l_i]])
+  endFor
+end]]></Code>
+  </Program>
+</Programs>

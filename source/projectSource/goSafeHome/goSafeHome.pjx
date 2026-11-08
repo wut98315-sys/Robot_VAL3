@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3" >
+  <Parameters version="s8.12.1cs9_BS2449" stackSize="200000" millimeterUnit="true" />
+  <Programs>
+    <Program file="gosafe.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="goSafeHome.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="saveData" path="Disk://source/saveData/saveData.pjx" autoload="true" password="" />
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" autoload="true" password="" />
+  </Libraries>
+  <Types>
+  </Types>
+</Project>

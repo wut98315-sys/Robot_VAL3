@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_setMaxJntForce" access="public">
+    <Description><![CDATA[//设置机器人各个轴扭矩最大值]]></Description>
+    <Locals>
+      <Local name="l_bFind" type="bool" xsi:type="array" size="1" />
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="l_sKey" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //根据型号获取扭矩限制值
+  call _getSetForce(nCurrentMaxForce,sArmDetail,sArmType,l_bFind)
+  if l_bFind
+    for i=0 to size(nCurrentMaxForce)-1
+      logMsg(l_sKey+" J"+toString("",i+1)+"设定限制："+toString("",nCurrentMaxForce[i]))
+    endFor
+    //设置机器人各个轴最大扭矩
+    $setMaxJntForce(nCurrentMaxForce)
+    delay(0.5)
+    //手臂实际扭矩限制值
+    resize(nMaxJntGet,1,size(nCurrentMaxForce))
+    $getMaxJntForce(nMaxJntGet)
+    for i=0 to size(nMaxJntGet)-1
+      logMsg(l_sKey+" J"+toString("",i+1)+"实际限制："+toString("",nMaxJntGet[i]))
+    endFor
+  else
+    logMsg("扭矩库中缺少当前机器人型号，请添加!!!")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

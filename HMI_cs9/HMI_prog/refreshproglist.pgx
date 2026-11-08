@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="refreshproglist" access="public">
+    <Locals>
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_nProgSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_sMsg" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  call program:getProgItemSize(sSelProg,l_nProgSize)
+  if l_nProgSize<50
+    nEditPage=1
+  else
+    nEditPage=roundUp(l_nProgSize/49)
+  endIf
+  
+  if nEditIndex>(nEditPage-1)
+    nEditIndex=(nEditPage-1)
+  endIf
+  //slist
+  if nEditIndex==(nEditPage-1)
+    if l_nProgSize%49==0
+      l_nSize=49
+    else
+      l_nSize=l_nProgSize%49
+    endIf
+    for l_i = 0 to l_nSize-1
+      call program:pointToString(l_sMsg,sSelProg,l_i+49*nEditIndex)
+      sList[l_i]=toString("",l_i+49*nEditIndex)+l_sMsg
+    endFor
+    if l_nSize<49
+      for l_i= l_nSize to size(sList)-1
+        sList[l_i]=""
+      endFor
+    endIf
+  else
+    for l_i = 0 to size(sList)-1
+      call program:pointToString(l_sMsg,sSelProg,l_i+49*nEditIndex)
+      sList[l_i]=toString("",l_i+49*nEditIndex)+l_sMsg
+    endFor
+  endIf
+  userPageBind("prog","lst1","options",sList,size(sList),"r")
+  sEditIndex=toString("",nEditIndex+1)
+  sEditPage=toString("",nEditPage)
+  
+end]]></Code>
+  </Program>
+</Programs>

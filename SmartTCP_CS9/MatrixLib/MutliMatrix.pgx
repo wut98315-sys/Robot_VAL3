@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="MutliMatrix" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nMatrix1" type="num" xsi:type="array" use="reference" dimensions="2" />
+      <Parameter name="x_nMatrix2" type="num" xsi:type="array" use="reference" dimensions="2" />
+      <Parameter name="x_nMatrix3" type="num" xsi:type="array" use="reference" dimensions="2" />
+    </Parameters>
+    <Locals>
+      <Local name="a11" type="num" xsi:type="array" size="1" />
+      <Local name="a12" type="num" xsi:type="array" size="1" />
+      <Local name="a13" type="num" xsi:type="array" size="1" />
+      <Local name="a14" type="num" xsi:type="array" size="1" />
+      <Local name="a21" type="num" xsi:type="array" size="1" />
+      <Local name="a22" type="num" xsi:type="array" size="1" />
+      <Local name="a23" type="num" xsi:type="array" size="1" />
+      <Local name="a24" type="num" xsi:type="array" size="1" />
+      <Local name="a31" type="num" xsi:type="array" size="1" />
+      <Local name="a32" type="num" xsi:type="array" size="1" />
+      <Local name="a33" type="num" xsi:type="array" size="1" />
+      <Local name="a34" type="num" xsi:type="array" size="1" />
+      <Local name="a41" type="num" xsi:type="array" size="1" />
+      <Local name="a42" type="num" xsi:type="array" size="1" />
+      <Local name="a43" type="num" xsi:type="array" size="1" />
+      <Local name="a44" type="num" xsi:type="array" size="1" />
+      <Local name="b11" type="num" xsi:type="array" size="1" />
+      <Local name="b12" type="num" xsi:type="array" size="1" />
+      <Local name="b13" type="num" xsi:type="array" size="1" />
+      <Local name="b14" type="num" xsi:type="array" size="1" />
+      <Local name="b21" type="num" xsi:type="array" size="1" />
+      <Local name="b22" type="num" xsi:type="array" size="1" />
+      <Local name="b23" type="num" xsi:type="array" size="1" />
+      <Local name="b24" type="num" xsi:type="array" size="1" />
+      <Local name="b31" type="num" xsi:type="array" size="1" />
+      <Local name="b32" type="num" xsi:type="array" size="1" />
+      <Local name="b33" type="num" xsi:type="array" size="1" />
+      <Local name="b34" type="num" xsi:type="array" size="1" />
+      <Local name="b41" type="num" xsi:type="array" size="1" />
+      <Local name="b42" type="num" xsi:type="array" size="1" />
+      <Local name="b43" type="num" xsi:type="array" size="1" />
+      <Local name="b44" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //初始化变量
+  a11=x_nMatrix1[0,0]
+  a21=x_nMatrix1[0,1]
+  a31=x_nMatrix1[0,2]
+  a41=x_nMatrix1[0,3]
+  a12=x_nMatrix1[1,0]
+  a22=x_nMatrix1[1,1]
+  a32=x_nMatrix1[1,2]
+  a42=x_nMatrix1[1,3]
+  a13=x_nMatrix1[2,0]
+  a23=x_nMatrix1[2,1]
+  a33=x_nMatrix1[2,2]
+  a43=x_nMatrix1[2,3]
+  a14=x_nMatrix1[3,0]
+  a24=x_nMatrix1[3,1]
+  a34=x_nMatrix1[3,2]
+  a44=x_nMatrix1[3,3]
+  
+  b11=x_nMatrix2[0,0]
+  b21=x_nMatrix2[0,1]
+  b31=x_nMatrix2[0,2]
+  b41=x_nMatrix2[0,3]
+  b12=x_nMatrix2[1,0]
+  b22=x_nMatrix2[1,1]
+  b32=x_nMatrix2[1,2]
+  b42=x_nMatrix2[1,3]
+  b13=x_nMatrix2[2,0]
+  b23=x_nMatrix2[2,1]
+  b33=x_nMatrix2[2,2]
+  b43=x_nMatrix2[2,3]
+  b14=x_nMatrix2[3,0]
+  b24=x_nMatrix2[3,1]
+  b34=x_nMatrix2[3,2]
+  b44=x_nMatrix2[3,3]
+  
+  //矩阵相乘
+  
+  x_nMatrix3[0,0]=a11*b11+a12*b21+a13*b31+a14*b41
+  x_nMatrix3[0,1]=a21*b11+a22*b21+a23*b31+a24*b41
+  x_nMatrix3[0,2]=a31*b11+a32*b21+a33*b31+a34*b41
+  x_nMatrix3[0,3]=a41*b11+a42*b21+a43*b31+a44*b41
+  
+  x_nMatrix3[1,0]=a11*b12+a12*b22+a13*b32+a14*b42
+  x_nMatrix3[1,1]=a21*b12+a22*b22+a23*b32+a24*b42
+  x_nMatrix3[1,2]=a31*b12+a32*b22+a33*b32+a34*b42
+  x_nMatrix3[1,3]=a41*b12+a42*b22+a43*b32+a44*b42
+  
+  x_nMatrix3[2,0]=a11*b13+a12*b23+a13*b33+a14*b43
+  x_nMatrix3[2,1]=a21*b13+a22*b23+a23*b33+a24*b43
+  x_nMatrix3[2,2]=a31*b13+a32*b23+a33*b33+a34*b43
+  x_nMatrix3[2,3]=a41*b13+a42*b23+a43*b33+a44*b43
+  
+  x_nMatrix3[3,0]=a11*b14+a12*b24+a13*b34+a14*b44
+  x_nMatrix3[3,1]=a21*b14+a22*b24+a23*b34+a24*b44
+  x_nMatrix3[3,2]=a31*b14+a32*b24+a33*b34+a34*b44
+  x_nMatrix3[3,3]=a41*b14+a42*b24+a43*b34+a44*b44
+end
+]]></Code>
+  </Program>
+</Programs>

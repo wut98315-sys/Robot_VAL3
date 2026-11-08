@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="mainCycle" access="public">
+    <Locals>
+      <Local name="l_bOut" type="bool" xsi:type="array" size="1" />
+      <Local name="l_sStr" type="string" xsi:type="array" size="1" />
+      <Local name="l_nVal" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_bOut=false
+  do
+    //*************************************************************************************************
+    //Refresh the widgets of the <Page_Container_Main>：  
+    //*************************************************************************************************
+    call db:refreshLanguage()
+    call db:refreshCheckBox(db:utImg_CheckBox_a)
+    call db:refreshCheckBox(db:utImg_CheckBox_b)   
+    call db:refreshJogMode()
+    call db:refreshInfo()
+    call db:refreshQuit(l_bOut)
+    //
+    call refreshBtn0_CaliTcp()
+    //
+    call refreshBtn1_AdjXY()
+    //
+    call refreshBtn2_Test()
+    //
+
+  until l_bOut
+end]]></Code>
+  </Program>
+</Programs>

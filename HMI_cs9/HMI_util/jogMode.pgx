@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="jogMode" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nToolIndex" type="num" xsi:type="element" />
+      <Parameter name="x_nFrameIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nJogMode" type="num" xsi:type="array" size="1" />
+      <Local name="l_jHere" type="jointRx" xsi:type="array" size="1" />
+      <Local name="l_pHere" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+      <Local name="l_fFrame" type="frame" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  link(l_tTool,flange)
+  link(l_fFrame,world)
+  l_nJogMode=$getJogmode()
+  l_jHere=herej()
+  call savedata:getTool(x_nToolIndex,l_tTool)
+  call savedata:getFrame(x_nFrameIndex,l_fFrame)
+  l_pHere=here(l_tTool,l_fFrame)
+  switch l_nJogMode
+    case 0
+      call setBtnColor(0)
+      sShowNum[0]=toString(".2",l_pHere.trsf.x)
+      sShowNum[1]=toString(".2",l_pHere.trsf.y)
+      sShowNum[2]=toString(".2",l_pHere.trsf.z)
+      sShowNum[3]=toString(".2",l_pHere.trsf.rx)
+      sShowNum[4]=toString(".2",l_pHere.trsf.ry)
+      sShowNum[5]=toString(".2",l_pHere.trsf.rz )   
+    break
+    case 1
+      call setBtnColor(1)
+      sShowNum[0]=toString(".2",l_jHere.j1)
+      sShowNum[1]=toString(".2",l_jHere.j2)
+      sShowNum[2]=toString(".2",l_jHere.j3)
+      sShowNum[3]=toString(".2",l_jHere.j4)
+      sShowNum[4]=toString(".2",l_jHere.j5)
+      sShowNum[5]=toString(".2",l_jHere.j6)
+    break
+    case 2
+      call setBtnColor(2)
+      sShowNum[0]=toString(".2",l_pHere.trsf.x)
+      sShowNum[1]=toString(".2",l_pHere.trsf.y)
+      sShowNum[2]=toString(".2",l_pHere.trsf.z)
+      sShowNum[3]=toString(".2",l_pHere.trsf.rx)
+      sShowNum[4]=toString(".2",l_pHere.trsf.ry)
+      sShowNum[5]=toString(".2",l_pHere.trsf.rz )   
+    break
+    case 3
+      call setBtnColor(3)
+      sShowNum[0]=toString(".2",l_pHere.trsf.x)
+      sShowNum[1]=toString(".2",l_pHere.trsf.y)
+      sShowNum[2]=toString(".2",l_pHere.trsf.z)
+      sShowNum[3]=toString(".2",l_pHere.trsf.rx)
+      sShowNum[4]=toString(".2",l_pHere.trsf.ry)
+      sShowNum[5]=toString(".2",l_pHere.trsf.rz )      
+    break
+  endSwitch
+end]]></Code>
+  </Program>
+</Programs>

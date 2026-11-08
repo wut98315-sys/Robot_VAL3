@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="action_do" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nType" type="num" xsi:type="array" size="1" />
+      <Local name="l_sType" type="string" xsi:type="array" size="1" />
+      <Local name="l_bActive" type="bool" xsi:type="array" size="1" />
+      <Local name="l_sBoolValue" type="string" xsi:type="array" size="1" />
+      <Local name="l_nBoolValue" type="num" xsi:type="array" size="1" />
+      <Local name="l_nIOindex" type="num" xsi:type="array" size="1" />
+      <Local name="l_nPulseValue" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  for l_i = 0 to size(actionData:aActItem[x_nIndex].aActItem)-1
+    l_sType=actionData:aActItem[x_nIndex].aActItem[l_i].sIOtype
+    l_bActive=(actionData:aActItem[x_nIndex].aActItem[l_i].bActive==true)
+    l_sBoolValue=actionData:aActItem[x_nIndex].aActItem[l_i].sValue
+    l_nIOindex=actionData:aActItem[x_nIndex].aActItem[l_i].nIOindex
+    l_nPulseValue=actionData:aActItem[x_nIndex].aActItem[l_i].nPulseValue
+    switch l_sBoolValue
+      case "ON"
+        l_nBoolValue=1
+      break
+      case "OFF"
+        l_nBoolValue=0
+      break
+    endSwitch
+    if l_bActive
+      switch l_sType
+        case "IN"
+          call addActCmd(1,3,l_nIOindex,l_nBoolValue)
+        break
+        case "OUT"
+          call addActCmd(1,1,l_nIOindex,l_nBoolValue)
+        break
+        case "PULSE"
+          call addActCmd(1,2,l_nIOindex,l_nPulseValue)
+        break
+      
+      endSwitch
+    endIf
+  endFor
+  popUpMsg("执行动作："+toString("",x_nIndex))
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="setCount" access="public">
+    <Locals>
+      <Local name="l_nSize1" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSize2" type="num" xsi:type="array" size="1" />
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="setCount"
+      util:sPage="setCount"
+      nDigCount=io:nMaxdigital
+      nAngCount=io:nMaxAnalog
+      userPageBind("setCount","nmb1","value",nDigCount,1,"rw")
+      userPageBind("setCount","nmb2","value",nAngCount,1,"rw")
+      userPageBindClick("setCount","btn1",bConfirm,true)
+      userPageBindClick("setCount","btn2",bCancel,true)
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    
+    
+    //btn
+    if bConfirm
+      bConfirm=false
+      call io:getAngIOSize(l_nSize1)
+      call io:getDigIOSize(l_nSize2)
+      io:nMaxdigital=nDigCount
+      io:nMaxAnalog=nAngCount
+      call io:linkIO(rs:sBusUsing)
+      io:libSave()
+      popUpMsg("IO数据长度已更新")
+      delay(0.5)
+      l_bExit=true
+    elseIf bCancel
+      bCancel=false
+      
+      l_bExit=true
+      
+    endIf
+    
+    delay(0)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

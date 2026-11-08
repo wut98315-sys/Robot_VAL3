@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_bRefresh" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="traj"
+      util:sPage="traj"
+      call onStart()
+      call bind()
+      call util:loadingPage()
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    
+    if bBool[0]
+      bBool[0]=false
+      //新建
+      call new()
+      bRefresh=true
+    elseIf bBool[1]
+      bBool[1]=false
+      //copy
+      call copy()
+      bRefresh=true
+    elseIf bBool[2]
+      bBool[2]=false
+      //delete
+      call deleteItem()
+      bRefresh=true
+    elseIf bBool[5]
+      bBool[5]=false
+      call simulateTRAJ(sSelTraj)
+      bRefresh=true
+    elseIf bBool[6]
+      bBool[6]=false
+      //编辑
+      call trajectory:onSave(bToSave)
+      
+      if sSelTraj!=""
+        call HMI_point:main(sSelTraj)
+      else
+        userPageAlert("未选中有效TRAJ")
+      endIf
+      bRefresh=true
+  
+    elseIf bBool[7]
+      bBool[7]=false
+      //保存  
+      call trajectory:onSave(bToSave)
+      bRefresh=true
+    elseIf bBool[8]
+      bBool[8]=false
+      //head page
+      nPageIndex=0
+      l_bRefresh=true
+    elseIf bBool[9]
+      bBool[9]=false
+      //page up
+      if nPageIndex>0
+        nPageIndex=nPageIndex-1
+        l_bRefresh=true
+      endIf
+    elseIf bBool[10]
+      bBool[10]=false
+      //page down
+      if nPageIndex<nPageNum-1
+        nPageIndex=nPageIndex+1
+        l_bRefresh=true
+      endIf
+    elseIf bBool[11]
+      bBool[11]=false
+      //end page
+      nPageIndex=nPageNum-1
+      l_bRefresh=true
+    elseIf bBack
+      bBack=false
+     
+      call trajectory:onSave(bToSave)
+       
+      l_bExit=true
+    endIf
+    
+    if l_bRefresh or bRefresh
+      l_bRefresh=false
+      bRefresh=false
+      //刷新列表
+      call refreshlist()
+    endIf
+    //jogmode
+    call util:jogMode(saveData:nUsingTool,0)
+    
+    delay(0)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

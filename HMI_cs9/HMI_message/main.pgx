@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_sTColor" type="string" xsi:type="array" size="1" />
+      <Local name="l_sEColor" type="string" xsi:type="array" size="1" />
+      <Local name="l_nClock" type="num" xsi:type="array" size="1" />
+      <Local name="l_sFColor" type="string" xsi:type="array" size="1" />
+      <Local name="l_sLstMsg" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="message"
+      util:sPage="message"
+      call util:loadingPage()
+      call bind()
+      userPage(util:sPage)
+      nMsgType=0
+      call initMsg()
+      call rs:getLog(sRobotMsg,nMsgType)
+      userPageSet("message","btnAllMsg","style.backgroundColor","#33FF33")
+      userPageSet("message","btnRobotMsg","style.backgroundColor","#FFFFFF")
+      userPageSet("message","btnTrajMsg","style.backgroundColor","#FFFFFF")
+      sCurrentMsg=""
+    endIf
+    if sCurrentMsg!=l_sLstMsg
+      l_sLstMsg=sCurrentMsg
+      popUpMsg(l_sLstMsg)
+      sCurrentMsg=l_sLstMsg=""
+    endIf
+    if bBack
+      bBack=false
+      l_bExit=true
+    endIf
+    delay(0.2)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="getLibName" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nLibNum" type="num" xsi:type="element" use="reference" />
+      <Parameter name="x_bResult" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sString" type="string" xsi:type="array" size="1" />
+      <Local name="l_sString1" type="string" xsi:type="array" size="1" />
+      <Local name="l_nPos" type="num" xsi:type="array" size="1" />
+      <Local name="l_sPath" type="string" xsi:type="array" size="1" />
+      <Local name="l_nlength" type="num" xsi:type="array" size="1" />
+      <Local name="l_nlength1" type="num" xsi:type="array" size="1" />
+      <Local name="l_nLength2" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_sTarget" type="string" xsi:type="array" size="1" />
+      <Local name="l_nLength" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_sPath=trajTemp:libPath()
+  l_nlength=len("Disk://data/CustomerLib/lib")
+  l_nlength1=len("/saveTRAJ/saveTRAJ.pjx")
+  l_nLength2=len(l_sPath)
+  l_nSize=l_nLength2-l_nlength1-l_nLength
+  l_sTarget=mid(l_sPath,l_nSize,l_nlength)
+  toNum(l_sTarget,x_nLibNum,x_bResult)
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Locals>
+      <Local name="l_bRefresh" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nPoint" type="num" xsi:type="array" size="1" />
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="frame"
+      util:sPage="frame"
+      call onStart()
+      call bind()
+      call util:loadingPage()
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    //button
+    if bBool[1]
+      bBool[1]=false
+      call getIndex(sSelFrame,l_nPoint)
+      if l_nPoint!=0
+        call wizard(l_nPoint)
+      else
+        userPageAlert("0号frame不可修改")
+      endIf
+    elseIf bBool[2]
+      bBool[2]=false
+      //modify frame
+      call getIndex(sSelFrame,l_nPoint)
+      if l_nPoint!=0
+        call modifyFrame(l_nPoint)
+      else
+        userPageAlert("0号frame不可修改")
+      endIf
+    elseIf bBool[3]
+      bBool[3]=false
+      //重命名frame
+      call getIndex(sSelFrame,l_nPoint)
+      if l_nPoint!=0
+        call renameFrame(l_nPoint)
+      else
+        userPageAlert("0号frame不可修改")
+      endIf
+      l_bRefresh=true
+    elseIf bBool[4]
+      bBool[4]=false
+      //modify tool
+      call getIndex(sSelTool,l_nPoint)
+      if l_nPoint!=0
+        call setTool(l_nPoint)
+      else
+        userPageAlert("0号tool不可修改")
+      endIf
+    elseIf bBool[5]
+      bBool[5]=false
+      //重命名tool
+      call getIndex(sSelTool,l_nPoint)
+      if l_nPoint!=0
+        call renameTool(l_nPoint)
+      else
+        userPageAlert("0号tool不可修改")
+      endIf
+      l_bRefresh=true
+    elseIf bBack
+      bBack=false
+      l_bExit=true
+        
+    endIf
+    
+    //refresh
+    if l_bRefresh
+      l_bRefresh=false
+      call refreshList()
+    endIf
+    
+    
+    
+    delay(0)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="renameTool">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sName" type="string" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_bResult=userPagePrompt("请输入新的名称：",l_sName)
+  if l_bResult
+    savedata:tToolItem[x_nIndex].sName=l_sName
+    savedata:libSave()
+    delay(0.1)
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="click_logExport">
+    <Locals>
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+      <Local name="l_sDate" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_sDate=getDate("%m_%d %H_%M_%S")
+  call rs:saveLog("USB0://LOG_"+l_sDate+"/log",l_nResult)
+  if l_nResult!=0
+    call rs:saveLog("SP2_USB0://LOG_"+l_sDate+"/log",l_nResult)
+    if l_nResult!=0
+      popUpMsg("未识别U盘,导出失败:"+toString("",l_nResult))
+      return
+    endIf
+  endIf
+  popUpMsg("导出到U盘成功,文件名:LOG_"+l_sDate)
+end]]></Code>
+  </Program>
+</Programs>

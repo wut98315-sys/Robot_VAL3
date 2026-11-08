@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="MoveL" access="public">
+    <Description><![CDATA[// 直线运动movel程序
+// 用该程序替代原val3程序中的movel()指令即可
+// 因为原move指令有返回值moveID，所以这里引入一个x_nMoveId，随参考传递出来]]></Description>
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_pPoint" type="pointRx" xsi:type="element" />
+      <Parameter name="x_tTool" type="tool" xsi:type="element" />
+      <Parameter name="x_mSpeed" type="mdesc" xsi:type="element" />
+      <Parameter name="x_nMoveId" type="num" xsi:type="element" use="reference" />
+      <Parameter name="x_bExact" type="bool" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  // ---------------------------------------------------------------------------- //
+  // 直线运动movel程序
+  // 用该程序替代原val3程序中的movel()指令即可
+  // 因为原move指令有返回值moveID，所以这里引入一个x_nMoveId，随参考传递出来
+  // ---------------------------------------------------------------------------- //
+  // 
+  // 
+  //
+  // 2023.03.15 pointToJoint()时，l_jRef应该取当前指令的前一个点而不是herej()，否则l_jResult可能出现错的解
+  // 解决方法：1.新开一个任务，监控当前moveid，当监控开始执行该点轨迹时，重新pointToJoint()，得到l_jResult（待更新）
+  x_nMoveId=movel(x_pPoint,x_tTool,x_mSpeed)
+  if x_bExact
+    //判断是否精确到达
+    waitEndMove()
+  endIf
+  // log
+  call logMoveMsgL(x_pPoint,x_tTool,x_mSpeed,x_nMoveId,x_bExact)
+  
+end]]></Code>
+  </Program>
+</Programs>

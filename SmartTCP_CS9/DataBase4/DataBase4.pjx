@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.10.5Cs9_BS2172" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="changeBckColorLabel.pgx" />
+    <Program file="CheckPosEqual.pgx" />
+    <Program file="CheckTraj.pgx" />
+    <Program file="hmiAlert.pgx" />
+    <Program file="hmiClose.pgx" />
+    <Program file="hmiConfirm.pgx" />
+    <Program file="initButton.pgx" />
+    <Program file="initCheckBox.pgx" />
+    <Program file="initCombo.pgx" />
+    <Program file="initContainer.pgx" />
+    <Program file="initImage.pgx" />
+    <Program file="initLabel.pgx" />
+    <Program file="initList.pgx" />
+    <Program file="initText.pgx" />
+    <Program file="ListMove.pgx" />
+    <Program file="moveTarget.pgx" />
+    <Program file="putMessage.pgx" />
+    <Program file="refreshCheckBox.pgx" />
+    <Program file="refreshInfo.pgx" />
+    <Program file="refreshJogMode.pgx" />
+    <Program file="refreshLanguage.pgx" />
+    <Program file="refreshQuit.pgx" />
+    <Program file="updateBtn.pgx" />
+    <Program file="updateCurrentPos.pgx" />
+    <Program file="updateInfo.pgx" />
+    <Program file="updateStr.pgx" />
+    <Program file="updateTeachPos.pgx" />
+    <Program file="updateTool.pgx" />
+  </Programs>
+  <Database>
+    <Data file="DataBase4.dtx" />
+  </Database>
+  <Libraries />
+    <Types>
+    <Type name="utButton" path="Disk://SmartTCP_CS9/userType/utButton/utButton.pjx" />
+    <Type name="utCombo" path="Disk://SmartTCP_CS9/userType/utCombo/utCombo.pjx" />
+    <Type name="utContainer" path="Disk://SmartTCP_CS9/userType/utContainer/utContainer.pjx" />
+    <Type name="utImage" path="Disk://SmartTCP_CS9/userType/utImage/utImage.pjx" />
+    <Type name="utLabel" path="Disk://SmartTCP_CS9/userType/utLabel/utLabel.pjx" />
+    <Type name="utList" path="Disk://SmartTCP_CS9/userType/utList/utList.pjx" />
+    <Type name="utText" path="Disk://SmartTCP_CS9/userType/utText/utText.pjx" />
+    <Type name="utTool" path="Disk://SmartTCP_CS9/userType/CurrentTool/CurrentTool.pjx" />
+  </Types>
+</Project>

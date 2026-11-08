@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="resetReturnStack" access="public">
+    <Description><![CDATA[// 清空所有记录堆栈
+// (可选)清空之后是否自动把当前点设为第一个点]]></Description>
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_bRecHere" type="bool" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nI" type="num" xsi:type="array" size="1" />
+      <Local name="l_jPos" type="jointRx" xsi:type="array" size="1" />
+      <Local name="l_nMoveId" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // ---------------------------------------------------------------------------- //
+  // 清空所有记录的堆栈
+  // x_bRecHere: 清空之后是否自动记录当前位置作为第一个点
+  // ---------------------------------------------------------------------------- //
+  //
+  for l_nI= 0 to size(nMoveTypeRec)-1
+    nMoveTypeRec[l_nI]=-1
+    nMoveIdRec[l_nI]=-1
+  endFor
+  nRecIndex=0
+  nCurrentMoveID=0
+  bHaveGetMoveID=false
+  
+  // 是否记录当前位置为第一个点
+  if x_bRecHere
+    l_jPos=herej()
+    call MoveJ(l_jPos,flange,mNomSpeed,l_nMoveId,false)
+    waitEndMove()
+  endIf
+  
+end]]></Code>
+  </Program>
+</Programs>

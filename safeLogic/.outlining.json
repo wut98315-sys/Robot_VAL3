@@ -1,0 +1,119 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "loadLib",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 200,
+          "isCollapsed": false
+        },
+        {
+          "start": 160,
+          "end": 192,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "areaCheck",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 135,
+          "isCollapsed": false
+        },
+        {
+          "start": 54,
+          "end": 126,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "computeArea",
+      "nodes": [
+        {
+          "start": 789,
+          "end": 899,
+          "isCollapsed": false
+        },
+        {
+          "start": 867,
+          "end": 891,
+          "isCollapsed": false
+        },
+        {
+          "start": 902,
+          "end": 1014,
+          "isCollapsed": false
+        },
+        {
+          "start": 981,
+          "end": 1006,
+          "isCollapsed": false
+        },
+        {
+          "start": 1017,
+          "end": 1129,
+          "isCollapsed": false
+        },
+        {
+          "start": 1096,
+          "end": 1121,
+          "isCollapsed": false
+        },
+        {
+          "start": 1155,
+          "end": 1339,
+          "isCollapsed": false
+        },
+        {
+          "start": 1263,
+          "end": 1331,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "checkPoint",
+      "nodes": [
+        {
+          "start": 71,
+          "end": 368,
+          "isCollapsed": false
+        },
+        {
+          "start": 100,
+          "end": 359,
+          "isCollapsed": false
+        },
+        {
+          "start": 139,
+          "end": 349,
+          "isCollapsed": false
+        },
+        {
+          "start": 271,
+          "end": 337,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "main",
+      "nodes": [
+        {
+          "start": 26,
+          "end": 207,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}

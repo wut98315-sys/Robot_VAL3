@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "bindings": [
+    {
+      "id": "cbx1",
+      "attribute": "value",
+      "data": "sSelMovCPoint[0]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    }
+  ],
+  "callbacks": [],
+  "events": []
+}

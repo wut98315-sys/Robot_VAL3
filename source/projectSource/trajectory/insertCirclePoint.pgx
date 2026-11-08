@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertCirclePoint" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_j" type="num" xsi:type="array" size="1" />
+      <Local name="l_fFrame" type="frame" xsi:type="array" size="1" />
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nFrameIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_nToolIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_pPoint" type="pointRx" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //  link(l_fFrame,world)
+  //  link(l_tTool,flange)
+  //  call savedata:getFrame(trajTemp:tTrajItem[x_sKey].nFrameIndex,l_fFrame)
+  //  call savedata:getTool(trajTemp:tTrajItem[x_sKey].nToolIndex,l_tTool)
+  //insert(trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1])
+  append(trajTemp:tTrajItem[x_sKey].pPointItem)
+  
+  for l_i = (size(trajTemp:tTrajItem[x_sKey].pPointItem)-1) to(x_nIndex+1) step -1
+    //logMsg(toString("",l_i))
+    call copyPoint3(x_sKey,l_i,l_i-1)
+  endFor
+  //2024.12.06 当前位置作为插入点坐标
+  l_nFrameIndex=trajTemp:tTrajItem[x_sKey].nFrameIndex
+  l_nToolIndex=trajTemp:tTrajItem[x_sKey].nToolIndex
+  call savedata:getFrame(l_nFrameIndex,l_fFrame)
+  call savedata:getTool(l_nToolIndex,l_tTool)
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].jJointRx=herej()
+  l_pPoint=jointToPoint(l_tTool,l_fFrame,herej())
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pPointRx.trsf=l_pPoint.trsf
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pPointRx.config=l_pPoint.config
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pInter.trsf=l_pPoint.trsf
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pInter.config=l_pPoint.config
+  //
+  
+  //trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pPointRx=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx
+  //trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].jJointRx=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].jJointRx
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.mMdesc=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.mMdesc
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.nMoveType=2
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.nDelay=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nDelay
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.nSigValue=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nSigValue
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.nActionIndex=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nActionIndex
+  trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.nPercentage=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nPercentage
+  for l_j = 0 to 2
+    trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.iIfItem.nSigType[l_j]=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.iIfItem.nSigType[l_j]
+    trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.iIfItem.nSigIndex[l_j]=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.iIfItem.nSigIndex[l_j]
+    trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+1].pParaItem.iIfItem.nValue[l_j]=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.iIfItem.nValue[l_j]
+  endFor
+  //trajTemp:libSave()
+  x_bToSave=true
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,86 @@
+/* redefine the style  */
+
+label, hr, button, input, li {
+	color: #383c3e !important;
+	border-color: #838a8f !important;
+}
+
+:disabled {
+	background-color: #F3F4F4 !important;
+	color: #838a8f !important;
+	cursor: not-allowed;
+	pointer-events: none;
+	opacity: 0.5 !important;
+	box-shadow: none;
+}
+
+/* custom class */
+/* USR-led */
+/* USR-round */
+/* selected */
+/* clickable */
+/* not allowed */
+/* shadowed */
+/* shadowed-top */
+
+.USR-led  {
+  border: 0.33px solid #383c3e;
+  border-radius: 50% !important;
+  box-shadow: 0 0 1.5px black inset !important;
+  outline-width: 0 !important;
+  box-sizing: border-box;
+}
+
+.USR-round  {
+  border: 0.33px solid #383c3e;
+  border-radius: 5px !important;
+  box-shadow: 0 0 1.5px black inset !important;
+  outline-width: 0 !important;
+  box-sizing: border-box;
+	padding: 2px;
+}
+.selected {
+	filter: invert(1);
+	/* color #3e9bd5 rgba(62,155,213,1) -> inverted #bd6229  rgba(189,98,41,1)*/
+	background-color: rgba(189,98,41,0.9) !important;
+  color: #000 !important; 
+}
+
+.clickable{
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.clickable:active {
+	opacity: 1;
+	outline: 0;
+	box-shadow: none;
+	filter: brightness(0.85) contrast(1.15);
+	cursor: grabbing;
+	background-color: #D4D4D4 !important;
+}
+	
+.notAllowed {
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dialog {
+  box-shadow: 0px 0px 25px #383c3e;
+  z-index: 1010; 
+}
+
+.shadowed-top {
+  position: relative;
+  min-height: 10px;
+  box-shadow: 0px 8px 8px -8px #383c3e inset;
+  border-top: 1px;
+}
+.shadowed {
+	box-shadow: 0px 0px 10px #383c3e;
+}
+
+.white-space-normal {
+	white-space: normal;
+}
+

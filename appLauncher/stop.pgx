@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="stop">
+    <Code><![CDATA[begin
+  //kill all task
+  taskKill("Reset")
+  taskKill("Start")
+  taskKill("Stop")
+  taskKill("cycleCtrl")
+  taskKill("Zones")
+  taskKill("Main")
+  taskKill("StatusRobot")
+  //
+  stopMove()
+  resetMotion()
+  disablePower()
+end]]></Code>
+  </Program>
+</Programs>

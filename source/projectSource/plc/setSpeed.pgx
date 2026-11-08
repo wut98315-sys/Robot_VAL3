@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="setSpeed" access="private" >
+    <Locals>
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSpeed" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //设置机器人速度
+  if getProfile()=="customer"
+    call io:getAnaIO(io:aInput[1],l_nSpeed,l_bErr)
+    if l_bErr==false
+      l_nSpeed=round(l_nSpeed)
+      if l_nSpeed>0 and l_nSpeed<=100 and getMonitorSpeed()!=l_nSpeed
+        setMonitorSpeed(l_nSpeed)
+      endIf
+    endIf
+  endIf
+  //手动设回default权限
+  if workingMode()==4 and getProfile()!="customer"
+    l_nResult=setProfile("customer","")
+  endIf
+  if workingMode()==1 and getProfile()=="customer"
+    l_nResult=setProfile("default","")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "bindings": [
+    {
+      "id": "lbl1",
+      "attribute": "innerHTML",
+      "data": "sMsg[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    }
+  ],
+  "callbacks": [],
+  "events": []
+}

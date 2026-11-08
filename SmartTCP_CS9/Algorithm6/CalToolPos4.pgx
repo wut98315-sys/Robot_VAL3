@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="CalToolPos4" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_tTool" type="tool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bStatus" type="bool" xsi:type="array" size="1" />
+      <Local name="l_p1" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_p2" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_p3" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_p4" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_pCenter" type="point" xsi:type="array" size="1" />
+      <Local name="l_t1" type="tool" xsi:type="array" size="1" />
+      <Local name="l_t2" type="tool" xsi:type="array" size="1" />
+      <Local name="l_t3" type="tool" xsi:type="array" size="1" />
+      <Local name="l_t4" type="tool" xsi:type="array" size="1" />
+      <Local name="x1" type="num" xsi:type="array" size="1" />
+      <Local name="x2" type="num" xsi:type="array" size="1" />
+      <Local name="x3" type="num" xsi:type="array" size="1" />
+      <Local name="x4" type="num" xsi:type="array" size="1" />
+      <Local name="y1" type="num" xsi:type="array" size="1" />
+      <Local name="y2" type="num" xsi:type="array" size="1" />
+      <Local name="y3" type="num" xsi:type="array" size="1" />
+      <Local name="y4" type="num" xsi:type="array" size="1" />
+      <Local name="z1" type="num" xsi:type="array" size="1" />
+      <Local name="z2" type="num" xsi:type="array" size="1" />
+      <Local name="z3" type="num" xsi:type="array" size="1" />
+      <Local name="z4" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //取中心点xyz
+  l_p1=db:pTeach1
+  l_p2=db:pTeach2
+  l_p3=db:pTeach3
+  l_p4=db:pTeach4
+  l_pCenter=here(flange,world)
+  call _CalpSphere(l_p1,l_p2,l_p3,l_p4,l_pCenter,l_bStatus)
+
+  if l_bStatus==false
+    call db:hmiAlert("DeviationIsTooLarge","warning")
+  else
+    if db:sMounting=="Floor"
+      l_pCenter.trsf.rx=0
+      l_pCenter.trsf.ry=180
+      l_pCenter.trsf.rz=0
+    elseIf db:sMounting=="Ceiling"
+      l_pCenter.trsf.rx=0
+      l_pCenter.trsf.ry=0
+      l_pCenter.trsf.rz=0
+    endIf
+    l_t1.trsf=!l_p1.trsf*l_pCenter.trsf
+    l_t2.trsf=!l_p2.trsf*l_pCenter.trsf
+    l_t3.trsf=!l_p3.trsf*l_pCenter.trsf
+    l_t4.trsf=!l_p4.trsf*l_pCenter.trsf
+    x_tTool.trsf.x=(l_t1.trsf.x+l_t2.trsf.x+l_t3.trsf.x+l_t4.trsf.x)/4
+    x_tTool.trsf.y=(l_t1.trsf.y+l_t2.trsf.y+l_t3.trsf.y+l_t4.trsf.y)/4
+    x_tTool.trsf.z=(l_t1.trsf.z+l_t2.trsf.z+l_t3.trsf.z+l_t4.trsf.z)/4
+    x_tTool.trsf.rx=l_t1.trsf.rx
+    x_tTool.trsf.ry=l_t1.trsf.ry
+    x_tTool.trsf.rz=l_t1.trsf.rz
+    call db:hmiAlert("SaveInTool1","info")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

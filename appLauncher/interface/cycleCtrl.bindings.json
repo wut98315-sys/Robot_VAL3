@@ -1,0 +1,184 @@
+{
+  "version": "1.0",
+  "bindings": [
+    {
+      "id": "lb_RobotStatus",
+      "attribute": "innerHTML",
+      "data": "_sPageRobotStatus[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lb_CycleStatus",
+      "attribute": "innerHTML",
+      "data": "_sPageCycleStatus[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl2",
+      "attribute": "innerHTML",
+      "data": "_sPageCurrentCapacity[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl2_Copy1",
+      "attribute": "innerHTML",
+      "data": "_sPageAvergeCapacity[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl2_Copy2",
+      "attribute": "innerHTML",
+      "data": "_sPageBestCapacity[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "txt1",
+      "attribute": "value",
+      "data": "rs:sAlarmMes[0]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "txt2",
+      "attribute": "value",
+      "data": "rs:sAlarmMes[1]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "txt1_Copy2",
+      "attribute": "value",
+      "data": "rs:sAlarmMes[2]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "lb_RobotJoint",
+      "attribute": "innerHTML",
+      "data": "_sPageHerej[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lb_RobotPosition",
+      "attribute": "innerHTML",
+      "data": "_sPagePosition[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbProfile",
+      "attribute": "innerHTML",
+      "data": "_sPageProfile[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbSN",
+      "attribute": "innerHTML",
+      "data": "_sPageSN[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbArmType",
+      "attribute": "innerHTML",
+      "data": "_sArmType[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl2",
+      "attribute": "style.visibility",
+      "data": "bControlByRobot[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl2_Copy1",
+      "attribute": "style.visibility",
+      "data": "bControlByRobot[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl2_Copy2",
+      "attribute": "style.visibility",
+      "data": "bControlByRobot[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    }
+  ],
+  "callbacks": [
+    {
+      "id": "btn1",
+      "event": "click",
+      "data": "_clickAlarmAck",
+      "priority": 10
+    },
+    {
+      "id": "bt_reset",
+      "event": "click",
+      "data": "_clickResetBt",
+      "priority": 10
+    },
+    {
+      "id": "bt_start",
+      "event": "click",
+      "data": "_clickStartBt",
+      "priority": 10
+    },
+    {
+      "id": "bt_pause",
+      "event": "click",
+      "data": "_clickPauseBt",
+      "priority": 10
+    },
+    {
+      "id": "bt_end",
+      "event": "click",
+      "data": "_clickEndBt",
+      "priority": 10
+    },
+    {
+      "id": "bt_stop",
+      "event": "click",
+      "data": "_clickStopBt",
+      "priority": 10
+    },
+    {
+      "id": "btn2",
+      "event": "click",
+      "data": "rs:_clickIoPage",
+      "priority": 10
+    },
+    {
+      "id": "btn2_Copy1",
+      "event": "click",
+      "data": "rs:_clickProductionPage",
+      "priority": 10
+    }
+  ],
+  "events": []
+}

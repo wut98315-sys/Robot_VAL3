@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="cycle_Start">
+    <Locals>
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+
+  //OMAC进程:Starting
+  rs:_nOmacStat=2
+  //运行startUp程序
+  waitEndMove()
+  call io:getAnaIO(io:aInItem[0].aAio,rs:nProgCode,l_bErr)
+
+  //切换数据库
+  //  savedata:nLibIndex=aioGet(io:aInput[2])
+  //  delay(0)
+  //  call plc:changeDataLib1(savedata:nLibIndex)
+  //  aioSet(io:aOutput[3],savedata:nLibIndex)
+
+  //2025.1.6 add 开始扭矩记录程序，获取实时扭矩
+  if taskStatus("getForce")>=0
+    taskKill("getForce")
+    wait(taskStatus("getForce")<0)
+  endIf
+  taskCreate "getForce",100,_getForce()
+  wait(taskStatus("getForce")==1)
+  //创建生产任务
+  if taskStatus("productCycle")>=0
+    taskKill("productCycle")
+    wait(taskStatus("productCycle")<0)
+  endIf
+  taskCreate "productCycle",100,_productCycle()
+  wait(taskStatus("productCycle")==1)
+  //OMAC进程:Start
+  rs:_nOmacStat=3
+  logMsg("当前处于生产状态 "+toString(".2",clock()))
+  rs:_sRobotStatus="当前处于生产状态"
+end]]></Code>
+  </Program>
+</Programs>

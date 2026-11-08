@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="getProgList" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sList" type="string" xsi:type="array" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sKey" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  resize(x_sList,1,1)
+  l_sKey=first(progTemp:pProgItem)
+  
+  while l_sKey!=""
+    x_sList[size(x_sList)-1]=l_sKey
+    insert(x_sList[size(x_sList)])
+    l_sKey=next(progTemp:pProgItem[l_sKey])
+  endWhile
+end]]></Code>
+  </Program>
+</Programs>

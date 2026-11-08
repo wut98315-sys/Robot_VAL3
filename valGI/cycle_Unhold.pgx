@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="cycle_Unhold">
+    <Code><![CDATA[begin
+  //cycle进程:unholding
+  rs:_nOmacStat=2
+  //enable power
+  if !isPowered()
+    enablePower()
+    watch(isPowered(),2)
+  endIf
+  restartMove()
+  //cycle进程:running
+  rs:_nOmacStat=3
+  logMsg("当前处于生产状态 "+toString(".2",clock()))
+  rs:_sRobotStatus="当前处于生产状态"
+end]]></Code>
+  </Program>
+</Programs>

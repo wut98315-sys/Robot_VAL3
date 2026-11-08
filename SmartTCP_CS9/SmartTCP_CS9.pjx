@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.10.5Cs9_BS2172" stackSize="20000" millimeterUnit="true" />
+  <Programs>
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+    <Program file="V20201012.pgx" />
+  </Programs>
+  <Database>
+    <Data file="SmartTCP_CS9.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="tx2" path="./tx2/tx2.pjx" />
+    <Library alias="ts2" path="./ts2/ts2.pjx" />
+  </Libraries>
+</Project>

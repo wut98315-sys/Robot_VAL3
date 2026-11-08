@@ -1,0 +1,1225 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "isDefine",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "getPointSize",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "getFrameID",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "getToolID",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "getLibName",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "getPointIndex",
+      "nodes": [
+        {
+          "start": 50,
+          "end": 142,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "pointEdit",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "logicIF",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 1286,
+          "isCollapsed": false
+        },
+        {
+          "start": 88,
+          "end": 179,
+          "isCollapsed": false
+        },
+        {
+          "start": 182,
+          "end": 273,
+          "isCollapsed": false
+        },
+        {
+          "start": 276,
+          "end": 367,
+          "isCollapsed": false
+        },
+        {
+          "start": 370,
+          "end": 571,
+          "isCollapsed": false
+        },
+        {
+          "start": 431,
+          "end": 571,
+          "isCollapsed": false
+        },
+        {
+          "start": 502,
+          "end": 561,
+          "isCollapsed": false
+        },
+        {
+          "start": 574,
+          "end": 775,
+          "isCollapsed": false
+        },
+        {
+          "start": 635,
+          "end": 775,
+          "isCollapsed": false
+        },
+        {
+          "start": 706,
+          "end": 765,
+          "isCollapsed": false
+        },
+        {
+          "start": 778,
+          "end": 1278,
+          "isCollapsed": false
+        },
+        {
+          "start": 839,
+          "end": 1274,
+          "isCollapsed": false
+        },
+        {
+          "start": 941,
+          "end": 1046,
+          "isCollapsed": false
+        },
+        {
+          "start": 1051,
+          "end": 1154,
+          "isCollapsed": false
+        },
+        {
+          "start": 1159,
+          "end": 1264,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "getTrajSize",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "isReachable",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 438,
+          "isCollapsed": false
+        },
+        {
+          "start": 370,
+          "end": 430,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "getMoveType",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "isPointOK",
+      "nodes": [
+        {
+          "start": 465,
+          "end": 589,
+          "isCollapsed": false
+        },
+        {
+          "start": 557,
+          "end": 581,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "teachPoint",
+      "nodes": [
+        {
+          "start": 117,
+          "end": 659,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "getIFvalue",
+      "nodes": [
+        {
+          "start": 75,
+          "end": 402,
+          "isCollapsed": false
+        },
+        {
+          "start": 588,
+          "end": 1816,
+          "isCollapsed": false
+        },
+        {
+          "start": 609,
+          "end": 1807,
+          "isCollapsed": false
+        },
+        {
+          "start": 661,
+          "end": 1765,
+          "isCollapsed": false
+        },
+        {
+          "start": 692,
+          "end": 968,
+          "isCollapsed": false
+        },
+        {
+          "start": 841,
+          "end": 954,
+          "isCollapsed": false
+        },
+        {
+          "start": 905,
+          "end": 938,
+          "isCollapsed": false
+        },
+        {
+          "start": 977,
+          "end": 1255,
+          "isCollapsed": false
+        },
+        {
+          "start": 1128,
+          "end": 1241,
+          "isCollapsed": false
+        },
+        {
+          "start": 1192,
+          "end": 1225,
+          "isCollapsed": false
+        },
+        {
+          "start": 1264,
+          "end": 1501,
+          "isCollapsed": false
+        },
+        {
+          "start": 1369,
+          "end": 1487,
+          "isCollapsed": false
+        },
+        {
+          "start": 1438,
+          "end": 1471,
+          "isCollapsed": false
+        },
+        {
+          "start": 1510,
+          "end": 1749,
+          "isCollapsed": false
+        },
+        {
+          "start": 1617,
+          "end": 1735,
+          "isCollapsed": false
+        },
+        {
+          "start": 1686,
+          "end": 1719,
+          "isCollapsed": false
+        },
+        {
+          "start": 1770,
+          "end": 1797,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "getTrajList",
+      "nodes": [
+        {
+          "start": 68,
+          "end": 250,
+          "isCollapsed": false
+        },
+        {
+          "start": 179,
+          "end": 239,
+          "isCollapsed": false
+        },
+        {
+          "start": 253,
+          "end": 305,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "resizeMark",
+      "nodes": [
+        {
+          "start": 86,
+          "end": 180,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "resetMark",
+      "nodes": [
+        {
+          "start": 86,
+          "end": 180,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "copyPoint",
+      "nodes": [
+        {
+          "start": 113,
+          "end": 318,
+          "isCollapsed": false
+        },
+        {
+          "start": 142,
+          "end": 309,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "setMark",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "copyPoint1",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 189,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "insertAction",
+      "nodes": [
+        {
+          "start": 122,
+          "end": 280,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "insertDelay",
+      "nodes": [
+        {
+          "start": 121,
+          "end": 279,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "insertENDIF",
+      "nodes": [
+        {
+          "start": 124,
+          "end": 282,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "insertIF",
+      "nodes": [
+        {
+          "start": 122,
+          "end": 281,
+          "isCollapsed": false
+        },
+        {
+          "start": 358,
+          "end": 686,
+          "isCollapsed": false
+        },
+        {
+          "start": 689,
+          "end": 817,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "insertJoint",
+      "nodes": [
+        {
+          "start": 122,
+          "end": 280,
+          "isCollapsed": false
+        },
+        {
+          "start": 1291,
+          "end": 1812,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "insertPoint",
+      "nodes": [
+        {
+          "start": 329,
+          "end": 487,
+          "isCollapsed": false
+        },
+        {
+          "start": 1498,
+          "end": 2019,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "insertSignal",
+      "nodes": [
+        {
+          "start": 143,
+          "end": 299,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "onSave",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 163,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "deletePoint",
+      "nodes": [
+        {
+          "start": 69,
+          "end": 320,
+          "isCollapsed": false
+        },
+        {
+          "start": 86,
+          "end": 312,
+          "isCollapsed": false
+        },
+        {
+          "start": 188,
+          "end": 302,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "deleteTraj",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 120,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "new",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 369,
+          "isCollapsed": false
+        },
+        {
+          "start": 324,
+          "end": 361,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "pointMove1",
+      "nodes": [
+        {
+          "start": 328,
+          "end": 734,
+          "isCollapsed": false
+        },
+        {
+          "start": 353,
+          "end": 533,
+          "isCollapsed": false
+        },
+        {
+          "start": 538,
+          "end": 722,
+          "isCollapsed": false
+        },
+        {
+          "start": 808,
+          "end": 1323,
+          "isCollapsed": false
+        },
+        {
+          "start": 1077,
+          "end": 1264,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "teachPoint1",
+      "nodes": [
+        {
+          "start": 467,
+          "end": 873,
+          "isCollapsed": false
+        },
+        {
+          "start": 492,
+          "end": 672,
+          "isCollapsed": false
+        },
+        {
+          "start": 677,
+          "end": 861,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "copyPoint3",
+      "nodes": [
+        {
+          "start": 1688,
+          "end": 2209,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "insertCirclePoint",
+      "nodes": [
+        {
+          "start": 328,
+          "end": 486,
+          "isCollapsed": false
+        },
+        {
+          "start": 2182,
+          "end": 2703,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "pointToString",
+      "nodes": [
+        {
+          "start": 160,
+          "end": 8598,
+          "isCollapsed": false
+        },
+        {
+          "start": 188,
+          "end": 1192,
+          "isCollapsed": false
+        },
+        {
+          "start": 517,
+          "end": 628,
+          "isCollapsed": false
+        },
+        {
+          "start": 589,
+          "end": 616,
+          "isCollapsed": false
+        },
+        {
+          "start": 1046,
+          "end": 1109,
+          "isCollapsed": false
+        },
+        {
+          "start": 1116,
+          "end": 1182,
+          "isCollapsed": false
+        },
+        {
+          "start": 1204,
+          "end": 2202,
+          "isCollapsed": false
+        },
+        {
+          "start": 1536,
+          "end": 1647,
+          "isCollapsed": false
+        },
+        {
+          "start": 1608,
+          "end": 1635,
+          "isCollapsed": false
+        },
+        {
+          "start": 2045,
+          "end": 2108,
+          "isCollapsed": false
+        },
+        {
+          "start": 2115,
+          "end": 2185,
+          "isCollapsed": false
+        },
+        {
+          "start": 2230,
+          "end": 3582,
+          "isCollapsed": false
+        },
+        {
+          "start": 2637,
+          "end": 2748,
+          "isCollapsed": false
+        },
+        {
+          "start": 2709,
+          "end": 2736,
+          "isCollapsed": false
+        },
+        {
+          "start": 3432,
+          "end": 3495,
+          "isCollapsed": false
+        },
+        {
+          "start": 3502,
+          "end": 3572,
+          "isCollapsed": false
+        },
+        {
+          "start": 3587,
+          "end": 4008,
+          "isCollapsed": false
+        },
+        {
+          "start": 3899,
+          "end": 3998,
+          "isCollapsed": false
+        },
+        {
+          "start": 3952,
+          "end": 3986,
+          "isCollapsed": false
+        },
+        {
+          "start": 4013,
+          "end": 4430,
+          "isCollapsed": false
+        },
+        {
+          "start": 4321,
+          "end": 4420,
+          "isCollapsed": false
+        },
+        {
+          "start": 4374,
+          "end": 4408,
+          "isCollapsed": false
+        },
+        {
+          "start": 4435,
+          "end": 4797,
+          "isCollapsed": false
+        },
+        {
+          "start": 4802,
+          "end": 5160,
+          "isCollapsed": false
+        },
+        {
+          "start": 5165,
+          "end": 5342,
+          "isCollapsed": false
+        },
+        {
+          "start": 5347,
+          "end": 8141,
+          "isCollapsed": false
+        },
+        {
+          "start": 5381,
+          "end": 6568,
+          "isCollapsed": false
+        },
+        {
+          "start": 5797,
+          "end": 6546,
+          "isCollapsed": false
+        },
+        {
+          "start": 5830,
+          "end": 6021,
+          "isCollapsed": false
+        },
+        {
+          "start": 5880,
+          "end": 6005,
+          "isCollapsed": false
+        },
+        {
+          "start": 5947,
+          "end": 5987,
+          "isCollapsed": false
+        },
+        {
+          "start": 6032,
+          "end": 6224,
+          "isCollapsed": false
+        },
+        {
+          "start": 6083,
+          "end": 6208,
+          "isCollapsed": false
+        },
+        {
+          "start": 6150,
+          "end": 6190,
+          "isCollapsed": false
+        },
+        {
+          "start": 6235,
+          "end": 6343,
+          "isCollapsed": false
+        },
+        {
+          "start": 6354,
+          "end": 6463,
+          "isCollapsed": false
+        },
+        {
+          "start": 6474,
+          "end": 6528,
+          "isCollapsed": false
+        },
+        {
+          "start": 6575,
+          "end": 6779,
+          "isCollapsed": false
+        },
+        {
+          "start": 6600,
+          "end": 6766,
+          "isCollapsed": false
+        },
+        {
+          "start": 6718,
+          "end": 6752,
+          "isCollapsed": false
+        },
+        {
+          "start": 6804,
+          "end": 8131,
+          "isCollapsed": false
+        },
+        {
+          "start": 7104,
+          "end": 7223,
+          "isCollapsed": false
+        },
+        {
+          "start": 7230,
+          "end": 7438,
+          "isCollapsed": false
+        },
+        {
+          "start": 7445,
+          "end": 7563,
+          "isCollapsed": false
+        },
+        {
+          "start": 7570,
+          "end": 7689,
+          "isCollapsed": false
+        },
+        {
+          "start": 7696,
+          "end": 7904,
+          "isCollapsed": false
+        },
+        {
+          "start": 7911,
+          "end": 8119,
+          "isCollapsed": false
+        },
+        {
+          "start": 8146,
+          "end": 8186,
+          "isCollapsed": false
+        },
+        {
+          "start": 8191,
+          "end": 8394,
+          "isCollapsed": false
+        },
+        {
+          "start": 8399,
+          "end": 8586,
+          "isCollapsed": false
+        },
+        {
+          "start": 8611,
+          "end": 8653,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "copy",
+      "nodes": [
+        {
+          "start": 426,
+          "end": 2456,
+          "isCollapsed": false
+        },
+        {
+          "start": 1159,
+          "end": 1658,
+          "isCollapsed": false
+        },
+        {
+          "start": 1663,
+          "end": 2174,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "pointMove",
+      "nodes": [
+        {
+          "start": 997,
+          "end": 2653,
+          "isCollapsed": false
+        },
+        {
+          "start": 1176,
+          "end": 2632,
+          "isCollapsed": false
+        },
+        {
+          "start": 1197,
+          "end": 1339,
+          "isCollapsed": false
+        },
+        {
+          "start": 1262,
+          "end": 1327,
+          "isCollapsed": false
+        },
+        {
+          "start": 1346,
+          "end": 1401,
+          "isCollapsed": false
+        },
+        {
+          "start": 1408,
+          "end": 1473,
+          "isCollapsed": false
+        },
+        {
+          "start": 1517,
+          "end": 1778,
+          "isCollapsed": false
+        },
+        {
+          "start": 1568,
+          "end": 1757,
+          "isCollapsed": false
+        },
+        {
+          "start": 1785,
+          "end": 2049,
+          "isCollapsed": false
+        },
+        {
+          "start": 1837,
+          "end": 2037,
+          "isCollapsed": false
+        },
+        {
+          "start": 2056,
+          "end": 2356,
+          "isCollapsed": false
+        },
+        {
+          "start": 2107,
+          "end": 2296,
+          "isCollapsed": false
+        },
+        {
+          "start": 2363,
+          "end": 2618,
+          "isCollapsed": false
+        },
+        {
+          "start": 2415,
+          "end": 2606,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "makeTraj",
+      "nodes": [
+        {
+          "start": 356,
+          "end": 8111,
+          "isCollapsed": false
+        },
+        {
+          "start": 526,
+          "end": 8089,
+          "isCollapsed": false
+        },
+        {
+          "start": 545,
+          "end": 8011,
+          "isCollapsed": false
+        },
+        {
+          "start": 572,
+          "end": 1200,
+          "isCollapsed": false
+        },
+        {
+          "start": 1209,
+          "end": 1708,
+          "isCollapsed": false
+        },
+        {
+          "start": 1717,
+          "end": 2601,
+          "isCollapsed": false
+        },
+        {
+          "start": 2610,
+          "end": 3206,
+          "isCollapsed": false
+        },
+        {
+          "start": 3215,
+          "end": 3703,
+          "isCollapsed": false
+        },
+        {
+          "start": 3712,
+          "end": 4304,
+          "isCollapsed": false
+        },
+        {
+          "start": 4313,
+          "end": 4796,
+          "isCollapsed": false
+        },
+        {
+          "start": 4805,
+          "end": 5155,
+          "isCollapsed": false
+        },
+        {
+          "start": 5164,
+          "end": 5448,
+          "isCollapsed": false
+        },
+        {
+          "start": 5268,
+          "end": 5396,
+          "isCollapsed": false
+        },
+        {
+          "start": 5332,
+          "end": 5380,
+          "isCollapsed": false
+        },
+        {
+          "start": 5457,
+          "end": 5527,
+          "isCollapsed": false
+        },
+        {
+          "start": 5536,
+          "end": 5750,
+          "isCollapsed": false
+        },
+        {
+          "start": 5759,
+          "end": 6118,
+          "isCollapsed": false
+        },
+        {
+          "start": 8016,
+          "end": 8079,
+          "isCollapsed": false
+        },
+        {
+          "start": 8027,
+          "end": 8079,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "pointEditValue",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 2843,
+          "isCollapsed": false
+        },
+        {
+          "start": 31,
+          "end": 1401,
+          "isCollapsed": false
+        },
+        {
+          "start": 1406,
+          "end": 2128,
+          "isCollapsed": false
+        },
+        {
+          "start": 2133,
+          "end": 2831,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "loadTRAJ",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 294,
+          "isCollapsed": false
+        },
+        {
+          "start": 176,
+          "end": 251,
+          "isCollapsed": false
+        },
+        {
+          "start": 254,
+          "end": 286,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "getSize",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 103,
+          "isCollapsed": false
+        },
+        {
+          "start": 77,
+          "end": 95,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "modifyPara",
+      "nodes": [
+        {
+          "start": 579,
+          "end": 936,
+          "isCollapsed": false
+        },
+        {
+          "start": 599,
+          "end": 700,
+          "isCollapsed": false
+        },
+        {
+          "start": 705,
+          "end": 807,
+          "isCollapsed": false
+        },
+        {
+          "start": 812,
+          "end": 919,
+          "isCollapsed": false
+        },
+        {
+          "start": 939,
+          "end": 2975,
+          "isCollapsed": false
+        },
+        {
+          "start": 962,
+          "end": 1446,
+          "isCollapsed": false
+        },
+        {
+          "start": 1451,
+          "end": 1962,
+          "isCollapsed": false
+        },
+        {
+          "start": 1967,
+          "end": 2963,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "getPointPara",
+      "nodes": [
+        {
+          "start": 694,
+          "end": 3310,
+          "isCollapsed": false
+        },
+        {
+          "start": 717,
+          "end": 1358,
+          "isCollapsed": false
+        },
+        {
+          "start": 1363,
+          "end": 2016,
+          "isCollapsed": false
+        },
+        {
+          "start": 2021,
+          "end": 3298,
+          "isCollapsed": false
+        },
+        {
+          "start": 3323,
+          "end": 3643,
+          "isCollapsed": false
+        },
+        {
+          "start": 3423,
+          "end": 3525,
+          "isCollapsed": false
+        },
+        {
+          "start": 3528,
+          "end": 3635,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "modifyAll",
+      "nodes": [
+        {
+          "start": 44,
+          "end": 976,
+          "isCollapsed": false
+        },
+        {
+          "start": 73,
+          "end": 967,
+          "isCollapsed": false
+        },
+        {
+          "start": 580,
+          "end": 957,
+          "isCollapsed": false
+        },
+        {
+          "start": 604,
+          "end": 708,
+          "isCollapsed": false
+        },
+        {
+          "start": 717,
+          "end": 822,
+          "isCollapsed": false
+        },
+        {
+          "start": 831,
+          "end": 941,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}

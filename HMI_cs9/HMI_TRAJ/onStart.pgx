@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="onStart">
+    <Locals>
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+      <Local name="l_sKey" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  
+  sUsingLib=toString("",saveData:nLibIndex)
+  // l_nResult=trajTemp:libLoad("Disk://data/CustomerLib/lib0/saveTRAJ")
+  //  call trajectory:loadTRAJ(0,l_nResult)
+  //  if l_nResult!=0
+  //    popUpMsg("库加载错误："+toString("",l_nResult))
+  //  endIf
+  
+ 
+  
+  call refreshlist()
+  //refresh list
+  //  l_sKey=first(trajTemp:tTrajItem)
+  //  while l_sKey!=""
+  //    sList[size(sList)-1]=l_sKey
+  //    insert(sList[size(sList)])
+  //    l_sKey=next(trajTemp:tTrajItem[l_sKey])
+  //  endWhile
+  
+  nPageIndex=0
+
+  if l_nSize>0
+    sSelTraj=sList[l_nSize-1]
+  else
+    sSelTraj=""
+  endIf
+  //
+end]]></Code>
+  </Program>
+</Programs>

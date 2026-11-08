@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="bind" access="public">
+    <Locals>
+      <Local name="l_scbx" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_snum" type="string" xsi:type="array" size="1" />
+      <Local name="l_schk" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //cbxlist
+  userPageBind("action","cbxlist","options",sActionList,size(sActionList),"r")
+  //cbx0
+  //  for l_i = 0 to 5
+  //    l_scbx="cbx"+toString("",l_i)
+  //  userPageBind("action","cbx0","options",sIOList,49,"r")
+  //  userPageBind("action","cbx1","options",sIOList,49,"r")
+  //  userPageBind("action","cbx2","options",sIOList,49,"r")
+  //  userPageBind("action","cbx3","options",sIOList,49,"r")
+  //  userPageBind("action","cbx4","options",sIOList,49,"r")
+  //  userPageBind("action","cbx5","options",sIOList,49,"r")
+  //endFor
+  //value
+  userPageBind("action","cbxlist","value",sSelList,1,"rw")
+  //
+  for l_i = 0 to 5
+    l_scbx="cbx"+toString("",l_i)
+    userPageBind("action",l_scbx,"value",sSelIO[l_i],1,"rw")
+    l_scbx="cbx"+toString("",10+l_i)
+    userPageBind("action",l_scbx,"value",aEditItem.aActItem[l_i].sIOtype,1,"rw")
+    l_scbx="cbx"+toString("",20+l_i)
+    userPageBind("action",l_scbx,"value",aEditItem.aActItem[l_i].sValue,1,"rw")
+  endFor
+  //text
+  userPageBind("action","txt1","value",aEditItem.sComment,1,"rw")
+  //
+  //num input
+  for l_i = 0 to 5
+    l_snum="nmb"+toString("",l_i)
+    userPageBind("action",l_snum,"value",aEditItem.aActItem[l_i].nPulseValue,1,"rw")
+  endFor
+  
+  //click
+  userPageBindClick("action","btnback",bBack,true)
+  userPageBindClick("action","btn1",bConfirm,true)
+  //check
+  for l_i = 0 to 5
+    l_schk="chk"+toString("",l_i)
+    userPageBind("action",l_schk,"checked",aEditItem.aActItem[l_i].bActive,1,"rw")
+  endFor
+end]]></Code>
+  </Program>
+</Programs>

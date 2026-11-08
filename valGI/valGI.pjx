@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.15.3Cs9_BS3337" stackSize="200000" millimeterUnit="true" />
+  <Programs>
+    <Program file="_getForce.pgx" />
+    <Program file="_productCycle.pgx" />
+    <Program file="_tCycleCtrl.pgx" />
+    <Program file="createUserTask.pgx" />
+    <Program file="cycle_Abort.pgx" />
+    <Program file="cycle_End.pgx" />
+    <Program file="cycle_GoHome.pgx" />
+    <Program file="cycle_Hold.pgx" />
+    <Program file="cycle_Init.pgx" />
+    <Program file="cycle_Reset.pgx" />
+    <Program file="cycle_RotGoHome.pgx" />
+    <Program file="cycle_Start.pgx" />
+    <Program file="cycle_Stop.pgx" />
+    <Program file="cycle_Unhold.pgx" />
+    <Program file="Init.pgx" />
+    <Program file="kill.pgx" />
+    <Program file="Main.pgx" />
+    <Program file="MonitorIO.pgx" />
+    <Program file="MonitorIO1.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="valGI.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+    <Library alias="io" path="Disk://source/projectSource/io/io.pjx" />
+    <Library alias="act" path="Disk://source/projectSource/Action/Action.pjx" />
+    <Library alias="savedata" path="Disk://source/saveData/saveData.pjx" />
+    <Library alias="home" path="Disk://HMI_cs9/home/home.pjx" />
+    <Library alias="plc" path="Disk://source/projectSource/plc/plc.pjx" />
+    <Library alias="prog" path="Disk://source/projectSource/program/program.pjx" />
+    <Library alias="safeHome" path="Disk://source/projectSource/goSafeHome/goSafeHome.pjx" />
+    <Library alias="safe" path="Disk://safeLogic/safeLogic.pjx" />
+    <Library alias="program" path="Disk://source/projectSource/program/program.pjx" />
+    <Library alias="hmi_util" path="Disk://HMI_cs9/HMI_util/HMI_util.pjx" />
+    <Library alias="saveData" path="Disk://source/saveData/saveData.pjx" />
+    <Library alias="initLib" path="./initLib/initLib.pjx" />
+    <Library alias="libTqe" path="Disk://LibTorque/LibTorque.pjx" />
+    <Library alias="trajectory" path="Disk://source/projectSource/trajectory/trajectory.pjx" />
+    <Library alias="ar" path="Disk://autoReturn/autoReturn.pjx" />
+  </Libraries>
+</Project>

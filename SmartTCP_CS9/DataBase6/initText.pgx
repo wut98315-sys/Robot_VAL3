@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="initText" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_utText" type="utText" xsi:type="element" use="reference" />
+      <Parameter name="x_sPage" type="string" xsi:type="element" />
+      <Parameter name="x_sId" type="string" xsi:type="element" />
+      <Parameter name="x_sType" type="string" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  x_utText.Common.sPage=x_sPage
+  x_utText.Common.sID=x_sId
+  switch x_sType
+    case "Num"
+      userPageBind(x_utText.Common.sPage,x_utText.Common.sID,"value",x_utText.Common.nValue,1,"rw")  
+    break
+    case "String"
+      userPageBind(x_utText.Common.sPage,x_utText.Common.sID,"value",x_utText.Common.sValue,1,"rw")  
+    break
+  endSwitch
+  userPageBind(x_utText.Common.sPage,x_utText.Common.sID,"style.backgroundColor",x_utText.Appearance.sBackgroundColour,1,"r")
+  //
+  x_utText.Appearance.sBackgroundColour="trasparent"
+  //
+end]]></Code>
+  </Program>
+</Programs>

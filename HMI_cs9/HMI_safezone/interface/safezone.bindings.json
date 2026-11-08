@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "bindings": [
+    {
+      "id": "lbl3",
+      "attribute": "innerHTML",
+      "data": "sToolIndex[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    }
+  ],
+  "callbacks": [],
+  "events": []
+}

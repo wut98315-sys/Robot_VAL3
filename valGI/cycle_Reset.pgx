@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="cycle_Reset">
+    <Locals>
+      <Local name="l_bEdge" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  setSafetyRestart()
+  delay(0.1)
+  //进程:resetting
+  rs:_nOmacStat=4
+
+  taskKill("Start")
+  taskKill("Stop")
+  taskKill("End")
+  taskKill("Main")
+  taskKill("GoHome")
+  taskKill("Monitor")
+  taskKill("RotGoHome")
+  taskKill("Monitor1")
+
+
+  call rs:init()  
+  call ar:getCurMoveID(bGetMovId,"Reset")
+  resetMotion()
+  
+  // Enables arm power
+  do
+    if workingMode()==4
+      enablePower()
+      delay(1)
+    elseIf workingMode()==1 and l_bEdge==false
+      l_bEdge=true
+      popUpMsg("当前工作模式为手动，请手动上电")
+    endIf
+  until isPowered()==true
+  //2025.1.6 add 设置扭矩保护
+  call libTqe:_setMaxJntForce()
+  if !rs:bIsHome
+    popUpMsg("请手动回原点")
+    return
+  endIf
+  //回home
+  //call safeHome:gosafe()
+  prog:nLastIndex=0
+
+  //进程:ready
+  rs:_nOmacStat=1
+  logMsg("当前处于ready状态 "+toString(".2",clock()))
+  rs:_sRobotStatus="当前处于ready状态"
+  delay(0)
+end]]></Code>
+  </Program>
+</Programs>

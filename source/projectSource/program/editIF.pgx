@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="editIF" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_sType" type="string" xsi:type="array" use="reference" />
+      <Parameter name="x_sIOIndex" type="string" xsi:type="array" use="reference" />
+      <Parameter name="x_nValue" type="num" xsi:type="array" use="reference" />
+      <Parameter name="x_sANDOR1" type="string" xsi:type="element" />
+      <Parameter name="x_sANDOR2" type="string" xsi:type="element" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  if x_nIndex==0 and progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sTRAJname==""
+    x_nIndex=x_nIndex
+  else
+    x_nIndex=x_nIndex+1
+    append(progTemp:pProgItem[x_sKey].pProgTemplate)
+    for l_i = size(progTemp:pProgItem[x_sKey].pProgTemplate)-1 to x_nIndex step -1
+      call copyPara(x_sKey,l_i-1,l_i)
+    endFor
+    //insert(progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex])
+  endIf
+  
+  progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].nType=3
+  progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sTRAJname="IF"
+  for l_i = 0 to 2
+    if x_sIOIndex[l_i]!=""
+      toNum(x_sIOIndex[l_i],l_nIndex,l_bResult)
+    else
+      l_nIndex=-1
+    endIf
+    switch x_sType[l_i]
+      case "DIN"
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigType[l_i]=1
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigIndex[l_i]=l_nIndex
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nValue[l_i]=x_nValue[l_i]
+      break
+      case "DOUT"
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigType[l_i]=2
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigIndex[l_i]=l_nIndex
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nValue[l_i]=x_nValue[l_i]
+        
+      break
+      case "AIN"
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigType[l_i]=3
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigIndex[l_i]=l_nIndex
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nValue[l_i]=x_nValue[l_i]
+        
+      break
+      case "AOUT"
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigType[l_i]=4
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigIndex[l_i]=l_nIndex
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nValue[l_i]=x_nValue[l_i]
+        
+      break
+      default
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigType[l_i]=0
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigIndex[l_i]=-1
+        progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nValue[l_i]=0
+        
+      break
+    endSwitch
+  endFor
+  
+  progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.bANDOR[0]=(x_sANDOR1=="OR")
+  progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.bANDOR[1]=(x_sANDOR2=="OR")
+  
+  x_bToSave=true
+end]]></Code>
+  </Program>
+</Programs>

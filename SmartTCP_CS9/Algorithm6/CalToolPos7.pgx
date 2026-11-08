@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="CalToolPos7" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_tTool" type="tool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_fFrame" type="frame" xsi:type="array" size="1" />
+      <Local name="l_nFrameErr" type="num" xsi:type="array" size="1" />
+      <Local name="l_pCenter" type="point" xsi:type="array" size="1" />
+      <Local name="l_bStatus" type="bool" xsi:type="array" size="1" />
+      <Local name="l_p5flange" type="point" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //定义中心点xyz
+  link(l_fFrame,world)
+  link(l_pCenter,world)
+  //
+  call _CalpSphere(db:pTeach1,db:pTeach2,db:pTeach3,db:pTeach4,l_pCenter,l_bStatus)
+  l_nFrameErr=setFrame(db:pTeach5,db:pTeach6,db:pTeach7,l_fFrame)
+  switch l_nFrameErr
+    case 0        
+      l_pCenter.trsf.rx=l_fFrame.trsf.rx
+      l_pCenter.trsf.ry=l_fFrame.trsf.ry
+      l_pCenter.trsf.rz=l_fFrame.trsf.rz          
+      x_tTool.trsf=!db:pTeach5.trsf*l_pCenter.trsf
+    break
+    case -1,-2
+      call db:hmiAlert("DeviationIsTooLarge","warning")
+    break
+  endSwitch
+  call db:hmiAlert("SaveInTool1","info")
+end]]></Code>
+  </Program>
+</Programs>

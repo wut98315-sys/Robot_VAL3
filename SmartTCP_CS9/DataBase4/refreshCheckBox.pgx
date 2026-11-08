@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="refreshCheckBox" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_utImage" type="utImage" xsi:type="array" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nI" type="num" xsi:type="array" size="1" />
+      <Local name="l_nJ" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+    if size(x_utImage) != 1
+      for l_nI= 0 to size(x_utImage)-1
+        if x_utImage[l_nI].Events.bClick==true
+          x_utImage[l_nI].Events.bClick=false
+          l_nJ=l_nI
+          for l_nI=0 to size(x_utImage)-1
+            if l_nI==l_nJ
+              x_utImage[l_nI].Common.sSourceImage=x_utImage[l_nI].Data.sSourceImg1
+              x_utImage[l_nI].Data.bStatus=true
+            else
+              x_utImage[l_nI].Common.sSourceImage=x_utImage[l_nI].Data.sSourceImg2 
+              x_utImage[l_nI].Data.bStatus=false
+            endIf
+          endFor
+        endIf
+      endFor
+    else
+      if x_utImage[l_nI].Events.bClick==true
+        x_utImage[l_nI].Events.bClick=false
+        if x_utImage[l_nI].Data.bStatus==false
+          x_utImage[l_nI].Common.sSourceImage=x_utImage[l_nI].Data.sSourceImg1
+          x_utImage[l_nI].Data.bStatus=true
+        else
+          x_utImage[l_nI].Common.sSourceImage=x_utImage[l_nI].Data.sSourceImg2
+          x_utImage[l_nI].Data.bStatus=false
+        endIf
+      endIf
+    endIf
+end
+
+]]></Code>
+  </Program>
+</Programs>

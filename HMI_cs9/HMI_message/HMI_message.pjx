@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.15.3Cs9_BS3337" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="bind.pgx" />
+    <Program file="click_logExport.pgx" />
+    <Program file="click_logSave.pgx" />
+    <Program file="click_refresh.pgx" />
+    <Program file="click_refreshAllMsg.pgx" />
+    <Program file="click_refreshIOMsg.pgx" />
+    <Program file="click_refreshRobotMsg.pgx" />
+    <Program file="click_refreshTrajMsg.pgx" />
+    <Program file="initMsg.pgx" />
+    <Program file="main.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="HMI_message.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+    <Library alias="util" path="Disk://HMI_cs9/HMI_util/HMI_util.pjx" />
+  </Libraries>
+</Project>

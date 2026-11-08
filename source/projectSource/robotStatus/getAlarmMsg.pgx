@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="getAlarmMsg" access="private" >
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1" >
+      <Parameter name="x_nAlarmCode" type="num" use="value" xsi:type="element" dimensions="1" />
+      <Parameter name="x_sMsg" type="string" use="reference" xsi:type="element" dimensions="1" />
+    </Parameters>
+    <Code><![CDATA[begin
+  //
+  switch x_nAlarmCode
+    //**************************************动作************************************
+    case 200
+      x_sMsg=".8"
+    break
+    case 201
+      x_sMsg="动作堆栈溢出，无法执行最新动作"
+    break
+    case 202
+      x_sMsg="动作百分比错误"
+    break
+    case 203
+      x_sMsg="动作中的输入输出的InOutType类型错误"
+    break
+    case 204
+      x_sMsg="动作中的输入输出的输入输出索引号错误"
+    break
+    case 205
+      x_sMsg="动作中的输入输出的输出值参数错误"
+    break
+    case 206
+      x_sMsg="动作中的输入输出的脉冲时间参数值错误"
+    break
+    case 207
+      x_sMsg="动作中的输入输出的输入值参数值错误"
+    break
+    case 208
+      x_sMsg="动作的范围超限"
+    break
+    case 209
+      x_sMsg="动作错误"
+    break
+    case 210
+      x_sMsg=".8"
+    break
+
+
+    //*************************************点位超限**************************************
+    case 220
+      x_sMsg="Point点位超限"
+    break
+    case 221
+      x_sMsg="Joint点位超限"
+    break
+    case 300
+      x_sMsg="traj数据库加载错误"
+    break
+    case 301
+      x_sMsg="prog数据库加载错误"
+    break
+    case 302
+      x_sMsg="索引指向的数据库不存在"
+    break
+    case 303
+      x_sMsg="自动运行过程中伺服异常下电"
+    break
+    ////*************************************系统报错**************************************
+    case 400
+      x_sMsg="[硬件报错]-电源错误,错误代码:"+toString(".8",nHWState)
+    break
+    case 401
+      x_sMsg="[硬件报错]-RSI9错误,错误代码:"+toString(".8",nHWState)
+    break
+    case 402
+      x_sMsg="[硬件报错]-STARC/DSI错误,错误代码:"+toString(".8",nHWState)
+    break
+    case 403
+      x_sMsg="[硬件报错]-编码器错误,错误代码:"+toString(".8",nHWState)
+    break
+    case 404
+      x_sMsg="[硬件报错]-驱动器错误,错误代码:"+toString(".8",nHWState)
+    break
+    case 405
+      x_sMsg="[硬件报错]-手柄未安装,错误代码:"+toString(".8",nHWState)
+    break
+  endSwitch
+
+end]]></Code>
+  </Program>
+</Programs>

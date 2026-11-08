@@ -1,0 +1,128 @@
+{
+  "version": "1.0",
+  "bindings": [
+    {
+      "id": "lbl1",
+      "attribute": "innerHTML",
+      "data": "sShowType[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl1_Copy1",
+      "attribute": "innerHTML",
+      "data": "sShowType[1]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl1_Copy2",
+      "attribute": "innerHTML",
+      "data": "sShowType[2]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl1_Copy5",
+      "attribute": "innerHTML",
+      "data": "sShowType[3]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl1_Copy4",
+      "attribute": "innerHTML",
+      "data": "sShowType[4]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl1_Copy3",
+      "attribute": "innerHTML",
+      "data": "sShowType[5]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl2",
+      "attribute": "innerHTML",
+      "data": "sShowNum[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl2_Copy1",
+      "attribute": "innerHTML",
+      "data": "sShowNum[1]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl2_Copy2",
+      "attribute": "innerHTML",
+      "data": "sShowNum[2]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl2_Copy5",
+      "attribute": "innerHTML",
+      "data": "sShowNum[3]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl2_Copy4",
+      "attribute": "innerHTML",
+      "data": "sShowNum[4]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl2_Copy3",
+      "attribute": "innerHTML",
+      "data": "sShowNum[5]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    }
+  ],
+  "callbacks": [
+    {
+      "id": "btn1",
+      "event": "click",
+      "data": "setnullmode",
+      "priority": 10
+    },
+    {
+      "id": "btn2",
+      "event": "click",
+      "data": "setjointmode",
+      "priority": 10
+    },
+    {
+      "id": "btn3",
+      "event": "click",
+      "data": "setframemode",
+      "priority": 10
+    },
+    {
+      "id": "btn4",
+      "event": "click",
+      "data": "settoolmode",
+      "priority": 10
+    }
+  ],
+  "events": []
+}

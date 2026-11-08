@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.21Cs9_BS4703" stackSize="200000" millimeterUnit="true" />
+  <Programs>
+    <Program file="_getForce.pgx" />
+    <Program file="_productCycle.pgx" />
+    <Program file="_supervisorTasks.pgx" />
+    <Program file="_systemStates.pgx" />
+    <Program file="_tCycleCtrl.pgx" />
+    <Program file="_TolleranceCheck.pgx" />
+    <Program file="Init.pgx" />
+    <Program file="kill.pgx" />
+    <Program file="Main.pgx" />
+    <Program file="search_traj.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="appLauncher.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+    <Library alias="io" path="Disk://source/projectSource/io/io.pjx" />
+    <Library alias="home" path="Disk://HMI_cs9/home/home.pjx" />
+    <Library alias="plc" path="Disk://source/projectSource/plc/plc.pjx" />
+    <Library alias="prog" path="Disk://source/projectSource/program/program.pjx" />
+    <Library alias="program" path="Disk://source/projectSource/program/program.pjx" />
+    <Library alias="hmi_util" path="Disk://HMI_cs9/HMI_util/HMI_util.pjx" />
+    <Library alias="libTqe" path="Disk://LibTorque/LibTorque.pjx" />
+    <Library alias="trajectory" path="Disk://source/projectSource/trajectory/trajectory.pjx" />
+    <Library alias="ar" path="Disk://autoReturn/autoReturn.pjx" />
+    <Library alias="saveData" path="Disk://source/saveData/saveData.pjx" />
+  </Libraries>
+</Project>

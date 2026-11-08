@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="wizard">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_snmb" type="string" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nTool" type="num" xsi:type="array" size="1" />
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+      <Local name="l_bRefresh" type="bool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="Wizard"
+      util:sPage="Wizard"
+      sUsingTool=""
+      sLastTool=""
+      nWizardStep=0
+      sUsingFrame=savedata:fFrameItem[x_nIndex].sName+" 坐标系O点"
+      call nmbValue(nWizardStep,x_nIndex)
+      userPageBind("Wizard","cbx1","options",sToolList,size(sToolList),"r")
+      userPageBind("Wizard","cbx1","value",sUsingTool,1,"rw")
+      userPageBind("Wizard","lbl2","innerHTML",sUsingFrame,1,"r")
+      for l_i = 0 to size(nNmbValue)-1
+        l_snmb="nmb"+toString("",l_i+1)
+        userPageBind("Wizard",l_snmb,"value",nNmbValue[l_i],1,"rw")
+      endFor
+      userPageBindClick("Wizard","btn4",bPrevious,true)
+      userPageBindClick("Wizard","btn1",bTeach,true)
+      userPageBindClick("Wizard","btn3",bMove,true)
+      userPageBindClick("Wizard","btn2",bNext,true)
+      userPage(util:sPage)
+      delay(0.5)
+      _nTool=0
+    endIf
+    
+    if sUsingTool!=sLastTool
+      sLastTool=sUsingTool
+      toNum(sLastTool,_nTool,l_bResult)
+      call savedata:getTool(_nTool,tUsingTool)
+      $jogContext(tUsingTool,world,0)
+    endIf
+    
+    if bPrevious
+      bPrevious=false
+      nWizardStep=nWizardStep-1
+      if nWizardStep<0
+        l_bExit=true
+      endIf
+      l_bRefresh=true
+    elseIf bTeach
+      bTeach=false
+      if sUsingTool!=""
+        call teachPoint(nWizardStep,x_nIndex)
+      else
+        userPageAlert("选择有效的tool！")
+      endIf
+      l_bRefresh=true
+    elseIf bMove
+      bMove=false
+      if sUsingTool!=""
+        call movePoint(nWizardStep,x_nIndex)
+      else
+        userPageAlert("选择有效的tool！")
+      endIf
+      
+      
+    elseIf bNext
+      bNext=false
+      nWizardStep=nWizardStep+1
+      if nWizardStep>2
+        call computeFrame(x_nIndex)
+        l_bExit=true
+      endIf
+      l_bRefresh=true
+    endIf
+    
+    if l_bRefresh
+      l_bRefresh=false
+      if nWizardStep>0
+        userPageSet("Wizard","cbx1","disabled",true)
+      else
+        userPageSet("Wizard","cbx1","disabled",false)
+      endIf
+
+      call nmbValue(nWizardStep,x_nIndex)
+    endIf
+    //jogmode
+    call util:jogMode(_nTool,0)
+    delay(0)
+  until l_bExit==true
+  resetMotion()
+end]]></Code>
+  </Program>
+</Programs>

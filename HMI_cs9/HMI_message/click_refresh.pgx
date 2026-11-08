@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="click_refresh">
+    <Code><![CDATA[begin
+  call initMsg()
+  call rs:getLog(sRobotMsg,nMsgType)
+end]]></Code>
+  </Program>
+</Programs>

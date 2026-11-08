@@ -1,0 +1,576 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "SetbtnColor",
+      "nodes": [
+        {
+          "start": 56,
+          "end": 1245,
+          "isCollapsed": false
+        },
+        {
+          "start": 74,
+          "end": 360,
+          "isCollapsed": false
+        },
+        {
+          "start": 365,
+          "end": 651,
+          "isCollapsed": false
+        },
+        {
+          "start": 656,
+          "end": 942,
+          "isCollapsed": false
+        },
+        {
+          "start": 947,
+          "end": 1233,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "getSize",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 115,
+          "isCollapsed": false
+        },
+        {
+          "start": 88,
+          "end": 107,
+          "isCollapsed": false
+        },
+        {
+          "start": 117,
+          "end": 224,
+          "isCollapsed": false
+        },
+        {
+          "start": 196,
+          "end": 216,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "setLabelValue",
+      "nodes": [
+        {
+          "start": 47,
+          "end": 961,
+          "isCollapsed": false
+        },
+        {
+          "start": 66,
+          "end": 281,
+          "isCollapsed": false
+        },
+        {
+          "start": 79,
+          "end": 271,
+          "isCollapsed": false
+        },
+        {
+          "start": 286,
+          "end": 503,
+          "isCollapsed": false
+        },
+        {
+          "start": 299,
+          "end": 493,
+          "isCollapsed": false
+        },
+        {
+          "start": 508,
+          "end": 724,
+          "isCollapsed": false
+        },
+        {
+          "start": 521,
+          "end": 714,
+          "isCollapsed": false
+        },
+        {
+          "start": 729,
+          "end": 949,
+          "isCollapsed": false
+        },
+        {
+          "start": 742,
+          "end": 937,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "setPage",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 224,
+          "isCollapsed": false
+        },
+        {
+          "start": 27,
+          "end": 90,
+          "isCollapsed": false
+        },
+        {
+          "start": 95,
+          "end": 212,
+          "isCollapsed": false
+        },
+        {
+          "start": 148,
+          "end": 202,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "setIOvisible",
+      "nodes": [
+        {
+          "start": 41,
+          "end": 1901,
+          "isCollapsed": false
+        },
+        {
+          "start": 60,
+          "end": 969,
+          "isCollapsed": false
+        },
+        {
+          "start": 75,
+          "end": 207,
+          "isCollapsed": false
+        },
+        {
+          "start": 214,
+          "end": 561,
+          "isCollapsed": false
+        },
+        {
+          "start": 568,
+          "end": 959,
+          "isCollapsed": false
+        },
+        {
+          "start": 590,
+          "end": 947,
+          "isCollapsed": false
+        },
+        {
+          "start": 974,
+          "end": 1889,
+          "isCollapsed": false
+        },
+        {
+          "start": 989,
+          "end": 1124,
+          "isCollapsed": false
+        },
+        {
+          "start": 1131,
+          "end": 1479,
+          "isCollapsed": false
+        },
+        {
+          "start": 1486,
+          "end": 1879,
+          "isCollapsed": false
+        },
+        {
+          "start": 1509,
+          "end": 1867,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "init",
+      "nodes": [
+        {
+          "start": 228,
+          "end": 294,
+          "isCollapsed": false
+        },
+        {
+          "start": 297,
+          "end": 439,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "IOcomment",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 485,
+          "isCollapsed": false
+        },
+        {
+          "start": 27,
+          "end": 132,
+          "isCollapsed": false
+        },
+        {
+          "start": 137,
+          "end": 244,
+          "isCollapsed": false
+        },
+        {
+          "start": 249,
+          "end": 354,
+          "isCollapsed": false
+        },
+        {
+          "start": 359,
+          "end": 466,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "bind",
+      "nodes": [
+        {
+          "start": 21,
+          "end": 160,
+          "isCollapsed": false
+        },
+        {
+          "start": 368,
+          "end": 499,
+          "isCollapsed": false
+        },
+        {
+          "start": 516,
+          "end": 648,
+          "isCollapsed": false
+        },
+        {
+          "start": 651,
+          "end": 790,
+          "isCollapsed": false
+        },
+        {
+          "start": 793,
+          "end": 932,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "setCount",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 854,
+          "isCollapsed": false
+        },
+        {
+          "start": 15,
+          "end": 422,
+          "isCollapsed": false
+        },
+        {
+          "start": 447,
+          "end": 814,
+          "isCollapsed": false
+        },
+        {
+          "start": 737,
+          "end": 804,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "main",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 2070,
+          "isCollapsed": false
+        },
+        {
+          "start": 15,
+          "end": 196,
+          "isCollapsed": false
+        },
+        {
+          "start": 217,
+          "end": 1727,
+          "isCollapsed": true
+        },
+        {
+          "start": 336,
+          "end": 455,
+          "isCollapsed": false
+        },
+        {
+          "start": 460,
+          "end": 578,
+          "isCollapsed": false
+        },
+        {
+          "start": 583,
+          "end": 702,
+          "isCollapsed": false
+        },
+        {
+          "start": 707,
+          "end": 1016,
+          "isCollapsed": false
+        },
+        {
+          "start": 825,
+          "end": 1016,
+          "isCollapsed": false
+        },
+        {
+          "start": 1021,
+          "end": 1122,
+          "isCollapsed": false
+        },
+        {
+          "start": 1127,
+          "end": 1299,
+          "isCollapsed": false
+        },
+        {
+          "start": 1188,
+          "end": 1279,
+          "isCollapsed": false
+        },
+        {
+          "start": 1242,
+          "end": 1267,
+          "isCollapsed": false
+        },
+        {
+          "start": 1304,
+          "end": 1489,
+          "isCollapsed": false
+        },
+        {
+          "start": 1363,
+          "end": 1469,
+          "isCollapsed": false
+        },
+        {
+          "start": 1426,
+          "end": 1457,
+          "isCollapsed": false
+        },
+        {
+          "start": 1494,
+          "end": 1592,
+          "isCollapsed": false
+        },
+        {
+          "start": 1597,
+          "end": 1657,
+          "isCollapsed": false
+        },
+        {
+          "start": 1662,
+          "end": 1717,
+          "isCollapsed": false
+        },
+        {
+          "start": 1773,
+          "end": 1941,
+          "isCollapsed": false
+        },
+        {
+          "start": 1946,
+          "end": 2033,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "setIOStatus",
+      "nodes": [
+        {
+          "start": 932,
+          "end": 2964,
+          "isCollapsed": false
+        },
+        {
+          "start": 951,
+          "end": 1542,
+          "isCollapsed": false
+        },
+        {
+          "start": 964,
+          "end": 1532,
+          "isCollapsed": false
+        },
+        {
+          "start": 1107,
+          "end": 1519,
+          "isCollapsed": false
+        },
+        {
+          "start": 1230,
+          "end": 1421,
+          "isCollapsed": false
+        },
+        {
+          "start": 1327,
+          "end": 1405,
+          "isCollapsed": false
+        },
+        {
+          "start": 1430,
+          "end": 1505,
+          "isCollapsed": false
+        },
+        {
+          "start": 1547,
+          "end": 2140,
+          "isCollapsed": false
+        },
+        {
+          "start": 1560,
+          "end": 2130,
+          "isCollapsed": false
+        },
+        {
+          "start": 1703,
+          "end": 2117,
+          "isCollapsed": false
+        },
+        {
+          "start": 1828,
+          "end": 2019,
+          "isCollapsed": false
+        },
+        {
+          "start": 1925,
+          "end": 2003,
+          "isCollapsed": false
+        },
+        {
+          "start": 2028,
+          "end": 2103,
+          "isCollapsed": false
+        },
+        {
+          "start": 2145,
+          "end": 2542,
+          "isCollapsed": false
+        },
+        {
+          "start": 2158,
+          "end": 2532,
+          "isCollapsed": false
+        },
+        {
+          "start": 2308,
+          "end": 2519,
+          "isCollapsed": false
+        },
+        {
+          "start": 2475,
+          "end": 2505,
+          "isCollapsed": false
+        },
+        {
+          "start": 2547,
+          "end": 2945,
+          "isCollapsed": false
+        },
+        {
+          "start": 2560,
+          "end": 2935,
+          "isCollapsed": false
+        },
+        {
+          "start": 2709,
+          "end": 2922,
+          "isCollapsed": false
+        },
+        {
+          "start": 2878,
+          "end": 2908,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "comment",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 880,
+          "isCollapsed": false
+        },
+        {
+          "start": 44,
+          "end": 871,
+          "isCollapsed": false
+        },
+        {
+          "start": 141,
+          "end": 861,
+          "isCollapsed": false
+        },
+        {
+          "start": 239,
+          "end": 849,
+          "isCollapsed": false
+        },
+        {
+          "start": 265,
+          "end": 543,
+          "isCollapsed": false
+        },
+        {
+          "start": 286,
+          "end": 451,
+          "isCollapsed": false
+        },
+        {
+          "start": 387,
+          "end": 433,
+          "isCollapsed": false
+        },
+        {
+          "start": 554,
+          "end": 831,
+          "isCollapsed": false
+        },
+        {
+          "start": 575,
+          "end": 739,
+          "isCollapsed": false
+        },
+        {
+          "start": 675,
+          "end": 721,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}

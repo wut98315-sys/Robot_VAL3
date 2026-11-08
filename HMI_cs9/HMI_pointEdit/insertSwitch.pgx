@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertSwitch" access="public">
+    <Code><![CDATA[begin
+  //   do
+    
+  //    if util:sPage!="insertSwitch"
+  //      util:sPage="insertSwitch"
+     
+  //      userPageBindClick("insertDelay","btn1",bConfirmSwitch,true)
+  //      userPageBindClick("insertDelay","btn2",bBackSwitch,true)
+  //      userPageBind("insertSwitch","cbx2","options",nSetDelay,1,"rw")
+  //      userPage(util:sPage)
+  //      delay(0.5)
+      
+  //    endIf
+    
+    
+  //    if bConfirmDelay
+  //      bConfirmDelay=false
+  //       call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+  //      call trajectory:insertDelay(sTrajItem,l_nPoint,bToSave,7,nSetDelay)
+  //      l_bExit=true
+      
+  //    elseIf bBackDelay
+  //      bBackDelay=false
+  //      l_bExit=true
+  //    endIf
+    
+    
+    
+    
+  //    delay(0)
+  //  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

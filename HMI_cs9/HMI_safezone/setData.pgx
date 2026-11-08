@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="setData" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_pPoint" type="pointRx" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  safeTemp:zZoneItem[x_nIndex].fBase.trsf.x=nFrame[0]
+  safeTemp:zZoneItem[x_nIndex].fBase.trsf.y=nFrame[1]
+  safeTemp:zZoneItem[x_nIndex].fBase.trsf.z=nFrame[2]
+  safeTemp:zZoneItem[x_nIndex].fBase.trsf.rx=nFrame[3]
+  safeTemp:zZoneItem[x_nIndex].fBase.trsf.ry=nFrame[4]
+  safeTemp:zZoneItem[x_nIndex].fBase.trsf.rz=nFrame[5]
+  
+  
+  safeTemp:zZoneItem[x_nIndex].pFirst.trsf.x=nTRSF1[0]
+  safeTemp:zZoneItem[x_nIndex].pFirst.trsf.y=nTRSF1[1]
+  safeTemp:zZoneItem[x_nIndex].pFirst.trsf.z=nTRSF1[2]
+  safeTemp:zZoneItem[x_nIndex].pFirst.trsf.rx=nTRSF1[3]
+  safeTemp:zZoneItem[x_nIndex].pFirst.trsf.ry=nTRSF1[4]
+  safeTemp:zZoneItem[x_nIndex].pFirst.trsf.rz=nTRSF1[5]
+
+  safeTemp:zZoneItem[x_nIndex].pSecond.trsf.x=nTRSF2[0]
+  safeTemp:zZoneItem[x_nIndex].pSecond.trsf.y=nTRSF2[1]
+  safeTemp:zZoneItem[x_nIndex].pSecond.trsf.z=nTRSF2[2]
+  safeTemp:zZoneItem[x_nIndex].pSecond.trsf.rx=nTRSF2[3]
+  safeTemp:zZoneItem[x_nIndex].pSecond.trsf.ry=nTRSF2[4]
+  safeTemp:zZoneItem[x_nIndex].pSecond.trsf.rz=nTRSF2[5]
+  
+ 
+  
+  safeTemp:zZoneItem[x_nIndex].bActive=(bActive==true)
+  safeTemp:zZoneItem[x_nIndex].sID=sComment
+  
+  safeTemp:libSave()
+  delay(0.1)
+  popUpMsg("safedata已保存")
+  
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="modifyFrame">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_sNmb" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="frameSetting"
+      util:sPage="frameSetting"
+     
+      nFrame[0]=savedata:fFrameItem[x_nIndex].fFrame.trsf.x
+      nFrame[1]=savedata:fFrameItem[x_nIndex].fFrame.trsf.y
+      nFrame[2]=savedata:fFrameItem[x_nIndex].fFrame.trsf.z
+      nFrame[3]=savedata:fFrameItem[x_nIndex].fFrame.trsf.rx
+      nFrame[4]=savedata:fFrameItem[x_nIndex].fFrame.trsf.ry
+      nFrame[5]=savedata:fFrameItem[x_nIndex].fFrame.trsf.rz
+      for l_i = 0 to 5
+        l_sNmb="nmb"+toString("",l_i+1)
+        userPageBind("frameSetting",l_sNmb,"value",nFrame[l_i],1,"rw")
+      endFor
+      userPageBindClick("frameSetting","btn1",bModifyFrame,true)
+      userPageBindClick("frameSetting","btn2",bCancelFrame,true)
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    
+    if bModifyFrame
+      bModifyFrame=false
+      savedata:fFrameItem[x_nIndex].fFrame.trsf.x=nFrame[0]
+      savedata:fFrameItem[x_nIndex].fFrame.trsf.y=nFrame[1]
+      savedata:fFrameItem[x_nIndex].fFrame.trsf.z=nFrame[2]
+      savedata:fFrameItem[x_nIndex].fFrame.trsf.rx=nFrame[3]
+      savedata:fFrameItem[x_nIndex].fFrame.trsf.ry=nFrame[4]
+      savedata:fFrameItem[x_nIndex].fFrame.trsf.rz=nFrame[5]
+      savedata:libSave()
+      delay(0.1)
+       l_bExit=true
+    elseIf bCancelFrame
+      bCancelFrame=false
+      l_bExit=true
+    endIf
+    delay(0)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

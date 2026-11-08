@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="makeTraj" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nMoveType" type="num" xsi:type="array" size="1" />
+      <Local name="l_nMoveID" type="num" xsi:type="array" size="1" />
+      <Local name="l_fFrame" type="frame" xsi:type="array" size="1" />
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+      <Local name="l_pPoint" type="pointRx" xsi:type="array" size="2" />
+      <Local name="l_jJoint" type="jointRx" xsi:type="array" size="1" />
+      <Local name="l_mDesc" type="mdesc" xsi:type="array" size="1" />
+      <Local name="l_nSigIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_nValue" type="num" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nSigValue" type="num" xsi:type="array" size="1" />
+      <Local name="l_bValue" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bSigValue" type="bool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nDelay" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nActIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_nGetID" type="num" xsi:type="array" size="1" />
+      <Local name="l_sMsg" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  rs:sTrajStatus="执行轨迹："+x_sKey
+  rs:sCycleItem=x_sKey
+  l_nMoveID=trajTemp:tTrajItem[x_sKey].nMoveID
+  rs:nFrameIndex=trajTemp:tTrajItem[x_sKey].nFrameIndex
+  rs:nToolIndex=trajTemp:tTrajItem[x_sKey].nToolIndex
+  call savedata:getFrame(rs:nFrameIndex,l_fFrame)
+  call savedata:getTool(rs:nToolIndex,l_tTool)
+  waitEndMove()
+  setMoveId(l_nMoveID)
+  for l_i = 0 to size(trajTemp:tTrajItem[x_sKey].pPointItem)-1
+    l_nMoveType=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nMoveType   
+    rs:nCycleIndex=l_i
+    if !rs:bGOTO
+      switch l_nMoveType
+        case 1
+          link(l_pPoint,l_fFrame)
+          l_pPoint.trsf=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pPointRx.trsf
+          l_pPoint.config=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pPointRx.config
+          l_mDesc=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.mMdesc
+          //l_nGetID=movel(l_pPoint,l_tTool,l_mDesc)
+          call ar:MoveL(l_pPoint,l_tTool,l_mDesc,l_nGetID,false)
+          wait(getMoveId()>=l_nGetID)
+          call pointToString(l_sMsg,x_sKey,l_i)
+          //rs:sTrajStatus="移动到:"+toString("",l_i)+l_sMsg
+          rs:sTrajStatus="["+x_sKey+"]移动到:"+toString("",l_i)+l_sMsg
+        break
+        case 0
+          l_jJoint=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].jJointRx
+          l_mDesc=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.mMdesc
+          //l_nGetID=movej(l_jJoint,l_tTool,l_mDesc)
+          call ar:MoveJ(l_jJoint,l_tTool,l_mDesc,l_nGetID,false)
+          wait(getMoveId()>=l_nGetID)
+          call pointToString(l_sMsg,x_sKey,l_i)
+          //rs:sTrajStatus="移动到:"+toString("",l_i)+l_sMsg
+          rs:sTrajStatus="["+x_sKey+"]移动到:"+toString("",l_i)+l_sMsg
+        break
+        case 2
+          //2024.12.23 add 圆弧运动
+          link(l_pPoint,l_fFrame)
+          link(l_pPoint[1],l_fFrame)
+          l_pPoint.trsf=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pInter.trsf
+          l_pPoint.config=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pInter.config
+          l_pPoint[1].trsf=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pPointRx.trsf
+          l_pPoint[1].config=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pPointRx.config
+          l_mDesc=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.mMdesc
+          //l_nGetID=movec(l_pPoint,l_pPoint[1],l_tTool,l_mDesc) 
+          call ar:MoveC(l_pPoint,l_pPoint[1],l_tTool,l_mDesc,l_nGetID)
+          wait(getMoveId()>=l_nGetID)
+          call pointToString(l_sMsg,x_sKey,l_i)
+          //rs:sTrajStatus="移动到:"+toString("",l_i)+l_sMsg
+          rs:sTrajStatus="["+x_sKey+"]移动到:"+toString("",l_i)+l_sMsg
+        break
+        case 3
+          //dIn
+          waitEndMove()
+          l_nSigIndex=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nActionIndex
+          l_bSigValue=(trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nSigValue!=0)
+          //call io:getDigIO(io:dInput[l_nSigIndex],l_bValue,l_bErr)
+          call pointToString(l_sMsg,x_sKey,l_i)
+          //rs:sTrajStatus="移动到:"+toString("",l_i)+l_sMsg
+          rs:sTrajStatus="["+x_sKey+"]移动到:"+toString("",l_i)+l_sMsg
+          // wait(l_bValue==l_bSigValue)
+          call io:waitDigInput(io:dInput[l_nSigIndex],l_bSigValue,l_bErr)
+        break
+        case 4
+          //dOut
+          waitEndMove()
+          l_nSigIndex=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nActionIndex
+          l_bSigValue=(trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nSigValue!=0)
+          call io:setDigOutput(io:dOutput[l_nSigIndex],l_bSigValue,l_bErr)
+          call pointToString(l_sMsg,x_sKey,l_i)
+          //rs:sTrajStatus="移动到:"+toString("",l_i)+l_sMsg
+          rs:sTrajStatus="["+x_sKey+"]移动到:"+toString("",l_i)+l_sMsg
+        break
+        case 5
+          //ain
+          waitEndMove()
+          l_nSigIndex=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nActionIndex
+          l_nSigValue=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nSigValue
+          // call io:getAnaIO(io:aInput[l_nSigIndex],l_nValue,l_bErr)
+          call pointToString(l_sMsg,x_sKey,l_i)
+          //rs:sTrajStatus="移动到:"+toString("",l_i)+l_sMsg
+          rs:sTrajStatus="["+x_sKey+"]移动到:"+toString("",l_i)+l_sMsg
+          call io:waitAnaInput(io:aInput[l_nSigIndex],l_nSigValue,l_bErr)
+          // wait(l_nSigValue==l_nValue)
+        break
+        case 6
+          //aout
+          waitEndMove()
+          l_nSigIndex=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nActionIndex
+          l_nSigValue=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nSigValue
+          call io:setAnaOutput(io:aOutput[l_nSigIndex],l_nSigValue,l_bErr)
+          call pointToString(l_sMsg,x_sKey,l_i)
+          //rs:sTrajStatus="移动到:"+toString("",l_i)+l_sMsg
+          rs:sTrajStatus="["+x_sKey+"]移动到:"+toString("",l_i)+l_sMsg
+        break
+        case 7
+          //delay
+          l_nDelay=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nDelay
+          waitEndMove()
+          call pointToString(l_sMsg,x_sKey,l_i)
+          //rs:sTrajStatus="移动到:"+toString("",l_i)+l_sMsg
+          rs:sTrajStatus="["+x_sKey+"]移动到:"+toString("",l_i)+l_sMsg
+          delay(l_nDelay)         
+        break
+        case 8
+          //if
+          waitEndMove()
+          call getIFvalue(x_sKey,l_i,l_bResult)
+          if l_bResult
+            rs:sTrajStatus="IF条件满足，继续执行"
+          else
+            rs:sTrajStatus="IF条件不满足，跳过当前程序"
+          endIf
+          rs:bGOTO=(l_bResult==false)
+        break
+        case 9
+          //endif
+          rs:bGOTO=false       
+        break
+        case 10
+          rs:sTrajStatus="执行action->"+toString("",l_nActIndex)
+          l_nActIndex=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nSigValue
+          call action:action_do(l_nActIndex)
+        break
+        case 11
+          //2025.7.21 add 喷淋delay
+          call io:getAnaIO(io:aInput[3],l_nDelay,l_bErr)
+          //l_nDelay=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nDelay
+          waitEndMove()
+          call pointToString(l_sMsg,x_sKey,l_i)
+          rs:sTrajStatus="移动到轨迹"+x_sKey+":"+toString("",l_i)+l_sMsg
+          delay(l_nDelay)
+        break
+//        case 12
+//          waitEndMove()
+//          //Axis1位置输出
+//          call io:setDigOutput(io:dOutput[60],true,l_bErr)          
+//          l_nSigValue=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nSigValue
+//          rs:sTrajStatus="移动L轴->"+toString("",l_nSigValue)
+//          call io:setAnaOutput(io:aOutput[7],l_nSigValue,l_bErr)
+//          //等待Axis1到位
+//          call io:waitDigInput(io:dInput[60],true,l_bErr)           
+//          rs:sTrajStatus="等待L轴位置->"+toString("",l_nSigValue)+"到达" 
+//          //复位Axis1控制命令
+//          call io:setDigOutput(io:dOutput[60],false,l_bErr)
+//        break
+//        case 13
+//          waitEndMove()
+//          //Axis2位置输出
+//          call io:setDigOutput(io:dOutput[61],true,l_bErr)          
+//          l_nSigValue=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nSigValue
+//          rs:sTrajStatus="移动R轴->"+toString("",l_nSigValue)
+//          call io:setAnaOutput(io:aOutput[8],l_nSigValue,l_bErr)
+//          //等待Axis2到位
+//          call io:waitDigInput(io:dInput[61],true,l_bErr)           
+//          rs:sTrajStatus="等待R轴位置->"+toString("",l_nSigValue)+"到达" 
+//          //复位Axis2控制命令
+//          call io:setDigOutput(io:dOutput[61],false,l_bErr)
+//        break
+//        case 14
+//          waitEndMove()
+//           //Axis3位置输出
+//          call io:setDigOutput(io:dOutput[62],true,l_bErr)          
+//          l_nSigValue=trajTemp:tTrajItem[x_sKey].pPointItem[l_i].pParaItem.nSigValue
+//          rs:sTrajStatus="移动Z轴->"+toString("",l_nSigValue)
+//          call io:setAnaOutput(io:aOutput[9],l_nSigValue,l_bErr)
+//          //等待Axis3到位
+//          call io:waitDigInput(io:dInput[62],true,l_bErr)           
+//          rs:sTrajStatus="等待Z轴位置->"+toString("",l_nSigValue)+"到达" 
+//          //复位Axis3控制命令
+//          call io:setDigOutput(io:dOutput[62],false,l_bErr)          
+//        break
+      endSwitch
+    else
+      if l_nMoveType==9
+        rs:bGOTO=false
+      endIf
+    endIf
+    delay(0)
+  endFor
+  waitEndMove()
+end]]></Code>
+  </Program>
+</Programs>

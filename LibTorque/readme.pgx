@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="readme">
+    <Code><![CDATA[begin
+  //2025.04.15
+  //该库用于获取机器人对应机型设置的各个关节轴的最大扭矩值
+  //_getSetForce 功能：获取扭矩库存放机型各个轴关节扭矩限值
+  //_setMaxJntForce 功能：设置对应机型各个轴关节扭矩限值
+  //getArmTypeList 功能：获取扭矩库机型名称列表
+  //initParameter 功能：设置扭矩限值界面初始化调用
+  //setPageMaxJntForce 功能：页面修改扭矩库限值
+  //refresh 功能：设置扭矩限值界面实时刷新调用
+  //unLock 功能：设置扭矩限值界面解锁按钮调用
+  
+  //---------------------------示例---------------------------------//
+  //   //初始化调用
+  //  call libtqe:initParameter()
+  //   //设置扭矩限值界面（自定义）
+  //  userPage("new1")
+  //  do
+    
+  //    //刷新解锁/保存按钮
+  //    call libtqe:refresh()
+  //    delay(0)
+  //  until false
+end]]></Code>
+  </Program>
+</Programs>

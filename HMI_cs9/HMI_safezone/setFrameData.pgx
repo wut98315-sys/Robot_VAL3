@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="setFrameData">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  
+  l_bResult=userPageConfirm("确定设定坐标系？(点位会随坐标系改变)")
+
+  if l_bResult
+    safeTemp:zZoneItem[x_nIndex].fBase.trsf.x=nFrame[0]
+    safeTemp:zZoneItem[x_nIndex].fBase.trsf.y=nFrame[1]
+    safeTemp:zZoneItem[x_nIndex].fBase.trsf.z=nFrame[2]
+    safeTemp:zZoneItem[x_nIndex].fBase.trsf.rx=nFrame[3]
+    safeTemp:zZoneItem[x_nIndex].fBase.trsf.ry=nFrame[4]
+    safeTemp:zZoneItem[x_nIndex].fBase.trsf.rz=nFrame[5]
+    fFrame.trsf=safeTemp:zZoneItem[x_nIndex].fBase.trsf
+
+    l_nResult=safeTemp:libSave()
+    if l_nResult==0
+      popUpMsg("设定坐标系完成")
+    else
+      popUpMsg("设定坐标系失败")
+    endIf
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

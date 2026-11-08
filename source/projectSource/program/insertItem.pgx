@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertItem" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_sIndex" type="string" xsi:type="element" use="reference" />
+      <Parameter name="x_sTRAJname" type="string" xsi:type="element" />
+      <Parameter name="x_nType" type="num" xsi:type="element" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  if x_sIndex!=""
+    toNum(x_sIndex,l_nIndex,l_bResult)
+    if l_bResult
+      if l_nIndex==0 and progTemp:pProgItem[x_sKey].pProgTemplate[l_nIndex].sTRAJname==""
+        progTemp:pProgItem[x_sKey].pProgTemplate[l_nIndex].sTRAJname=x_sTRAJname
+        progTemp:pProgItem[x_sKey].pProgTemplate[l_nIndex].nType=x_nType
+      else
+        // l_nIndex=l_nIndex+1
+        //insert(progTemp:pProgItem[x_sKey].pProgTemplate[l_nIndex])
+        //l_nIndex=x_nIndex+1
+        //insert(progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex+1])
+        append(progTemp:pProgItem[x_sKey].pProgTemplate)
+        for l_i = size(progTemp:pProgItem[x_sKey].pProgTemplate)-1 to l_nIndex step -1
+          call copyPara(x_sKey,l_i-1,l_i)
+        endFor
+        progTemp:pProgItem[x_sKey].pProgTemplate[l_nIndex].sTRAJname=x_sTRAJname
+        progTemp:pProgItem[x_sKey].pProgTemplate[l_nIndex].nType=x_nType
+      endIf
+      switch x_nType
+        case 0
+          x_sIndex=toString("",l_nIndex)+",TRAJ->"+x_sTRAJname
+        break
+        case 1
+          x_sIndex=toString("",l_nIndex)+",ACTION->"+x_sTRAJname
+        break
+        case 2
+          x_sIndex=toString("",l_nIndex)+",PROG->"+x_sTRAJname
+        break
+      endSwitch
+      
+      x_bToSave=true
+    endIf
+  else
+    userPageAlert("未选中项目！")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

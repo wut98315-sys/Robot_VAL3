@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="Point2Trsf" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_pPoint" type="point" xsi:type="element" />
+      <Parameter name="x_trTrsf" type="trsf" xsi:type="element" use="reference" />
+    </Parameters>
+    <Code><![CDATA[begin
+  x_trTrsf.x=x_pPoint.trsf.x
+  x_trTrsf.y=x_pPoint.trsf.y
+  x_trTrsf.z=x_pPoint.trsf.z
+  x_trTrsf.rx=x_pPoint.trsf.rx
+  x_trTrsf.ry=x_pPoint.trsf.ry
+  x_trTrsf.rz=x_pPoint.trsf.rz
+end]]></Code>
+  </Program>
+</Programs>

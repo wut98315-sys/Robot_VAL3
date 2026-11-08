@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="cycle_End">
+    <Code><![CDATA[begin
+
+  //cycle进程:Ending
+  rs:_nOmacStat=7
+  _bEndCycle=true
+  wait(taskStatus("Main")<0)
+
+  // Stop task
+  stopMove()
+  call ar:getCurMoveID(bGetMovId,"End")
+  wait(isSettled())
+  resetMotion()
+  //shutdown arm power
+  disablePower()
+
+  //cycle进程:Stopped
+  rs:_nOmacStat=9
+  logMsg("当前处于停止状态 "+toString(".2",clock()))
+  rs:_sRobotStatus="当前处于停止状态"
+end]]></Code>
+  </Program>
+</Programs>

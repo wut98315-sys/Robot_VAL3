@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="initlib" access="public">
+    <Code><![CDATA[begin
+  lib1_Prog:libLoad("Disk://data/CustomerLib/lib1/savePROG")
+  lib1_Traj:libLoad("Disk://data/CustomerLib/lib1/saveTRAJ")
+  
+  lib2_Prog:libLoad("Disk://data/CustomerLib/lib2/savePROG")
+  lib2_Traj:libLoad("Disk://data/CustomerLib/lib2/saveTRAJ")
+  
+  lib3_Prog:libLoad("Disk://data/CustomerLib/lib3/savePROG")
+  lib3_Traj:libLoad("Disk://data/CustomerLib/lib3/saveTRAJ")
+  
+  lib4_Prog:libLoad("Disk://data/CustomerLib/lib4/savePROG")
+  lib4_Traj:libLoad("Disk://data/CustomerLib/lib4/saveTRAJ")
+  
+  lib5_Prog:libLoad("Disk://data/CustomerLib/lib5/savePROG")
+  lib5_Traj:libLoad("Disk://data/CustomerLib/lib5/saveTRAJ")
+  
+  lib6_Prog:libLoad("Disk://data/CustomerLib/lib6/savePROG")
+  lib6_Traj:libLoad("Disk://data/CustomerLib/lib6/saveTRAJ")
+  
+  lib7_Prog:libLoad("Disk://data/CustomerLib/lib7/savePROG")
+  lib7_Traj:libLoad("Disk://data/CustomerLib/lib7/saveTRAJ")
+  
+  lib8_Prog:libLoad("Disk://data/CustomerLib/lib8/savePROG")
+  lib8_Traj:libLoad("Disk://data/CustomerLib/lib8/saveTRAJ")
+  
+  lib9_Prog:libLoad("Disk://data/CustomerLib/lib9/savePROG")
+  lib9_Traj:libLoad("Disk://data/CustomerLib/lib9/saveTRAJ")
+end]]></Code>
+  </Program>
+</Programs>

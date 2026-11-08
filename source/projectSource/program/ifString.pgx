@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="ifString" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_sMsg" type="string" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSigIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSigType" type="num" xsi:type="array" size="1" />
+      <Local name="l_nValue" type="num" xsi:type="array" size="1" />
+      <Local name="l_bANDOR1" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bANDOR2" type="bool" xsi:type="array" size="1" />
+      <Local name="l_sMsg1" type="string" xsi:type="array" size="1" />
+      <Local name="l_sMsg2" type="string" xsi:type="array" size="1" />
+      <Local name="l_sMsg3" type="string" xsi:type="array" size="1" />
+      <Local name="l_sANDOR1" type="string" xsi:type="array" size="1" />
+      <Local name="l_sANDOR2" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_sMsg1=""
+  l_sMsg2=""
+  l_sMsg3=""
+  l_nSigType=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigType[0]
+  l_nSigIndex=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigIndex[0]
+  l_nValue=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nValue[0]
+  if l_nSigType>0 and l_nSigIndex>0
+    switch l_nSigType
+      case 1
+        if l_nValue!=0
+          l_sMsg1="DIN"+toString("",l_nSigIndex)+"=true"
+        else
+          l_sMsg1="DIN"+toString("",l_nSigIndex)+"=false"
+        endIf
+      break
+      case 2
+        if l_nValue!=0
+          l_sMsg1="DOUT"+toString("",l_nSigIndex)+"=true"
+        else
+          l_sMsg1="DOUT"+toString("",l_nSigIndex)+"=false"
+        endIf
+      break
+      case 3
+        l_sMsg1="AIN"+toString("",l_nSigIndex)+"="+toString("",l_nValue)
+      break
+      case 4
+        l_sMsg1="AOUT"+toString("",l_nSigIndex)+"="+toString("",l_nValue)
+      break
+    endSwitch
+  endIf
+  l_bANDOR1=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.bANDOR[0]
+  if !l_bANDOR1
+    l_sANDOR1=" and "
+  else
+    l_sANDOR1=" or "
+  endIf
+  l_bANDOR2=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.bANDOR[1]
+  if !l_bANDOR2
+    l_sANDOR2=" and "
+  else
+    l_sANDOR2=" or "
+  endIf
+  l_nSigType=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigType[1]
+  l_nSigIndex=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigIndex[1]
+  l_nValue=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nValue[1]
+  if l_nSigType>0 and l_nSigIndex>0
+    
+    switch l_nSigType
+      case 1
+        if l_nValue!=0
+          l_sMsg2="DIN"+toString("",l_nSigIndex)+"=true"
+        else
+          l_sMsg2="DIN"+toString("",l_nSigIndex)+"=false"
+        endIf
+      break
+      case 2
+        if l_nValue!=0
+          l_sMsg2="DOUT"+toString("",l_nSigIndex)+"=true"
+        else
+          l_sMsg2="DOUT"+toString("",l_nSigIndex)+"=false"
+        endIf
+      break
+      case 3
+        l_sMsg2="AIN"+toString("",l_nSigIndex)+"="+toString("",l_nValue)
+      break
+      case 4
+        l_sMsg2="AOUT"+toString("",l_nSigIndex)+"="+toString("",l_nValue)
+      break
+    endSwitch
+    l_sMsg2=l_sANDOR1+l_sMsg2
+  endIf
+  l_nSigType=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigType[2]
+  l_nSigIndex=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nSigIndex[2]
+  l_nValue=progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].iIfItem.nValue[2]
+  if l_nSigType>0 and l_nSigIndex>0
+    switch l_nSigType
+      case 1
+        if l_nValue!=0
+          l_sMsg3="DIN"+toString("",l_nSigIndex)+"=true"
+        else
+          l_sMsg3="DIN"+toString("",l_nSigIndex)+"=false"
+        endIf
+      break
+      case 2
+        if l_nValue!=0
+          l_sMsg3="DOUT"+toString("",l_nSigIndex)+"=true"
+        else
+          l_sMsg3="DOUT"+toString("",l_nSigIndex)+"=false"
+        endIf
+      break
+      case 3
+        l_sMsg3="AIN"+toString("",l_nSigIndex)+"="+toString("",l_nValue)
+      break
+      case 4
+        l_sMsg3="AOUT"+toString("",l_nSigIndex)+"="+toString("",l_nValue)
+      break
+    endSwitch
+    l_sMsg3=l_sANDOR2+l_sMsg3
+  endIf
+  
+  x_sMsg=l_sMsg1+l_sMsg2+l_sMsg3
+end]]></Code>
+  </Program>
+</Programs>

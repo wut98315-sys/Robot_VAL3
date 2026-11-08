@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="if_check" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nType" type="num" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_nValue" type="num" xsi:type="element" />
+      <Parameter name="x_bResult" type="bool" xsi:type="element" use="reference" />
+      <Parameter name="x_bDisable" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bValue" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bRecValue" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nRecValue" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+   x_bDisable=false
+    switch x_nType
+      case 1
+        //din
+        call io:getDigIO(io:dInput[x_nIndex],l_bRecValue,l_bErr)
+        l_bValue=(x_nValue!=0)
+        x_bResult=(l_bRecValue==l_bValue)
+      break
+      case 2
+        //dout
+        call io:getDigIO(io:dOutput[x_nIndex],l_bRecValue,l_bErr)
+        l_bValue=(x_nValue!=0)
+        x_bResult=(l_bRecValue==l_bValue)
+      break
+      case 3
+        //ain
+        call io:getAnaIO(io:aInput[x_nIndex],l_nRecValue,l_bErr)
+        x_bResult=(l_nRecValue==x_nValue)
+      break
+      case 4
+        //aout
+        call io:getAnaIO(io:aInput[x_nIndex],l_nRecValue,l_bErr)
+        x_bResult=(l_nRecValue==x_nValue)
+      break
+    default
+      x_bDisable=true
+    break
+    endSwitch
+    
+end]]></Code>
+  </Program>
+</Programs>

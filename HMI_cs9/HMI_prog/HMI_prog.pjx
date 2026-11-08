@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.15.1Cs9_BS3177" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="bind.pgx" />
+    <Program file="bind_edit.pgx" />
+    <Program file="main.pgx" />
+    <Program file="onSimulate.pgx" />
+    <Program file="onStart.pgx" />
+    <Program file="refreshlist.pgx" />
+    <Program file="refreshproglist.pgx" />
+    <Program file="selEndProg.pgx" />
+    <Program file="selMainProg.pgx" />
+    <Program file="selStartUpProg.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="HMI_prog.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="program" path="Disk://source/projectSource/program/program.pjx" />
+    <Library alias="util" path="Disk://HMI_cs9/HMI_util/HMI_util.pjx" />
+    <Library alias="trajectory" path="Disk://source/projectSource/trajectory/trajectory.pjx" />
+    <Library alias="actionData" path="Disk://data/actionData/actionData.pjx" />
+    <Library alias="simulate" path="Disk://HMI_cs9/simulate/simulate.pjx" />
+    <Library alias="editprog" path="Disk://HMI_cs9/HMI_progEdit/HMI_progEdit.pjx" />
+    <Library alias="progTemp" path="Disk://source/template/progTemp/progTemp.pjx" />
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+  </Libraries>
+</Project>

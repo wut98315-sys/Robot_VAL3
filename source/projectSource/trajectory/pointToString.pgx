@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="pointToString" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sMsg" type="string" xsi:type="element" use="reference" />
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_trsf" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_sMsg" type="string" xsi:type="array" size="1" />
+      <Local name="l_nType" type="num" xsi:type="array" size="1" />
+      <Local name="l_jJoint" type="jointRx" xsi:type="array" size="1" />
+      <Local name="l_nActionIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSigValue" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSigType" type="num" xsi:type="array" size="3" />
+      <Local name="l_nSigIndex" type="num" xsi:type="array" size="3" />
+      <Local name="l_nValue" type="num" xsi:type="array" size="3" />
+      <Local name="l_sType" type="string" xsi:type="array" size="3" />
+      <Local name="l_sValue" type="string" xsi:type="array" size="3" />
+      <Local name="l_nANDOR" type="num" xsi:type="array" size="2" />
+      <Local name="l_sANDOR" type="string" xsi:type="array" size="2" />
+      <Local name="l_sSigIndex" type="string" xsi:type="array" size="3" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSpeed" type="num" xsi:type="array" size="1" />
+      <Local name="l_mdesc" type="mdesc" xsi:type="array" size="1" />
+      <Local name="l_sblend" type="string" xsi:type="array" size="1" />
+      <Local name="l_sComment" type="string" xsi:type="array" size="1" />
+      <Local name="l_bSafePoint" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_bNull" type="bool" xsi:type="array" size="3" />
+      <Local name="l_bMark" type="bool" xsi:type="array" size="1" />
+      <Local name="l_trsf1" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_nType=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nMoveType
+  l_bMark=(trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].bMarked==true)
+  switch l_nType
+    //关节
+    case 0
+      l_jJoint=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].jJointRx
+      l_mdesc=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.mMdesc
+      l_sComment=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].sID
+      l_bSafePoint=(trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.bSafePoint==true)
+      if l_mdesc.blend!=off
+        l_sblend=toString("",l_mdesc.leave)
+      else
+        l_sblend="off"
+      endIf
+      l_sMsg=", J["
+      l_sMsg=l_sMsg+toString("",l_jJoint.j1)+", "
+      l_sMsg=l_sMsg+toString("",l_jJoint.j2)+", "
+      l_sMsg=l_sMsg+toString("",l_jJoint.j3)+", "
+      l_sMsg=l_sMsg+toString("",l_jJoint.j4)+", "
+      l_sMsg=l_sMsg+toString("",l_jJoint.j5)+", "
+      l_sMsg=l_sMsg+toString("",l_jJoint.j6)+"]"
+      l_sMsg=l_sMsg+"_spd="+toString("",l_mdesc.vel)+"%"
+      l_sMsg=l_sMsg+"_b="+l_sblend
+      if l_bSafePoint
+        l_sMsg=l_sMsg+" @safepoint"
+      endIf
+      if l_sComment!=""
+        l_sMsg=l_sMsg+"#"+l_sComment
+      endIf
+    break
+    //
+    case 1
+      l_bSafePoint=(trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.bSafePoint==true)
+      l_trsf=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf
+      l_mdesc=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.mMdesc
+      l_sComment=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].sID
+      if l_mdesc.blend!=off
+        l_sblend=toString("",l_mdesc.leave)
+      else
+        l_sblend="off"
+      endIf
+      l_sMsg=", L["
+      l_sMsg=l_sMsg+toString("",l_trsf.x)+","
+      l_sMsg=l_sMsg+toString("",l_trsf.y)+","
+      l_sMsg=l_sMsg+toString("",l_trsf.z)+","
+      l_sMsg=l_sMsg+toString("",l_trsf.rx)+","
+      l_sMsg=l_sMsg+toString("",l_trsf.ry)+","
+      l_sMsg=l_sMsg+toString("",l_trsf.rz)+"]"
+      l_sMsg=l_sMsg+"_spd="+toString("",l_mdesc.vel)+"%"
+      l_sMsg=l_sMsg+"_b="+l_sblend
+      if l_bSafePoint
+        l_sMsg=l_sMsg+"_@safepoint"
+      endIf
+      if l_sComment!=""
+        l_sMsg=l_sMsg+ "#"+l_sComment+""
+      endIf
+      
+    break
+    //2024.12.23 add圆弧
+    case 2
+      l_bSafePoint=(trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.bSafePoint==true)
+      l_trsf=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf
+      l_trsf1=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pInter.trsf 
+      l_mdesc=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.mMdesc
+      l_sComment=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].sID
+      if l_mdesc.blend!=off
+        l_sblend=toString("",l_mdesc.leave)
+      else
+        l_sblend="off"
+      endIf
+      l_sMsg=", C["
+      l_sMsg=l_sMsg+toString("",l_trsf.x)+","
+      l_sMsg=l_sMsg+toString("",l_trsf.y)+","
+      l_sMsg=l_sMsg+toString("",l_trsf.z)+","
+      l_sMsg=l_sMsg+toString("",l_trsf.rx)+","
+      l_sMsg=l_sMsg+toString("",l_trsf.ry)+","
+      l_sMsg=l_sMsg+toString("",l_trsf.rz)+"]["
+      l_sMsg=l_sMsg+toString("",l_trsf1.x)+","
+      l_sMsg=l_sMsg+toString("",l_trsf1.y)+","
+      l_sMsg=l_sMsg+toString("",l_trsf1.z)+","
+      l_sMsg=l_sMsg+toString("",l_trsf1.rx)+","
+      l_sMsg=l_sMsg+toString("",l_trsf1.ry)+","
+      l_sMsg=l_sMsg+toString("",l_trsf1.rz)+"]"
+      l_sMsg=l_sMsg+"_spd="+toString("",l_mdesc.vel)+"%"
+      l_sMsg=l_sMsg+"_b="+l_sblend
+      if l_bSafePoint
+        l_sMsg=l_sMsg+"_@safepoint"
+      endIf
+      if l_sComment!=""
+        l_sMsg=l_sMsg+ "#"+l_sComment+""
+      endIf
+    break
+    case 3
+      l_sMsg=", wait->DIN["
+      l_nActionIndex=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nActionIndex
+      l_nSigValue=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nSigValue
+      l_sMsg=l_sMsg+toString("",l_nActionIndex)+"]-"+io:dInItem[l_nActionIndex].sComment+"="
+      if l_nSigValue!=0
+        l_sMsg=l_sMsg+"TRUE"
+      else
+        l_sMsg=l_sMsg+"FALSE"
+      endIf
+    break
+    case 4
+      l_sMsg=", DOUT["
+      l_nActionIndex=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nActionIndex
+      l_nSigValue=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nSigValue
+      l_sMsg=l_sMsg+toString("",l_nActionIndex)+"]-"+io:dOutItem[l_nActionIndex].sComment+"="
+      if l_nSigValue!=0
+        l_sMsg=l_sMsg+"TRUE"
+      else
+        l_sMsg=l_sMsg+"FALSE"
+      endIf
+    break
+    case 5
+      l_sMsg=", wait->AIN["
+      l_nActionIndex=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nActionIndex
+      l_nSigValue=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nSigValue
+      l_sMsg=l_sMsg+toString("",l_nActionIndex)+"]-"+io:aInItem[l_nActionIndex].sComment+"="
+      l_sMsg=l_sMsg+toString(".3",l_nSigValue)
+    break
+    case 6
+      l_sMsg=", AOUT["
+      l_nActionIndex=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nActionIndex
+      l_nSigValue=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nSigValue
+      l_sMsg=l_sMsg+toString("",l_nActionIndex)+"]-"+io:aOutItem[l_nActionIndex].sComment+"="
+      l_sMsg=l_sMsg+toString(".3",l_nSigValue)
+    break
+    case 7
+      l_sMsg=", DELAY = "
+      l_nSigValue=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nDelay
+      l_sMsg=l_sMsg+toString(".3",l_nSigValue)+" s"
+    break
+    case 8
+      l_sMsg=", IF "
+      for l_i = 0 to 2
+        l_bNull[l_i]=true
+        l_nSigType[l_i]=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.iIfItem.nSigType[l_i]
+        l_nValue[l_i]=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.iIfItem.nValue[l_i]
+        l_nSigIndex[l_i]=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.iIfItem.nSigIndex[l_i]
+        l_sSigIndex[l_i]=toString("",l_nSigIndex[l_i])
+        switch l_nSigType[l_i]
+          case 1
+            l_sType[l_i]="DIN"
+            if l_nValue[l_i]!=0
+              l_sValue[l_i]="TRUE"
+            else
+              l_sValue[l_i]="FALSE"
+            endIf
+          break
+          case 2
+            l_sType[l_i]="DOUT"
+            if l_nValue[l_i]!=0
+              l_sValue[l_i]="TRUE"
+            else
+              l_sValue[l_i]="FALSE"
+            endIf
+          break
+          case 3
+            l_sType[l_i]="AIN"
+            l_sValue[l_i]=toString(".2",l_nValue[l_i])
+          break
+          case 4
+            l_sType[l_i]="AOUT"
+            l_sValue[l_i]=toString(".2",l_nValue[l_i])
+          break
+          default
+            l_bNull[l_i]=false
+          break
+        endSwitch
+        
+      endFor
+      for l_i = 0 to 1
+        if trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.iIfItem.bANDOR[l_i]
+          l_sANDOR[l_i]="or"
+        else
+          l_sANDOR[l_i]="and"
+        endIf
+      endFor
+      //l_sMsg=""
+      if l_bNull[0] and l_bNull[1] and l_bNull[2]
+        l_sMsg=l_sMsg+l_sType[0]+"["+l_sSigIndex[0]+"]="+l_sValue[0] +" "+l_sANDOR[0]+" "
+        l_sMsg=l_sMsg+l_sType[1]+"["+l_sSigIndex[1]+"]="+l_sValue[1] +" "+l_sANDOR[1]+" "
+        l_sMsg=l_sMsg+l_sType[2]+"["+l_sSigIndex[2]+"]="+l_sValue[2] 
+      elseIf l_bNull[0] and !l_bNull[1] and !l_bNull[2]
+        l_sMsg=l_sMsg+l_sType[0]+"["+l_sSigIndex[0]+"]="+l_sValue[0] 
+      elseIf l_bNull[0] and l_bNull[1] and !l_bNull[2]
+        l_sMsg=l_sMsg+l_sType[0]+"["+l_sSigIndex[0]+"]="+l_sValue[0] +" "+l_sANDOR[0]+" "
+        l_sMsg=l_sMsg+l_sType[1]+"["+l_sSigIndex[1]+"]="+l_sValue[1] 
+      elseIf !l_bNull[0] and l_bNull[1] and !l_bNull[2]
+        l_sMsg=l_sMsg+l_sType[1]+"["+l_sSigIndex[1]+"]="+l_sValue[1]
+      elseIf !l_bNull[0] and !l_bNull[1] and l_bNull[2]
+        l_sMsg=l_sMsg+l_sType[2]+"["+l_sSigIndex[2]+"]="+l_sValue[2] 
+      elseIf l_bNull[0] and !l_bNull[1] and l_bNull[2]
+        l_sMsg=l_sMsg+l_sType[0]+"["+l_sSigIndex[0]+"]="+l_sValue[0] +" "+l_sANDOR[0]+" "
+        l_sMsg=l_sMsg+l_sType[2]+"["+l_sSigIndex[2]+"]="+l_sValue[2] 
+      elseIf !l_bNull[0] and l_bNull[1] and l_bNull[2]
+        l_sMsg=l_sMsg+l_sType[1]+"["+l_sSigIndex[1]+"]="+l_sValue[1] +" "+l_sANDOR[1]+" "
+        l_sMsg=l_sMsg+l_sType[2]+"["+l_sSigIndex[2]+"]="+l_sValue[2] 
+      endIf
+    break
+    case 9
+      l_sMsg=",  ENDIF"
+    break
+    case 10
+      //action
+      l_nIndex=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nSigValue
+      l_sComment=actData:aActItem[l_nIndex].sComment
+      l_sMsg=",Action:"+l_sComment
+    break
+    case 11
+      //2025.7.21 add 喷淋delay
+      l_sMsg=", WASH_DELAY = "
+      call io:getAnaIO(io:aInput[15],l_nSigValue,l_bErr)
+      l_sMsg=l_sMsg+toString(".3",l_nSigValue)+" s"
+    break
+  endSwitch
+  //是否被标记
+  if l_bMark
+    l_sMsg=",*,"+l_sMsg
+  endIf
+     
+  
+  x_sMsg=l_sMsg
+end]]></Code>
+  </Program>
+</Programs>

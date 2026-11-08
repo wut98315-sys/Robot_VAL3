@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="addActCmd" access="public">
+    <Description><![CDATA[  //作用：将动作添加到动作堆栈中
+  //用法：x_nPercent 指的是运动的百分比，其值为0到1，如该值为0.8，
+  则代表一条运动指令运动到80%时，执行该动作。
+  //x_nInOutType指的是输入输出的类型  1代表输出Out  2代表脉冲Pulse 3代表输入In
+  //x_nInOutIndex是输入或者输出的索引号，默认值为0到95
+  //x_nInOutValue 指的是输入输出或者脉冲的值
+  //类型x_nInOutType        结果x_nInOutValue
+  // 1=out                0=false 1=true
+  // 2=Pulse              延时x_nInOutValue秒后信号置为OFF.
+  // 3=in                0=false  1=true  
+
+  //示例： call addActCmd(0.8,1,32,1)   代表一条运行指令运动到80%时，输出io库中的第32号信号dOutput为ON
+  //      call addActCmd(0.7,2,33,2.2) 代表一条运行指令运动到70%时，脉冲输出io库中的第33号信号dOutput为ON，然后2.2秒后将该信号置位OFF.
+  //      call addActCmd(0.6,3,34,1)   代表一条运行指令运动到60%时,等待输入io库中的第33号信号为ON，注意：该信号如果不满足则会阻塞运动任务]]></Description>
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nPercent" type="num" xsi:type="element" />
+      <Parameter name="x_nInOutType" type="num" xsi:type="element" />
+      <Parameter name="x_nInOutIndex" type="num" xsi:type="element" />
+      <Parameter name="x_nInOutValue" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //作用：将动作添加到动作堆栈中，动作包含输出信号、脉冲信号及等待信号
+  //用法：
+  //x_nPercent 指的是运动的百分比，其值为0到1，如该值为0.8，则代表一条运动指令运动到80%时，执行该动作。
+  //x_nInOutType指的是输入输出的类型  1代表输出Out	 2代表脉冲Pulse	3代表输入In
+  //x_nInOutIndex是输入或者输出的索引号，默认值为0到95
+  //x_nInOutValue 指的是输入输出或者脉冲的值
+  //类型x_nInOutType        结果x_nInOutValue
+  //	1=out	               0=false 1=true
+  //	2=Pulse	             延时x_nInOutValue秒后信号置为OFF.
+  //	3=in	               0=false  1=true  
+  //示例： call addActCmd(0.8,1,32,1)   代表一条运行指令运动到80%时，输出io库中的第32号信号dOutput为ON
+  //      call addActCmd(0.7,2,33,2.2) 代表一条运行指令运动到70%时，脉冲输出io库中的第33号信号dOutput为ON，然后2.2秒后将该信号置位OFF.
+  //      call addActCmd(0.6,3,34,1)   代表一条运行指令运动到60%时,等待输入io库中的第33号信号为ON，注意：该信号如果不满足则会阻塞运动任务
+  
+  //nMoveIDRef: 运动的MoveID，通过movel或者movej获得。
+  
+  if x_nPercent>1 or x_nPercent<0
+    //动作的百分比要正确
+    call rs:setAlarm(202,x_nPercent)
+  elseIf !(x_nInOutType==1 or x_nInOutType==2 or x_nInOutType==3)
+    //动作的输入输出的类型要正确
+    call rs:setAlarm(203,x_nInOutType)
+  elseIf x_nInOutIndex<32 or x_nInOutIndex>io:nMaxdigital-1
+    //索引号的范围是32到95
+    call rs:setAlarm(204,x_nInOutIndex)
+  else
+    //OUT输出的动作放入到动作堆栈
+    switch x_nInOutType
+      case 1,2
+        //判断OUT的x_nInOutValue范围
+        if x_nInOutType==1 and !(x_nInOutValue==0 or x_nInOutValue==1)
+          call rs:setAlarm(205,x_nInOutValue)
+        elseIf x_nInOutType==2 and  x_nInOutValue<0
+          call rs:setAlarm(206,x_nInOutValue)
+        endIf
+        aActionUsing.nActType=x_nInOutType
+        aActionUsing.nActIO=x_nInOutIndex
+        aActionUsing.nActResult=x_nInOutValue
+        call pushActCmd(nMoveIDRef+x_nPercent,aActionUsing)
+        if x_nPercent==1
+          waitEndMove()
+        endIf
+      break
+      case 3
+        //IN输入动作，运动任务会等待该信号，即该信号会阻塞该运动任务
+        
+        if x_nPercent==1
+          waitEndMove()
+        else
+          wait(getMoveId()>=nMoveIDRef+x_nPercent)
+        endIf
+        if x_nInOutValue==0
+          call io:waitDigInput(io:dInput[x_nInOutIndex],false,l_bErr)
+        elseIf x_nInOutValue==1
+          call io:waitDigInput(io:dInput[x_nInOutIndex],true,l_bErr)
+        else
+          call rs:setAlarm(207,x_nInOutValue)
+        endIf
+      break
+    endSwitch
+  endIf
+
+end]]></Code>
+  </Program>
+</Programs>

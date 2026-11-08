@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="unLock">
+    <Locals>
+      <Local name="l_sEntry" type="string" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+//  if bLock==true
+//    l_bResult=userPagePrompt("请输入密码",l_sEntry)
+//    if l_bResult==false
+//      return
+//    endIf
+//    if l_sEntry!=sPassword[0]
+//      popUpMsg("密码错误")
+//      return
+//    endIf
+//    //2024.04.29 add解锁扭矩限位设置
+//    for i=0 to size(bDisable)-1
+//      bDisable[i]=false
+//    endFor
+//    popUpMsg("修改后请点击保存!")
+//    bLock=false
+//  else
+//    for i=0 to size(bDisable)-1
+//      bDisable[i]=true
+//    endFor
+//    call seMaxJntForce()
+//    call libTqe:_getSetForce(nMaxJntForec)
+//    popUpMsg("机器人关节扭矩限制保存成功!")
+//    bLock=true
+//  endIf
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="Main">
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bStartClock" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nClock" type="num" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //
+
+  home:sVersion="version:4.11.20251028"
+  resetMotion()
+  //初始化
+  call cycle_Init()
+
+
+  //
+  userPage("StartUp")
+
+  sMsg=">>> Loading 数据库 "+toString("",savedata:nLibIndex)+" <<<"
+  //guohangxin add 2023.03.23
+  call initLib:initlib()
+  call program:loadPROG(saveData:nLibIndex,l_nResult)
+  call trajectory:loadTRAJ(saveData:nLibIndex,l_nResult)
+  sMsg=""
+  //机器人控制任务
+  taskCreate "cycleCtrl",90,_tCycleCtrl()
+  wait(taskStatus("cycleCtrl")==1)
+  //机器人状态
+  taskCreate "plc",60,plc:main()
+  wait(taskStatus("plc")==1)
+  //HMI
+  taskCreate "HMI",50,home:main()
+  wait(taskStatus("HMI")==1)
+  //lifebit
+  taskCreate "lifebit",10,plc:lifebit()
+  wait(taskStatus("lifebit")==1)
+  //创建用户自定义的任务
+  //call createUserTask()
+  //safe check
+  taskCreate "safeCheck",80,safe:main()
+  wait(taskStatus("safeCheck")==1)
+  do
+    //任务监控
+    if taskStatus("plc")>1 and (clock()-_nClock[1]>5)
+      _nClock[1]=clock()
+      taskResume("plc",1)
+    else
+      _nClock[1]=clock()
+    endIf
+    if taskStatus("HMI")>1
+      //保存当前数据
+      bTosave=true
+      call trajectory:onSave(bTosave)
+      bTosave=true
+      call program:onSave(bTosave)
+      wait(rs:bIsSaving==false)
+      l_bResult=userPageConfirm("需要重载HMI应用？")
+      if l_bResult
+
+        taskKill("HMI")
+        wait(taskStatus("HMI")==-1)
+        taskCreate "HMI",50,home:main()
+        wait(taskStatus("HMI")==1)
+      endIf
+    endIf
+    if taskStatus("lifebit")>1 and (clock()-_nClock[3]>5)
+      _nClock[3]=clock()
+      taskResume("lifebit",1)
+    else
+      _nClock[3]=clock()
+    endIf
+
+    delay(0)
+  until rs:bQuitApp==true
+
+  call kill()
+
+end]]></Code>
+  </Program>
+</Programs>

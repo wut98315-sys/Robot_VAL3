@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3" >
+  <Parameters version="s8.21.4cs9_BS4944" stackSize="200000" millimeterUnit="true" />
+  <Programs>
+    <Program file="HWcheck.pgx" />
+    <Program file="changeDataLib.pgx" />
+    <Program file="changeDataLib1.pgx" />
+    <Program file="cycle_pause.pgx" />
+    <Program file="cycle_start.pgx" />
+    <Program file="cycle_stop.pgx" />
+    <Program file="init.pgx" />
+    <Program file="lifebit.pgx" />
+    <Program file="main.pgx" />
+    <Program file="powerOnOff.pgx" />
+    <Program file="receive.pgx" />
+    <Program file="resetOutput.pgx" />
+    <Program file="send.pgx" />
+    <Program file="setSpeed.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="plc.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="io" path="Disk://source/projectSource/io/io.pjx" autoload="true" password="" />
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" autoload="true" password="" />
+    <Library alias="savedata" path="Disk://source/saveData/saveData.pjx" autoload="true" password="" />
+    <Library alias="prog" path="Disk://source/projectSource/program/program.pjx" autoload="true" password="" />
+    <Library alias="trajectory" path="Disk://source/projectSource/trajectory/trajectory.pjx" autoload="true" password="" />
+  </Libraries>
+  <Types>
+  </Types>
+</Project>

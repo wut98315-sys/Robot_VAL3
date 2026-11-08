@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="waitLoad" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nLib" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sPath" type="string" xsi:type="array" size="1" />
+      <Local name="l_sPath1" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_sPath="Disk://data/CustomerLib/lib"+toString("",x_nLib)+"/savePROG"
+ 
+  do
+    l_sPath1=progTemp:libPath()
+    delay(0)
+  until l_sPath==l_sPath1
+end]]></Code>
+  </Program>
+</Programs>

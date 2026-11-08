@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="MoveJ" access="public">
+    <Description><![CDATA[// 关节运动movej程序
+// 用该程序替代原val3程序中的movej()指令即可
+// 因为原move指令有返回值moveID，所以这里引入一个x_nMoveId，随参考传递出来]]></Description>
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_jPoint" type="jointRx" xsi:type="element" />
+      <Parameter name="x_tTool" type="tool" xsi:type="element" />
+      <Parameter name="x_mSpeed" type="mdesc" xsi:type="element" />
+      <Parameter name="x_nMoveId" type="num" xsi:type="element" use="reference" />
+      <Parameter name="x_bExact" type="bool" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // ---------------------------------------------------------------------------- //
+  // 关节运动movej程序
+  // 用该程序替代原val3程序中的movej()指令即可
+  // 因为原move指令有返回值moveID，所以这里引入一个x_nMoveId，随参考传递出来
+  // ---------------------------------------------------------------------------- //
+  // 
+  // 
+  l_bResult=isInRange(x_jPoint)
+  if l_bResult==true
+    x_nMoveId=movej(x_jPoint,x_tTool,x_mSpeed)
+    if x_bExact
+      waitEndMove()
+    endIf
+    // log
+    call logMoveMsgJ(x_jPoint,x_tTool,x_mSpeed,x_nMoveId,x_bExact)
+  else
+    // 关节点位超限
+  endIf
+  
+end]]></Code>
+  </Program>
+</Programs>

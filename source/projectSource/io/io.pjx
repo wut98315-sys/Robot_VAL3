@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.10.3Cs9_BS2093" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="commentIO.pgx" />
+    <Program file="getAnaIO.pgx" />
+    <Program file="getAngIOSize.pgx" />
+    <Program file="getDigIO.pgx" />
+    <Program file="getDigIOSize.pgx" />
+    <Program file="init.pgx" />
+    <Program file="linkIO.pgx" />
+    <Program file="linkStatusIO.pgx" />
+    <Program file="resetBusSelect.pgx" />
+    <Program file="setAnaOutput.pgx" />
+    <Program file="setAngINList.pgx" />
+    <Program file="setAngOUTList.pgx" />
+    <Program file="setDigOutNoAlm.pgx" />
+    <Program file="setDigOutput.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+    <Program file="waitAnaInput.pgx" />
+    <Program file="waitDigInput.pgx" />
+  </Programs>
+  <Database>
+    <Data file="io.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+  </Libraries>
+  <Types>
+    <Type name="dioItem" path="Disk://source/template/dioItem/dioItem.pjx" />
+    <Type name="aioItem" path="Disk://source/template/aioItem/aioItem.pjx" />
+  </Types>
+</Project>

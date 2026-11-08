@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="paraBind" access="public">
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_snmb" type="string" xsi:type="array" size="1" />
+      <Local name="l_slbl" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //  userPageBind("paraEdit","nmb1","value",nParaSpeed,1,"rw")
+  //  userPageBind("paraEdit","nmb2","value",nParaAccel,1,"rw")
+  //  userPageBind("paraEdit","nmb3","value",nParaBlend,1,"rw")
+  //  userPageBind("paraEdit","nmb4","value",nParaPercent,1,"rw")
+  //  for l_i = 0 to 5
+  //    l_snmb="nmb5"+toString("",l_i)
+  //    userPageBind("paraEdit",l_snmb,"value",nTRSF[l_i],1,"rw")
+  //    l_slbl="lbl5"+toString("",l_i)
+  //    userPageBind("paraEdit",l_slbl,"innerHTML",sTRSF[l_i],1,"r")
+  //  endFor
+  //  //cbx
+  //  userPageBind("paraEdit","cbx1","value",sParaType,1,"rw")
+  //  //chk
+  //  userPageBind("paraEdit","cbx3","value",sBlendType,1,"rw")
+  //  //button
+  //  userPageBindClick("paraEdit","btn1",bParaConfirm,true)
+  //  userPageBindClick("paraEdit","btn2",bParaBack,true)
+  //  userPageBindClick("paraEdit","btn3",bPAllModify,true)
+  //  //txt1
+  //  userPageBind("paraEdit","txt1","value",sComment,1,"rw")
+  
+  //  //chk
+  //  userPageBind("paraEdit","chk1","checked",bSafePoint,1,"rw")
+  
+  userPageBind("paraEdit","nmb1","value",nParaSpeed,1,"rw")
+  userPageBind("paraEdit","nmb2","value",nParaAccel,1,"rw")
+  userPageBind("paraEdit","nmb3","value",nParaBlend,1,"rw")
+  userPageBind("paraEdit","nmb4","value",nParaPercent,1,"rw")
+  for l_i = 0 to 9
+    l_snmb="nmb5"+toString("",l_i)
+    userPageBind("paraEdit",l_snmb,"value",nTRSF[l_i],1,"rw")
+    l_slbl="lbl5"+toString("",l_i)
+    userPageBind("paraEdit",l_slbl,"innerHTML",sTRSF[l_i],1,"r")
+  endFor
+  for l_i = 0 to 1
+    l_snmb="nmb6"+toString("",l_i)
+    userPageBind("paraEdit",l_snmb,"value",nTRSF[l_i+10],1,"rw")
+    l_slbl="lbl6"+toString("",l_i)
+    userPageBind("paraEdit",l_slbl,"innerHTML",sTRSF[l_i+10],1,"r") 
+  endFor
+  //cbx
+  userPageBind("paraEdit","cbx1","options",sParaPointType,size(sParaPointType),"r")
+  userPageBind("paraEdit","cbx1","value",sParaType,1,"rw")
+  //chk
+  userPageBind("paraEdit","cbx3","value",sBlendType,1,"rw")
+  //button
+  userPageBindClick("paraEdit","btn1",bParaConfirm,true)
+  userPageBindClick("paraEdit","btn2",bParaBack,true)
+  userPageBindClick("paraEdit","btn3",bPAllModify,true)
+  //txt1
+  userPageBind("paraEdit","txt1","value",sComment,1,"rw")
+  
+  //chk
+  userPageBind("paraEdit","chk1","checked",bSafePoint,1,"rw")
+end]]></Code>
+  </Program>
+</Programs>

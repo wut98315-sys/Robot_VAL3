@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="lifebit" access="public" >
+    <Code><![CDATA[begin
+  //  _nClock=0
+  //  do
+  if clock()-_nClock>1
+    _nClock=clock()
+    bLifebit=!bLifebit
+  endIf
+
+
+  //  delay(0)
+  //  until false
+end]]></Code>
+  </Program>
+</Programs>

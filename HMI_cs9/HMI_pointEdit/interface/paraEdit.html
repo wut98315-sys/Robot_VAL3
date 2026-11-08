@@ -1,0 +1,75 @@
+<!DOCTYPE html SYSTEM "-//W3C//DTD VALHTML Strict//EN">
+  <html xmlns="http://www.staubli.com/robotics/2016/03/valhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"></meta>
+      <meta http-equiv="Pragma" content="no-cache"></meta>
+      <meta http-equiv="Expires" content="0"></meta>
+      <script type="text/javascript" src="/vendor/libs/stblUserPage.min.js"></script>
+      <link href="/vendor/libs/up.min.v2.css" rel="stylesheet" media="all" type="text/css"></link>
+      <meta name="src-version" content="8.10.3"></meta>
+    </head>
+    <body style="width: 480px; height: 690px; margin: 0">
+      <label style="height: 25px; width: 120px; left: 348px; position: absolute; top: 112px" id="lbl55">RZ:</label>
+      <label style="height: 25px; width: 120px; left: 180px; position: absolute; top: 78px" id="lbl51">Y:</label>
+      <label style="height: 25px; width: 120px; left: 10px; position: absolute; top: 112px" id="lbl53">RX:</label>
+      <label id="lbl1" style="width: 204px; height: 20px; text-align: center; top: 8px; position: absolute; left: 139px">点位参数设置</label>
+      <label id="lbl2" style="width: 84px; height: 20px; top: 47px; position: absolute; left: 10px">点位类型：</label>
+      <select id="cbx1" size="1" style="width: 120px; height: 26px; top: 44px; position: absolute; left: 90px">
+        <option></option>
+        <option>JOINT</option>
+        <option>POINT</option>
+      </select>
+      <label id="lbl3" style="width: 60px; height: 20px; top: 47px; position: absolute; left: 278px">注释：</label>
+      <input id="txt1" style="width: 120px; height: 26px; top: 44px; position: absolute; left: 338px" value=""></input>
+      <label id="lbl4" style="left: 17px; position: absolute; top: 263px; width: 95px; height: 20px">速度参数：</label>
+      <label style="left: 17px; position: absolute; top: 302px; width: 60px; height: 20px" id="lbl4_Copy1">速度：</label>
+      <input id="nmb1" value="0" type="number" style="width: 120px; height: 26px; top: 299px; position: absolute; left: 78px"></input>
+      <input value="0" type="number" style="width: 120px; height: 26px; top: 299px; position: absolute; left: 308px" id="nmb2"></input>
+      <label style="width: 60px; height: 20px; top: 302px; position: absolute; left: 252px" id="lbl4_Copy2">加速度：</label>
+      <input value="0" type="number" style="width: 120px; height: 26px; top: 379px; position: absolute; left: 78px" id="nmb3"></input>
+      <label style="width: 60px; height: 20px; top: 382px; position: absolute; left: 18px" id="lbl4_Copy3">混合：</label>
+      <label style="width: 60px; height: 20px; top: 302px; position: absolute; left: 198px" id="lbl4_Copy4">%</label>
+      <label style="width: 60px; height: 20px; top: 382px; position: absolute; left: 198px" id="lbl4_Copy5">mm</label>
+      <label style="left: 17px; position: absolute; top: 345px; width: 95px; height: 20px" id="lbl4_Copy6">混合类型：</label>
+      <label style="left: 17px; position: absolute; top: 440px; width: 53px; height: 20px" id="lbl4_Copy7">动作：</label>
+      <select id="cbx2" size="1" style="width: 120px; height: 26px; top: 470px; position: absolute; left: 108px" disabled="disabled"></select>
+      <label style="left: 17px; position: absolute; top: 473px; width: 93px; height: 20px" id="lbl4_Copy8">选择动作：</label>
+      <label style="width: 93px; height: 20px; left: 17px; position: absolute; top: 519px" id="lbl4_Copy9">动作位置：</label>
+      <input value="0" type="number" style="width: 120px; height: 26px; top: 516px; position: absolute; left: 108px" id="nmb4"></input>
+      <label style="top: 519px; position: absolute; left: 236px; width: 32px; height: 20px" id="lbl4_Copy10">%</label>
+      <label id="lbl6" style="top: 519px; position: absolute; left: 268px; width: 164px; height: 20px">设定区间:[0,100)</label>
+      <button id="btn1" style="width: 80px; height: 40px; left: 4px; position: absolute; top: 580px">修改</button>
+      <button style="width: 80px; height: 40px; left: 388px; position: absolute; top: 580px" id="btn2">取消</button>
+      <button style="height: 40px; top: 580px; width: 120px; position: absolute; left: 176px" id="btn3">修改所有</button>
+      <label id="lbl7" style="top: 628px; width: 192px; height: 20px; position: absolute; left: 142px; color: #FF0700">修改所有相同类型点位参数</label>
+      <select id="cbx3" size="1" style="width: 120px; height: 26px; top: 342px; position: absolute; left: 101px">
+        <option>OFF</option>
+        <option>关节</option>
+        <option>笛卡尔</option>
+      </select>
+      <label style="height: 25px; width: 120px; top: 78px; position: absolute; left: 10px" id="lbl50">X:</label>
+      <input value="0" type="number" style="width: 97px; height: 26px; top: 78px; position: absolute; left: 41px" id="nmb50"></input>
+      <input value="0" type="number" style="width: 97px; height: 26px; top: 78px; position: absolute; left: 210px" id="nmb51"></input>
+      <label style="height: 25px; width: 120px; left: 347px; position: absolute; top: 78px" id="lbl52">Z:</label>
+      <input value="0" type="number" style="width: 97px; height: 26px; left: 380px; position: absolute; top: 78px" id="nmb52"></input>
+      <input value="0" type="number" style="width: 97px; height: 26px; top: 112px; position: absolute; left: 380px" id="nmb55"></input>
+      <label style="height: 25px; width: 120px; left: 181px; position: absolute; top: 112px" id="lbl54">RY:</label>
+      <input value="0" type="number" style="width: 97px; height: 26px; top: 112px; position: absolute; left: 210px" id="nmb54"></input>
+      <input value="0" type="number" style="width: 97px; height: 26px; top: 112px; position: absolute; left: 41px" id="nmb53"></input>
+      <label style="height: 25px; width: 120px; left: 348px; position: absolute; top: 182px" id="lbl61">2RZ:</label>
+      <label style="height: 25px; width: 120px; left: 180px; position: absolute; top: 148px" id="lbl57">2Y:</label>
+      <label style="height: 25px; width: 120px; left: 10px; position: absolute; top: 182px" id="lbl59">2RX:</label>
+      <label style="height: 25px; width: 120px; left: 10px; position: absolute; top: 148px" id="lbl56">2X:</label>
+      <input value="0" type="number" style="width: 97px; height: 26px; left: 41px; position: absolute; top: 148px" id="nmb56"></input>
+      <input value="0" type="number" style="width: 97px; height: 26px; left: 210px; position: absolute; top: 148px" id="nmb57"></input>
+      <label style="height: 25px; width: 120px; left: 347px; position: absolute; top: 148px" id="lbl58">2Z:</label>
+      <input value="0" type="number" style="width: 97px; height: 26px; left: 380px; position: absolute; top: 148px" id="nmb58"></input>
+      <input value="0" type="number" style="width: 97px; height: 26px; left: 380px; position: absolute; top: 182px" id="nmb61"></input>
+      <label style="height: 25px; width: 120px; left: 181px; position: absolute; top: 182px" id="lbl60">2RY:</label>
+      <input value="0" type="number" style="width: 97px; height: 26px; left: 210px; position: absolute; top: 182px" id="nmb60"></input>
+      <input value="0" type="number" style="width: 97px; height: 26px; left: 41px; position: absolute; top: 182px" id="nmb59"></input>
+      <label style="width: 307px; height: 20px; left: 150px; position: absolute; top: 215px" id="lbl5_Copy1">设置为安全点(waitEndMove)</label>
+      <input type="checkbox" style="transform: scale(1.0); left: 120px; position: absolute; top: 215px" id="chk1_Copy1"></input>
+    </body>
+  </html>

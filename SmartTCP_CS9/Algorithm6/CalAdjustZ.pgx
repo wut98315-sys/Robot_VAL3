@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="CalAdjustZ" access="public">
+    <Locals>
+      <Local name="l_nDistance" type="num" xsi:type="array" size="1" />
+      <Local name="l_trZ" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_nDir" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_nDistance=distance(db:pAdjustZ_2_1,db:pAdjustZ_2_2)
+  switch db:sMounting
+    case "Floor"
+      l_nDir=1
+    break
+    case "Ceiling"
+      l_nDir=-1
+    break
+    default
+      l_nDir=1
+    break
+  endSwitch
+  //
+  if db:pAdjustZ_2_1.trsf.z<db:pAdjustZ_2_2.trsf.z
+    l_trZ={0,0,-l_nDistance*l_nDir,0,0,0}
+  else
+    l_trZ={0,0,l_nDistance*l_nDir,0,0,0}
+  endIf
+  //   
+  db:tTool3.trsf=db:utCurrentTool.tValue.trsf*l_trZ
+  db:tTool3.trsf.rx=db:tTool1.trsf.rx
+  db:tTool3.trsf.ry=db:tTool1.trsf.ry
+  db:tTool3.trsf.rz=db:tTool1.trsf.rz
+  call db:hmiAlert("SaveInTool3","info") 
+end
+]]></Code>
+  </Program>
+</Programs>

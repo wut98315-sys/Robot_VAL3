@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="checkMoveId">
+    <Code><![CDATA[begin
+  //作用：检查当前的moveiD,当前的MoveID到达设置的最大值时，设置MoveID为0，避免MoveID编程随机值。
+  _nNextId=nextMoveId()
+  if _nNextId>nMoveIdMax
+    call rs:setAlarm(210,_nNextId)
+  elseIf _nNextId==nMoveIdMax
+    wait(getMoveId()>=nMoveIDRef+nSyncMoveID)
+    setMoveId(0)
+  else
+    //2.正常的值
+    wait(getMoveId()>=nMoveIDRef+nSyncMoveID)
+  endIf
+
+end]]></Code>
+  </Program>
+</Programs>

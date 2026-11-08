@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="computeArea" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_trsf1" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_trsf2" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_nMinX" type="num" xsi:type="array" size="1" />
+      <Local name="l_nMinY" type="num" xsi:type="array" size="1" />
+      <Local name="l_nMinZ" type="num" xsi:type="array" size="1" />
+      <Local name="l_nMaxX" type="num" xsi:type="array" size="1" />
+      <Local name="l_nMaxY" type="num" xsi:type="array" size="1" />
+      <Local name="l_nMaxZ" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult1" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult2" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_fFrame" type="frame" xsi:type="array" size="1" />
+      <Local name="l_pPoint" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+ 
+  link(l_pPoint,l_fFrame)
+  link(l_fFrame,world)
+  l_fFrame.trsf=safeData:zZoneItem[x_nIndex].fBase.trsf
+ 
+
+  call saveData:getTool(saveData:nJogTool,l_tTool)
+  l_pPoint=here(l_tTool,l_fFrame)
+ 
+ 
+  l_trsf1.x=safeData:zZoneItem[x_nIndex].pFirst.trsf.x
+  l_trsf1.y=safeData:zZoneItem[x_nIndex].pFirst.trsf.y
+  l_trsf1.z=safeData:zZoneItem[x_nIndex].pFirst.trsf.z
+  
+  l_trsf2.x=l_trsf1.x+safeData:zZoneItem[x_nIndex].pSecond.trsf.x
+  l_trsf2.y=l_trsf1.y+safeData:zZoneItem[x_nIndex].pSecond.trsf.y
+  l_trsf2.z=l_trsf1.z+safeData:zZoneItem[x_nIndex].pSecond.trsf.z
+  
+  l_nMinX=min(l_trsf1.x,l_trsf2.x)
+  l_nMinY=min(l_trsf1.y,l_trsf2.y)
+  l_nMinZ=min(l_trsf1.z,l_trsf2.z)
+  l_nMaxX=max(l_trsf1.x,l_trsf2.x)
+  l_nMaxY=max(l_trsf1.y,l_trsf2.y)
+  l_nMaxZ=max(l_trsf1.z,l_trsf2.z)
+  
+  if l_nMinX<=l_pPoint.trsf.x and l_pPoint.trsf.x<=l_nMaxX
+    l_bResult=true
+  else
+    l_bResult=false
+  endIf
+  if l_nMinY<=l_pPoint.trsf.y and l_pPoint.trsf.y<=l_nMaxY
+    l_bResult1=true
+  else
+    l_bResult1=false
+  endIf
+  if l_nMinZ<=l_pPoint.trsf.z and l_pPoint.trsf.z<=l_nMaxZ
+    l_bResult2=true
+  else
+    l_bResult2=false
+  endIf
+  //如果是=0，不发送信号（0不起作用）
+  if l_bResult and l_bResult1 and l_bResult2
+    call io:setDigOutput(io:dOutput[x_nIndex+112],true,l_bErr)
+  else
+    call io:setDigOutput(io:dOutput[x_nIndex+112],false,l_bErr)
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

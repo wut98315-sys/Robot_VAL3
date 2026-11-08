@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="initLabel" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_utLabel" type="utLabel" xsi:type="array" use="reference" />
+      <Parameter name="x_sPage" type="string" xsi:type="element" />
+      <Parameter name="x_sId" type="string" xsi:type="element" />
+      <Parameter name="x_sText" type="string" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  x_utLabel.Common.sPage=x_sPage
+  x_utLabel.Common.sID=x_sId
+  userPageBind(x_utLabel.Common.sPage,x_utLabel.Common.sID,"innerHTML",x_utLabel.Common.sText,1,"r")  
+  //userPageBind(x_sPage,x_utLabel.Common.sID,"style.backgroundColor",x_utLabel.Appearance.sBackgroundColour,1,"r")  
+  //userPageBindClick(x_sPage,x_utLabel.Common.sID,x_utLabel.Events.bClick,true)  
+  //
+  if x_sText=="" or x_sText=="Null"
+    x_utLabel.Common.sText=""    
+  else
+    x_utLabel.Common.sText=x_sText
+  endIf
+  //x_utLabel.Appearance.sBackgroundColour="#F3F4F4"
+  x_utLabel.Data.nVal=99
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="cycletime">
+    <Locals>
+      <Local name="l_nTotleCT" type="num" xsi:type="array" size="1" />
+      <Local name="l_nElement" type="num" xsi:type="array" size="1" />
+      <Local name="l_n" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  if rs:_nOmacStat==3
+    //cunrrent capacity
+    if rs:_nCycleTime[rs:_nCTIndex]>0
+      rs:_nCapacity=60/rs:_nCycleTime[rs:_nCTIndex]
+    else
+      rs:_nCapacity=0
+    endIf
+    //average capacity
+    l_nTotleCT=0
+    l_nElement=0
+    for l_n=0 to size(rs:_nCycleTime)-1
+      if rs:_nCycleTime[l_n]!=0
+        l_nTotleCT=l_nTotleCT+rs:_nCycleTime[l_n]
+        l_nElement=l_nElement+1
+      endIf
+    endFor
+    if l_nTotleCT>0
+      rs:_nAvgCapacity=60*l_nElement/l_nTotleCT
+    else
+      rs:_nAvgCapacity=0
+    endIf
+    //best capacity
+    rs:_nBestCapacity=max(rs:_nBestCapacity,rs:_nCapacity)
+  else
+    rs:_nCapacity=0
+    rs:_nAvgCapacity=0
+    rs:_nBestCapacity=0
+  endIf
+  sCapacity=toString(".2",rs:_nCapacity)
+  sAvgCapacity=toString(".2",rs:_nAvgCapacity)
+  sBestCapacity=toString(".2",rs:_nBestCapacity)
+end]]></Code>
+  </Program>
+</Programs>

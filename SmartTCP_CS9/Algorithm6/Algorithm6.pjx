@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.10.5Cs9_BS2172" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="_CalpSphere.pgx" />
+    <Program file="CalAdjustXY2.pgx" />
+    <Program file="CalAdjustXY3.pgx" />
+    <Program file="CalAdjustZ.pgx" />
+    <Program file="CalToolPos3.pgx" />
+    <Program file="CalToolPos4.pgx" />
+    <Program file="CalToolPos7.pgx" />
+  </Programs>
+  <Database>
+    <Data file="Algorithm6.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="matrix" path="Disk://SmartTCP_CS9/MatrixLib/MatrixLib.pjx" />
+    <Library alias="db" path="Disk://SmartTCP_CS9/DataBase6/DataBase6.pjx" />
+  </Libraries>
+</Project>

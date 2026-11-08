@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="kill" access="private" >
+    <Code><![CDATA[begin
+  //kill all task
+  taskKill("safeCheck")
+  taskKill("Reset")
+  taskKill("Start")
+  taskKill("Stop")
+  taskKill("cycleCtrl")
+  taskKill("plc")
+  taskKill("lifebit")
+  taskKill("actCtrl")
+  taskKill("appMain")
+  taskKill("HMI")
+
+  //
+  rs:bQuitApp=false
+  stopMove()
+  resetMotion()
+  disablePower()
+end]]></Code>
+  </Program>
+</Programs>

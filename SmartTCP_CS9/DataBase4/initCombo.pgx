@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="initCombo" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_utCombo" type="utCombo" xsi:type="array" use="reference" />
+      <Parameter name="x_sPage" type="string" xsi:type="element" />
+      <Parameter name="x_sId" type="string" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  x_utCombo.Common.sPage=x_sPage
+  x_utCombo.Common.sID=x_sId
+  userPageBind(x_utCombo.Common.sPage,x_utCombo.Common.sID,"options",x_utCombo.Common.sItem,size(x_utCombo.Common.sItem),"r")
+  userPageBind(x_utCombo.Common.sPage,x_utCombo.Common.sID,"value",x_utCombo.Common.sValue,1,"rw")
+end
+]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="click_refreshAllMsg">
+    <Code><![CDATA[begin
+  nMsgType=0
+  call initMsg()
+  call rs:getLog(sRobotMsg,nMsgType)
+  userPageSet("message","btnAllMsg","style.backgroundColor","#33FF33")
+  userPageSet("message","btnRobotMsg","style.backgroundColor","#FFFFFF")
+  userPageSet("message","btnTrajMsg","style.backgroundColor","#FFFFFF")
+  userPageSet("message","btnIOMsg","style.backgroundColor","#FFFFFF")
+end]]></Code>
+  </Program>
+</Programs>

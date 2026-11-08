@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_productCycle" access="public">
+    <Locals>
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bStartClock" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nClock" type="num" xsi:type="array" size="1" />
+      <Local name="l_nLastAct" type="num" xsi:type="array" size="1" />
+      <Local name="l_nLibIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_sPath" type="string" xsi:type="array" size="1" />
+      <Local name="l_bFound" type="bool" xsi:type="array" size="1" />
+      <Local name="l_sSelTraj" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  while true
+ 
+    //
+    //等待执行命令
+    wait(plc:dInExcutePainting==true)
+    //获取程序号
+    call io:getAnaIO(io:aInItem[0].aAio,rs:nProgCode,l_bErr)
+    //搜索对应traj
+    call search_traj(l_bFound,l_sSelTraj,rs:nProgCode)
+    //如果找到对应的traj，执行traj
+    if l_bFound
+      call trajectory:makeTraj(l_sSelTraj)
+      waitEndMove()
+    else
+      popUpMsg("未找到喷涂号对应执行程序")
+      rs:bIsError=true
+      rs:bToStopCycle=true
+    endIf
+    delay(0)
+  endWhile
+  
+  //  if l_bStartClock and l_nLastAct!=rs:nActCode
+  //    rs:_nCTIndex=(rs:_nCTIndex+1)%size(rs:_nCycleTime)
+  //    rs:_nCycleTime[rs:_nCTIndex]=clock()-l_nClock
+  //  else
+  //    l_bStartClock=true
+  //  endIf
+  //  l_nClock=clock()
+  //  l_nLastAct=rs:nActCode
+  //  //delay(0)
+  //  //
+  //  rs:_nOmacStat=1
+  //  rs:sTrajStatus=""
+  rs:_sRobotStatus="当前件生产结束"
+  //2025.1.6 add 结束扭矩记录程序
+  if taskStatus("getForce")!=-1
+    delay(0.2)
+    taskKill("getForce")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

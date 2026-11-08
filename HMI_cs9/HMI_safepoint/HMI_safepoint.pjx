@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.12.1Cs9_BS2449" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="bind.pgx" />
+    <Program file="main.pgx" />
+    <Program file="movePoint.pgx" />
+    <Program file="onStart.pgx" />
+    <Program file="setActive.pgx" />
+    <Program file="showActive.pgx" />
+    <Program file="showCoord.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+    <Program file="teachPoint.pgx" />
+  </Programs>
+  <Database>
+    <Data file="HMI_safepoint.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="util" path="Disk://HMI_cs9/HMI_util/HMI_util.pjx" />
+    <Library alias="safeTemp" path="Disk://data/CustomerLib/default/safeData/safeData.pjx" />
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+    <Library alias="savedata" path="Disk://source/saveData/saveData.pjx" />
+    <Library alias="saveData" path="Disk://source/saveData/saveData.pjx" />
+  </Libraries>
+</Project>

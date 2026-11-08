@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="setZoneFrame" access="public">
+    <Locals>
+      <Local name="x_nIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_pPoint1" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_pPoint2" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_pPoint3" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  link(l_pPoint1,world)
+  link(l_pPoint2,world)
+  link(l_pPoint3,world)
+  l_pPoint1=safeTemp:zZoneItem[x_nIndex].pO
+  l_pPoint2=safeTemp:zZoneItem[x_nIndex].pX
+  l_pPoint3=safeTemp:zZoneItem[x_nIndex].pY
+  l_nResult=setFrame(l_pPoint1,l_pPoint2,l_pPoint3,safeTemp:zZoneItem[x_nIndex].fBase)
+  if l_nResult<0
+    userPageAlert("坐标系生成失败："+toString("",x_nIndex))
+    logMsg("坐标系生成失败："+toString("",x_nIndex))
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

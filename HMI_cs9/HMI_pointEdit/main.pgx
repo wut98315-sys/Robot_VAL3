@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sTrajItem" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nPoint" type="num" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nPointSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_nMoveType" type="num" xsi:type="array" size="1" />
+      <Local name="l_bOperate" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="point"
+      util:sPage="point"
+      call util:loadingPage()
+      call onStart(x_sTrajItem)
+      call trajectory:getFrameID(x_sTrajItem,_nFrameID)
+      call trajectory:getToolID(x_sTrajItem,_nToolID)
+      call refreshlist()
+      call bind()
+      userPage(util:sPage)
+      delay(0.1)    
+      sLastItem=""
+    endIf
+    //point Move
+    if workingMode()==1
+      if sSelPoint!=sLastItem and sSelPoint!=""
+        sLastItem=sSelPoint
+        call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+        if !bMark
+          if isPowered()
+            //guohangxin modified 2023.03.23
+            //            call trajectory:pointMove(sTrajItem,l_nPoint)
+            if taskStatus("stepMove")>-1
+              taskKill("stepMove")
+              wait(taskStatus("stepMove")==-1)   
+            endIf
+            taskCreate "stepMove",10,trajectory:pointMove(sTrajItem,l_nPoint)
+          endIf
+        else
+          call trajectory:setMark(sTrajItem,l_nPoint)
+          bRefresh=true
+        endIf
+      endIf
+    endIf
+    //button
+    if bBool[0]
+      //示教
+      bBool[0]=false
+      call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+      if l_bResult
+        //call trajectory:teachPoint(sTrajItem,l_nPoint,bToSave)
+        call teachPoint()
+        bRefresh=true
+      else
+        userPageAlert("请选择有效点位！")
+      endIf
+    elseIf bBool[1]
+      //标记
+      bBool[1]=false
+      bMark=!bMark
+      if !bMark
+        userPageSet("point","btn1","innerHTML","标记")
+        call trajectory:resetMark(sTrajItem)
+        bRefresh=true
+      else
+        userPageSet("point","btn1","innerHTML","取消标记")
+        //call trajectory:resizeMark(sTrajItem)
+      endIf
+    elseIf bBool[2]
+      bBool[2]=false
+      //插入if
+      call insertIF()
+    elseIf bBool[3]
+      bBool[3]=false
+      //编辑
+      call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+      if l_bResult
+        call trajectory:getMoveType(sTrajItem,l_nPoint,l_nMoveType)
+        if l_nMoveType==0 or l_nMoveType==1 or l_nMoveType==2
+          call paraEdit()
+        endIf
+      else
+        userPageAlert("未选择有效项！")
+      endIf
+    elseIf bBool[4]
+      bBool[4]=false
+      //插入点位
+      call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+      if l_bResult
+        call trajectory:insertPoint(sTrajItem,l_nPoint,bToSave)
+        
+      else
+        call trajectory:getPointSize(sTrajItem,l_nPointSize)
+        call trajectory:insertPoint(sTrajItem,l_nPointSize-1,bToSave)
+      endIf
+      bRefresh=true
+    elseIf bBool[5]
+      bBool[5]=false
+      //删除
+      call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+      if l_bResult
+        call trajectory:deletePoint(sTrajItem,l_nPoint,bToSave)
+      else
+        userPageAlert("未选中有效点位")
+      endIf
+      bRefresh=true
+    elseIf bBool[6]
+      bBool[6]=false
+      //插入信号
+      call insertSignal()
+      bRefresh=true
+    elseIf bBool[7]
+      bBool[7]=false
+      //保存
+      call trajectory:onSave(bToSave)
+    elseIf bBool[8]
+      bBool[8]=false
+      //head page
+      nPageIndex=0
+      l_nPoint=0
+      bRefresh=true
+    elseIf bBool[9]
+      //page up
+      bBool[9]=false
+      if nPageIndex>0
+        nPageIndex=nPageIndex-1
+        l_nPoint=0
+      endIf
+      bRefresh=true
+    elseIf bBool[10]
+      bBool[10]=false
+      //page down
+      if nPageIndex<nPageNum-1
+        nPageIndex=nPageIndex+1
+        l_nPoint=0
+      endIf
+      bRefresh=true
+    elseIf bBool[11]
+      //end page
+      bBool[11]=false
+      nPageIndex=nPageNum-1
+      l_nPoint=0
+      bRefresh=true
+    elseIf bBool[12]
+      bBool[12]=false
+      call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+      if l_bResult
+        call trajectory:insertENDIF(sTrajItem,l_nPoint,bToSave)
+      else
+        userPageAlert("未选中有效点位")
+      endIf
+      bRefresh=true
+    elseIf bBool[13]
+      bBool[13]=true
+      //delay
+      call insertDelay()
+      bRefresh=true
+    elseIf bBool[14]
+      bBool[14]=false
+      call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+      if l_bResult
+        call trajectory:insertJoint(sTrajItem,l_nPoint,bToSave)
+      else
+        call trajectory:getPointSize(sTrajItem,l_nPointSize)
+        call trajectory:insertJoint(sTrajItem,l_nPointSize-1,bToSave)
+      endIf
+      bRefresh=true
+    elseIf bBool[15]
+      bBool[15]=false
+      call insertAction()
+    elseIf bBool[16]
+      //插入圆弧点位
+      bBool[16]=false 
+      call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+      if l_bResult
+        call trajectory:insertCirclePoint(sTrajItem,l_nPoint,bToSave)
+      else
+        userPageAlert("未选择有效项！")
+      endIf
+      bRefresh=true
+    elseIf bBool[19]
+      bBool[19]=false
+      //粘贴
+      call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+      call trajectory:copyPoint1(sTrajItem,l_nPoint)
+      bMark=false
+      bRefresh=true
+    elseIf bBool[20]
+      bBool[20]=false
+      call trajectory:copyPoint(sTrajItem,bMark)
+    elseIf bBool[17]
+      bBool[17]=false
+      call trajectory:getPointIndex(sTrajItem,sSelPoint,l_nPoint,l_bResult)
+      if l_bResult
+        //2025.7.21 add 喷淋delay
+        call insertDelay1()
+        l_nPoint=l_nPoint+1
+        if l_nPoint%13==0
+          nPageIndex=nPageIndex+1
+        endIf
+        l_bOperate=true
+      else
+        userPageAlert("未选中有效点位")
+      endIf
+      bRefresh=true
+    elseIf bBack
+      bBack=false
+     
+      //call trajectory:onSave(bToSave)
+     
+      l_bExit=true
+    endIf
+    
+    if bRefresh
+      bRefresh=false
+      nPointIndex=l_nPoint
+      call refreshlist()
+      //      sSelPoint=sList[nPointIndex-nPageIndex*49]
+      //      if sList[nPageIndex]==""
+      //        sSelPoint=sList[0]
+      //      endIf
+    endIf
+    //jogmode
+    call util:jogMode(_nToolID,_nFrameID)
+    //如果出现点位不可达的情况，清除当前步进任务并提示点位不可达
+    //guohangxin modified 2023.03.23
+    if taskStatus("stepMove")>1
+      taskKill("stepMove")
+      popUpMsg("当前手臂位置运动不到到步进点位")
+      resetMotion()
+    endIf
+    delay(0)
+  until l_bExit==true
+  sLastTrajItem=x_sTrajItem
+  if bToSave
+    //bToSave=false
+    l_bResult=userPageConfirm("数据已修改，是否需要保存数据？")
+    if l_bResult
+      call trajectory:onSave(bToSave)
+    endIf
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

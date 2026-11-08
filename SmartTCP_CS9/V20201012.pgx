@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="V20201012">
+    <Code><![CDATA[begin
+  //Version: V1.2
+  //Date: February 14, 2020
+  //Editor: Zhang Huajun
+  //  1.Improved real-time position display, can view joints and Cartesian coordinates
+  //  2.Improve popup information display
+  //  3.Corrected the error that the target point cannot be reached
+
+  //Version: V1.3
+  //Date: April 9, 2020
+  //Editor: Zhang Huajun
+  //  1.Reduce unnecessary binding
+  //  2.Use CSS to keep Stäubli SP2 interface style
+  //
+  //
+  //Version: V2.0
+  //Date: August 20, 2020
+  //Editor: Zhang Huajun
+  //  1.Optimize HMI response by turning libsave() into a background task
+  //  2.Optimize widgets binding
+  //
+  //
+  //Version: V2.1
+  //Date: October 12, 2020
+  //Editor: Zhang Huajun
+  //  1.Add 2 points to calculate TCP for 4-axis robot (only output X and Y)
+end]]></Code>
+  </Program>
+</Programs>

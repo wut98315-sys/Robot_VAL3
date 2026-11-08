@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.15.3Cs9_BS3337" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="copy.pgx" />
+    <Program file="copyPoint.pgx" />
+    <Program file="copyPoint1.pgx" />
+    <Program file="copyPoint3.pgx" />
+    <Program file="deletePoint.pgx" />
+    <Program file="deleteTraj.pgx" />
+    <Program file="getFrameID.pgx" />
+    <Program file="getIFvalue.pgx" />
+    <Program file="getLibName.pgx" />
+    <Program file="getMoveType.pgx" />
+    <Program file="getPointIndex.pgx" />
+    <Program file="getPointPara.pgx" />
+    <Program file="getPointSize.pgx" />
+    <Program file="getSize.pgx" />
+    <Program file="getToolID.pgx" />
+    <Program file="getTrajList.pgx" />
+    <Program file="getTrajSize.pgx" />
+    <Program file="insertAction.pgx" />
+    <Program file="insertCirclePoint.pgx" />
+    <Program file="insertDelay.pgx" />
+    <Program file="insertENDIF.pgx" />
+    <Program file="insertIF.pgx" />
+    <Program file="insertJoint.pgx" />
+    <Program file="insertPoint.pgx" />
+    <Program file="insertSignal.pgx" />
+    <Program file="isDefine.pgx" />
+    <Program file="isPointOK.pgx" />
+    <Program file="isReachable.pgx" />
+    <Program file="loadTRAJ.pgx" />
+    <Program file="logicIF.pgx" />
+    <Program file="makeTraj.pgx" />
+    <Program file="modifyAll.pgx" />
+    <Program file="modifyPara.pgx" />
+    <Program file="new.pgx" />
+    <Program file="onSave.pgx" />
+    <Program file="pointEdit.pgx" />
+    <Program file="pointEditValue.pgx" />
+    <Program file="pointMove.pgx" />
+    <Program file="pointMove1.pgx" />
+    <Program file="pointToString.pgx" />
+    <Program file="resetMark.pgx" />
+    <Program file="resizeMark.pgx" />
+    <Program file="setMark.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+    <Program file="teachPoint.pgx" />
+    <Program file="teachPoint1.pgx" />
+  </Programs>
+  <Database>
+    <Data file="trajectory.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="savedata" path="Disk://source/saveData/saveData.pjx" />
+    <Library alias="io" path="Disk://source/projectSource/io/io.pjx" />
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+    <Library alias="actData" path="Disk://data/actionData/actionData.pjx" />
+    <Library alias="action" path="Disk://source/projectSource/Action/Action.pjx" />
+    <Library alias="trajTemp" path="Disk://source/template/trajTemp/trajTemp.pjx" />
+    <Library alias="ar" path="Disk://autoReturn/autoReturn.pjx" />
+  </Libraries>
+  <Types>
+    <Type name="pointItem" path="Disk://source/template/pointItem/pointItem.pjx" />
+    <Type name="trajItem" path="Disk://source/template/trajItem/trajItem.pjx" />
+  </Types>
+</Project>

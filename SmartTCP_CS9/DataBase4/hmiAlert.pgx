@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="hmiAlert" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sMsg" type="string" xsi:type="element" />
+      <Parameter name="x_sMsgType" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sMsg" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  switch sLanguage
+    case "english"
+      l_sMsg=sAlertEN[x_sMsg]
+    break
+    case "chinese"
+      l_sMsg=sAlertCN[x_sMsg]
+    break
+  endSwitch
+  //*************************************************************
+  utCtn_Message.Common.sSource="Page_Container_Alert.html" 
+  utTxt_popUpMsg.Common.sValue=l_sMsg
+  //*************************************************************
+  switch x_sMsgType
+    case "info"
+      utTxt_popUpMsg.Appearance.sBackgroundColour="#7C95FF"
+    break
+    //
+    case "warning"
+      utTxt_popUpMsg.Appearance.sBackgroundColour="#EEFB45"      
+    break
+    //
+    case "confirm"
+      utTxt_popUpMsg.Appearance.sBackgroundColour="#FFFFFF"      
+    break
+    //  
+    default
+      utTxt_popUpMsg.Appearance.sBackgroundColour="#ADADB2"
+    break
+  endSwitch
+  //*************************************************************
+  if taskStatus("HmiClose")!=-1
+    taskKill("HmiClose")
+  endIf
+  if taskStatus("HmiClose")==-1
+    taskCreate "HmiClose",100,hmiClose()
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

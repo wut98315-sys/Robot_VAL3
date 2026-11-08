@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="bind">
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_sbtn" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //lbllib
+  userPageBind("traj","lbllib","innerHTML",sUsingLib,1,"r")
+  //lst
+  //  if size(sList)<50
+  //    userPageBind("traj","lst1","options",sList,size(sList),"r")
+  //    else
+  //      popUpMsg("traj数量过大")
+  //    endIf
+  userPageBind("traj","lst1","value",sSelTraj,1,"rw")
+  //button
+  userPageBindClick("traj","btnback",bBack,true)
+  for l_i = 0 to 11
+    l_sbtn="btn"+toString("",l_i)
+    userPageBindClick("traj",l_sbtn,bBool[l_i],true)
+  endFor
+  
+  //page
+  userPageBind("traj","lblpageindex","innerHTML",sPageIndex,1,"r")
+  
+  userPageBind("traj","lblpagenum","innerHTML",sPageNum,1,"r")
+  
+  
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="onShow" access="public">
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  aEditItem.sComment=actdata:aActItem[nSelList].sComment
+  for l_i = 0 to size(aEditItem.aActItem)-1
+   
+    aEditItem.aActItem[l_i].nIOindex=actdata:aActItem[nSelList].aActItem[l_i].nIOindex
+    aEditItem.aActItem[l_i].bActive=(actdata:aActItem[nSelList].aActItem[l_i].bActive==true)
+    aEditItem.aActItem[l_i].nboolValue=actdata:aActItem[nSelList].aActItem[l_i].nboolValue
+    aEditItem.aActItem[l_i].nPulseValue=actdata:aActItem[nSelList].aActItem[l_i].nPulseValue
+    aEditItem.aActItem[l_i].sIOtype=actdata:aActItem[nSelList].aActItem[l_i].sIOtype
+    aEditItem.aActItem[l_i].sValue=actdata:aActItem[nSelList].aActItem[l_i].sValue
+    
+    sSelIO[l_i]=toString("",aEditItem.aActItem[l_i].nIOindex)
+  endFor
+end]]></Code>
+  </Program>
+</Programs>

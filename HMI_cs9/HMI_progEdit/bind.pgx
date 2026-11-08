@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="bind">
+    <Locals>
+      <Local name="l_sbtn" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //button
+  userPageBindClick("editProg","btnback",bBack,true)
+  for l_i = 1 to 8
+    l_sbtn="btn"+toString("",l_i)
+    userPageBindClick("editProg",l_sbtn,bBool[l_i],true)
+  endFor
+  
+  for l_i = 0 to 8
+    l_sbtn="btn1"+toString("",l_i)
+    userPageBindClick("editProg",l_sbtn,bInsert[l_i],true)
+  endFor
+  
+  //lbl
+  userPageBind("editProg","lbl1","innerHTML",sSelProg,1,"r")
+  userPageBind("editProg","lbleditindex","innerHTML",sPageIndex,1,"r")
+  userPageBind("editProg","lbleditpage","innerHTML",sPageNum,1,"r")
+  
+  //lst
+  userPageBind("editProg","lst1","options",sList,size(sList),"r")
+  userPageBind("editProg","lst1","value",sLstValue,1,"rw")
+  
+end]]></Code>
+  </Program>
+</Programs>

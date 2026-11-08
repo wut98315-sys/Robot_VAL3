@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="initWidget">
+    <Locals>
+      <Local name="l_nI" type="num" xsi:type="array" size="1" />
+      <Local name="l_sID" type="string" xsi:type="array" size="1" />
+      <Local name="l_sPage" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //*************************************************************************************************
+  //Initialize the widgets of the <Page_Main>：  
+  //*************************************************************************************************
+  call getPath("Page_Main",l_sPage)
+  //Container
+  call db:initContainer(db:utCtn_Function,l_sPage,"ctn_Function",true)
+  db:utCtn_Function.Common.sSource="Page_Container_Main.html"
+  db:utCtn_Function.Appearance.bVisibility=true
+  call db:initContainer(db:utCtn_Message,l_sPage,"ctn_Message",false)
+  db:utCtn_Message.Common.sSource="Page_Container_Alert.html"
+  db:utCtn_Message.Appearance.bVisibility=false
+  //
+  //Button  
+  call db:initButton(db:utBtn_Bottom[0],l_sPage,"bottom_btn0","")
+  call db:initButton(db:utBtn_Bottom[1],l_sPage,"bottom_btn1","")
+  call db:initButton(db:utBtn_Bottom[2],l_sPage,"bottom_btn2","")
+  call db:initButton(db:utBtn_Bottom[3],l_sPage,"bottom_btn3","")
+  call db:initButton(db:utBtn_Bottom[4],l_sPage,"bottom_btn4","")
+  call db:initButton(db:utBtn_Bottom[5],l_sPage,"bottom_btn5","")
+  call db:initButton(db:utBtn_Bottom[6],l_sPage,"bottom_btn6","")
+  call db:initButton(db:utBtn_Bottom[7],l_sPage,"bottom_btn7","") 
+  call db:updateBtn(83,"Null,Null,Null,Null,Null,Null,Null,Quit")
+  //
+  //Combo  
+  call db:initCombo(db:utCbx_Language_Data,l_sPage,"cbx_Language_D")
+  call db:initCombo(db:utCbx_Mounting_Data,l_sPage,"cbx_Mounting_D")
+  //
+  //Label
+  call db:initLabel(db:utLbl_Title,l_sPage,"lbl_Title","Stäubli Tool Calibration - SmartTCP")
+  db:utLbl_Title.Appearance.sBackgroundColour="rgba(0,0,255,0.251)"
+  call db:initLabel(db:utLbl_Language,l_sPage,"lbl_Language","Language：")
+  //
+  call db:initLabel(db:utLbl_Axis,l_sPage,"lbl_Axis","ArmType：")
+  call db:initLabel(db:utLbl_Axis_Data,l_sPage,"lbl_Axis_Data","6Axis")
+  call db:initLabel(db:utLbl_Mounting,l_sPage,"lbl_Mounting","Mounting：")
+  call db:initLabel(db:utLbl_Tool,l_sPage,"lbl_Tool","Tool：")
+  call db:initLabel(db:utLbl_Tool_Data,l_sPage,"lbl_Tool_Data","tFlange")
+  call db:initLabel(db:utLbl_CurrentPos_Name[0],l_sPage,"lbl_CurrentPos_Name0","X")
+  call db:initLabel(db:utLbl_CurrentPos_Name[1],l_sPage,"lbl_CurrentPos_Name1","Y")
+  call db:initLabel(db:utLbl_CurrentPos_Name[2],l_sPage,"lbl_CurrentPos_Name2","Z")
+  call db:initLabel(db:utLbl_CurrentPos_Name[3],l_sPage,"lbl_CurrentPos_Name3","RX")
+  call db:initLabel(db:utLbl_CurrentPos_Name[4],l_sPage,"lbl_CurrentPos_Name4","RY")
+  call db:initLabel(db:utLbl_CurrentPos_Name[5],l_sPage,"lbl_CurrentPos_Name5","RZ")
+  //
+  for l_nI= 0 to 5  
+    l_sID="lbl_CurrentPos_Data"+toString("0,0",l_nI)
+    call db:initLabel(db:utLbl_CurrentPos_Data[l_nI],l_sPage,l_sID,"Null")
+  endFor
+  //
+  call db:initLabel(db:utLbl_Info0,l_sPage,"lbl_info0","Null")
+  call db:initLabel(db:utLbl_Info1,l_sPage,"lbl_info1","Null")
+  call db:initLabel(db:utLbl_Info2,l_sPage,"lbl_info2","Null")
+  call db:initLabel(db:utLbl_Info3,l_sPage,"lbl_info3","Null")
+  call db:initLabel(db:utLbl_Info4,l_sPage,"lbl_info4","Null")
+  call db:updateInfo(100,db:utLbl_Info2.Data.nVal,db:utLbl_Info2.Common.sText,"0","TCP calibration application for TX2/TS2 robot")
+  //
+  //Image
+  call db:initImage(db:utImg_JogMode[0],l_sPage,"img_None")
+  call db:initImage(db:utImg_JogMode[1],l_sPage,"img_Joint")
+  call db:initImage(db:utImg_JogMode[2],l_sPage,"img_Frame")
+  call db:initImage(db:utImg_JogMode[3],l_sPage,"img_Tool")
+  db:utImg_JogMode[0].Common.sSourceImage="images/none.svg"
+  db:utImg_JogMode[1].Common.sSourceImage="images/joint.svg"
+  db:utImg_JogMode[2].Common.sSourceImage="images/frame.svg"
+  db:utImg_JogMode[3].Common.sSourceImage="images/tool.svg" 
+  //
+  call db:initImage(db:utImg_Info,l_sPage,"img_info")
+  db:utImg_Info.Common.sSourceImage="images/info.png"
+  //
+  call db:initImage(db:utImg_PosSwitch,l_sPage,"img_PosSwitch")
+  db:utImg_PosSwitch.Common.sSourceImage="images/switch.png"
+  //*************************************************************************************************
+  //
+  //
+  //*************************************************************************************************
+  //Initialize the widgets of the <Page_Container_Main>：  
+  //*************************************************************************************************
+  call getPath("Page_Container_Main",l_sPage)
+  //Label
+  call db:initLabel(db:utLbl_CheckBox_a[0],l_sPage,"lbl_CheckBox_a0","3Points")
+  call db:initLabel(db:utLbl_CheckBox_a[1],l_sPage,"lbl_CheckBox_a1","4Points")
+  call db:initLabel(db:utLbl_CheckBox_a[2],l_sPage,"lbl_CheckBox_a2","7Points")
+  call db:initLabel(db:utLbl_CheckBox_b[0],l_sPage,"lbl_CheckBox_b0","2Points180°")
+  call db:initLabel(db:utLbl_CheckBox_b[1],l_sPage,"lbl_CheckBox_b1","3Points120°")
+  //
+  //CheckBox_a
+  call db:initCheckBox(db:utImg_CheckBox_a[0],l_sPage,"img_CheckBox_a0","CheckOff")
+  call db:initCheckBox(db:utImg_CheckBox_a[1],l_sPage,"img_CheckBox_a1","CheckOn")
+  call db:initCheckBox(db:utImg_CheckBox_a[2],l_sPage,"img_CheckBox_a2","CheckOff")
+  //
+  //CheckBox_b  
+  call db:initCheckBox(db:utImg_CheckBox_b[0],l_sPage,"img_CheckBox_b0","CheckOn")
+  call db:initCheckBox(db:utImg_CheckBox_b[1],l_sPage,"img_CheckBox_b1","CheckOff")
+  //
+  //Button
+  call db:initButton(db:utBtn_Step[0],l_sPage,"step_btn0","Calibration tool")
+  call db:initButton(db:utBtn_Step[1],l_sPage,"step_btn1","Correction tool XY")
+  call db:initButton(db:utBtn_Step[2],l_sPage,"step_btn2","Correction tool Z")
+  call db:initButton(db:utBtn_Step[3],l_sPage,"step_btn3","Verification tool")
+  //*************************************************************************************************
+  //
+  //
+  //*************************************************************************************************
+  //Initialize the widgets of the <Page_Container_Alert>：  
+  //*************************************************************************************************
+  call getPath("Page_Container_Alert",l_sPage)
+  //Text  
+  call db:initText(db:utTxt_popUpMsg,l_sPage,"txt_popUpMsg","String")
+  db:utTxt_popUpMsg.Appearance.sBackgroundColour="#7C95FF"
+  //
+  //Button
+  call db:initButton(db:utBtn_OK,l_sPage,"btn_OK","OK")
+  //*************************************************************************************************
+  //
+  //
+  //*************************************************************************************************
+  //Initialize the widgets of the <Page_Container_Confirm>：  
+  //*************************************************************************************************
+   call getPath("Page_Container_Confirm",l_sPage)
+  //Text  
+  call db:initText(db:utTxt_popUpMsg,l_sPage,"txt_popUpMsg","String")
+  //
+  //Button
+  call db:initButton(db:utBtn_Yes,l_sPage,"btn_Yes","Yes")
+  call db:initButton(db:utBtn_No,l_sPage,"btn_No","No")  
+  //*************************************************************************************************
+  //
+  //
+  //*************************************************************************************************
+  //Initialize interface language
+  //*************************************************************************************************
+  call db:refreshLanguage()
+  call db:updateCurrentPos()
+  userPage("Page_Main")
+  //*************************************************************************************************
+  //  
+  //
+  //*************************************************************************************************
+  //Initialize the widgets of the <Page_Container_Teach>：  
+  //*************************************************************************************************
+ call getPath("Page_Container_Teach",l_sPage)
+  //Label
+  for l_nI=0 to 5
+    l_sID="utLbl_PosValue_Data"+toString("0.0",l_nI)
+    call db:initLabel(db:utLbl_PosValue_Data[l_nI],l_sPage,l_sID,"Null")
+  endFor
+  call db:initLabel(db:utLbl_Point,l_sPage,"lbl_Point","Point：P1")
+  call db:initLabel(db:utLbl_Step,l_sPage,"lbl_Step","Step：1/3")
+  //Image  
+  call db:initImage(db:utImg_Example,l_sPage,"img_example")
+  //*************************************************************************************************
+  //
+  //
+  //*************************************************************************************************
+  //Initialize the widgets of the <Page_Container_Test>：  
+  //*************************************************************************************************
+  call getPath("Page_Container_Test",l_sPage)
+  //Label
+  call db:initLabel(db:utLbl_SwitchTool,l_sPage,"lbl_SwitchTool","Tool Switch：")
+  call db:initLabel(db:utLbl_Offset,l_sPage,"lbl_Offset","Tool Offset：")
+  for l_nI=0 to 5
+    l_sID="utLbl_ToolValue_Data"+toString("0.0",l_nI)
+    call db:initLabel(db:utLbl_ToolValue_Data[l_nI],l_sPage,l_sID,"Null")
+  endFor
+  //
+  //Text
+  for l_nI=0 to 5
+    l_sID="utTxt_OffsetValue_Data"+toString("0.0",l_nI)
+    call db:initText(db:utTxt_OffsetValue_Data[l_nI],l_sPage,l_sID,"Num")
+    db:utTxt_OffsetValue_Data[l_nI].Appearance.sBackgroundColour="#EEFF00"
+  endFor
+  //
+  //Image
+  call db:initImage(db:utImg_Previous,l_sPage,"img_Previous")
+  db:utImg_Previous.Common.sSourceImage="images/navigate-previous.svg"
+  call db:initImage(db:utImg_Next,l_sPage,"img_Next")
+  db:utImg_Next.Common.sSourceImage="images/navigate-next.svg"
+  //
+  //CheckBox
+  call db:initCheckBox(db:utImg_Switch,l_sPage,"img_Switch","SwitchOff")
+  //*************************************************************************************************
+end]]></Code>
+  </Program>
+</Programs>

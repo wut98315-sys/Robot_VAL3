@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="getArmTypeList" access="public">
+    <Description><![CDATA[//获取所有4轴6轴机器人型号列表
+//x_sItem  4轴手臂型号列表
+//x_sItem2 6轴手臂型号列表]]></Description>
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sItem" type="string" xsi:type="array" use="reference" />
+      <Parameter name="x_sItem2" type="string" xsi:type="array" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_tTrsf" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_sItem" type="string" xsi:type="array" size="6" />
+      <Local name="l_sEvent" type="string" xsi:type="array" size="1" />
+      <Local name="l_sItem2" type="string" xsi:type="array" size="7" />
+      <Local name="l_sKey" type="string" xsi:type="array" size="2" />
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="j" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //获取所有4轴6轴机器人型号列表
+  //x_sItem  4轴手臂型号列表
+  //x_sItem2 6轴手臂型号列表
+  //获取列表
+  resize(x_sItem,1,size(forcedata:tArm4Force))
+  resize(x_sItem2,1,size(forcedata:tArm6Force))
+  l_sKey=first(forcedata:tArm4Force)
+  l_sKey[1]=first(forcedata:tArm6Force)
+  i=0
+  j=0
+  while l_sKey!=""
+    x_sItem[i]=l_sKey
+    l_sKey=next(forcedata:tArm4Force[l_sKey])
+    i=i+1
+  endWhile
+  while l_sKey[1]!=""
+    x_sItem2[j]=l_sKey[1]
+    l_sKey[1]=next(forcedata:tArm6Force[l_sKey[1]])
+    j=j+1
+  endWhile
+  if l_sKey=="" and i==0
+    x_sItem[i]=""
+  endIf
+  if l_sKey[1]=="" and j==0
+    x_sItem2[j]=""
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

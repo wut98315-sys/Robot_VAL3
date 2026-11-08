@@ -1,0 +1,103 @@
+{
+  "version": "1.0",
+  "bindings": [
+    {
+      "id": "lbl61",
+      "attribute": "style.visibility",
+      "data": "bShow2Point[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl57",
+      "attribute": "style.visibility",
+      "data": "bShow2Point[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl59",
+      "attribute": "style.visibility",
+      "data": "bShow2Point[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl56",
+      "attribute": "style.visibility",
+      "data": "bShow2Point[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb56",
+      "attribute": "style.visibility",
+      "data": "bShow2Point[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb57",
+      "attribute": "style.visibility",
+      "data": "bShow2Point[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl58",
+      "attribute": "style.visibility",
+      "data": "bShow2Point[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb58",
+      "attribute": "style.visibility",
+      "data": "bShow2Point[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb61",
+      "attribute": "style.visibility",
+      "data": "bShow2Point[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl60",
+      "attribute": "style.visibility",
+      "data": "bShow2Point[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb60",
+      "attribute": "style.visibility",
+      "data": "bShow2Point[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb59",
+      "attribute": "style.visibility",
+      "data": "bShow2Point[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    }
+  ],
+  "callbacks": [],
+  "events": []
+}

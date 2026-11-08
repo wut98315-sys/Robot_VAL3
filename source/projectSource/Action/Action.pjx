@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.10.3Cs9_BS2093" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="_tActCtrl.pgx" />
+    <Program file="action.pgx" />
+    <Program file="action_do.pgx" />
+    <Program file="addActCmd.pgx" />
+    <Program file="checkMoveId.pgx" />
+    <Program file="clearActStack.pgx" />
+    <Program file="create.pgx" />
+    <Program file="init.pgx" />
+    <Program file="kill.pgx" />
+    <Program file="moveJToJoint.pgx" />
+    <Program file="moveLJToPoint.pgx" />
+    <Program file="pushActCmd.pgx" />
+    <Program file="removeActCmd.pgx" />
+    <Program file="resetMoveId.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="Action.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="io" path="Disk://source/projectSource/io/io.pjx" />
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+    <Library alias="actionData" path="Disk://data/actionData/actionData.pjx" />
+  </Libraries>
+  <Types>
+    <Type name="actionIO" path="Disk://source/template/action/action.pjx" />
+    <Type name="actCmdType" path="Disk://source/template/actCmd/actCmd.pjx" />
+  </Types>
+</Project>

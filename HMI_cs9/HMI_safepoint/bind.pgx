@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="bind">
+    <Locals>
+      <Local name="l_slbl" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  userPageBindClick("safepoint","btnback",bBack,true)
+  userPageBindClick("safepoint","btn1",bTeach,true)
+  userPageBindClick("safepoint","btn2",bMove,true)
+  
+  userPageBind("safepoint","lst1","options",sList,size(sList),"r")
+  userPageBind("safepoint","lst1","value",sSelPoint,1,"rw")
+  
+  userPageBind("safepoint","chk1","checked",bActive,1,"rw")
+  
+  for l_i = 0 to 5
+    l_slbl="lbl3"+toString("",l_i)
+    userPageBind("safepoint",l_slbl,"innerHTML",sTRSF[l_i],1,"r")
+  endFor
+end]]></Code>
+  </Program>
+</Programs>

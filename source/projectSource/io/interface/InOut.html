@@ -1,0 +1,99 @@
+<!DOCTYPE html SYSTEM "-//W3C//DTD VALHTML Strict//EN">
+  <html xmlns="http://www.staubli.com/robotics/2016/03/valhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"></meta>
+      <meta http-equiv="Pragma" content="no-cache"></meta>
+      <meta http-equiv="Expires" content="0"></meta>
+      <script type="text/javascript" src="/vendor/libs/stblUserPage.min.js"></script>
+      <link href="/vendor/libs/up.min.v2.css" rel="stylesheet" media="all" type="text/css"></link>
+      <meta name="src-version" content="8.9"></meta>
+    </head>
+    <body style="width: 480px; height: 690px; margin: 0">
+      <label style="width: 169px; font-size: 14px; left: 266px; height: 20px; position: absolute; top: 80px" id="lblstatus1">[00]机器人已停止</label>
+      <label style="font-size: 14px; left: 266px; width: 160px; height: 20px; position: absolute; top: 105px" id="lblstatus2">[01]机器人准备就绪</label>
+      <label style="width: 169px; font-size: 14px; left: 266px; height: 20px; position: absolute; top: 130px" id="lblstatus3">[02]机器人运行中</label>
+      <label style="width: 169px; font-size: 14px; left: 266px; height: 20px; position: absolute; top: 155px" id="lblstatus4">[03]机器人暂停中</label>
+      <label style="width: 169px; font-size: 14px; left: 266px; height: 20px; position: absolute; top: 180px" id="lblstatus5">[04]机器人回Home中</label>
+      <label style="border-width: 0px 0px 1px 0px; width: 480px; height: 45px; text-align: center; font-size: 24px; padding: 8px 0px 0px 0px; color: #2D7DC0; font-style: normal; font-weight: normal; left: 0px; border-color: #FFFFFF; border-style: none; font-family: Open Sans; position: absolute; top: 0px" id="lblTitle_0">输入输出信号监控</label>
+      <label style="width: 169px; font-size: 14px; left: 266px; height: 20px; position: absolute; top: 230px" id="lblstatus7">[06]伺服上电状态</label>
+      <label style="width: 169px; font-size: 14px; left: 266px; height: 20px; position: absolute; top: 205px" id="lblstatus6">[05]机器人在Home点</label>
+      <label style="font-size: 14px; left: 70px; height: 20px; width: 120px; position: absolute; top: 255px" id="lblIn8">[07]复位输出信号</label>
+      <label style="font-size: 14px; left: 70px; width: 100px; height: 20px; position: absolute; top: 205px" id="lblIn6">[05]机器人上电</label>
+      <label style="font-size: 14px; left: 70px; height: 20px; width: 120px; position: absolute; top: 230px" id="lblIn7">[06]机器人下电</label>
+      <label style="font-size: 14px; left: 70px; width: 100px; height: 20px; position: absolute; top: 180px" id="lblIn5">[04]立即停止</label>
+      <label style="font-size: 14px; left: 70px; width: 100px; height: 20px; position: absolute; top: 155px" id="lblIn4">[03]循环停止</label>
+      <label style="font-size: 14px; left: 70px; width: 100px; height: 20px; position: absolute; top: 130px" id="lblIn3">[02]暂停机器人</label>
+      <label style="font-size: 14px; left: 70px; width: 100px; height: 20px; position: absolute; top: 105px" id="lblIn2">[01]启动/暂停恢复</label>
+      <label style="left: 70px; font-size: 14px; width: 100px; height: 20px; position: absolute; top: 80px" id="lblIn1">[00]复位机器人</label>
+      <label style="width: 169px; height: 33px; font-size: 14px; left: 43px; font-weight: bold; color: #2D7DC0; position: absolute; top: 56px" id="lblIn">输入控制信号</label>
+      <label style="width: 169px; height: 33px; font-size: 14px; font-weight: bold; color: #2D7DC0; left: 239px; position: absolute; top: 56px" id="lblOut">输出状态信号</label>
+      <label style="width: 169px; font-size: 14px; left: 266px; height: 20px; position: absolute; top: 255px" id="lblstatus8">[07]通信心跳信号</label>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 80px" id="recIn0"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 105px" id="recIn1"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 130px" id="recIn2"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 155px" id="recIn3"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 180px" id="recIn4"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 205px" id="recIn5"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 230px" id="recIn6"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 255px" id="recIn7"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 80px" id="recOut0"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 105px" id="recOut1"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 130px" id="recOut2"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 155px" id="recOut3"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 180px" id="recOut4"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 205px" id="recOut5"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 230px" id="recOut6"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 255px" id="recOut7"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 280px" id="recIn8"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 305px" id="recIn9"></hr>
+      <label style="font-size: 14px; width: 100px; height: 20px; left: 70px; position: absolute; top: 280px" id="lblIn9">[08]清除报警</label>
+      <label style="font-size: 14px; left: 70px; width: 111px; height: 20px; position: absolute; top: 305px" id="lblIn10">[09]自动回home</label>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 405px" id="recOut13"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 380px" id="recOut12"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 355px" id="recOut11"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 330px" id="recOut10"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 305px" id="recOut9"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 240px; position: absolute; top: 280px" id="recOut8"></hr>
+      <label style="width: 169px; font-size: 14px; height: 20px; left: 266px; position: absolute; top: 405px" id="lblstatus14">[13]机器人紧急停止</label>
+      <label style="width: 169px; font-size: 14px; height: 20px; left: 266px; position: absolute; top: 380px" id="lblstatus13">[12]机器人任务错误报警</label>
+      <label style="width: 169px; font-size: 14px; height: 20px; left: 266px; position: absolute; top: 355px" id="lblstatus12">[11]机器人程序错误报警</label>
+      <label style="width: 169px; font-size: 14px; height: 20px; left: 266px; position: absolute; top: 330px" id="lblstatus11">[10]工作模式是手动模式</label>
+      <label style="font-size: 14px; width: 160px; height: 20px; left: 266px; position: absolute; top: 305px" id="lblstatus10">[09]工作模式是远程自动</label>
+      <label style="width: 169px; font-size: 14px; height: 20px; left: 266px; position: absolute; top: 280px" id="lblstatus9">[08]机器人正在运动</label>
+      <hr id="hl1" style="width: 480px; height: 2px; left: 0px; border-color: #AFB9BE; position: absolute; top: 572px"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; border-color: #FFFFFF; top: 445px; position: absolute; left: 120px" id="recStatusOn"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; top: 445px; position: absolute; left: 210px" id="recStatusOff"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; top: 445px; position: absolute; left: 300px" id="recStatusInvalid"></hr>
+      <label id="lbl1" style="width: 35px; height: 20px; top: 444px; position: absolute; left: 140px">ON</label>
+      <label style="width: 35px; height: 20px; top: 444px; position: absolute; left: 230px" id="lbl1_Copy1">OFF</label>
+      <label style="width: 35px; height: 20px; top: 444px; position: absolute; left: 320px" id="lbl1_Copy2">无效</label>
+      <hr style="width: 480px; height: 2px; left: 0px; border-color: #AFB9BE; position: absolute; top: 432px" id="hl1_Copy1"></hr>
+      <label id="lbl2" style="width: 80px; height: 20px; font-style: normal; font-size: 16px; font-family: Open Sans; top: 442px; position: absolute; left: 10px">图标说明：</label>
+      <label style="font-size: 14px; left: 70px; width: 162px; height: 20px; position: absolute; top: 385px" id="lblIn10_Copy1">[18]激活customer权限</label>
+      <label style="font-size: 14px; left: 70px; width: 139px; height: 20px; position: absolute; top: 360px" id="lblIn9_Copy1">[17]激活default权限</label>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 385px" id="recIn18"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 360px" id="recIn17"></hr>
+      <hr style="width: 18px; height: 18px; margin: 0px 0px 0px 0px; left: 45px; position: absolute; top: 335px" id="recIn16"></hr>
+      <label style="font-size: 14px; left: 70px; width: 162px; height: 20px; position: absolute; top: 335px" id="lblIn8_Copy1">[16]激活maintence权限</label>
+      <button style="width: 80px; height: 40px; left: 236px; position: absolute; top: 642px" id="btn2_Copy1">控制页面</button>
+      <button id="btn2" style="width: 80px; height: 40px; left: 156px; position: absolute; top: 642px">IO页面</button>
+      <label id="lbl3" style="font-size: 16px; width: 80px; height: 20px; top: 582px; position: absolute; left: 20px">页面切换</label>
+      <hr style="width: 480px; height: 2px; border-color: #AFB9BE; left: 0px; position: absolute; top: 472px" id="hl1_Copy2"></hr>
+      <input type="checkbox" style="transform: scale(1.0); left: 60px; position: absolute; top: 510px" id="chkEthercat"></input>
+      <label id="lbl4" style="width: 60px; height: 20px; left: 89px; position: absolute; top: 510px">Ethecat</label>
+      <label style="width: 60px; height: 20px; left: 189px; position: absolute; top: 510px" id="lbl4_Copy1">Profinet</label>
+      <input type="checkbox" style="transform: scale(1.0); left: 160px; position: absolute; top: 510px" id="chkProfinet"></input>
+      <input type="checkbox" style="transform: scale(1.0); left: 270px; position: absolute; top: 510px" id="chkProfibus"></input>
+      <label style="width: 71px; height: 20px; left: 299px; position: absolute; top: 510px" id="lbl4_Copy2">Profibus</label>
+      <label style="width: 71px; height: 20px; left: 299px; position: absolute; top: 540px" id="lbl4_Copy3">User</label>
+      <input type="checkbox" style="transform: scale(1.0); left: 270px; position: absolute; top: 540px" id="chkUser"></input>
+      <input type="checkbox" style="transform: scale(1.0); left: 160px; position: absolute; top: 540px" id="chkEthernet"></input>
+      <label style="width: 66px; height: 20px; left: 189px; position: absolute; top: 540px" id="lbl4_Copy4">Ethernet</label>
+      <label style="width: 60px; height: 20px; left: 89px; position: absolute; top: 540px" id="lbl4_Copy5">Modbus</label>
+      <input type="checkbox" style="transform: scale(1.0); left: 60px; position: absolute; top: 540px" id="chkModbus"></input>
+      <label style="width: 80px; height: 20px; font-style: normal; font-size: 16px; font-family: Open Sans; top: 482px; position: absolute; left: 10px" id="lbl2_Copy1">总线设置：</label>
+      <input type="checkbox" style="transform: scale(1.0); top: 490px; position: absolute; left: 434px" id="chkReloadIO"></input>
+      <label id="lbl5" style="top: 490px; width: 50px; height: 20px; position: absolute; left: 384px">重置IO</label>
+    </body>
+  </html>

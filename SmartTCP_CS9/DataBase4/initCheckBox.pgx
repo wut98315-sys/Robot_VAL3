@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="initCheckBox" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_utImage" type="utImage" xsi:type="array" use="reference" />
+      <Parameter name="x_sPage" type="string" xsi:type="element" />
+      <Parameter name="x_sId" type="string" xsi:type="element" />
+      <Parameter name="x_sSatus" type="string" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  x_utImage.Common.sPage=x_sPage
+  x_utImage.Common.sID=x_sId
+  switch x_sSatus
+    case "CheckOn"
+      x_utImage.Data.sSourceImg1="images/checkbox_checked.png"
+      x_utImage.Data.sSourceImg2="images/checkbox_unchecked.png"
+      x_utImage.Common.sSourceImage=x_utImage.Data.sSourceImg1
+      x_utImage.Data.bStatus=true   
+    break
+    case "CheckOff"
+      x_utImage.Data.sSourceImg1="images/checkbox_checked.png"
+      x_utImage.Data.sSourceImg2="images/checkbox_unchecked.png"  
+      x_utImage.Common.sSourceImage=x_utImage.Data.sSourceImg2
+      x_utImage.Data.bStatus=false
+    break
+    case "SwitchOn"
+      x_utImage.Data.sSourceImg1="images/switch_on.png"
+      x_utImage.Data.sSourceImg2="images/switch_off.png"  
+      x_utImage.Common.sSourceImage=x_utImage.Data.sSourceImg1
+      x_utImage.Data.bStatus=true
+    break
+    case "SwitchOff"
+      x_utImage.Data.sSourceImg1="images/switch_on.png"
+      x_utImage.Data.sSourceImg2="images/switch_off.png"  
+      x_utImage.Common.sSourceImage=x_utImage.Data.sSourceImg2
+      x_utImage.Data.bStatus=false
+    break    
+  endSwitch
+  //
+  userPageBind(x_utImage.Common.sPage,x_utImage.Common.sID,"src",x_utImage.Common.sSourceImage,1,"r")
+  userPageBind(x_utImage.Common.sPage,x_utImage.Common.sID,"className",x_utImage.Common.sClass,1,"r")
+  userPageBindClick(x_utImage.Common.sPage,x_utImage.Common.sID,x_utImage.Events.bClick,true)
+  x_utImage.Events.bClick=false 
+  x_utImage.Common.sClass="clickable"
+end
+]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.10.2Cs9_BS1991" stackSize="5000" millimeterUnit="true" />
+  <Programs />
+  <Database>
+    <Data file="actCmd.dtx" />
+  </Database>
+  <Libraries />
+</Project>

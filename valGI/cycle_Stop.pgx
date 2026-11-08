@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="cycle_Stop">
+    <Code><![CDATA[begin
+  //进程:Stopping
+  rs:_nOmacStat=8
+  // Stop task
+  taskKill("Reset")
+  taskKill("Start")
+  taskKill("productCycle")
+  taskKill("End")
+  taskKill("GoHome")
+  taskKill("Monitor")
+  taskKill("RotGoHome")
+  taskKill("Monitor1")
+  taskKill("getForce")
+
+  while !isPowered()
+    enablePower()
+    delay(1)
+  endWhile
+  //
+  stopMove()
+  call ar:getCurMoveID(bGetMovId,"Stop")
+  resetMotion()
+  disablePower()
+  wait(isPowered()==false)
+  //2025.7.21 add 复位输出信号
+  call plc:resetOutput()
+  //OMAC进程:Stopped
+  rs:_nOmacStat=9
+  logMsg("当前处于生产停止状态 "+toString(".2",clock()))
+  rs:_sRobotStatus="当前处于生产停止状态"
+  delay(0)
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="deleteProgItem" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_sItem" type="string" xsi:type="element" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult1" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  if x_sItem!=""
+    l_bResult=userPageConfirm("是否删除"+x_sItem+"?")
+    if l_bResult 
+      toNum(x_sItem,l_nIndex,l_bResult1)
+      if l_nIndex==0 and size(progTemp:pProgItem[x_sKey].pProgTemplate)<2
+        userPageAlert("数组元素数量需大于0")
+      else
+        delete(progTemp:pProgItem[x_sKey].pProgTemplate[l_nIndex]) 
+        //progTemp:libSave()
+        x_bToSave=true
+      endIf
+    endIf
+  else
+    userPageAlert("未选中有效项目!")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

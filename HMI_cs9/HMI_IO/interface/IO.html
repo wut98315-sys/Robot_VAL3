@@ -1,0 +1,106 @@
+<!DOCTYPE html SYSTEM "-//W3C//DTD VALHTML Strict//EN">
+  <html xmlns="http://www.staubli.com/robotics/2016/03/valhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"></meta>
+      <meta http-equiv="Pragma" content="no-cache"></meta>
+      <meta http-equiv="Expires" content="0"></meta>
+      <script type="text/javascript" src="/vendor/libs/stblUserPage.min.js"></script>
+      <link href="/vendor/libs/up.min.v2.css" rel="stylesheet" media="all" type="text/css"></link>
+      <meta name="src-version" content="8.10.3"></meta>
+    </head>
+    <body style="width: 480px; height: 690px; margin: 0">
+	<script src="./js/keyboard.js"></script>
+
+      <label style="width: 480px; text-align: center; font-size: 26px; height: 50px; padding: 6px 0px 0px 0px; position: absolute; left: 0px; top: 0px; background-color: #66B8FF; font-weight: bold" id="lblTitle">Input/Output Edit</label>
+      <select id="cbx1" size="1" style="left: 120px; width: 132px; height: 26px; position: absolute; top: 56px">
+        <option></option>
+        <option>PROFINET</option>
+        <option>MODBUS</option>
+        <option>ETHERCAT</option>
+        <option>VirtualIO</option>
+      </select>
+      <label style="left: 8px; width: 112px; height: 20px; position: absolute; top: 59px" id="lblType">选择总线类型：</label>
+      <button id="btn1" style="height: 40px; left: 0px; width: 120px; position: absolute; top: 90px">DIG IN</button>
+      <button style="height: 40px; width: 120px; left: 120px; position: absolute; top: 90px" id="btn2">DIG OUT</button>
+      <button style="height: 40px; width: 120px; left: 360px; position: absolute; top: 90px" id="btn4">ANG OUT</button>
+      <button style="height: 40px; width: 120px; left: 240px; position: absolute; top: 90px" id="btn3">ANG IN</button>
+      <label style="left: 0px; position: absolute; width: 480px; height: 30px; top: 160px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 1px 0px 1px 0px; background-color: #FFFFFF" id="lbl0">Label</label>
+      <button id="btn5" style="left: 280px; width: 52px; height: 25px; background-color: #FFB81F; color: #FFFFFF; position: absolute; top: 56px">切换</button>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 190px" id="lbl1">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 220px; background-color: #FFFFFF" id="lbl2">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 250px" id="lbl3">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 280px; background-color: #FFFFFF" id="lbl4">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; top: 311px; position: absolute; left: 0px" id="lbl5">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 340px; background-color: #FFFFFF" id="lbl6">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 370px" id="lbl7">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 400px; background-color: #FFFFFF" id="lbl8">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 430px" id="lbl9">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 460px; background-color: #FFFFFF" id="lbl10">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 490px" id="lbl11">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 520px; background-color: #FFFFFF" id="lbl12">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 550px" id="lbl13">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; top: 580px; position: absolute; left: 0px; background-color: #FFFFFF" id="lbl14">Label</label>
+      <label style="width: 480px; height: 30px; padding: 5px 0px 0px 0px; border-style: solid; border-width: 0px 0px 1px 0px; left: 0px; position: absolute; top: 610px" id="lbl15">Label</label>
+      <button id="btn6" style="width: 80px; height: 40px; left: 0px; position: absolute; top: 650px">|&lt;</button>
+      <button style="width: 80px; height: 40px; top: 650px; position: absolute; left: 80px" id="btn7">&lt;</button>
+      <button style="width: 80px; height: 40px; top: 650px; position: absolute; left: 400px" id="btn9">&gt;|</button>
+      <button style="width: 80px; height: 40px; top: 650px; position: absolute; left: 320px" id="btn8">&gt;</button>
+      <label style="top: 660px; border-width: 1px 1px 1px 1px; text-align: center; border-style: solid; width: 34px; height: 20px; position: absolute; left: 258px" id="lblpage"></label>
+      <label id="lbl16" style="width: 60px; height: 15px; font-size: 11px; top: 137px; position: absolute; left: 10px">序号</label>
+      <label style="width: 60px; height: 15px; font-size: 11px; top: 137px; position: absolute; left: 210px" id="lbl16_Copy1">注释</label>
+      <label style="width: 60px; height: 15px; font-size: 11px; top: 137px; position: absolute; left: 410px" id="lbl16_Copy2">数据状态</label>
+      <label style="background-color: #FFF7DD; width: 200px; height: 20px; top: 165px; position: absolute; left: 136px" id="lbl20">Label</label>
+      <label style="background-color: #FFF0BB; width: 200px; height: 20px; top: 195px; position: absolute; left: 136px" id="lbl21">Label</label>
+      <label style="background-color: #FFF7DD; width: 200px; height: 20px; top: 225px; position: absolute; left: 136px" id="lbl22">Label</label>
+      <label style="background-color: #FFF0BB; width: 200px; height: 20px; top: 255px; position: absolute; left: 136px" id="lbl23">Label</label>
+      <label style="background-color: #FFF7DD; width: 200px; height: 20px; top: 285px; position: absolute; left: 136px" id="lbl24">Label</label>
+      <label style="background-color: #FFF0BB; width: 200px; height: 20px; top: 315px; position: absolute; left: 136px" id="lbl25">Label</label>
+      <label style="background-color: #FFF7DD; width: 200px; height: 20px; top: 345px; position: absolute; left: 136px" id="lbl26">Label</label>
+      <label style="background-color: #FFF0BB; width: 200px; height: 20px; top: 375px; position: absolute; left: 136px" id="lbl27">Label</label>
+      <label style="top: 405px; background-color: #FFF7DD; width: 200px; height: 20px; position: absolute; left: 136px" id="lbl28">Label</label>
+      <label style="top: 435px; background-color: #FFF0BB; width: 200px; height: 20px; position: absolute; left: 136px" id="lbl29">Label</label>
+      <label style="top: 465px; background-color: #FFF7DD; width: 200px; height: 20px; position: absolute; left: 136px" id="lbl30">Label</label>
+      <label style="top: 495px; background-color: #FFF0BB; width: 200px; height: 20px; position: absolute; left: 136px" id="lbl31">Label</label>
+      <label style="background-color: #FFF7DD; top: 525px; width: 200px; height: 20px; position: absolute; left: 136px" id="lbl32">Label</label>
+      <label style="top: 555px; background-color: #FFF0BB; width: 200px; height: 20px; position: absolute; left: 136px" id="lbl33">Label</label>
+      <label style="top: 585px; background-color: #FFF7DD; width: 200px; height: 20px; position: absolute; left: 136px" id="lbl34">Label</label>
+      <label style="top: 615px; background-color: #FFF0BB; width: 200px; height: 20px; position: absolute; left: 136px" id="lbl35">Label</label>
+      <button style="height: 24px; width: 24px; top: 163px; position: absolute; left: 420px; background-color: #C8C8C8" id="btn60"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 193px" id="btn61"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 223px" id="btn62"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 253px" id="btn63"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 283px" id="btn64"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 313px" id="btn65"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 343px" id="btn66"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 373px" id="btn67"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 403px" id="btn68"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 433px" id="btn69"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 463px" id="btn70"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 493px" id="btn71"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 523px" id="btn72"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 553px" id="btn73"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 583px" id="btn74"></button>
+      <button style="height: 24px; width: 24px; left: 420px; position: absolute; top: 613px" id="btn75"></button>
+      <label style="width: 60px; height: 20px; top: 165px; position: absolute; left: 402px" id="lbl40">Label</label>
+      <label style="width: 60px; height: 20px; top: 195px; position: absolute; left: 402px" id="lbl41">Label</label>
+      <label style="width: 60px; height: 20px; left: 403px; position: absolute; top: 226px" id="lbl42">Label</label>
+      <label style="width: 60px; height: 20px; left: 403px; position: absolute; top: 256px" id="lbl43">Label</label>
+      <label style="width: 60px; height: 20px; left: 403px; position: absolute; top: 286px" id="lbl44">Label</label>
+      <label style="width: 60px; height: 20px; left: 403px; position: absolute; top: 316px" id="lbl45">Label</label>
+      <label style="width: 60px; height: 20px; left: 403px; position: absolute; top: 346px" id="lbl46">Label</label>
+      <label style="width: 60px; height: 20px; left: 403px; position: absolute; top: 376px" id="lbl47">Label</label>
+      <label style="width: 60px; height: 20px; left: 401px; position: absolute; top: 410px" id="lbl48">Label</label>
+      <label style="width: 60px; height: 20px; left: 401px; position: absolute; top: 440px" id="lbl49">Label</label>
+      <label style="width: 60px; height: 20px; left: 401px; position: absolute; top: 468px" id="lbl50">Label</label>
+      <label style="width: 60px; height: 20px; left: 401px; position: absolute; top: 498px" id="lbl51">Label</label>
+      <label style="width: 60px; height: 20px; left: 401px; position: absolute; top: 528px" id="lbl52">Label</label>
+      <label style="width: 60px; height: 20px; left: 401px; position: absolute; top: 558px" id="lbl53">Label</label>
+      <label style="width: 60px; height: 20px; left: 401px; position: absolute; top: 588px" id="lbl54">Label</label>
+      <label style="width: 60px; height: 20px; left: 401px; position: absolute; top: 618px" id="lbl55">Label</label>
+      <label style="border-width: 1px 1px 1px 1px; text-align: center; border-style: solid; width: 34px; height: 20px; top: 660px; position: absolute; left: 188px" id="lblpageIndex"></label>
+      <label style="border-width: 1px 1px 1px 1px; text-align: center; border-style: solid; width: 34px; height: 20px; top: 660px; position: absolute; left: 223px" id="lblpage_Copy2">/</label>
+      <button style="height: 40px; top: 5px; position: absolute; left: 10px; width: 40px; background-image: url('../../image/point/home.png'); background-color: #FFFFFF" id="btnback"></button>
+      <button id="btn10" style="width: 103px; height: 24px; left: 368px; position: absolute; top: 56px; background-color: #5698F6; color: #FFFFFF">通讯长度配置</button>
+    </body>
+  </html>

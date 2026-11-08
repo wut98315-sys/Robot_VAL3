@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="init" access="public" >
+    <Code><![CDATA[begin
+  //init all
+  bIsSaving=false
+  call resetAlarm()
+  bAlarmAck=false
+  bGOTO=false
+  bIsCycle=false
+  bIsEstop=false
+  bIsHome=false
+  bIsReady=false
+  bReloadIO=false
+  bSimulate=false
+  bSimulate=false
+  _bHeavyAlarm=false
+  bQuitApp=false
+  nCycleCmd=0
+  nCycleMoveID=0
+  nFrameIndex=0
+  nHeavyAlarmLev=0
+  nHMIcmd=0
+  nPLCcmd=0
+  nToolIndex=0
+  _nAlarmIndex=0
+  _nAvgCapacity=0
+  _nBestCapacity=0
+  _nCapacity=0
+  _nCTIndex=0
+  _nCycleTime=0
+  _nOmacStat=9
+
+  sPageUsing=""
+  sTrajStatus=""
+  sLstTrajStatus=""
+  _sRobotStatus=""
+  sLstRobStatus=""
+  sIOStatus=""
+  sLstIOStatus=""
+
+end]]></Code>
+  </Program>
+</Programs>

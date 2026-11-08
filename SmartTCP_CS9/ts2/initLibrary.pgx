@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="initLibrary">
+    <Locals>
+      <Local name="l_sArmType" type="string" xsi:type="array" size="1" />
+      <Local name="l_sLanguage" type="string" xsi:type="array" size="1" />
+      <Local name="l_sMounting" type="string" xsi:type="array" size="1" />
+      <Local name="l_sSeries" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //*******************************************************
+  //获取手臂类型
+  //*******************************************************
+  l_sArmType=getVersion("Arm Type")
+  if l_sArmType!=""
+    //抓取到信息
+    l_sSeries=left(l_sArmType,3)
+    switch l_sSeries
+      case "ts2"
+        db:utLbl_Axis_Data.Common.sText="4轴"
+        //ArmType:libLoad("Disk://SmartTCP9/Axis4")
+        //DataBase:libLoad("Disk://SmartTCP9/DataBase4")
+      break
+      case "tx2"
+        db:utLbl_Axis_Data.Common.sText="6轴"
+        //ArmType:libLoad("Disk://SmartTCP9/Axis6")
+        //DataBase:libLoad("Disk://SmartTCP9/DataBase6")
+      break
+      default
+        userPageAlert("该手臂型号不支持")
+        db:utLbl_Axis_Data.Common.sText=""
+      break
+    endSwitch
+  else
+    //未抓取到信息
+    //userPageAlert("未识别到手臂型号")
+    db:utLbl_Axis_Data.Common.sText=""
+  endIf
+  //*******************************************************
+  //获取安装方式
+  //*******************************************************
+  l_sMounting=getVersion("Arm Mounting")
+  switch l_sMounting
+    case "floor"
+      db:sMounting="Floor"
+      db:utCbx_Mounting_Data.Common.sValue="置地"
+    break
+    case "ceiling"
+      db:sMounting="Ceiling"
+      db:utCbx_Mounting_Data.Common.sValue="置顶"
+    break
+    default
+      db:sMounting="Null"
+      db:utCbx_Mounting_Data.Common.sValue=""
+      //userPageAlert("未识别到安装方式")
+    break
+  endSwitch
+  //*******************************************************  
+  //获取系统语言
+  //*******************************************************
+  l_sLanguage=getLanguage()
+  switch l_sLanguage
+    case "chinese"
+      db:sLanguage="chinese"
+      db:utCbx_Language_Data.Common.sValue="中文"
+    break
+    case "english"
+      db:sLanguage="english"
+      db:utCbx_Language_Data.Common.sValue="English"
+    break
+    default
+      db:sLanguage="english"
+      db:utCbx_Language_Data.Common.sValue="English"
+    break
+  endSwitch
+  //
+  call db:refreshLanguage()
+  //
+  //*******************************************************
+  $jogContext(flange,world,0)
+  db:utLbl_Tool_Data.Common.sText="Flange"
+  //
+  userPage("Page_Main")
+end]]></Code>
+  </Program>
+</Programs>

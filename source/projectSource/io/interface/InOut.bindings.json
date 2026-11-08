@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "bindings": [
+    {
+      "id": "chkEthercat",
+      "attribute": "checked",
+      "data": "bBusSelect[0]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "chkProfinet",
+      "attribute": "checked",
+      "data": "bBusSelect[1]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "chkProfibus",
+      "attribute": "checked",
+      "data": "bBusSelect[2]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "chkModbus",
+      "attribute": "checked",
+      "data": "bBusSelect[3]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "chkEthernet",
+      "attribute": "checked",
+      "data": "bBusSelect[4]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "chkUser",
+      "attribute": "checked",
+      "data": "bBusSelect[5]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "chkReloadIO",
+      "attribute": "checked",
+      "data": "rs:bReloadIO[0]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    }
+  ],
+  "callbacks": [
+    {
+      "id": "btn2_Copy1",
+      "event": "click",
+      "data": "rs:_clickProductionPage",
+      "priority": 10
+    },
+    {
+      "id": "btn2",
+      "event": "click",
+      "data": "rs:_clickIoPage",
+      "priority": 10
+    }
+  ],
+  "events": []
+}

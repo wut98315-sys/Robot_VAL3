@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertIF">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_scbx" type="string" xsi:type="array" size="1" />
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="insertIF"
+      util:sPage="insertIF"
+      for l_i = 0 to 2
+        sIFType[l_i]=""
+        sIFIndex[l_i]=""
+        nIFValue[l_i]=0
+        sANDOR1=""
+        sANDOR2=""
+        l_scbx="cbx"+toString("",l_i)
+        userPageBind("insertIF",l_scbx,"value",sIFType[l_i],1,"rw")
+        l_scbx="cbx1"+toString("",l_i)
+        userPageBind("insertIF",l_scbx,"value",sIFIndex[l_i],1,"rw")
+        l_scbx="nmb"+toString("",l_i)
+        userPageBind("insertIF",l_scbx,"value",nIFValue[l_i],1,"rw")
+        
+        userPageBind("insertIF","cbx7","value",sANDOR1,1,"rw")
+        userPageBind("insertIF","cbx8","value",sANDOR2,1,"rw")
+        userPageBindClick("insertIF","btn1",bIFConfirm,true)
+        userPageBindClick("insertIF","btn2",bIFCancel,true)
+        
+      endFor
+      sLastANDOR1=""
+      sLastANDOR2=""
+      //      userPageSet("insertIF","cbx1","disabled",true)
+      //      userPageSet("insertIF","cbx2","disabled",true)
+      //      userPageSet("insertIF","cbx11","disabled",true)
+      //      userPageSet("insertIF","cbx12","disabled",true)
+      //      userPageSet("insertIF","nmb1","disabled",true)
+      //      userPageSet("insertIF","nmb1","disabled",true)
+      userPage(util:sPage)
+      delay(0.5)
+    endIf
+    
+    //    if sLastANDOR1!=sANDOR1
+    //      sLastANDOR1=sANDOR1
+    //      if sANDOR1=""
+    //        userPageSet("insertIF","cbx1","disabled",true)       
+    //        userPageSet("insertIF","cbx11","disabled",true)       
+    //        userPageSet("insertIF","nmb1","disabled",true)
+    //        userPageSet("insertIF","cbx8","disabled",true)
+    //      endIf
+    //    endIf
+    
+    
+    //button
+    if bIFConfirm
+      bIFConfirm=false
+      call prog:getProgItemIndex(sSelProg,sLstValue,l_nIndex)
+      call IFedit(l_nIndex)
+      l_bExit=true
+    elseIf bIFCancel
+      bIFCancel=false
+      l_bExit=true
+    endIf
+    
+    
+    
+  until l_bExit==true
+  
+end]]></Code>
+  </Program>
+</Programs>

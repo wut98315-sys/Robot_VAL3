@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_bindPROG">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sHtml" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_sbtn" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  for l_i = 1 to 6
+    l_sbtn="btn"+toString("",l_i)
+    userPageBindClick(x_sHtml,l_sbtn,bInsert[l_i],true)
+  endFor
+  
+  userPageBind(x_sHtml,"lbl1","innerHTML",sPgIndexPROG,1,"r")
+  userPageBind(x_sHtml,"lbl2","innerHTML",sPagePROG,1,"r")
+  
+  userPageBindClick(x_sHtml,"btn7",bSelProg,true)
+  userPageBindClick(x_sHtml,"btn8",bSelTraj,true)
+  userPageBind(x_sHtml,"lst1","value",sInsertItem,1,"rw")
+ 
+end]]></Code>
+  </Program>
+</Programs>

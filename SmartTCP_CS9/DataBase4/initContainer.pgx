@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="initContainer" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_utContainer" type="utContainer" xsi:type="array" use="reference" />
+      <Parameter name="x_sPage" type="string" xsi:type="element" />
+      <Parameter name="x_sId" type="string" xsi:type="element" />
+      <Parameter name="x_bVisibility" type="bool" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  x_utContainer.Common.sPage=x_sPage
+  x_utContainer.Common.sID=x_sId
+  userPageBind(x_utContainer.Common.sPage,x_utContainer.Common.sID,"src",x_utContainer.Common.sSource,1,"r")  
+  userPageBind(x_utContainer.Common.sPage,x_utContainer.Common.sID,"style.visibility",x_utContainer.Appearance.bVisibility,1,"r") 
+  //
+  x_utContainer.Appearance.bVisibility=x_bVisibility
+end]]></Code>
+  </Program>
+</Programs>

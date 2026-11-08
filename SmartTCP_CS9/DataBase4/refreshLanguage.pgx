@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="refreshLanguage" access="public">
+    <Code><![CDATA[begin
+  //*************************************************************************************************
+  //Get the current robot installation mode 
+  if sCbxMounting!=utCbx_Mounting_Data.Common.sValue
+    sCbxMounting=utCbx_Mounting_Data.Common.sValue
+    switch utCbx_Mounting_Data.Common.sValue
+      case "置地","Floor"
+        sMounting="Floor"
+      break
+      case "置顶","Ceiling"
+        sMounting="Ceiling"
+      break
+    endSwitch
+  endIf
+  
+  //*************************************************************************************************
+  //Get the current robot interface language
+  if sCbxLanguage!=utCbx_Language_Data.Common.sValue
+    sCbxLanguage=utCbx_Language_Data.Common.sValue
+    switch utCbx_Language_Data.Common.sValue
+      case "中文","Chinese"
+        sLanguage="chinese"        
+      break
+      //
+      case "英文","English"
+        sLanguage="english"        
+      break
+      //
+      default
+        sLanguage="english"
+      break
+    endSwitch
+  endIf
+  //*************************************************************************************************
+  if sLanguage!=sLanguageM
+    sLanguageM=sLanguage     
+    switch sLanguage
+      case "chinese"
+        utCbx_Language_Data.Common.sValue="中文"
+        utCbx_Language_Data.Common.sItem[0]="中文"
+        utCbx_Language_Data.Common.sItem[1]="英文"
+        utCbx_Mounting_Data.Common.sItem[0]="置地"
+        utCbx_Mounting_Data.Common.sItem[1]="置顶"
+        switch utCbx_Mounting_Data.Common.sValue
+          case "置地","Floor"
+            utCbx_Mounting_Data.Common.sValue="置地"
+          break
+          case "置顶","Ceiling"
+            utCbx_Mounting_Data.Common.sValue="置顶"
+          break
+        endSwitch
+      break
+      //
+      case "english"
+        utCbx_Language_Data.Common.sValue="English"
+        utCbx_Language_Data.Common.sItem[0]="English"
+        utCbx_Language_Data.Common.sItem[1]="Chinese"
+        utCbx_Mounting_Data.Common.sItem[0]="Floor"
+        utCbx_Mounting_Data.Common.sItem[1]="Ceiling"
+        switch utCbx_Mounting_Data.Common.sValue
+          case "置地","Floor"
+            utCbx_Mounting_Data.Common.sValue="Floor"
+          break
+          case "置顶","Ceiling"
+            utCbx_Mounting_Data.Common.sValue="Ceiling"
+          break
+        endSwitch
+      break
+    endSwitch
+    //************************************************************************************************* 
+        if utBtn_Step[0].Events.bClick==true
+      switch nStep0
+        case 11,21,31,41,51,61
+           nStep0=nStep0-1
+        break  
+       endSwitch 
+    endIf
+    //
+    if utBtn_Step[1].Events.bClick==true
+      switch nStep1
+        case 11,21,31
+          nStep1=nStep1-1
+        break
+      endSwitch
+    endIf
+    //    
+    call updateStr(4,utLbl_Title.Common.sText,"Stäubli Tool Calibration - SmartTCP")
+    //    
+    call updateStr(2,utLbl_Language.Common.sText,"Language:")
+    //
+    call updateStr(3,utLbl_Mounting.Common.sText,"Mounting:")
+    //
+    call updateStr(7,utLbl_Axis.Common.sText,"ArmType:")
+    call updateStr(8,utLbl_Axis_Data.Common.sText,"4axis")
+    //
+    call updateStr(10,utLbl_Tool.Common.sText,"Tool:")
+    //
+    call updateStr(11,utLbl_CheckBox_a[0].Common.sText,"2Points")
+    call updateStr(12,utLbl_CheckBox_a[1].Common.sText,"3Points")
+    call updateStr(13,utLbl_CheckBox_a[2].Common.sText,"6Points")
+    //
+    call updateStr(14,utLbl_CheckBox_b[0].Common.sText,"2Points180°")
+    call updateStr(15,utLbl_CheckBox_b[1].Common.sText,"3Points120°")
+    //
+    call updateStr(16,utBtn_Step[0].Common.sText,"Calibration tool")
+    call updateStr(17,utBtn_Step[1].Common.sText,"Correction tool XY")
+    call updateStr(19,utBtn_Step[2].Common.sText,"Verification tool")
+    //
+    call updateStr(20,utLbl_SwitchTool.Common.sText,"Tool Switch：")
+    call updateStr(21,utLbl_Offset.Common.sText,"Tool Offset：")
+    //
+    call updateStr(utLbl_Point.Data.nVal,utLbl_Point.Common.sText,"")
+    call updateStr(utLbl_Step.Data.nVal,utLbl_Step.Common.sText,"")
+    //
+    call updateInfo(utLbl_Info0.Data.nVal,utLbl_Info0.Data.nVal,utLbl_Info0.Common.sText,"0","")
+    call updateInfo(utLbl_Info1.Data.nVal,utLbl_Info1.Data.nVal,utLbl_Info1.Common.sText,"1","")
+    call updateInfo(utLbl_Info2.Data.nVal,utLbl_Info2.Data.nVal,utLbl_Info2.Common.sText,"2","")
+    call updateInfo(utLbl_Info3.Data.nVal,utLbl_Info3.Data.nVal,utLbl_Info3.Common.sText,"3","")
+    call updateInfo(utLbl_Info4.Data.nVal,utLbl_Info4.Data.nVal,utLbl_Info4.Common.sText,"4","")
+    //
+    call updateBtn(nBtnItem,"Null,Null,Null,Null,Null,Null,Null,Quit")
+  endIf
+end
+
+
+]]></Code>
+  </Program>
+</Programs>

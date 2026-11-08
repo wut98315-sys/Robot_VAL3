@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="setBaseJOG" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nIndexTool" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+      <Local name="l_fFrame" type="frame" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+ 
+  call getTool(x_nIndexTool,tMTool)
+  //call getFrame(x_nIndexFrame,fMFrame)
+  
+  $jogContext(tMTool,world,0)
+  logMsg("setMovePara:tool"+toString("",x_nIndexTool))
+end]]></Code>
+  </Program>
+</Programs>

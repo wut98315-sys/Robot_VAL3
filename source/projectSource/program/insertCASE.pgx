@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertCASE" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_sTRAJname" type="string" xsi:type="element" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+      <Parameter name="x_nSwitchValue" type="num" xsi:type="element" />
+      <Parameter name="x_nType" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+ 
+  if x_nIndex==0 and progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sTRAJname==""
+    progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].nType=6
+    if x_nType==1
+      progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sTRAJname="PROG"
+    elseIf x_nType==2
+      progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sTRAJname="TRAJ"
+    endIf
+    progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sSwitchItem.sIOValue=x_sTRAJname
+    progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sSwitchItem.nSwitchValue=x_nSwitchValue
+  else
+    l_nIndex=x_nIndex+1
+    //insert(progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex+1])
+    append(progTemp:pProgItem[x_sKey].pProgTemplate)
+    for l_i = size(progTemp:pProgItem[x_sKey].pProgTemplate)-1 to l_nIndex step -1
+      call copyPara(x_sKey,l_i-1,l_i)
+    endFor
+    //insert(progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex+1])
+    progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex+1].nType=6
+    if x_nType==1
+      progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex+1].sTRAJname="PROG"
+    elseIf x_nType==2
+      progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex+1].sTRAJname="TRAJ"
+    endIf
+    progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex+1].sSwitchItem.sIOValue=x_sTRAJname
+    progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex+1].sSwitchItem.nSwitchValue=x_nSwitchValue
+  endIf
+ 
+  x_bToSave=true
+end]]></Code>
+  </Program>
+</Programs>

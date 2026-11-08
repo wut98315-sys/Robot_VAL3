@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="updateTool" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nToolNumber" type="num" xsi:type="element" />
+      <Parameter name="x_bOffsetActive" type="bool" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bOut" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nStep" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_bOut=false
+  l_nStep=0  
+  do
+    switch l_nStep
+      case 0
+        //Decide which tool to use
+        utCurrentTool.nItem=x_nToolNumber
+        switch x_nToolNumber
+          case 0
+            utCurrentTool.tValue=tFlange
+            utLbl_Tool_Data.Common.sText="tFlange"
+            //call hmiAlert("SwitchFlange")
+            l_nStep=1
+          break
+          case 1
+            utCurrentTool.tValue=tTool1
+            utLbl_Tool_Data.Common.sText="tTool1"
+            //call hmiAlert("SwitchTool1")
+            l_nStep=1
+          break
+          case 2
+            utCurrentTool.tValue=tTool2
+            utLbl_Tool_Data.Common.sText="tTool2"
+            //call hmiAlert("SwitchTool2")
+            l_nStep=1
+          break
+        endSwitch
+      break
+      //
+      case 1
+        //Add or not add tool deviations?
+        if utImg_Switch.Data.bStatus==true and x_bOffsetActive==true
+          utCurrentTool.tValue.trsf=utCurrentTool.tValue.trsf*trOffset
+          l_nStep=2
+        else
+          utCurrentTool.tValue.trsf=utCurrentTool.tValue.trsf
+          l_nStep=2
+        endIf
+      break
+      //
+      case 2
+        //Update current tool value
+        tCurrentTool=utCurrentTool.tValue
+        $jogContext(tCurrentTool,world,0)
+        l_nStep=3
+      break
+      //
+      case 3
+        l_bOut=true
+      break
+    endSwitch
+  until l_bOut
+end
+
+
+
+]]></Code>
+  </Program>
+</Programs>

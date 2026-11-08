@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="hmiClose" access="public">
+    <Locals>
+      <Local name="l_bOut" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  delay(0.2)
+  utCtn_Message.Appearance.bVisibility=true
+  //
+  l_bOut=false
+  nClock=clock()
+  do
+    if utCtn_Message.Appearance.bVisibility==true
+      if clock()-nClock>=3
+        utTxt_popUpMsg.Common.sValue=""
+        utCtn_Message.Appearance.bVisibility=false
+        l_bOut=true
+      endIf
+      if utBtn_OK.Events.bClick==true
+        utBtn_OK.Events.bClick=false   
+        utTxt_popUpMsg.Common.sValue=""
+        utCtn_Message.Appearance.bVisibility=false
+        l_bOut=true
+      endIf
+    endIf
+    delay(0)
+  until l_bOut
+end]]></Code>
+  </Program>
+</Programs>

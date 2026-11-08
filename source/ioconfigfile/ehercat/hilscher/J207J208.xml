@@ -1,0 +1,101 @@
+<ProcessData xmlns="x-schema:ProcessDataSchema.xml">
+	<Version major="1" minor="1"/>
+	<Adapter systemTag="e646d865-6624-4a89-b692-97e0c3cfbc1e" displayName="CPT 9.x RE/ECS V4.2[CPT 9.x RE/ECS V4.2]&lt;0&gt;" byteOrder="little" configMD5="DF7350AE3128A46790890F3B8D5F5AF6" stationAddress="0">
+		<Channel systemTag="49be85ad-2766-4b67-b47a-0551991c138a" displayName="EtherCAT"/>
+		<Property id="6003" type="8" value="QwBJAEYAWABfAEQAUgBWAA=="/>
+		<Module systemTag="55B4D202-E52F-432A-8CE3-E16750804EBF" displayName="1. RxPDO &lt;RxPdo 0x1600&gt;" moduleType="RxPdo" moduleAddress="RxPdo 0x1600">
+			<Property id="6101" type="19" value="AAAAAA=="/>
+			<Signal systemTag="bd80410e-d924-4510-91b6-6eba9f53eb29" displayName="1 Byte Out (0)" signalType="input" signalAccessPath="0" dataType="bit" arrayElements="128">
+				<Property id="6103" type="19" value="AAAAAA=="/>
+			</Signal>
+			<Signal systemTag="da1c25f5-21aa-4713-87d0-f7ce0fc84074" displayName="1 Byte Out (16)" signalType="input" signalAccessPath="16" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="gAAAAA=="/>
+			</Signal>
+			<Signal systemTag="10d1cab2-d28f-45bd-8ed5-466fc9ed771b" displayName="1 Byte Out (18)" signalType="input" signalAccessPath="18" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="kAAAAA=="/>
+			</Signal>
+			<Signal systemTag="2de2277e-0f07-4b1c-96e2-c4c7822b6a5f" displayName="1 Byte Out (20)" signalType="input" signalAccessPath="20" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="oAAAAA=="/>
+			</Signal>
+			<Signal systemTag="14ea1f83-168a-404f-81cd-498d0e57e83e" displayName="1 Byte Out (22)" signalType="input" signalAccessPath="22" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="sAAAAA=="/>
+			</Signal>
+			<Signal systemTag="28e514ff-f280-405a-8852-7a5532d4c570" displayName="1 Byte Out (24)" signalType="input" signalAccessPath="24" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="wAAAAA=="/>
+			</Signal>
+			<Signal systemTag="e07691bd-a0a6-4d56-b84f-93d704cdd3cd" displayName="1 Byte Out (26)" signalType="input" signalAccessPath="26" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="0AAAAA=="/>
+			</Signal>
+			<Signal systemTag="c6550f7e-a5da-4710-8787-a4e768811a98" displayName="1 Byte Out (28)" signalType="input" signalAccessPath="28" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="4AAAAA=="/>
+			</Signal>
+			<Signal systemTag="077b16ce-0139-4c07-98bb-4e7b6d4c724b" displayName="1 Byte Out (30)" signalType="input" signalAccessPath="30" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="8AAAAA=="/>
+			</Signal>
+			<Signal systemTag="390ff7d3-dba3-4f04-bfce-7f33095a8424" displayName="1 Byte Out (32)" signalType="input" signalAccessPath="32" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="AAEAAA=="/>
+			</Signal>
+			<Signal systemTag="f24824a8-2e45-4bd8-8142-536b6a93c822" displayName="1 Byte Out (34)" signalType="input" signalAccessPath="34" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="EAEAAA=="/>
+			</Signal>
+			<Signal systemTag="5bf3efdd-7134-4ce0-b306-8e2a8fbf2f02" displayName="1 Byte Out (36)" signalType="input" signalAccessPath="36" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="IAEAAA=="/>
+			</Signal>
+			<Signal systemTag="210d3369-1a61-4ee6-8192-16ef6a572294" displayName="1 Byte Out (38)" signalType="input" signalAccessPath="38" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="MAEAAA=="/>
+			</Signal>
+			<Signal systemTag="04da5506-0378-464c-8e7f-3bd92bfa2ca0" displayName="1 Byte Out (40)" signalType="input" signalAccessPath="40" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="QAEAAA=="/>
+			</Signal>
+			<Signal systemTag="23d87f34-c8b5-4145-902a-ce6b727c66a0" displayName="1 Byte Out (42)" signalType="input" signalAccessPath="42" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="UAEAAA=="/>
+			</Signal>
+			<Signal systemTag="2bcd8a67-a2c4-46a0-8fbb-e102e400594b" displayName="1 Byte Out (44)" signalType="input" signalAccessPath="44" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="YAEAAA=="/>
+			</Signal>
+			<Signal systemTag="0f50c23b-7724-4c7b-91e4-8045edf647e4" displayName="1 Byte Out (46)" signalType="input" signalAccessPath="46" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="cAEAAA=="/>
+			</Signal>
+		</Module>
+		<Module systemTag="52280591-4CE0-437F-B829-6A952B1A4141" displayName="1. TxPDO &lt;TxPdo 0x1A00&gt;" moduleType="TxPdo" moduleAddress="TxPdo 0x1A00">
+			<Property id="6102" type="19" value="AAAAAA=="/>
+			<Signal systemTag="692c9074-eeb8-43e1-9015-9ce77a077c09" displayName="1 Byte In (0)" signalType="output" signalAccessPath="0" dataType="bit" arrayElements="128">
+				<Property id="6103" type="19" value="AAAAAA=="/>
+			</Signal>
+			<Signal systemTag="b80e2d96-7567-4cb6-b9da-91cb17dac361" displayName="1 Byte In (16)" signalType="output" signalAccessPath="16" dataType="word" arrayElements="1"><Property id="6103" type="19" value="gAAAAA=="/></Signal>
+			<Signal systemTag="c2d906ff-84dc-413d-80d4-04ee52150792" displayName="1 Byte In (18)" signalType="output" signalAccessPath="18" dataType="word" arrayElements="1"><Property id="6103" type="19" value="kAAAAA=="/></Signal>
+			<Signal systemTag="ac594db3-9fbe-4337-94c6-781357957ef9" displayName="1 Byte In (20)" signalType="output" signalAccessPath="20" dataType="word" arrayElements="1"><Property id="6103" type="19" value="oAAAAA=="/></Signal>
+			<Signal systemTag="9a910580-4e23-4527-9cf2-78153bf51dfc" displayName="1 Byte In (22)" signalType="output" signalAccessPath="22" dataType="word" arrayElements="1"><Property id="6103" type="19" value="sAAAAA=="/></Signal>
+			<Signal systemTag="4f5b6267-f19b-4602-8f3a-23babfef4149" displayName="1 Byte In (24)" signalType="output" signalAccessPath="24" dataType="word" arrayElements="1"><Property id="6103" type="19" value="wAAAAA=="/></Signal>
+			<Signal systemTag="6ca4f8ae-ce3e-4ef0-b08f-594ed8017845" displayName="1 Byte In (26)" signalType="output" signalAccessPath="26" dataType="word" arrayElements="1"><Property id="6103" type="19" value="0AAAAA=="/></Signal>
+			<Signal systemTag="7e2fb09a-c887-4538-bede-ac7cffc905d3" displayName="1 Byte In (28)" signalType="output" signalAccessPath="28" dataType="word" arrayElements="1"><Property id="6103" type="19" value="4AAAAA=="/></Signal>
+			<Signal systemTag="f8897f86-49ed-4483-bd40-501aa65535a5" displayName="1 Byte In (30)" signalType="output" signalAccessPath="30" dataType="word" arrayElements="1"><Property id="6103" type="19" value="8AAAAA=="/></Signal>
+			<Signal systemTag="419b6f7e-93cb-48d6-8813-343ec039096c" displayName="1 Byte In (32)" signalType="output" signalAccessPath="32" dataType="word" arrayElements="1"><Property id="6103" type="19" value="AAEAAA=="/></Signal>
+			<Signal systemTag="26cfad29-644f-4bb6-8c8e-753a11c83eec" displayName="1 Byte In (34)" signalType="output" signalAccessPath="34" dataType="word" arrayElements="1"><Property id="6103" type="19" value="EAEAAA=="/></Signal>
+			<Signal systemTag="9ef6b80a-9b37-4ee8-a55c-f7479e4a0044" displayName="1 Byte In (36)" signalType="output" signalAccessPath="36" dataType="word" arrayElements="1"><Property id="6103" type="19" value="IAEAAA=="/></Signal>
+			<Signal systemTag="906d8083-3cca-406d-991f-c0ee70d25da6" displayName="1 Byte In (38)" signalType="output" signalAccessPath="38" dataType="word" arrayElements="1"><Property id="6103" type="19" value="MAEAAA=="/></Signal>
+			<Signal systemTag="e89ecd9e-4fd4-4660-9f21-da99f56aaff4" displayName="1 Byte In (40)" signalType="output" signalAccessPath="40" dataType="word" arrayElements="1"><Property id="6103" type="19" value="QAEAAA=="/></Signal>
+			<Signal systemTag="dd75a532-cfbf-4edc-b4c8-833ae9eeabab" displayName="1 Byte In (42)" signalType="output" signalAccessPath="42" dataType="word" arrayElements="1"><Property id="6103" type="19" value="UAEAAA=="/></Signal>
+			<Signal systemTag="851518a3-2933-4f72-bc30-5528db20375d" displayName="1 Byte In (44)" signalType="output" signalAccessPath="44" dataType="word" arrayElements="1"><Property id="6103" type="19" value="YAEAAA=="/></Signal>
+			<Signal systemTag="4df63b90-d3e9-4dc7-99f5-64eec674d1c6" displayName="1 Byte In (46)" signalType="output" signalAccessPath="46" dataType="word" arrayElements="1"><Property id="6103" type="19" value="cAEAAA=="/></Signal>
+		</Module>
+		<Status systemTag="6F1008E7-225C-4024-BDF8-404C48F40407" displayName="Status">
+			<Signal systemTag="E0C84253-609B-4635-AD41-1BE7E4E0A499" displayName="Communication Change of State" signalType="input" signalAccessPath="0" dataType="unsigned32" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="8F6DC438-D231-415C-80FD-AA0ECC2FC710" displayName="Communication State" signalType="input" signalAccessPath="4" dataType="unsigned32" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="CF0E02C7-E9FF-4648-A302-A6D5C208F530" displayName="Communication Error" signalType="input" signalAccessPath="8" dataType="unsigned32" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="A5D9934B-12F3-409A-B1D3-F2FB0926084C" displayName="Version" signalType="input" signalAccessPath="12" dataType="unsigned16" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="F013FF3A-4C1F-42E5-BEB2-81B928600027" displayName="Watchdog Timeout" signalType="input" signalAccessPath="14" dataType="unsigned16" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="156695B3-E415-4781-862D-4C7FEBF090F6" displayName="Host Watchdog" signalType="input" signalAccessPath="20" dataType="unsigned32" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="FB569C34-E65C-4360-89E3-C1CCE8D2320D" displayName="Error Count" signalType="input" signalAccessPath="24" dataType="unsigned32" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="04B80874-ED51-4353-BEE8-44C16FD010D0" displayName="Error Log Indicator" signalType="input" signalAccessPath="28" dataType="unsigned32" opc="0" blockNumber="0">
+			</Signal>
+		</Status>
+	</Adapter>
+</ProcessData>

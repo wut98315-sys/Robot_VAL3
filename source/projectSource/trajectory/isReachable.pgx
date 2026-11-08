@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="isReachable" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_tTool" type="tool" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_pPoint" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_mDesc" type="mdesc" xsi:type="array" size="1" />
+      <Local name="l_jJoint" type="jointRx" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  if trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nMoveType==0
+    l_mDesc=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.mMdesc
+    l_pPoint.trsf=trajTemp:tTrajItem[x_sKey].pPointItem.pPointRx.trsf
+    l_pPoint.config=trajTemp:tTrajItem[x_sKey].pPointItem.pPointRx.config
+    l_bResult= pointToJoint(x_tTool,herej(),l_pPoint,l_jJoint)
+    if l_bResult
+      movel(l_pPoint,x_tTool,l_mDesc)
+    endIf
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

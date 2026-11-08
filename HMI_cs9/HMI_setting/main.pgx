@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="main" access="public">
+    <Locals>
+      <Local name="l_bExit" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nTool" type="num" xsi:type="array" size="1" />
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+      <Local name="l_nUsingLib" type="num" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+      <Local name="l_sLib" type="string" xsi:type="array" size="1" />
+      <Local name="i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  do
+    if util:sPage!="setting"
+      util:sPage="setting"
+      call util:loadingPage()
+      call onStart()
+      call bind()
+      userPage("setting")
+      delay(0.5)
+    endIf
+    
+    if sSelTool != sLastTool
+      sLastTool=sSelTool
+      toNum(sLastTool,l_nTool,l_bResult)
+    endIf
+    if bTeach 
+      bTeach=false
+      call teachHome()
+    elseIf bMove
+      bMove=false
+      call moveTohome()
+    elseIf bSetup
+      bSetup=false
+      if l_nTool!=savedata:nJogTool
+        savedata:nJogTool=l_nTool   
+        call savedata:setBaseJOG(l_nTool)
+        savedata:libSave()
+        delay(0.1) 
+      endIf
+    elseIf bChangeLib
+      bChangeLib=false
+      if workingMode()!=1
+        popUpMsg("请先将工作模式切换到手动模式")
+      else
+        l_sLib=delete(sUsingLib,3,0)
+        toNum(l_sLib,l_nUsingLib,l_bResult)
+        if !l_bResult
+          return
+        else
+          bIsDoing=true
+          savedata:nLibIndex=l_nUsingLib
+          savedata:libSave()
+        
+          bToSave=true
+          call prog:onSave(bToSave)
+          bToSave=true
+          call trajectory:onSave(bToSave)
+          logMsg("手动开始切换:"+toString(".2",clock()))
+          call prog:loadPROG(l_nUsingLib,l_nResult)
+          call trajectory:loadTRAJ(l_nUsingLib,l_nResult)
+        
+          bIsDoing=false
+        endIf
+      endIf
+    elseIf bBack
+      bBack=false
+      l_bExit=true
+    endIf
+    
+    call libTqe:refresh()
+    //    if bLock==true
+    //      sBtnUnLock="解锁"
+    //    else
+    //      sBtnUnLock="保存"
+    //    endIf
+    delay(0)
+  until l_bExit==true
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="pointMove" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nType" type="num" xsi:type="array" size="1" />
+      <Local name="l_fFrame" type="frame" xsi:type="array" size="1" />
+      <Local name="l_pPoint" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_tTool" type="tool" xsi:type="array" size="1" />
+      <Local name="l_jJoint" type="jointRx" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_jHere" type="jointRx" xsi:type="array" size="1" />
+      <Local name="l_pPoint1" type="pointRx" xsi:type="array" size="1" />
+      <Local name="l_nSigIndex" type="num" xsi:type="array" size="1" />
+      <Local name="l_bSigValue" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nSigValue" type="num" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  link(l_fFrame,world)
+  link(l_tTool,flange)
+  //link(l_pPoint,world)
+  l_nType=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nMoveType
+  call savedata:getFrame(trajTemp:tTrajItem[x_sKey].nFrameIndex,l_fFrame)
+  call savedata:getTool(trajTemp:tTrajItem[x_sKey].nToolIndex,l_tTool)
+  link(l_pPoint,l_fFrame)
+  link(l_pPoint1,l_fFrame)
+  l_pPoint.trsf=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.trsf
+  l_pPoint.config=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pPointRx.config
+  l_pPoint1.trsf=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pInter.trsf
+  l_pPoint1.config=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pInter.config
+  l_jJoint=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].jJointRx
+  l_nSigIndex=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nActionIndex
+  l_bSigValue=(trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nSigValue!=0)  
+  l_nSigValue=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.nSigValue
+  if rs:_nOmacStat==9 and workingMode()==1 and isPowered()
+    // if !isEmpty()
+    stopMove()
+    resetMotion()
+    l_jHere=herej()
+    movej(l_jHere,flange,mSim)
+    // endIf
+    switch l_nType
+      case 1
+        call isPointOK(x_sKey,x_nIndex,l_bResult)
+        if l_bResult
+          movel(l_pPoint,l_tTool,mSim)
+        endIf
+      break
+      case 0
+        movej(l_jJoint,l_tTool,mSim)
+      break
+      case 2
+        movec(l_pPoint1,l_pPoint,l_tTool,mSim)
+      break
+      //Add by Liu Zhengang 20251028
+      case 3
+        //dIn
+        waitEndMove()
+        if watch($isKeyPressed(14),5)==true
+          call io:waitDigInput(io:dInput[l_nSigIndex],l_bSigValue,l_bErr)
+          popUpMsg("din"+"["+toString("",l_nSigIndex)+"]"+"执行成功")
+        endIf
+        
+      break
+      case 4
+        //dOut
+        waitEndMove()
+        if watch($isKeyPressed(14),5)==true
+        
+          call io:setDigOutput(io:dOutput[l_nSigIndex],l_bSigValue,l_bErr)
+          popUpMsg("dout"+"["+toString("",l_nSigIndex)+"]"+"执行成功")
+        endIf
+      break
+      case 5
+        //ain
+        waitEndMove()
+        if watch($isKeyPressed(14),5)==true
+          call io:waitAnaInput(io:aInput[l_nSigIndex],l_nSigValue,l_bErr)
+          popUpMsg("ain"+"["+toString("",l_nSigIndex)+"]"+"执行成功")
+        endIf
+        
+        // wait(l_nSigValue==l_nValue)
+      break
+      case 6
+        //aout
+        waitEndMove()
+        if watch($isKeyPressed(14),5)==true
+          call io:setAnaOutput(io:aOutput[l_nSigIndex],l_nSigValue,l_bErr)
+          popUpMsg("aout"+"["+toString("",l_nSigIndex)+"]"+"执行成功")
+        endIf
+      break
+    endSwitch
+    delay(0)
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

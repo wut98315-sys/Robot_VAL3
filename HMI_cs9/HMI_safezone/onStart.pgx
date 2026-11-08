@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="onStart">
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  call saveData:setBaseJOG(saveData:nJogTool)
+  sToolIndex=toString("",saveData:nJogTool)
+  sSelZone=""
+  sLastZone=""
+  resize(sList,1,size(safeTemp:zZoneItem))
+
+  for l_i = 0 to size(sList)-1
+    sList[l_i]=toString("",l_i)+","+safeTemp:zZoneItem[l_i].sID
+  endFor
+  bActive=false
+  for l_i = 0 to 5
+    nFrame[l_i]=0
+    nTRSF1[l_i]=0
+    nTRSF2[l_i]=0
+  endFor
+end]]></Code>
+  </Program>
+</Programs>

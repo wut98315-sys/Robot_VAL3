@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="getTrajList" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sItem" type="string" xsi:type="array" use="reference" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_tTrsf" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_sItem" type="string" xsi:type="array" size="6" />
+      <Local name="l_sEvent" type="string" xsi:type="array" size="1" />
+      <Local name="l_sItem2" type="string" xsi:type="array" size="7" />
+      <Local name="l_sKey" type="string" xsi:type="array" size="1" />
+      <Local name="i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //  //获取列表
+  //  resize(x_sItem,1,1)
+  //  l_sKey=first(pt:tCommonStruct)
+  //  i=0
+  //  while l_sKey!=""
+  //    if i!=0
+  //      insert(x_sItem[i])
+  //    endIf
+  //    x_sItem[i]=l_sKey
+  //    l_sKey=next(pt:tCommonStruct[l_sKey])
+  //    i=i+1
+  //    delay(0)
+  //  endWhile
+  //  if l_sKey=="" and i==0
+  //    x_sItem[i]=""
+  //  endIf
+  
+  //获取列表
+  resize(x_sItem,1,x_nIndex)
+  l_sKey=first(trajTemp:tTrajItem)
+  i=0
+  while l_sKey!=""
+    x_sItem[i]=l_sKey
+    l_sKey=next(trajTemp:tTrajItem[l_sKey])
+    i=i+1
+  endWhile
+  if l_sKey=="" and i==0
+    x_sItem[i]=""
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

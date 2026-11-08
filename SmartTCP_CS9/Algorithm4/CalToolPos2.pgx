@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="CalToolPos2" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_tTool" type="tool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bStatus" type="bool" xsi:type="array" size="1" />
+      <Local name="l_p1" type="point" xsi:type="array" size="1" />
+      <Local name="ax1" type="num" xsi:type="array" size="1" />
+      <Local name="ax2" type="num" xsi:type="array" size="1" />
+      <Local name="ay1" type="num" xsi:type="array" size="1" />
+      <Local name="ay2" type="num" xsi:type="array" size="1" />
+      <Local name="az1" type="num" xsi:type="array" size="1" />
+      <Local name="az2" type="num" xsi:type="array" size="1" />
+      <Local name="l_p2" type="point" xsi:type="array" size="1" />
+      <Local name="l_trP1" type="trsf" xsi:type="array" size="1" />
+      <Local name="l_trP2" type="trsf" xsi:type="array" size="1" />
+      <Local name="nx1" type="num" xsi:type="array" size="1" />
+      <Local name="nx2" type="num" xsi:type="array" size="1" />
+      <Local name="ny1" type="num" xsi:type="array" size="1" />
+      <Local name="ny2" type="num" xsi:type="array" size="1" />
+      <Local name="nz1" type="num" xsi:type="array" size="1" />
+      <Local name="nz2" type="num" xsi:type="array" size="1" />
+      <Local name="ox1" type="num" xsi:type="array" size="1" />
+      <Local name="ox2" type="num" xsi:type="array" size="1" />
+      <Local name="oy1" type="num" xsi:type="array" size="1" />
+      <Local name="oy2" type="num" xsi:type="array" size="1" />
+      <Local name="oz1" type="num" xsi:type="array" size="1" />
+      <Local name="oz2" type="num" xsi:type="array" size="1" />
+      <Local name="xf1" type="num" xsi:type="array" size="1" />
+      <Local name="xf2" type="num" xsi:type="array" size="1" />
+      <Local name="yf1" type="num" xsi:type="array" size="1" />
+      <Local name="yf2" type="num" xsi:type="array" size="1" />
+      <Local name="zf1" type="num" xsi:type="array" size="1" />
+      <Local name="zf2" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //2个带姿态的点求工具值XYZ
+  l_trP1=db:pTeach1.trsf
+  l_trP2=db:pTeach2.trsf
+  //
+  //pTeach_2_1转成矩阵nTeach_2_1
+  call matrix:Trsf2Matrix(l_trP1,nTeach_2_1)
+  //pTeach_2_2转成矩阵nTeach_2_2
+  call matrix:Trsf2Matrix(l_trP2,nTeach_2_2)
+  //
+  //分解矩阵nTeach_2_1
+  nx1=nTeach_2_1[0,0]
+  ny1=nTeach_2_1[0,1]
+  nz1=nTeach_2_1[0,2]
+  ox1=nTeach_2_1[1,0]
+  oy1=nTeach_2_1[1,1]
+  oz1=nTeach_2_1[1,2]
+  ax1=nTeach_2_1[2,0]
+  ay1=nTeach_2_1[2,1]
+  az1=nTeach_2_1[2,2]
+  xf1=nTeach_2_1[3,0]
+  yf1=nTeach_2_1[3,1]
+  zf1=nTeach_2_1[3,2]
+  //
+  //分解矩阵nTeach_2_2
+  nx2=nTeach_2_2[0,0]
+  ny2=nTeach_2_2[0,1]
+  nz2=nTeach_2_2[0,2]
+  ox2=nTeach_2_2[1,0]
+  oy2=nTeach_2_2[1,1]
+  oz2=nTeach_2_2[1,2]
+  ax2=nTeach_2_2[2,0]
+  ay2=nTeach_2_2[2,1]
+  az2=nTeach_2_2[2,2]
+  xf2=nTeach_2_2[3,0]
+  yf2=nTeach_2_2[3,1]
+  zf2=nTeach_2_2[3,2]
+  //
+  //***************************************************************************************
+  //  │nx1-nx2 , ox1-ox2 ,    0    ,   0  │   │1 , 0 , 0, Tx│   │1 , 0 , 0, xf2-xf1│
+  //  │ny2-ny3 , oy2-oy3 ,    0    ,   0  │ * │0 , 1 , 0, Ty│ = │0 , 1 , 0, yf3-yf2│
+  //  │nz1-nz3 , oz1-oz3 ,    1    ,   0  │   │0 , 0 , 1, Tz│   │0 , 0 , 1,    0   │
+  //  │   0    ,    0    ,    0    ,   1  │   │0 , 0 , 0,  1│   │0 , 0 , 0,    1   │
+  //***************************************************************************************
+  //构造矩阵nMatrix1
+  nMatrix1[0,0]=nx1-nx2
+  nMatrix1[0,1]=ny1-ny2
+  nMatrix1[0,2]=nz1-nz2
+  nMatrix1[0,3]=0
+  nMatrix1[1,0]=ox1-ox2
+  nMatrix1[1,1]=oy1-oy2
+  nMatrix1[1,2]=oz1-oz2
+  nMatrix1[1,3]=0
+  nMatrix1[2,0]=0
+  nMatrix1[2,1]=0
+  nMatrix1[2,2]=1
+  nMatrix1[2,3]=0
+  nMatrix1[3,0]=0
+  nMatrix1[3,1]=0
+  nMatrix1[3,2]=0
+  nMatrix1[3,3]=1
+  //
+  //构造矩阵nMatrix2
+  nMatrix2[0,0]=1
+  nMatrix2[0,1]=0
+  nMatrix2[0,2]=0
+  nMatrix2[0,3]=0
+
+  nMatrix2[1,0]=0
+  nMatrix2[1,1]=1
+  nMatrix2[1,2]=0
+  nMatrix2[1,3]=0
+
+  nMatrix2[2,0]=0
+  nMatrix2[2,1]=0
+  nMatrix2[2,2]=1
+  nMatrix2[2,3]=0
+
+  nMatrix2[3,0]=xf2-xf1
+  nMatrix2[3,1]=yf2-yf1
+  nMatrix2[3,2]=0
+  nMatrix2[3,3]=1
+  //***************************************************************************************
+  call matrix:InverseMatrix(nMatrix1,nInverseMatrix1,l_bStatus)
+  if l_bStatus==false
+    //如果nMatrix1不可逆则需重新示教点
+    call db:hmiAlert("DeviationIsTooLarge","warning")
+  else
+    call matrix:MutliMatrix(nInverseMatrix1,nMatrix2,nMatrix3)
+
+    x_tTool.trsf.x=nMatrix3[3,0]
+    x_tTool.trsf.y=nMatrix3[3,1]
+    x_tTool.trsf.z=0
+    x_tTool.trsf.rx=0
+    x_tTool.trsf.ry=0
+    x_tTool.trsf.rz=0
+  endIf
+  call db:hmiAlert("SaveInTool1","info")
+end]]></Code>
+  </Program>
+</Programs>

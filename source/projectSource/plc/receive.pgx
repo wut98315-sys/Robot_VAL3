@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="receive" access="public" >
+    <Locals>
+      <Local name="l_bAckAlarm" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bEndCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bHoldCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bPowerOff" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bPowerOn" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResetCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResetIO" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bRotToHome" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bStartCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bStopCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bToHome" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bValue" type="bool" xsi:type="array" size="1" />
+      <Local name="l_n" type="num" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSpeed" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //机器人上电
+  if dInPowerON==true and !isPowered() and workingMode()==4 and !rs:bIsEstop
+    enablePower()
+    l_bResult=watch(isPowered()==true,1)
+    if !l_bResult
+      popUpMsg("机器人上电超时")
+    endIf
+  endIf
+
+  if rs:bIsCycle and workingMode()==1
+    call cycle_stop()
+  endIf
+  //启动主程序
+  if dInStartCycle==true and !rs:bIsCycle and rs:bIsHome and workingMode()==4 and !rs:bIsEstop
+    //复位信号
+    // call resetOutput()
+    //
+    //call cycle_stop()
+    resetMotion()
+    call cycle_start()
+  endIf
+  //暂停&恢复
+  if dInPLCError==true
+    if dOutGunON==true
+      bSetGun=true
+      dOutGunON=false
+    endIf
+    if rs:bIsCycle
+      call cycle_pause()
+    endIf
+  elseIf dInPLCError==false and rs:bIsPause
+    if bSetGun
+      dOutGunON=true
+    endIf
+    call cycle_start()
+  endIf
+  //复位报警
+  if dInResetError==true
+    rs:bIsError=false
+  endIf
+
+  //设置速度
+  call setSpeed()
+
+  if esStatus()==1
+    setSafetyRestart()
+  endIf
+
+
+end]]></Code>
+  </Program>
+</Programs>

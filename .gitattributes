@@ -1,0 +1,6 @@
+# VAL3 sources are loaded byte-for-byte by the controller: never convert line endings.
+* -text
+
+*.png binary
+*.jpg binary
+*.db binary

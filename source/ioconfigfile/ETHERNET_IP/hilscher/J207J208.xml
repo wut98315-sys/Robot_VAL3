@@ -1,0 +1,924 @@
+<ProcessData xmlns="x-schema:ProcessDataSchema.xml">
+	<Version major="1" minor="0">
+	</Version>
+	<Adapter systemTag="3b253fb2-ef7d-4616-9dea-60c07e52a99e" displayName="staubliROB[NETX 51 RE/EIS]&lt;192.168.10.1&gt;" byteOrder="little" configMD5="5A285769068CBF5BFCFE33AA968D3CE9" deviceAccessPath="" stationAddress="IP 192.168.10.1"><Property id="6003" type="8" value="QwBJAEYAWABfAEQAUgBWAA=="/>
+		<Module systemTag="551fe62c-8e89-4c8c-9b92-b43bea17ac2c" displayName="Connect1" moduleType="Connect1" moduleAddress="Slot 1">
+			<Property id="6101" type="19" value="AAAAAA=="/>
+			<Property id="6102" type="19" value="AAAAAA=="/>
+			<Signal systemTag="3c99acba-f1d4-4a68-a21c-89a8c66262f3" displayName="Output_Assembly_Byte_0_Bit_0" signalType="input" signalAccessPath="0.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="AAAAAA=="/>
+			</Signal>
+			<Signal systemTag="a8c10724-75a9-4217-88f5-3321e2e2acad" displayName="Output_Assembly_Byte_0_Bit_1" signalType="input" signalAccessPath="0.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="AQAAAA=="/>
+			</Signal>
+			<Signal systemTag="3fecd266-02db-40d3-aa00-852a922114d7" displayName="Output_Assembly_Byte_0_Bit_2" signalType="input" signalAccessPath="0.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="AgAAAA=="/>
+			</Signal>
+			<Signal systemTag="527abc03-504a-4b4e-8384-0b648b30a7ee" displayName="Output_Assembly_Byte_0_Bit_3" signalType="input" signalAccessPath="0.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="AwAAAA=="/>
+			</Signal>
+			<Signal systemTag="f6bc421b-a283-4f49-b66e-4a61065d35db" displayName="Output_Assembly_Byte_0_Bit_4" signalType="input" signalAccessPath="0.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="BAAAAA=="/>
+			</Signal>
+			<Signal systemTag="af78b140-d810-4e0e-a464-37cd3bf21c1f" displayName="Output_Assembly_Byte_0_Bit_5" signalType="input" signalAccessPath="0.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="BQAAAA=="/>
+			</Signal>
+			<Signal systemTag="54025b48-0e34-4c00-83f4-7c1c00c78d0e" displayName="Output_Assembly_Byte_0_Bit_6" signalType="input" signalAccessPath="0.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="BgAAAA=="/>
+			</Signal>
+			<Signal systemTag="c893eabf-80a0-4cc4-8cb1-35d77ac88edf" displayName="Output_Assembly_Byte_0_Bit_7" signalType="input" signalAccessPath="0.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="BwAAAA=="/>
+			</Signal>
+			<Signal systemTag="b91ba001-e4ea-48bd-931d-f38d504579c9" displayName="Output_Assembly_Byte_1_Bit_0" signalType="input" signalAccessPath="1.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="CAAAAA=="/>
+			</Signal>
+			<Signal systemTag="f2bd5778-f2d0-400e-8eb0-eb74f7a1d168" displayName="Output_Assembly_Byte_1_Bit_1" signalType="input" signalAccessPath="1.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="CQAAAA=="/>
+			</Signal>
+			<Signal systemTag="00f50513-209b-4fec-bca0-2732338e58e1" displayName="Output_Assembly_Byte_1_Bit_2" signalType="input" signalAccessPath="1.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="CgAAAA=="/>
+			</Signal>
+			<Signal systemTag="881ee622-97ce-4b32-a64c-c6f69ef3ed05" displayName="Output_Assembly_Byte_1_Bit_3" signalType="input" signalAccessPath="1.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="CwAAAA=="/>
+			</Signal>
+			<Signal systemTag="56ad774c-0018-466f-b601-292ce44541bc" displayName="Output_Assembly_Byte_1_Bit_4" signalType="input" signalAccessPath="1.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="DAAAAA=="/>
+			</Signal>
+			<Signal systemTag="4324db33-706b-4d11-8d24-eaf877265392" displayName="Output_Assembly_Byte_1_Bit_5" signalType="input" signalAccessPath="1.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="DQAAAA=="/>
+			</Signal>
+			<Signal systemTag="5af359b1-8e78-40aa-a03b-f8a0077c8703" displayName="Output_Assembly_Byte_1_Bit_6" signalType="input" signalAccessPath="1.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="DgAAAA=="/>
+			</Signal>
+			<Signal systemTag="313d3837-f0f1-4b52-8c95-c74de717160a" displayName="Output_Assembly_Byte_1_Bit_7" signalType="input" signalAccessPath="1.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="DwAAAA=="/>
+			</Signal>
+			<Signal systemTag="75a8b403-88bd-407d-a83e-d3d644c49486" displayName="Output_Assembly_Byte_2_Bit_0" signalType="input" signalAccessPath="2.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="EAAAAA=="/>
+			</Signal>
+			<Signal systemTag="6a9e16cd-1411-4673-bd88-b71ef2c94f1e" displayName="Output_Assembly_Byte_2_Bit_1" signalType="input" signalAccessPath="2.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="EQAAAA=="/>
+			</Signal>
+			<Signal systemTag="713d39ee-47ce-4e51-a957-b53358e6cbc2" displayName="Output_Assembly_Byte_2_Bit_2" signalType="input" signalAccessPath="2.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="EgAAAA=="/>
+			</Signal>
+			<Signal systemTag="f6029b6f-2557-4197-ae50-2ef98330f152" displayName="Output_Assembly_Byte_2_Bit_3" signalType="input" signalAccessPath="2.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="EwAAAA=="/>
+			</Signal>
+			<Signal systemTag="bb5a3393-efdf-45f4-823f-4d10541fa2f5" displayName="Output_Assembly_Byte_2_Bit_4" signalType="input" signalAccessPath="2.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="FAAAAA=="/>
+			</Signal>
+			<Signal systemTag="393bfcaf-5f2f-45f8-93eb-676c4ea526e6" displayName="Output_Assembly_Byte_2_Bit_5" signalType="input" signalAccessPath="2.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="FQAAAA=="/>
+			</Signal>
+			<Signal systemTag="4216cd51-ff06-459c-bd2b-19eeaf6ddf18" displayName="Output_Assembly_Byte_2_Bit_6" signalType="input" signalAccessPath="2.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="FgAAAA=="/>
+			</Signal>
+			<Signal systemTag="f5148222-fe06-4f7d-811c-8b39a1eef731" displayName="Output_Assembly_Byte_2_Bit_7" signalType="input" signalAccessPath="2.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="FwAAAA=="/>
+			</Signal>
+			<Signal systemTag="0843ff16-4db9-4119-ac93-36505ca36845" displayName="Output_Assembly_Byte_3_Bit_0" signalType="input" signalAccessPath="3.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="GAAAAA=="/>
+			</Signal>
+			<Signal systemTag="90cc3e97-068a-4e59-a900-24d53a222093" displayName="Output_Assembly_Byte_3_Bit_1" signalType="input" signalAccessPath="3.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="GQAAAA=="/>
+			</Signal>
+			<Signal systemTag="11cda1d8-dfda-4579-88d8-4313087d2e87" displayName="Output_Assembly_Byte_3_Bit_2" signalType="input" signalAccessPath="3.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="GgAAAA=="/>
+			</Signal>
+			<Signal systemTag="ffa11aec-7326-4ff7-b98e-571e134ce8fa" displayName="Output_Assembly_Byte_3_Bit_3" signalType="input" signalAccessPath="3.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="GwAAAA=="/>
+			</Signal>
+			<Signal systemTag="244f7711-cdd9-4c29-b83e-41b663ec061c" displayName="Output_Assembly_Byte_3_Bit_4" signalType="input" signalAccessPath="3.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="HAAAAA=="/>
+			</Signal>
+			<Signal systemTag="29ebd3b2-302b-4d05-bba4-268e239957fb" displayName="Output_Assembly_Byte_3_Bit_5" signalType="input" signalAccessPath="3.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="HQAAAA=="/>
+			</Signal>
+			<Signal systemTag="f172e95d-9bf1-4706-b63f-cf7b66bc9948" displayName="Output_Assembly_Byte_3_Bit_6" signalType="input" signalAccessPath="3.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="HgAAAA=="/>
+			</Signal>
+			<Signal systemTag="d3ccc1a5-c842-4c65-9bad-5130e4bea500" displayName="Output_Assembly_Byte_3_Bit_7" signalType="input" signalAccessPath="3.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="HwAAAA=="/>
+			</Signal>
+			<Signal systemTag="2df83a06-8975-4184-afac-f84bd1b520c9" displayName="Output_Assembly_Byte_4_Bit_0" signalType="input" signalAccessPath="4.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="IAAAAA=="/>
+			</Signal>
+			<Signal systemTag="96ea0f77-1c5f-4302-b7f5-fb74d410e418" displayName="Output_Assembly_Byte_4_Bit_1" signalType="input" signalAccessPath="4.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="IQAAAA=="/>
+			</Signal>
+			<Signal systemTag="16645940-f38f-40fd-8880-e7f34140b46d" displayName="Output_Assembly_Byte_4_Bit_2" signalType="input" signalAccessPath="4.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="IgAAAA=="/>
+			</Signal>
+			<Signal systemTag="ad13b8ed-dfe0-4091-b395-cc4688f3fe36" displayName="Output_Assembly_Byte_4_Bit_3" signalType="input" signalAccessPath="4.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="IwAAAA=="/>
+			</Signal>
+			<Signal systemTag="1a833c7e-98e6-46fc-9341-929b6ee9e28c" displayName="Output_Assembly_Byte_4_Bit_4" signalType="input" signalAccessPath="4.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="JAAAAA=="/>
+			</Signal>
+			<Signal systemTag="15e54823-9140-4f79-aa72-fa96ee1eb879" displayName="Output_Assembly_Byte_4_Bit_5" signalType="input" signalAccessPath="4.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="JQAAAA=="/>
+			</Signal>
+			<Signal systemTag="6c6f5daa-d046-4152-aed6-7f3d1ce6da85" displayName="Output_Assembly_Byte_4_Bit_6" signalType="input" signalAccessPath="4.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="JgAAAA=="/>
+			</Signal>
+			<Signal systemTag="949ceb78-d6db-4256-9486-99f89c30a909" displayName="Output_Assembly_Byte_4_Bit_7" signalType="input" signalAccessPath="4.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="JwAAAA=="/>
+			</Signal>
+			<Signal systemTag="e4225964-d465-4bce-aa9b-054767a18fc1" displayName="Output_Assembly_Byte_5_Bit_0" signalType="input" signalAccessPath="5.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="KAAAAA=="/>
+			</Signal>
+			<Signal systemTag="d23736e4-b794-4647-b328-31b7eae4a199" displayName="Output_Assembly_Byte_5_Bit_1" signalType="input" signalAccessPath="5.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="KQAAAA=="/>
+			</Signal>
+			<Signal systemTag="c3042d12-55d2-48a2-b20a-6eb239a6a76b" displayName="Output_Assembly_Byte_5_Bit_2" signalType="input" signalAccessPath="5.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="KgAAAA=="/>
+			</Signal>
+			<Signal systemTag="6e8ba256-6c18-4e66-9e0d-d0dd498dafb6" displayName="Output_Assembly_Byte_5_Bit_3" signalType="input" signalAccessPath="5.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="KwAAAA=="/>
+			</Signal>
+			<Signal systemTag="f4cb5fdf-95ef-4191-91a1-91419bab4fe2" displayName="Output_Assembly_Byte_5_Bit_4" signalType="input" signalAccessPath="5.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="LAAAAA=="/>
+			</Signal>
+			<Signal systemTag="73a4c635-19f2-4ec7-a7e0-ca12a590d4f2" displayName="Output_Assembly_Byte_5_Bit_5" signalType="input" signalAccessPath="5.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="LQAAAA=="/>
+			</Signal>
+			<Signal systemTag="8a351300-161a-412d-9817-1c488887a741" displayName="Output_Assembly_Byte_5_Bit_6" signalType="input" signalAccessPath="5.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="LgAAAA=="/>
+			</Signal>
+			<Signal systemTag="98b05af5-c68c-4699-be99-21d79b0a7f7e" displayName="Output_Assembly_Byte_5_Bit_7" signalType="input" signalAccessPath="5.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="LwAAAA=="/>
+			</Signal>
+			<Signal systemTag="d84f7616-4ded-415c-87d4-3657d982899d" displayName="Output_Assembly_Byte_6_Bit_0" signalType="input" signalAccessPath="6.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="MAAAAA=="/>
+			</Signal>
+			<Signal systemTag="1179fdc5-b752-4c81-8291-6b44879f3a7f" displayName="Output_Assembly_Byte_6_Bit_1" signalType="input" signalAccessPath="6.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="MQAAAA=="/>
+			</Signal>
+			<Signal systemTag="ad7e58d1-358f-4f62-bce9-9a5691ef5233" displayName="Output_Assembly_Byte_6_Bit_2" signalType="input" signalAccessPath="6.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="MgAAAA=="/>
+			</Signal>
+			<Signal systemTag="10b36702-f431-4f45-a61d-e79a51b54858" displayName="Output_Assembly_Byte_6_Bit_3" signalType="input" signalAccessPath="6.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="MwAAAA=="/>
+			</Signal>
+			<Signal systemTag="b98696f8-047c-45e6-a101-d451ae33240a" displayName="Output_Assembly_Byte_6_Bit_4" signalType="input" signalAccessPath="6.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="NAAAAA=="/>
+			</Signal>
+			<Signal systemTag="707f3c01-90c3-4d7e-bdac-50fe1a01329f" displayName="Output_Assembly_Byte_6_Bit_5" signalType="input" signalAccessPath="6.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="NQAAAA=="/>
+			</Signal>
+			<Signal systemTag="fb13e5fb-93ad-4a8f-8bf9-eb51b0dd80b7" displayName="Output_Assembly_Byte_6_Bit_6" signalType="input" signalAccessPath="6.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="NgAAAA=="/>
+			</Signal>
+			<Signal systemTag="c0129e8c-12bc-4e91-85f3-b0750a51b0b2" displayName="Output_Assembly_Byte_6_Bit_7" signalType="input" signalAccessPath="6.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="NwAAAA=="/>
+			</Signal>
+			<Signal systemTag="81057c0d-7bb3-4abc-8398-18cf49036302" displayName="Output_Assembly_Byte_7_Bit_0" signalType="input" signalAccessPath="7.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="OAAAAA=="/>
+			</Signal>
+			<Signal systemTag="d246f026-7cd6-496f-9ab3-672f7d1c0f68" displayName="Output_Assembly_Byte_7_Bit_1" signalType="input" signalAccessPath="7.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="OQAAAA=="/>
+			</Signal>
+			<Signal systemTag="86c20e50-b6f4-4096-9fc7-63de82fc51a0" displayName="Output_Assembly_Byte_7_Bit_2" signalType="input" signalAccessPath="7.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="OgAAAA=="/>
+			</Signal>
+			<Signal systemTag="537dca3d-846d-41e2-a4ec-db223a8725f2" displayName="Output_Assembly_Byte_7_Bit_3" signalType="input" signalAccessPath="7.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="OwAAAA=="/>
+			</Signal>
+			<Signal systemTag="a0907efe-33cf-478a-b1b3-fc4bac7437d3" displayName="Output_Assembly_Byte_7_Bit_4" signalType="input" signalAccessPath="7.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="PAAAAA=="/>
+			</Signal>
+			<Signal systemTag="68fc924f-b8de-4568-857e-ecdd2301dbb9" displayName="Output_Assembly_Byte_7_Bit_5" signalType="input" signalAccessPath="7.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="PQAAAA=="/>
+			</Signal>
+			<Signal systemTag="75547d6a-578d-49e1-b6ae-6b4fef12e4fb" displayName="Output_Assembly_Byte_7_Bit_6" signalType="input" signalAccessPath="7.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="PgAAAA=="/>
+			</Signal>
+			<Signal systemTag="b5f842e6-ea2c-4d6b-8c92-6d8be9ebfc62" displayName="Output_Assembly_Byte_7_Bit_7" signalType="input" signalAccessPath="7.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="PwAAAA=="/>
+			</Signal>
+			<Signal systemTag="edd73bf2-1f7b-4b49-a3ec-53418b74a1bd" displayName="Output_Assembly_Byte_8_Bit_0" signalType="input" signalAccessPath="8.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="QAAAAA=="/>
+			</Signal>
+			<Signal systemTag="3a5a775e-bc49-4a5f-b95f-6a4cf1efc1bf" displayName="Output_Assembly_Byte_8_Bit_1" signalType="input" signalAccessPath="8.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="QQAAAA=="/>
+			</Signal>
+			<Signal systemTag="65da47e7-b67e-4275-9970-69a449ad40c7" displayName="Output_Assembly_Byte_8_Bit_2" signalType="input" signalAccessPath="8.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="QgAAAA=="/>
+			</Signal>
+			<Signal systemTag="63cbd0e2-7bfa-4175-8c82-4589175b2211" displayName="Output_Assembly_Byte_8_Bit_3" signalType="input" signalAccessPath="8.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="QwAAAA=="/>
+			</Signal>
+			<Signal systemTag="11b97987-b5fb-4a87-b462-32c1715df63b" displayName="Output_Assembly_Byte_8_Bit_4" signalType="input" signalAccessPath="8.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="RAAAAA=="/>
+			</Signal>
+			<Signal systemTag="ec5a2731-042f-4f52-ac9a-635e52a0154c" displayName="Output_Assembly_Byte_8_Bit_5" signalType="input" signalAccessPath="8.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="RQAAAA=="/>
+			</Signal>
+			<Signal systemTag="ff3be0b3-5db2-499d-9861-98c9ce17e2fd" displayName="Output_Assembly_Byte_8_Bit_6" signalType="input" signalAccessPath="8.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="RgAAAA=="/>
+			</Signal>
+			<Signal systemTag="2f5f81d6-af44-41fa-93a9-628c7b40303d" displayName="Output_Assembly_Byte_8_Bit_7" signalType="input" signalAccessPath="8.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="RwAAAA=="/>
+			</Signal>
+			<Signal systemTag="ca433e3a-315c-4b2b-890c-c4908f54a25d" displayName="Output_Assembly_Byte_9_Bit_0" signalType="input" signalAccessPath="9.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="SAAAAA=="/>
+			</Signal>
+			<Signal systemTag="e404c448-d9d4-4537-ad5a-bcbd3be015a7" displayName="Output_Assembly_Byte_9_Bit_1" signalType="input" signalAccessPath="9.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="SQAAAA=="/>
+			</Signal>
+			<Signal systemTag="ee6120b8-1369-4770-8794-da34d19ad3f3" displayName="Output_Assembly_Byte_9_Bit_2" signalType="input" signalAccessPath="9.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="SgAAAA=="/>
+			</Signal>
+			<Signal systemTag="c3715c3f-5183-4d70-9ac7-9d413b3a2824" displayName="Output_Assembly_Byte_9_Bit_3" signalType="input" signalAccessPath="9.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="SwAAAA=="/>
+			</Signal>
+			<Signal systemTag="25135875-1cdf-40b4-b9eb-a46c93fd9447" displayName="Output_Assembly_Byte_9_Bit_4" signalType="input" signalAccessPath="9.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="TAAAAA=="/>
+			</Signal>
+			<Signal systemTag="05491587-57d6-4e92-82bf-126535624519" displayName="Output_Assembly_Byte_9_Bit_5" signalType="input" signalAccessPath="9.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="TQAAAA=="/>
+			</Signal>
+			<Signal systemTag="1504d793-348a-4263-bd2f-ce6a6dcf5c15" displayName="Output_Assembly_Byte_9_Bit_6" signalType="input" signalAccessPath="9.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="TgAAAA=="/>
+			</Signal>
+			<Signal systemTag="7b61137e-e25d-4905-8c9a-019cf70de44a" displayName="Output_Assembly_Byte_9_Bit_7" signalType="input" signalAccessPath="9.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="TwAAAA=="/>
+			</Signal>
+			<Signal systemTag="f3e59718-7667-494f-b7d9-515297170738" displayName="Output_Assembly_Byte_10_Bit_0" signalType="input" signalAccessPath="10.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="UAAAAA=="/>
+			</Signal>
+			<Signal systemTag="dea2bf8e-37c4-47b2-9637-d9b60d7a1c1b" displayName="Output_Assembly_Byte_10_Bit_1" signalType="input" signalAccessPath="10.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="UQAAAA=="/>
+			</Signal>
+			<Signal systemTag="dff4141a-2680-4520-a7d0-ff9d9768efff" displayName="Output_Assembly_Byte_10_Bit_2" signalType="input" signalAccessPath="10.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="UgAAAA=="/>
+			</Signal>
+			<Signal systemTag="1beca27d-138e-499f-ba29-bed2080b5b20" displayName="Output_Assembly_Byte_10_Bit_3" signalType="input" signalAccessPath="10.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="UwAAAA=="/>
+			</Signal>
+			<Signal systemTag="f92ee08c-70cc-45b7-b170-90365ef43ac9" displayName="Output_Assembly_Byte_10_Bit_4" signalType="input" signalAccessPath="10.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="VAAAAA=="/>
+			</Signal>
+			<Signal systemTag="3af6dd8b-dc3d-4c3f-83e9-d1f86360df9c" displayName="Output_Assembly_Byte_10_Bit_5" signalType="input" signalAccessPath="10.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="VQAAAA=="/>
+			</Signal>
+			<Signal systemTag="22b00dad-ba96-4e80-b302-83c277464725" displayName="Output_Assembly_Byte_10_Bit_6" signalType="input" signalAccessPath="10.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="VgAAAA=="/>
+			</Signal>
+			<Signal systemTag="81fa4766-52ee-470c-b4f8-6888a4ade9bf" displayName="Output_Assembly_Byte_10_Bit_7" signalType="input" signalAccessPath="10.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="VwAAAA=="/>
+			</Signal>
+			<Signal systemTag="7531c1f2-4c52-4667-ac5e-0d3db0e132db" displayName="Output_Assembly_Byte_11_Bit_0" signalType="input" signalAccessPath="11.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="WAAAAA=="/>
+			</Signal>
+			<Signal systemTag="395212e0-f7bd-43eb-9cea-f0c02b9fe54a" displayName="Output_Assembly_Byte_11_Bit_1" signalType="input" signalAccessPath="11.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="WQAAAA=="/>
+			</Signal>
+			<Signal systemTag="cad98f99-b4c6-4495-b42d-73428c1ddf85" displayName="Output_Assembly_Byte_11_Bit_2" signalType="input" signalAccessPath="11.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="WgAAAA=="/>
+			</Signal>
+			<Signal systemTag="de7eac9d-7e6e-4668-9beb-6d01512d8955" displayName="Output_Assembly_Byte_11_Bit_3" signalType="input" signalAccessPath="11.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="WwAAAA=="/>
+			</Signal>
+			<Signal systemTag="dfadc445-3ae4-4c92-ab08-526879be2682" displayName="Output_Assembly_Byte_11_Bit_4" signalType="input" signalAccessPath="11.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="XAAAAA=="/>
+			</Signal>
+			<Signal systemTag="dd05d940-9f29-4589-acb1-62662b339431" displayName="Output_Assembly_Byte_11_Bit_5" signalType="input" signalAccessPath="11.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="XQAAAA=="/>
+			</Signal>
+			<Signal systemTag="f749f4b1-dbd6-4315-9221-30d72dcdfd99" displayName="Output_Assembly_Byte_11_Bit_6" signalType="input" signalAccessPath="11.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="XgAAAA=="/>
+			</Signal>
+			<Signal systemTag="bb98e590-461c-4b3d-a167-6090855d3291" displayName="Output_Assembly_Byte_11_Bit_7" signalType="input" signalAccessPath="11.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="XwAAAA=="/>
+			</Signal>
+			<Signal systemTag="f37e9c4c-5dfe-46f0-968f-5e5dc674f56b" displayName="Output_Assembly_Byte_12_Bit_0" signalType="input" signalAccessPath="12.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="YAAAAA=="/>
+			</Signal>
+			<Signal systemTag="a451f556-222f-47f9-a61e-bd2887d4bf02" displayName="Output_Assembly_Byte_12_Bit_1" signalType="input" signalAccessPath="12.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="YQAAAA=="/>
+			</Signal>
+			<Signal systemTag="ee08262c-18ea-4ae9-9ce9-ffefe1bf71f6" displayName="Output_Assembly_Byte_12_Bit_2" signalType="input" signalAccessPath="12.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="YgAAAA=="/>
+			</Signal>
+			<Signal systemTag="d861f277-4da9-44cb-9e04-08f7e3547b42" displayName="Output_Assembly_Byte_12_Bit_3" signalType="input" signalAccessPath="12.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="YwAAAA=="/>
+			</Signal>
+			<Signal systemTag="017a3298-eb0c-46b6-b72b-8f27414fc73e" displayName="Output_Assembly_Byte_12_Bit_4" signalType="input" signalAccessPath="12.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="ZAAAAA=="/>
+			</Signal>
+			<Signal systemTag="c728955b-7fb3-47b8-a4b9-89c9eb470217" displayName="Output_Assembly_Byte_12_Bit_5" signalType="input" signalAccessPath="12.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="ZQAAAA=="/>
+			</Signal>
+			<Signal systemTag="4e684c7e-bac6-4e6d-bfa9-bf4093fe9f2c" displayName="Output_Assembly_Byte_12_Bit_6" signalType="input" signalAccessPath="12.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="ZgAAAA=="/>
+			</Signal>
+			<Signal systemTag="6fe3eb9a-0a6c-4334-83dd-3ff0f286158e" displayName="Output_Assembly_Byte_12_Bit_7" signalType="input" signalAccessPath="12.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="ZwAAAA=="/>
+			</Signal>
+			<Signal systemTag="d2ac42d6-b2f5-4ef0-beb6-e7b36b2365e0" displayName="Output_Assembly_Byte_13_Bit_0" signalType="input" signalAccessPath="13.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="aAAAAA=="/>
+			</Signal>
+			<Signal systemTag="db05df79-fd83-45ce-9839-d202fbe9f64b" displayName="Output_Assembly_Byte_13_Bit_1" signalType="input" signalAccessPath="13.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="aQAAAA=="/>
+			</Signal>
+			<Signal systemTag="378d5c53-f757-41b0-96bb-c9fbec882ea1" displayName="Output_Assembly_Byte_13_Bit_2" signalType="input" signalAccessPath="13.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="agAAAA=="/>
+			</Signal>
+			<Signal systemTag="ba07c6b4-2029-4463-95da-924ae356640d" displayName="Output_Assembly_Byte_13_Bit_3" signalType="input" signalAccessPath="13.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="awAAAA=="/>
+			</Signal>
+			<Signal systemTag="ee888b73-78b4-4555-9491-ca9394412686" displayName="Output_Assembly_Byte_13_Bit_4" signalType="input" signalAccessPath="13.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="bAAAAA=="/>
+			</Signal>
+			<Signal systemTag="3ca941ea-16e1-4979-a591-027f4b7682ba" displayName="Output_Assembly_Byte_13_Bit_5" signalType="input" signalAccessPath="13.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="bQAAAA=="/>
+			</Signal>
+			<Signal systemTag="93419b28-a3e9-4007-8757-6498cc439927" displayName="Output_Assembly_Byte_13_Bit_6" signalType="input" signalAccessPath="13.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="bgAAAA=="/>
+			</Signal>
+			<Signal systemTag="2cbd069a-2a2e-4ef0-a0cf-8f93cce98137" displayName="Output_Assembly_Byte_13_Bit_7" signalType="input" signalAccessPath="13.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="bwAAAA=="/>
+			</Signal>
+			<Signal systemTag="e067dbff-350b-4cd9-94c2-59896d65a504" displayName="Output_Assembly_Byte_14_Bit_0" signalType="input" signalAccessPath="14.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="cAAAAA=="/>
+			</Signal>
+			<Signal systemTag="b6a588e8-5f8a-45fa-8c05-1b24245eb1ce" displayName="Output_Assembly_Byte_14_Bit_1" signalType="input" signalAccessPath="14.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="cQAAAA=="/>
+			</Signal>
+			<Signal systemTag="9a021ab8-daf7-4af0-bdb3-7c27d85062d2" displayName="Output_Assembly_Byte_14_Bit_2" signalType="input" signalAccessPath="14.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="cgAAAA=="/>
+			</Signal>
+			<Signal systemTag="1bc6c3f5-fb67-48c0-952d-10d45e53d363" displayName="Output_Assembly_Byte_14_Bit_3" signalType="input" signalAccessPath="14.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="cwAAAA=="/>
+			</Signal>
+			<Signal systemTag="e1452c13-777b-4179-a0ba-f05311078ac1" displayName="Output_Assembly_Byte_14_Bit_4" signalType="input" signalAccessPath="14.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="dAAAAA=="/>
+			</Signal>
+			<Signal systemTag="80dd9571-1aa8-4035-85b0-921f82fc8967" displayName="Output_Assembly_Byte_14_Bit_5" signalType="input" signalAccessPath="14.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="dQAAAA=="/>
+			</Signal>
+			<Signal systemTag="7dec2b02-2f21-4d47-a951-372b58ca4bf1" displayName="Output_Assembly_Byte_14_Bit_6" signalType="input" signalAccessPath="14.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="dgAAAA=="/>
+			</Signal>
+			<Signal systemTag="acb75252-4956-4ec7-9433-234e02ada4c5" displayName="Output_Assembly_Byte_14_Bit_7" signalType="input" signalAccessPath="14.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="dwAAAA=="/>
+			</Signal>
+			<Signal systemTag="13fcf1c7-5fc4-4c6b-94c2-198c1e3c39a8" displayName="Output_Assembly_Byte_15_Bit_0" signalType="input" signalAccessPath="15.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="eAAAAA=="/>
+			</Signal>
+			<Signal systemTag="810a65b6-111e-462b-aab8-6f194c266bd8" displayName="Output_Assembly_Byte_15_Bit_1" signalType="input" signalAccessPath="15.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="eQAAAA=="/>
+			</Signal>
+			<Signal systemTag="2e3d8137-dd50-4785-8f97-6d6720b732f7" displayName="Output_Assembly_Byte_15_Bit_2" signalType="input" signalAccessPath="15.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="egAAAA=="/>
+			</Signal>
+			<Signal systemTag="19458049-7823-4ddb-ae4c-9e5da2b5b0c1" displayName="Output_Assembly_Byte_15_Bit_3" signalType="input" signalAccessPath="15.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="ewAAAA=="/>
+			</Signal>
+			<Signal systemTag="b5eb92e4-4557-4986-9ced-841a2838195f" displayName="Output_Assembly_Byte_15_Bit_4" signalType="input" signalAccessPath="15.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="fAAAAA=="/>
+			</Signal>
+			<Signal systemTag="ca19b92b-aa93-42d5-a02d-349405bf0295" displayName="Output_Assembly_Byte_15_Bit_5" signalType="input" signalAccessPath="15.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="fQAAAA=="/>
+			</Signal>
+			<Signal systemTag="46d2b9fb-aaec-4d04-94ec-253012bb0ebb" displayName="Output_Assembly_Byte_15_Bit_6" signalType="input" signalAccessPath="15.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="fgAAAA=="/>
+			</Signal>
+			<Signal systemTag="14ce4af2-cf49-4992-ba9a-6be8d2c8bca3" displayName="Output_Assembly_Byte_15_Bit_7" signalType="input" signalAccessPath="15.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="fwAAAA=="/>
+			</Signal>
+			<Signal systemTag="7cb9a78e-8f28-4e15-9e82-20bd10f85e84" displayName="Output_Assembly_Byte_16_Byte_0" signalType="input" signalAccessPath="16" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="gAAAAA=="/>
+			</Signal>
+			<Signal systemTag="1285a62e-2a0f-41b0-ac29-4ee14c4f358f" displayName="Output_Assembly_Byte_16_Byte_2" signalType="input" signalAccessPath="18" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="kAAAAA=="/>
+			</Signal>
+			<Signal systemTag="201a8ff3-fb24-4178-935d-5bbae2162cab" displayName="Output_Assembly_Byte_16_Byte_4" signalType="input" signalAccessPath="20" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="oAAAAA=="/>
+			</Signal>
+			<Signal systemTag="d7de7b7f-99d9-4aba-8763-66fdf7b18087" displayName="Output_Assembly_Byte_16_Byte_6" signalType="input" signalAccessPath="22" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="sAAAAA=="/>
+			</Signal>
+			<Signal systemTag="2ecdf257-5058-42ab-b82a-2b731b5ae083" displayName="Output_Assembly_Byte_16_Byte_8" signalType="input" signalAccessPath="24" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="wAAAAA=="/>
+			</Signal>
+			<Signal systemTag="a5b83aed-1f47-4122-b9aa-81d98ccea854" displayName="Output_Assembly_Byte_16_Byte_10" signalType="input" signalAccessPath="26" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="0AAAAA=="/>
+			</Signal>
+			<Signal systemTag="c0c810d9-f3c9-4111-87b4-bd015241bb6d" displayName="Output_Assembly_Byte_16_Byte_12" signalType="input" signalAccessPath="28" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="4AAAAA=="/>
+			</Signal>
+			<Signal systemTag="68691319-b7bf-4bdb-9295-c9394c3f4370" displayName="Output_Assembly_Byte_16_Byte_14" signalType="input" signalAccessPath="30" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="8AAAAA=="/>
+			</Signal>
+			<Signal systemTag="ae363cd8-93fe-4ace-b355-d724f349e8cd" displayName="Output_Assembly_Byte_32_Byte_0" signalType="input" signalAccessPath="32" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="AAEAAA=="/>
+			</Signal>
+			<Signal systemTag="0e1c664e-9947-49eb-916b-f8124bd842b1" displayName="Output_Assembly_Byte_32_Byte_2" signalType="input" signalAccessPath="34" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="EAEAAA=="/>
+			</Signal>
+			<Signal systemTag="2d3d34f3-8472-41b9-aa3f-d8922ca5365f" displayName="Output_Assembly_Byte_32_Byte_4" signalType="input" signalAccessPath="36" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="IAEAAA=="/>
+			</Signal>
+			<Signal systemTag="5cdaba46-c71d-445c-adeb-64d8b0a4aea8" displayName="Output_Assembly_Byte_32_Byte_6" signalType="input" signalAccessPath="38" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="MAEAAA=="/>
+			</Signal>
+			<Signal systemTag="0c2c2120-4387-495d-85b4-e77833e1d8ce" displayName="Output_Assembly_Byte_32_Byte_8" signalType="input" signalAccessPath="40" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="QAEAAA=="/>
+			</Signal>
+			<Signal systemTag="cb2de777-434c-49bc-a4b7-e8dc286b585f" displayName="Output_Assembly_Byte_32_Byte_10" signalType="input" signalAccessPath="42" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="UAEAAA=="/>
+			</Signal>
+			<Signal systemTag="9b68dd0c-4abc-4ff4-8c7f-5cf4bd757eba" displayName="Output_Assembly_Byte_32_Byte_12" signalType="input" signalAccessPath="44" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="YAEAAA=="/>
+			</Signal>
+			<Signal systemTag="95bfb59a-c9c9-47e7-9811-92ee81a82e83" displayName="Output_Assembly_Byte_32_Byte_14" signalType="input" signalAccessPath="46" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="cAEAAA=="/>
+			</Signal>
+			<Signal systemTag="fccbba04-f660-4a4c-9986-578e30bd5bcd" displayName="Output_Assembly_Byte_32_Byte_16" signalType="input" signalAccessPath="48" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="gAEAAA=="/>
+			</Signal>
+			<Signal systemTag="cf6cae15-36b5-4daa-90d4-9895f458f5ee" displayName="Output_Assembly_Byte_32_Byte_18" signalType="input" signalAccessPath="50" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="kAEAAA=="/>
+			</Signal>
+			<Signal systemTag="684523ae-c78c-4050-b288-0bab8acec4da" displayName="Output_Assembly_Byte_32_Byte_20" signalType="input" signalAccessPath="52" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="oAEAAA=="/>
+			</Signal>
+			<Signal systemTag="d1701154-5dee-4dc7-b2ac-50591f4bcef9" displayName="Output_Assembly_Byte_32_Byte_22" signalType="input" signalAccessPath="54" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="sAEAAA=="/>
+			</Signal>
+			<Signal systemTag="fcc44b9d-6164-4ead-8951-aa3c1b9d9d93" displayName="Output_Assembly_Byte_32_Byte_24" signalType="input" signalAccessPath="56" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="wAEAAA=="/>
+			</Signal>
+			<Signal systemTag="2a1c0f2b-fac4-45eb-9f68-36f5119c1485" displayName="Output_Assembly_Byte_32_Byte_26" signalType="input" signalAccessPath="58" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="0AEAAA=="/>
+			</Signal>
+			<Signal systemTag="6fe0b14f-4669-4f9b-afa9-146958307cba" displayName="Output_Assembly_Byte_32_Byte_28" signalType="input" signalAccessPath="60" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="4AEAAA=="/>
+			</Signal>
+			<Signal systemTag="6c3f69f5-8c7e-4cc9-a2b5-f2b2861a1c24" displayName="Output_Assembly_Byte_32_Byte_30" signalType="input" signalAccessPath="62" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="8AEAAA=="/>
+			</Signal>
+			<Signal systemTag="f062c7b3-2b48-41b5-a355-dcce70941d72" displayName="Input_Assembly_Byte_0_Bit_0" signalType="output" signalAccessPath="0.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="AAAAAA=="/>
+			</Signal>
+			<Signal systemTag="5478378d-fb48-4470-9af9-60c7f53f1590" displayName="Input_Assembly_Byte_0_Bit_1" signalType="output" signalAccessPath="0.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="AQAAAA=="/>
+			</Signal>
+			<Signal systemTag="7b65177a-eac2-4735-94fe-092ba24426a1" displayName="Input_Assembly_Byte_0_Bit_2" signalType="output" signalAccessPath="0.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="AgAAAA=="/>
+			</Signal>
+			<Signal systemTag="2834db08-285f-48fa-b399-c8cfe10b8a88" displayName="Input_Assembly_Byte_0_Bit_3" signalType="output" signalAccessPath="0.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="AwAAAA=="/>
+			</Signal>
+			<Signal systemTag="3bbf1808-f31b-4e05-b0b0-18311fe98722" displayName="Input_Assembly_Byte_0_Bit_4" signalType="output" signalAccessPath="0.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="BAAAAA=="/>
+			</Signal>
+			<Signal systemTag="cb877fc6-1f3e-43cb-afc0-26863ed951f4" displayName="Input_Assembly_Byte_0_Bit_5" signalType="output" signalAccessPath="0.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="BQAAAA=="/>
+			</Signal>
+			<Signal systemTag="7421e3c4-fa47-4c90-87b9-042d7eff439c" displayName="Input_Assembly_Byte_0_Bit_6" signalType="output" signalAccessPath="0.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="BgAAAA=="/>
+			</Signal>
+			<Signal systemTag="a6a67aa5-a9b2-4d03-bd7c-16c2a66a2754" displayName="Input_Assembly_Byte_0_Bit_7" signalType="output" signalAccessPath="0.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="BwAAAA=="/>
+			</Signal>
+			<Signal systemTag="f2221c46-04cd-4bf7-90b2-9565f7529564" displayName="Input_Assembly_Byte_1_Bit_0" signalType="output" signalAccessPath="1.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="CAAAAA=="/>
+			</Signal>
+			<Signal systemTag="a6a13482-aa5a-489c-b1b1-ec5d317ca717" displayName="Input_Assembly_Byte_1_Bit_1" signalType="output" signalAccessPath="1.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="CQAAAA=="/>
+			</Signal>
+			<Signal systemTag="686ecf88-e162-4cf2-b9cb-de29defe73c2" displayName="Input_Assembly_Byte_1_Bit_2" signalType="output" signalAccessPath="1.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="CgAAAA=="/>
+			</Signal>
+			<Signal systemTag="ad49a3f3-b99e-45c8-a374-f99898e5792e" displayName="Input_Assembly_Byte_1_Bit_3" signalType="output" signalAccessPath="1.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="CwAAAA=="/>
+			</Signal>
+			<Signal systemTag="f92d689f-8cf3-4627-93df-7140fb05901b" displayName="Input_Assembly_Byte_1_Bit_4" signalType="output" signalAccessPath="1.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="DAAAAA=="/>
+			</Signal>
+			<Signal systemTag="935b2510-0a24-4ba7-a4b5-57019fe00231" displayName="Input_Assembly_Byte_1_Bit_5" signalType="output" signalAccessPath="1.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="DQAAAA=="/>
+			</Signal>
+			<Signal systemTag="0ff0fb8a-c3ff-4b6d-afb4-343b2072afdb" displayName="Input_Assembly_Byte_1_Bit_6" signalType="output" signalAccessPath="1.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="DgAAAA=="/>
+			</Signal>
+			<Signal systemTag="397ee789-4550-4522-bfc5-9d1f708e8eab" displayName="Input_Assembly_Byte_1_Bit_7" signalType="output" signalAccessPath="1.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="DwAAAA=="/>
+			</Signal>
+			<Signal systemTag="02493021-7720-4c7b-a68d-7dd956371c03" displayName="Input_Assembly_Byte_2_Bit_0" signalType="output" signalAccessPath="2.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="EAAAAA=="/>
+			</Signal>
+			<Signal systemTag="decfd3cc-0ff9-4aa2-aff9-ae05c0a8beeb" displayName="Input_Assembly_Byte_2_Bit_1" signalType="output" signalAccessPath="2.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="EQAAAA=="/>
+			</Signal>
+			<Signal systemTag="d584941b-c713-4c90-8c94-b56e278b5269" displayName="Input_Assembly_Byte_2_Bit_2" signalType="output" signalAccessPath="2.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="EgAAAA=="/>
+			</Signal>
+			<Signal systemTag="c2fc7ce5-dde8-43dd-84a0-3a1fbcbfea23" displayName="Input_Assembly_Byte_2_Bit_3" signalType="output" signalAccessPath="2.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="EwAAAA=="/>
+			</Signal>
+			<Signal systemTag="31370fca-96f3-43ea-995b-021e387729df" displayName="Input_Assembly_Byte_2_Bit_4" signalType="output" signalAccessPath="2.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="FAAAAA=="/>
+			</Signal>
+			<Signal systemTag="a540542d-933e-421f-b2f5-a348c1fb2817" displayName="Input_Assembly_Byte_2_Bit_5" signalType="output" signalAccessPath="2.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="FQAAAA=="/>
+			</Signal>
+			<Signal systemTag="3ecb850b-cf5b-4aa8-9604-638ece65a0c0" displayName="Input_Assembly_Byte_2_Bit_6" signalType="output" signalAccessPath="2.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="FgAAAA=="/>
+			</Signal>
+			<Signal systemTag="c21046cc-72d6-40c5-a32c-68af6e7ce5a4" displayName="Input_Assembly_Byte_2_Bit_7" signalType="output" signalAccessPath="2.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="FwAAAA=="/>
+			</Signal>
+			<Signal systemTag="57736c45-4ba8-4d7b-8a10-88b844a2b350" displayName="Input_Assembly_Byte_3_Bit_0" signalType="output" signalAccessPath="3.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="GAAAAA=="/>
+			</Signal>
+			<Signal systemTag="c90648e1-439e-472b-bec8-c9c8734bcb14" displayName="Input_Assembly_Byte_3_Bit_1" signalType="output" signalAccessPath="3.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="GQAAAA=="/>
+			</Signal>
+			<Signal systemTag="dcdf7f99-2e91-4545-af89-1dd4d28cba08" displayName="Input_Assembly_Byte_3_Bit_2" signalType="output" signalAccessPath="3.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="GgAAAA=="/>
+			</Signal>
+			<Signal systemTag="d05e2216-791d-4a2d-a68a-ac57011bdedc" displayName="Input_Assembly_Byte_3_Bit_3" signalType="output" signalAccessPath="3.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="GwAAAA=="/>
+			</Signal>
+			<Signal systemTag="02a3b671-4812-47b1-a946-f82fb9bbc652" displayName="Input_Assembly_Byte_3_Bit_4" signalType="output" signalAccessPath="3.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="HAAAAA=="/>
+			</Signal>
+			<Signal systemTag="12ca54cd-de50-4b4e-bfd5-66793ceaea91" displayName="Input_Assembly_Byte_3_Bit_5" signalType="output" signalAccessPath="3.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="HQAAAA=="/>
+			</Signal>
+			<Signal systemTag="2d43aa5b-4d56-46cc-9792-392fef1a0cde" displayName="Input_Assembly_Byte_3_Bit_6" signalType="output" signalAccessPath="3.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="HgAAAA=="/>
+			</Signal>
+			<Signal systemTag="a00334c6-8447-4517-848b-5c9000b73bdd" displayName="Input_Assembly_Byte_3_Bit_7" signalType="output" signalAccessPath="3.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="HwAAAA=="/>
+			</Signal>
+			<Signal systemTag="4e5407e1-0abf-43af-9c75-44cb003bba4f" displayName="Input_Assembly_Byte_4_Bit_0" signalType="output" signalAccessPath="4.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="IAAAAA=="/>
+			</Signal>
+			<Signal systemTag="7d09b236-1451-4d17-a10e-5b76a4787bb4" displayName="Input_Assembly_Byte_4_Bit_1" signalType="output" signalAccessPath="4.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="IQAAAA=="/>
+			</Signal>
+			<Signal systemTag="65d933b5-c72d-40e0-8a00-208cf69c0b0a" displayName="Input_Assembly_Byte_4_Bit_2" signalType="output" signalAccessPath="4.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="IgAAAA=="/>
+			</Signal>
+			<Signal systemTag="5dc52df8-84d4-44c3-b63f-a73ba9d6de36" displayName="Input_Assembly_Byte_4_Bit_3" signalType="output" signalAccessPath="4.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="IwAAAA=="/>
+			</Signal>
+			<Signal systemTag="ed03c41d-8503-4ae2-a466-09b660675aba" displayName="Input_Assembly_Byte_4_Bit_4" signalType="output" signalAccessPath="4.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="JAAAAA=="/>
+			</Signal>
+			<Signal systemTag="d5102a8a-8042-4bff-81fd-6f60a45c7d3f" displayName="Input_Assembly_Byte_4_Bit_5" signalType="output" signalAccessPath="4.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="JQAAAA=="/>
+			</Signal>
+			<Signal systemTag="45133c81-20a4-4247-bddd-aca82eee7330" displayName="Input_Assembly_Byte_4_Bit_6" signalType="output" signalAccessPath="4.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="JgAAAA=="/>
+			</Signal>
+			<Signal systemTag="06e147a5-a427-4b82-9680-0928d316c8df" displayName="Input_Assembly_Byte_4_Bit_7" signalType="output" signalAccessPath="4.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="JwAAAA=="/>
+			</Signal>
+			<Signal systemTag="a5c9912a-b5a9-472b-8963-96d773820492" displayName="Input_Assembly_Byte_5_Bit_0" signalType="output" signalAccessPath="5.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="KAAAAA=="/>
+			</Signal>
+			<Signal systemTag="3874f227-3d48-409e-adda-4d4a6fa66902" displayName="Input_Assembly_Byte_5_Bit_1" signalType="output" signalAccessPath="5.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="KQAAAA=="/>
+			</Signal>
+			<Signal systemTag="b158c256-53c7-4525-8bf1-77a5f853a47d" displayName="Input_Assembly_Byte_5_Bit_2" signalType="output" signalAccessPath="5.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="KgAAAA=="/>
+			</Signal>
+			<Signal systemTag="d9763220-a00e-4f52-a9d0-27919126a356" displayName="Input_Assembly_Byte_5_Bit_3" signalType="output" signalAccessPath="5.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="KwAAAA=="/>
+			</Signal>
+			<Signal systemTag="0a7666ba-974a-4e9c-b6bd-55cbee95caeb" displayName="Input_Assembly_Byte_5_Bit_4" signalType="output" signalAccessPath="5.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="LAAAAA=="/>
+			</Signal>
+			<Signal systemTag="834b08b1-3028-458c-9060-a1f8e5ee81db" displayName="Input_Assembly_Byte_5_Bit_5" signalType="output" signalAccessPath="5.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="LQAAAA=="/>
+			</Signal>
+			<Signal systemTag="ec58f25a-df5b-4db3-8bf1-2e48e5369be2" displayName="Input_Assembly_Byte_5_Bit_6" signalType="output" signalAccessPath="5.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="LgAAAA=="/>
+			</Signal>
+			<Signal systemTag="07b5e632-80c5-461e-b582-9abab6c39104" displayName="Input_Assembly_Byte_5_Bit_7" signalType="output" signalAccessPath="5.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="LwAAAA=="/>
+			</Signal>
+			<Signal systemTag="7893e601-5311-496d-8a23-10ffebb2cc87" displayName="Input_Assembly_Byte_6_Bit_0" signalType="output" signalAccessPath="6.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="MAAAAA=="/>
+			</Signal>
+			<Signal systemTag="741c55b0-a7e8-4b7e-af90-2746da0ec91a" displayName="Input_Assembly_Byte_6_Bit_1" signalType="output" signalAccessPath="6.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="MQAAAA=="/>
+			</Signal>
+			<Signal systemTag="95d52a2f-0165-454d-9c42-3fd3fd527900" displayName="Input_Assembly_Byte_6_Bit_2" signalType="output" signalAccessPath="6.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="MgAAAA=="/>
+			</Signal>
+			<Signal systemTag="ef667fc6-d774-421f-a04c-5d56c9c75e1b" displayName="Input_Assembly_Byte_6_Bit_3" signalType="output" signalAccessPath="6.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="MwAAAA=="/>
+			</Signal>
+			<Signal systemTag="84776a1c-0fb0-4bcf-b4dc-7c3bd27d8887" displayName="Input_Assembly_Byte_6_Bit_4" signalType="output" signalAccessPath="6.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="NAAAAA=="/>
+			</Signal>
+			<Signal systemTag="7f73fea3-ea74-4713-8b27-25fd16b4a74b" displayName="Input_Assembly_Byte_6_Bit_5" signalType="output" signalAccessPath="6.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="NQAAAA=="/>
+			</Signal>
+			<Signal systemTag="dbb44b15-b8e6-4715-8477-2d14873b7087" displayName="Input_Assembly_Byte_6_Bit_6" signalType="output" signalAccessPath="6.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="NgAAAA=="/>
+			</Signal>
+			<Signal systemTag="18561e51-4a1d-4b6a-9dd2-76aac07b57d7" displayName="Input_Assembly_Byte_6_Bit_7" signalType="output" signalAccessPath="6.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="NwAAAA=="/>
+			</Signal>
+			<Signal systemTag="31bc58e3-2b0c-4b83-ab9c-9a543f70ed8b" displayName="Input_Assembly_Byte_7_Bit_0" signalType="output" signalAccessPath="7.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="OAAAAA=="/>
+			</Signal>
+			<Signal systemTag="3c779999-243a-4459-b8e0-b2ccb612f566" displayName="Input_Assembly_Byte_7_Bit_1" signalType="output" signalAccessPath="7.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="OQAAAA=="/>
+			</Signal>
+			<Signal systemTag="f077e49c-4aa4-416f-9791-a74f5f5ae317" displayName="Input_Assembly_Byte_7_Bit_2" signalType="output" signalAccessPath="7.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="OgAAAA=="/>
+			</Signal>
+			<Signal systemTag="47f1f871-7b6e-4e4f-81c2-c16997311f9b" displayName="Input_Assembly_Byte_7_Bit_3" signalType="output" signalAccessPath="7.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="OwAAAA=="/>
+			</Signal>
+			<Signal systemTag="afa03a36-2d04-456c-a4fe-bf39f5c49c02" displayName="Input_Assembly_Byte_7_Bit_4" signalType="output" signalAccessPath="7.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="PAAAAA=="/>
+			</Signal>
+			<Signal systemTag="9c7be7d2-3c92-482b-9d8a-ce858b3a4620" displayName="Input_Assembly_Byte_7_Bit_5" signalType="output" signalAccessPath="7.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="PQAAAA=="/>
+			</Signal>
+			<Signal systemTag="4213f8a8-916d-40dd-9b96-9e7e2061f2af" displayName="Input_Assembly_Byte_7_Bit_6" signalType="output" signalAccessPath="7.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="PgAAAA=="/>
+			</Signal>
+			<Signal systemTag="7812ba2d-41da-4836-bc0c-90d357ac1939" displayName="Input_Assembly_Byte_7_Bit_7" signalType="output" signalAccessPath="7.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="PwAAAA=="/>
+			</Signal>
+			<Signal systemTag="c92d553e-9b5f-4195-b538-50040daba819" displayName="Input_Assembly_Byte_8_Bit_0" signalType="output" signalAccessPath="8.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="QAAAAA=="/>
+			</Signal>
+			<Signal systemTag="eebe1382-c7fe-4839-ad59-481468b49f3e" displayName="Input_Assembly_Byte_8_Bit_1" signalType="output" signalAccessPath="8.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="QQAAAA=="/>
+			</Signal>
+			<Signal systemTag="9bde3e3d-2813-4301-bdb9-087c20cb016e" displayName="Input_Assembly_Byte_8_Bit_2" signalType="output" signalAccessPath="8.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="QgAAAA=="/>
+			</Signal>
+			<Signal systemTag="7f4b6e65-3b63-4786-93ca-c7ec9ecde6a2" displayName="Input_Assembly_Byte_8_Bit_3" signalType="output" signalAccessPath="8.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="QwAAAA=="/>
+			</Signal>
+			<Signal systemTag="4c7a4a86-a3b7-41fc-9b0e-d03c80b3b235" displayName="Input_Assembly_Byte_8_Bit_4" signalType="output" signalAccessPath="8.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="RAAAAA=="/>
+			</Signal>
+			<Signal systemTag="0b57530a-c300-44fe-83d4-3f2339671b76" displayName="Input_Assembly_Byte_8_Bit_5" signalType="output" signalAccessPath="8.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="RQAAAA=="/>
+			</Signal>
+			<Signal systemTag="d103ad4b-f663-4663-8f8d-03fea066a6dd" displayName="Input_Assembly_Byte_8_Bit_6" signalType="output" signalAccessPath="8.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="RgAAAA=="/>
+			</Signal>
+			<Signal systemTag="c408aff1-65f6-4ada-93ee-172b80023c42" displayName="Input_Assembly_Byte_8_Bit_7" signalType="output" signalAccessPath="8.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="RwAAAA=="/>
+			</Signal>
+			<Signal systemTag="c08ca52e-4084-4c16-be7d-893fff952bc3" displayName="Input_Assembly_Byte_9_Bit_0" signalType="output" signalAccessPath="9.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="SAAAAA=="/>
+			</Signal>
+			<Signal systemTag="392a82d2-e0b9-423f-a70b-71ba58248b5a" displayName="Input_Assembly_Byte_9_Bit_1" signalType="output" signalAccessPath="9.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="SQAAAA=="/>
+			</Signal>
+			<Signal systemTag="9bef1ca4-b667-4a88-888d-5668d6fe36ac" displayName="Input_Assembly_Byte_9_Bit_2" signalType="output" signalAccessPath="9.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="SgAAAA=="/>
+			</Signal>
+			<Signal systemTag="5436d2f8-4f56-4401-a536-96a42098fc15" displayName="Input_Assembly_Byte_9_Bit_3" signalType="output" signalAccessPath="9.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="SwAAAA=="/>
+			</Signal>
+			<Signal systemTag="1a4962d3-b6f1-4837-b147-49f7d9603416" displayName="Input_Assembly_Byte_9_Bit_4" signalType="output" signalAccessPath="9.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="TAAAAA=="/>
+			</Signal>
+			<Signal systemTag="6c12c0aa-f528-4019-bfbf-3f3be20ddaae" displayName="Input_Assembly_Byte_9_Bit_5" signalType="output" signalAccessPath="9.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="TQAAAA=="/>
+			</Signal>
+			<Signal systemTag="16694b6c-255a-44b5-a1e3-49cef8e581e7" displayName="Input_Assembly_Byte_9_Bit_6" signalType="output" signalAccessPath="9.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="TgAAAA=="/>
+			</Signal>
+			<Signal systemTag="288814fb-eefa-49f0-9002-13a9282bd0c4" displayName="Input_Assembly_Byte_9_Bit_7" signalType="output" signalAccessPath="9.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="TwAAAA=="/>
+			</Signal>
+			<Signal systemTag="1cb3b37f-39c5-4072-8399-147d32caca4b" displayName="Input_Assembly_Byte_10_Bit_0" signalType="output" signalAccessPath="10.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="UAAAAA=="/>
+			</Signal>
+			<Signal systemTag="a92e917f-e184-425c-9b22-29a4c8e73f2b" displayName="Input_Assembly_Byte_10_Bit_1" signalType="output" signalAccessPath="10.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="UQAAAA=="/>
+			</Signal>
+			<Signal systemTag="83e773c5-e390-4254-8adf-020808f98e63" displayName="Input_Assembly_Byte_10_Bit_2" signalType="output" signalAccessPath="10.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="UgAAAA=="/>
+			</Signal>
+			<Signal systemTag="523ec033-5851-4308-8f86-bd342538d9e4" displayName="Input_Assembly_Byte_10_Bit_3" signalType="output" signalAccessPath="10.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="UwAAAA=="/>
+			</Signal>
+			<Signal systemTag="4702c284-0e69-4faf-873a-b83321d860fa" displayName="Input_Assembly_Byte_10_Bit_4" signalType="output" signalAccessPath="10.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="VAAAAA=="/>
+			</Signal>
+			<Signal systemTag="9bb7622a-f09a-442f-9716-41138640b723" displayName="Input_Assembly_Byte_10_Bit_5" signalType="output" signalAccessPath="10.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="VQAAAA=="/>
+			</Signal>
+			<Signal systemTag="83a53a45-30f2-4d5e-a48a-f9d0a22f60fa" displayName="Input_Assembly_Byte_10_Bit_6" signalType="output" signalAccessPath="10.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="VgAAAA=="/>
+			</Signal>
+			<Signal systemTag="ec500196-76b4-452b-b152-94a79c2e3475" displayName="Input_Assembly_Byte_10_Bit_7" signalType="output" signalAccessPath="10.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="VwAAAA=="/>
+			</Signal>
+			<Signal systemTag="af7397f9-1435-4c3a-bf05-8450d081029b" displayName="Input_Assembly_Byte_11_Bit_0" signalType="output" signalAccessPath="11.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="WAAAAA=="/>
+			</Signal>
+			<Signal systemTag="166329bc-ae69-4763-9f13-a6d9fa67d0bb" displayName="Input_Assembly_Byte_11_Bit_1" signalType="output" signalAccessPath="11.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="WQAAAA=="/>
+			</Signal>
+			<Signal systemTag="935e7105-af1c-43fa-9179-70282b14cbf7" displayName="Input_Assembly_Byte_11_Bit_2" signalType="output" signalAccessPath="11.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="WgAAAA=="/>
+			</Signal>
+			<Signal systemTag="cacc9753-910c-43b0-9611-1c1ad289bb5a" displayName="Input_Assembly_Byte_11_Bit_3" signalType="output" signalAccessPath="11.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="WwAAAA=="/>
+			</Signal>
+			<Signal systemTag="169d652d-fc44-4246-903d-97ab5914e59a" displayName="Input_Assembly_Byte_11_Bit_4" signalType="output" signalAccessPath="11.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="XAAAAA=="/>
+			</Signal>
+			<Signal systemTag="7be08610-6a77-46c0-9a94-8dd12c9f1914" displayName="Input_Assembly_Byte_11_Bit_5" signalType="output" signalAccessPath="11.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="XQAAAA=="/>
+			</Signal>
+			<Signal systemTag="9e2309e4-0db8-4dcd-be44-8f09718ef873" displayName="Input_Assembly_Byte_11_Bit_6" signalType="output" signalAccessPath="11.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="XgAAAA=="/>
+			</Signal>
+			<Signal systemTag="d6ab9c13-585b-4527-bf86-eb2d15c4af16" displayName="Input_Assembly_Byte_11_Bit_7" signalType="output" signalAccessPath="11.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="XwAAAA=="/>
+			</Signal>
+			<Signal systemTag="4f064ee1-ad67-4c3c-a882-a848ce228d39" displayName="Input_Assembly_Byte_12_Bit_0" signalType="output" signalAccessPath="12.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="YAAAAA=="/>
+			</Signal>
+			<Signal systemTag="53885c7a-1c54-465a-bba3-40f5f3a7a5ff" displayName="Input_Assembly_Byte_12_Bit_1" signalType="output" signalAccessPath="12.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="YQAAAA=="/>
+			</Signal>
+			<Signal systemTag="e70e2480-2fce-493d-af62-d77ad98199ee" displayName="Input_Assembly_Byte_12_Bit_2" signalType="output" signalAccessPath="12.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="YgAAAA=="/>
+			</Signal>
+			<Signal systemTag="d22c4630-3781-4156-8294-84a3637f8175" displayName="Input_Assembly_Byte_12_Bit_3" signalType="output" signalAccessPath="12.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="YwAAAA=="/>
+			</Signal>
+			<Signal systemTag="8b7abccc-9cce-4752-91ba-345e63f2246f" displayName="Input_Assembly_Byte_12_Bit_4" signalType="output" signalAccessPath="12.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="ZAAAAA=="/>
+			</Signal>
+			<Signal systemTag="21cc6070-45ee-4f85-98fc-70dba513e956" displayName="Input_Assembly_Byte_12_Bit_5" signalType="output" signalAccessPath="12.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="ZQAAAA=="/>
+			</Signal>
+			<Signal systemTag="67189995-dd28-4af0-913a-deaa91f14fa3" displayName="Input_Assembly_Byte_12_Bit_6" signalType="output" signalAccessPath="12.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="ZgAAAA=="/>
+			</Signal>
+			<Signal systemTag="d0ae9683-f55f-4db1-a2fd-fead0e35d4e6" displayName="Input_Assembly_Byte_12_Bit_7" signalType="output" signalAccessPath="12.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="ZwAAAA=="/>
+			</Signal>
+			<Signal systemTag="be701785-bb28-4980-a5ae-c0246d126c81" displayName="Input_Assembly_Byte_13_Bit_0" signalType="output" signalAccessPath="13.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="aAAAAA=="/>
+			</Signal>
+			<Signal systemTag="b013cac3-78cb-430f-9425-76a70974362b" displayName="Input_Assembly_Byte_13_Bit_1" signalType="output" signalAccessPath="13.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="aQAAAA=="/>
+			</Signal>
+			<Signal systemTag="958d02e5-a57a-4f8b-ba07-aff4aef0ce73" displayName="Input_Assembly_Byte_13_Bit_2" signalType="output" signalAccessPath="13.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="agAAAA=="/>
+			</Signal>
+			<Signal systemTag="ea76e151-b5b5-4c84-b9e9-a1377fa20c17" displayName="Input_Assembly_Byte_13_Bit_3" signalType="output" signalAccessPath="13.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="awAAAA=="/>
+			</Signal>
+			<Signal systemTag="d399c71e-b23f-4728-8fc1-90e6192ba7b4" displayName="Input_Assembly_Byte_13_Bit_4" signalType="output" signalAccessPath="13.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="bAAAAA=="/>
+			</Signal>
+			<Signal systemTag="6d118d7f-4c79-4fb5-9746-6a8de1889a3d" displayName="Input_Assembly_Byte_13_Bit_5" signalType="output" signalAccessPath="13.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="bQAAAA=="/>
+			</Signal>
+			<Signal systemTag="4461c5f2-9f28-4838-b23c-ea00d53096eb" displayName="Input_Assembly_Byte_13_Bit_6" signalType="output" signalAccessPath="13.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="bgAAAA=="/>
+			</Signal>
+			<Signal systemTag="7c01cf23-910f-487d-bb1a-195e15fb3307" displayName="Input_Assembly_Byte_13_Bit_7" signalType="output" signalAccessPath="13.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="bwAAAA=="/>
+			</Signal>
+			<Signal systemTag="f85fd3a9-18f0-4650-95d3-36bb2067f4b1" displayName="Input_Assembly_Byte_14_Bit_0" signalType="output" signalAccessPath="14.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="cAAAAA=="/>
+			</Signal>
+			<Signal systemTag="267b0afc-d0f5-4803-aa9c-f26e8a22ec52" displayName="Input_Assembly_Byte_14_Bit_1" signalType="output" signalAccessPath="14.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="cQAAAA=="/>
+			</Signal>
+			<Signal systemTag="ca5fe54a-171c-4883-b8d7-e66a5af906b0" displayName="Input_Assembly_Byte_14_Bit_2" signalType="output" signalAccessPath="14.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="cgAAAA=="/>
+			</Signal>
+			<Signal systemTag="cfa0eb00-685f-4d61-84f0-3d6c231ea25a" displayName="Input_Assembly_Byte_14_Bit_3" signalType="output" signalAccessPath="14.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="cwAAAA=="/>
+			</Signal>
+			<Signal systemTag="31755185-641a-4e0b-baf1-0de6649131fd" displayName="Input_Assembly_Byte_14_Bit_4" signalType="output" signalAccessPath="14.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="dAAAAA=="/>
+			</Signal>
+			<Signal systemTag="c3cfc568-038c-46b9-9b03-57edd3bb4140" displayName="Input_Assembly_Byte_14_Bit_5" signalType="output" signalAccessPath="14.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="dQAAAA=="/>
+			</Signal>
+			<Signal systemTag="60e379f2-0812-47e0-a9db-dfe175296dc4" displayName="Input_Assembly_Byte_14_Bit_6" signalType="output" signalAccessPath="14.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="dgAAAA=="/>
+			</Signal>
+			<Signal systemTag="e023c79c-7b57-4cfe-b15d-8efb55f1c224" displayName="Input_Assembly_Byte_14_Bit_7" signalType="output" signalAccessPath="14.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="dwAAAA=="/>
+			</Signal>
+			<Signal systemTag="5dfc3542-29ff-4118-b21e-20899a53d4d9" displayName="Input_Assembly_Byte_15_Bit_0" signalType="output" signalAccessPath="15.0" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="eAAAAA=="/>
+			</Signal>
+			<Signal systemTag="580223d9-7d24-4650-b3d9-1f1fd794bab6" displayName="Input_Assembly_Byte_15_Bit_1" signalType="output" signalAccessPath="15.1" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="eQAAAA=="/>
+			</Signal>
+			<Signal systemTag="8f1fe506-1bf0-4899-9af5-3e80dcef1da1" displayName="Input_Assembly_Byte_15_Bit_2" signalType="output" signalAccessPath="15.2" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="egAAAA=="/>
+			</Signal>
+			<Signal systemTag="79481aa5-4f9d-44b6-b1fe-d8f753169b38" displayName="Input_Assembly_Byte_15_Bit_3" signalType="output" signalAccessPath="15.3" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="ewAAAA=="/>
+			</Signal>
+			<Signal systemTag="3fa622f9-b072-40f8-92fb-fd5c42d10401" displayName="Input_Assembly_Byte_15_Bit_4" signalType="output" signalAccessPath="15.4" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="fAAAAA=="/>
+			</Signal>
+			<Signal systemTag="2110f215-553b-4a33-b92c-4b1c7d52cec9" displayName="Input_Assembly_Byte_15_Bit_5" signalType="output" signalAccessPath="15.5" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="fQAAAA=="/>
+			</Signal>
+			<Signal systemTag="627f8bb2-ab52-4f0e-a609-41e0ba5f3bb9" displayName="Input_Assembly_Byte_15_Bit_6" signalType="output" signalAccessPath="15.6" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="fgAAAA=="/>
+			</Signal>
+			<Signal systemTag="c8b10c52-0906-4c38-95c7-bb031b92c8d6" displayName="Input_Assembly_Byte_15_Bit_7" signalType="output" signalAccessPath="15.7" dataType="bit" arrayElements="1">
+				<Property id="6103" type="19" value="fwAAAA=="/>
+			</Signal>
+			<Signal systemTag="058ed1be-117a-4542-8027-59ba159afdd5" displayName="Input_Assembly_Byte_16_Byte_0" signalType="output" signalAccessPath="16" dataType="word" arrayElements="1"><Property id="6103" type="19" value="gAAAAA=="/></Signal>
+			<Signal systemTag="94128703-e6d1-4390-9207-76ec25d3b67e" displayName="Input_Assembly_Byte_16_Byte_2" signalType="output" signalAccessPath="18" dataType="word" arrayElements="1"><Property id="6103" type="19" value="kAAAAA=="/></Signal>
+			<Signal systemTag="5c2ede53-d9b0-4b34-9357-7531dcec0a38" displayName="Input_Assembly_Byte_16_Byte_4" signalType="output" signalAccessPath="20" dataType="word" arrayElements="1"><Property id="6103" type="19" value="oAAAAA=="/></Signal>
+			<Signal systemTag="271fce14-4fc2-4d37-8d80-f743b3ec2cb0" displayName="Input_Assembly_Byte_16_Byte_6" signalType="output" signalAccessPath="22" dataType="word" arrayElements="1"><Property id="6103" type="19" value="sAAAAA=="/></Signal>
+			<Signal systemTag="337a2dcc-0c72-4b1a-9667-67b2bae54e03" displayName="Input_Assembly_Byte_16_Byte_8" signalType="output" signalAccessPath="24" dataType="word" arrayElements="1"><Property id="6103" type="19" value="wAAAAA=="/></Signal>
+			<Signal systemTag="d6543d41-9d74-4b5b-a1b8-a863734b2989" displayName="Input_Assembly_Byte_16_Byte_10" signalType="output" signalAccessPath="26" dataType="word" arrayElements="1"><Property id="6103" type="19" value="0AAAAA=="/></Signal>
+			<Signal systemTag="d44adb2d-3ce8-43ab-b8b5-130e9fb22633" displayName="Input_Assembly_Byte_16_Byte_12" signalType="output" signalAccessPath="28" dataType="word" arrayElements="1"><Property id="6103" type="19" value="4AAAAA=="/></Signal>
+			<Signal systemTag="d365d89e-1975-4a9e-a19d-a78d3ab7a29a" displayName="Input_Assembly_Byte_16_Byte_14" signalType="output" signalAccessPath="30" dataType="word" arrayElements="1"><Property id="6103" type="19" value="8AAAAA=="/></Signal>
+			<Signal systemTag="f61b9fca-1e4b-417c-83e7-3bb606df539c" displayName="Input_Assembly_Byte_32_Byte_0" signalType="output" signalAccessPath="32" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="AAEAAA=="/>
+			</Signal>
+			<Signal systemTag="7f9c19f1-36bd-452c-89d1-b6f688c3bf7a" displayName="Input_Assembly_Byte_32_Byte_2" signalType="output" signalAccessPath="34" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="EAEAAA=="/>
+			</Signal>
+			<Signal systemTag="26225fa4-df3b-4631-ab75-a0a136a604bc" displayName="Input_Assembly_Byte_32_Byte_4" signalType="output" signalAccessPath="36" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="IAEAAA=="/>
+			</Signal>
+			<Signal systemTag="adcadae4-513b-4630-9983-191795e255fa" displayName="Input_Assembly_Byte_32_Byte_6" signalType="output" signalAccessPath="38" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="MAEAAA=="/>
+			</Signal>
+			<Signal systemTag="3b4819b3-873a-45c3-a3e7-d1cadc22852c" displayName="Input_Assembly_Byte_32_Byte_8" signalType="output" signalAccessPath="40" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="QAEAAA=="/>
+			</Signal>
+			<Signal systemTag="674f568d-a552-4bfb-a03a-ec77e6515d78" displayName="Input_Assembly_Byte_32_Byte_10" signalType="output" signalAccessPath="42" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="UAEAAA=="/>
+			</Signal>
+			<Signal systemTag="304d41f0-d3e5-4e7b-8360-4a0ccf7d58bd" displayName="Input_Assembly_Byte_32_Byte_12" signalType="output" signalAccessPath="44" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="YAEAAA=="/>
+			</Signal>
+			<Signal systemTag="3be3b595-a9ae-4d47-970f-97bae2f2c8bb" displayName="Input_Assembly_Byte_32_Byte_14" signalType="output" signalAccessPath="46" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="cAEAAA=="/>
+			</Signal>
+			<Signal systemTag="5d29a2ad-5d4e-4ee4-a4fb-e7e4782d2254" displayName="Input_Assembly_Byte_32_Byte_16" signalType="output" signalAccessPath="48" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="gAEAAA=="/>
+			</Signal>
+			<Signal systemTag="a824e46c-58c3-4259-93bc-36564a0b7814" displayName="Input_Assembly_Byte_32_Byte_18" signalType="output" signalAccessPath="50" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="kAEAAA=="/>
+			</Signal>
+			<Signal systemTag="141c77bf-42ce-4512-a4b4-68138847e7e0" displayName="Input_Assembly_Byte_32_Byte_20" signalType="output" signalAccessPath="52" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="oAEAAA=="/>
+			</Signal>
+			<Signal systemTag="d7b19221-e181-44a6-a616-90d80e6e3f4d" displayName="Input_Assembly_Byte_32_Byte_22" signalType="output" signalAccessPath="54" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="sAEAAA=="/>
+			</Signal>
+			<Signal systemTag="5c9289c2-99cc-4caf-ad62-028e7b23e96a" displayName="Input_Assembly_Byte_32_Byte_24" signalType="output" signalAccessPath="56" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="wAEAAA=="/>
+			</Signal>
+			<Signal systemTag="9b6d93bc-cefb-463c-9f58-11a07e6e0f7a" displayName="Input_Assembly_Byte_32_Byte_26" signalType="output" signalAccessPath="58" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="0AEAAA=="/>
+			</Signal>
+			<Signal systemTag="e712b5f7-be01-49d7-8215-0a16a5986261" displayName="Input_Assembly_Byte_32_Byte_28" signalType="output" signalAccessPath="60" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="4AEAAA=="/>
+			</Signal>
+			<Signal systemTag="e11747ad-2153-45e0-8049-fda9755f09c6" displayName="Input_Assembly_Byte_32_Byte_30" signalType="output" signalAccessPath="62" dataType="word" arrayElements="1">
+				<Property id="6103" type="19" value="8AEAAA=="/>
+			</Signal>
+		</Module>
+		<Status systemTag="F907FB24-3833-42bb-B849-9137810B0D8B" displayName="Status">
+			<Signal systemTag="F260A8CE-63BD-4bf1-B09B-EB50D29F8B4A" displayName="Communication Change of State" signalType="input" signalAccessPath="0" dataType="unsigned32" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="85453E44-C1EE-41fb-A616-37DD8F50680D" displayName="Communication State" signalType="input" signalAccessPath="4" dataType="unsigned32" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="559EE54A-7ABC-4140-9309-DEAE98EA5B6B" displayName="Communication Error" signalType="input" signalAccessPath="8" dataType="unsigned32" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="98F894CD-38A9-4cec-8F84-CF9B7D6DA4B8" displayName="Version" signalType="input" signalAccessPath="12" dataType="unsigned16" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="A87F2540-336F-4803-BC8F-1D94106F7E88" displayName="Watchdog Timeout" signalType="input" signalAccessPath="14" dataType="unsigned16" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="EAD8F227-F81F-4f34-92D3-B3DE5128543E" displayName="Host Watchdog" signalType="input" signalAccessPath="20" dataType="unsigned32" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="AF964157-DC30-4a20-A9A7-D78B2BC97B08" displayName="Error Count" signalType="input" signalAccessPath="24" dataType="unsigned32" opc="0" blockNumber="0">
+			</Signal>
+			<Signal systemTag="E4533742-2B23-4db7-B4C5-7DC6B1FB85A4" displayName="Error Log Indicator" signalType="input" signalAccessPath="28" dataType="unsigned32" opc="0" blockNumber="0">
+			</Signal>
+		</Status>
+	</Adapter>
+</ProcessData>

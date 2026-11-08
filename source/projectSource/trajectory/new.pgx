@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="new" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nFrameIndex" type="num" xsi:type="element" />
+      <Parameter name="x_nToolIndex" type="num" xsi:type="element" />
+      <Parameter name="x_nMoveID" type="num" xsi:type="element" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Code><![CDATA[begin
+  if !isDefined(trajTemp:tTrajItem[x_sKey]) and x_sKey!=""
+    insert(trajTemp:tTrajItem[x_sKey])
+    trajTemp:tTrajItem[x_sKey].nFrameIndex=x_nFrameIndex
+    trajTemp:tTrajItem[x_sKey].nToolIndex=x_nToolIndex
+    trajTemp:tTrajItem[x_sKey].nMoveID=x_nMoveID
+    //trajTemp:libSave()
+    x_bToSave=true
+    delay(0)
+  else
+    userPageAlert("项目存在，请重新命名！")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

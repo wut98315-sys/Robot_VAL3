@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="copyPoint1" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  for l_i = 1 to size(savedata:nMarkIndex)-1
+    insert(trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex+l_i])
+    call copyPoint3(x_sKey,x_nIndex+l_i,savedata:nMarkIndex[l_i])
+  endFor
+  call resetMark(x_sKey)
+end]]></Code>
+  </Program>
+</Programs>

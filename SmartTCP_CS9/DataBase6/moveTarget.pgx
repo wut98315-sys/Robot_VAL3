@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="moveTarget" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_pTarget" type="point" xsi:type="element" />
+      <Parameter name="x_jTarget" type="joint" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bEqual" type="bool" xsi:type="array" size="1" />
+      <Local name="l_jCurrentPosUp" type="joint" xsi:type="array" size="1" />
+      <Local name="l_jTargetPosUp" type="joint" xsi:type="array" size="1" />
+      <Local name="l_pCurrentPosUp" type="point" xsi:type="array" size="1" />
+      <Local name="l_pTargetPosUp" type="point" xsi:type="array" size="1" />
+      <Local name="l_bOK1" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bOK2" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nDir" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  switch sMounting
+    case "Floor"
+      l_nDir=1
+    break
+    case "Ceiling"
+      l_nDir=-1
+    break
+    default
+      l_nDir=1
+    break
+  endSwitch
+  //
+  call CheckPosEqual(x_pTarget,l_bEqual)
+  if l_bEqual==false
+    call hmiAlert("Move","info")  
+    l_pCurrentPosUp=compose(here(utCurrentTool.tValue,world),world,{0,0,100*l_nDir,0,0,0})
+    l_bOK1=pointToJoint(utCurrentTool.tValue,x_jTarget,l_pCurrentPosUp,l_jCurrentPosUp) 
+    l_pTargetPosUp=compose(x_pTarget,world,{0,0,100*l_nDir,0,0,0})
+    l_bOK2=pointToJoint(utCurrentTool.tValue,x_jTarget,l_pTargetPosUp,l_jTargetPosUp)       
+    if l_bOK1==true and l_bOK2==true
+      movel(l_pCurrentPosUp,utCurrentTool.tValue,mSpeed_J_blend)
+      movej(l_jTargetPosUp,utCurrentTool.tValue,mSpeed_J_blend)  
+      movel(compose(x_pTarget,world,{0,0,20*l_nDir,0,0,0}),utCurrentTool.tValue,mSpeed_J_blend)
+      movel(x_pTarget,utCurrentTool.tValue,mSlow)
+      waitEndMove()
+      call hmiAlert("CompleteMove","info")   
+    else
+      call hmiAlert("CantMove2","warning")   
+    endIf
+  else
+    call hmiAlert("CompleteMove","info")   
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

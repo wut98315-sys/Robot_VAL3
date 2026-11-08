@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="bind">
+    <Code><![CDATA[begin
+  userPageBindClick("setting","btnback",bBack,true)
+  userPageBindClick("setting","btn1",bTeach,true)
+  userPageBindClick("setting","btn2",bMove,true)
+  userPageBindClick("setting","btn3",bSetup,true)
+  userPageBind("setting","cbx1","options",sList,size(sList),"r")
+  userPageBind("setting","cbx1","value",sSelTool,1,"rw")
+  userPageBind("setting","cbx1_Copy1","options",sLibList,size(sLibList),"r")
+  userPageBind("setting","cbx1_Copy1","value",sUsingLib,1,"rw")
+  userPageBindClick("setting","btn3_Copy1",bChangeLib,true)
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="IOcomment" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nType" type="num" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_sComment" type="string" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  switch x_nType
+    case 0
+      io:dInItem[x_nIndex].sComment=x_sComment
+      io:sCommentDin[x_nIndex]=x_sComment
+    break
+    case 1
+      io:dOutItem[x_nIndex].sComment=x_sComment
+      io:sCommentDout[x_nIndex]=x_sComment
+    break
+    case 2
+      io:aInItem[x_nIndex].sComment=x_sComment
+      io:sCommentAin[x_nIndex]=x_sComment
+    break
+    case 3
+      io:aOutItem[x_nIndex].sComment=x_sComment
+      io:sCommentAout[x_nIndex]=x_sComment
+    break
+      
+  endSwitch
+  
+  io:libSave()
+  delay(0)
+end]]></Code>
+  </Program>
+</Programs>

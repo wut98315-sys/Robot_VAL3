@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="simulateTRAJ" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  if !rs:bIsCycle and workingMode()==1
+    l_bResult=userPageConfirm("是否模拟TRAJ："+x_sKey+"？")
+    if l_bResult
+      resetMotion()
+      rs:bSimulate=true
+      rs:bGOTO=false
+      //添加traj任务‘
+      taskCreate "simulate",100,trajectory:makeTraj(x_sKey)
+      //
+      sMsg="模拟TRAJ过程。。。"
+      sMsg=rs:sTrajStatus
+      call simulate_UI()
+    endIf
+  else
+    userPageAlert("条件不满足：不再生产周期&切换到手动模式")
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.12.1Cs9_BS2449" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="areaCheck.pgx" />
+    <Program file="checkPoint.pgx" />
+    <Program file="computeArea.pgx" />
+    <Program file="loadLib.pgx" />
+    <Program file="main.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="safeLogic.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="safeData" path="Disk://data/CustomerLib/default/safeData/safeData.pjx" />
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+    <Library alias="saveData" path="Disk://source/saveData/saveData.pjx" />
+    <Library alias="io" path="Disk://source/projectSource/io/io.pjx" />
+  </Libraries>
+</Project>

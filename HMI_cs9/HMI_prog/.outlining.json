@@ -1,0 +1,310 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "bind_edit",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 144,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "refreshproglist",
+      "nodes": [
+        {
+          "start": 61,
+          "end": 147,
+          "isCollapsed": false
+        },
+        {
+          "start": 97,
+          "end": 139,
+          "isCollapsed": false
+        },
+        {
+          "start": 153,
+          "end": 217,
+          "isCollapsed": false
+        },
+        {
+          "start": 230,
+          "end": 796,
+          "isCollapsed": false
+        },
+        {
+          "start": 263,
+          "end": 348,
+          "isCollapsed": false
+        },
+        {
+          "start": 305,
+          "end": 338,
+          "isCollapsed": false
+        },
+        {
+          "start": 353,
+          "end": 511,
+          "isCollapsed": false
+        },
+        {
+          "start": 516,
+          "end": 614,
+          "isCollapsed": false
+        },
+        {
+          "start": 536,
+          "end": 604,
+          "isCollapsed": false
+        },
+        {
+          "start": 617,
+          "end": 788,
+          "isCollapsed": false
+        },
+        {
+          "start": 626,
+          "end": 788,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "bind",
+      "nodes": [
+        {
+          "start": 123,
+          "end": 247,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "refreshlist",
+      "nodes": [
+        {
+          "start": 75,
+          "end": 152,
+          "isCollapsed": false
+        },
+        {
+          "start": 107,
+          "end": 144,
+          "isCollapsed": false
+        },
+        {
+          "start": 158,
+          "end": 622,
+          "isCollapsed": false
+        },
+        {
+          "start": 177,
+          "end": 236,
+          "isCollapsed": false
+        },
+        {
+          "start": 241,
+          "end": 308,
+          "isCollapsed": false
+        },
+        {
+          "start": 311,
+          "end": 614,
+          "isCollapsed": false
+        },
+        {
+          "start": 320,
+          "end": 614,
+          "isCollapsed": false
+        },
+        {
+          "start": 351,
+          "end": 429,
+          "isCollapsed": false
+        },
+        {
+          "start": 434,
+          "end": 604,
+          "isCollapsed": false
+        },
+        {
+          "start": 445,
+          "end": 508,
+          "isCollapsed": false
+        },
+        {
+          "start": 515,
+          "end": 604,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "selStartUpProg",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "selMainProg",
+      "nodes": []
+    },
+    {
+      "mode": 3,
+      "name": "onStart",
+      "nodes": [
+        {
+          "start": 282,
+          "end": 349,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "main",
+      "nodes": [
+        {
+          "start": 8,
+          "end": 2450,
+          "isCollapsed": false
+        },
+        {
+          "start": 15,
+          "end": 176,
+          "isCollapsed": false
+        },
+        {
+          "start": 186,
+          "end": 2170,
+          "isCollapsed": false
+        },
+        {
+          "start": 288,
+          "end": 559,
+          "isCollapsed": false
+        },
+        {
+          "start": 342,
+          "end": 423,
+          "isCollapsed": false
+        },
+        {
+          "start": 430,
+          "end": 537,
+          "isCollapsed": false
+        },
+        {
+          "start": 489,
+          "end": 525,
+          "isCollapsed": false
+        },
+        {
+          "start": 564,
+          "end": 1200,
+          "isCollapsed": false
+        },
+        {
+          "start": 618,
+          "end": 1199,
+          "isCollapsed": false
+        },
+        {
+          "start": 759,
+          "end": 1034,
+          "isCollapsed": false
+        },
+        {
+          "start": 804,
+          "end": 1020,
+          "isCollapsed": false
+        },
+        {
+          "start": 819,
+          "end": 1020,
+          "isCollapsed": false
+        },
+        {
+          "start": 918,
+          "end": 1004,
+          "isCollapsed": false
+        },
+        {
+          "start": 1109,
+          "end": 1187,
+          "isCollapsed": false
+        },
+        {
+          "start": 1205,
+          "end": 1287,
+          "isCollapsed": false
+        },
+        {
+          "start": 1292,
+          "end": 1403,
+          "isCollapsed": false
+        },
+        {
+          "start": 1408,
+          "end": 1487,
+          "isCollapsed": false
+        },
+        {
+          "start": 1492,
+          "end": 1569,
+          "isCollapsed": false
+        },
+        {
+          "start": 1574,
+          "end": 1706,
+          "isCollapsed": false
+        },
+        {
+          "start": 1617,
+          "end": 1700,
+          "isCollapsed": false
+        },
+        {
+          "start": 1711,
+          "end": 1846,
+          "isCollapsed": false
+        },
+        {
+          "start": 1754,
+          "end": 1846,
+          "isCollapsed": false
+        },
+        {
+          "start": 1851,
+          "end": 1937,
+          "isCollapsed": false
+        },
+        {
+          "start": 1942,
+          "end": 2160,
+          "isCollapsed": false
+        },
+        {
+          "start": 1979,
+          "end": 2141,
+          "isCollapsed": false
+        },
+        {
+          "start": 2064,
+          "end": 2129,
+          "isCollapsed": false
+        },
+        {
+          "start": 2180,
+          "end": 2405,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}

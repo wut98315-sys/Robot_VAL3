@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="linkStatusIO">
+    <Code><![CDATA[begin
+  //**************************输入*******************************
+  dioLink(dInResetCmd,dInput[0])
+  dioLink(dInStartCmd,dInput[1])
+  dioLink(dInHoldCmd,dInput[2])
+  dioLink(dInEndCmd,dInput[3])
+  dioLink(dInStopCmd,dInput[4])
+  dioLink(dInPowerOnCmd,dInput[5])
+  dioLink(dInPowerOffCmd,dInput[6])
+  dioLink(dInResetIOCmd,dInput[7])
+  dioLink(dInAckAlarmCmd,dInput[8])
+  dioLink(dInGohomeCmd,dInput[9])
+  
+  
+  //**************************输出*******************************
+  dioLink(dORbStopped,dOutput[0])
+  dioLink(dORbReady,dOutput[1])
+  dioLink(dORbRunning,dOutput[2])
+  dioLink(dORbHeld,dOutput[3])
+  dioLink(dOGohomeing,dOutput[4])
+  dioLink(dORbAtHome,dOutput[5])
+  dioLink(dORbPowerOn,dOutput[6])
+  dioLink(dORbHeartbeat,dOutput[7])
+  dioLink(dORbMoving,dOutput[8])
+  dioLink(dORbAutoMode,dOutput[9])
+  dioLink(dORbManualMode,dOutput[10])
+  dioLink(dORbAlarm,dOutput[11])
+  dioLink(dORbTaskRunOk,dOutput[12])
+  dioLink(dORbEnable,dOutput[13])
+  dioLink(dOMcpEstop,dOutput[14])
+end]]></Code>
+  </Program>
+</Programs>

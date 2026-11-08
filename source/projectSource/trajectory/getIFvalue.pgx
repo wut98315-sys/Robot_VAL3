@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="getIFvalue" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_bFinalResult" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nSigType" type="num" xsi:type="array" size="3" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_nSigValue" type="num" xsi:type="array" size="3" />
+      <Local name="l_bANDOR" type="bool" xsi:type="array" size="2" />
+      <Local name="l_nSigIndex" type="num" xsi:type="array" size="3" />
+      <Local name="l_bValue" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bSetValue" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nResult" type="num" xsi:type="array" size="3" />
+      <Local name="l_bResult0" type="bool" xsi:type="array" size="2" />
+      <Local name="l_nValue" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //l_nResult=0,null
+  //         =1,true
+  //         =2,false
+  
+  for l_i = 0 to 2
+    l_nSigType[l_i]= trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.iIfItem.nSigType[l_i]
+    l_nSigValue[l_i]=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.iIfItem.nValue[l_i]
+    l_nSigIndex[l_i]=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.iIfItem.nSigIndex[l_i]
+  endFor
+  l_bANDOR[0]=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.iIfItem.bANDOR[0]
+  l_bANDOR[1]=trajTemp:tTrajItem[x_sKey].pPointItem[x_nIndex].pParaItem.iIfItem.bANDOR[1]
+  
+  for l_i = 0 to 2
+    if l_nSigType[l_i]!=0 and l_nSigIndex[l_i]!=0
+      switch l_nSigType[l_i]
+        case 1
+          //din
+          call io:getDigIO(io:dInput[l_nSigIndex[l_i]],l_bValue,l_bErr)
+          l_bSetValue=(l_nSigValue[l_i]!=0)
+          if l_bSetValue==l_bValue
+            l_nResult[l_i]=1
+          else
+            l_nResult[l_i]=2
+          endIf
+        break
+        case 2
+          //dout
+          call io:getDigIO(io:dOutput[l_nSigIndex[l_i]],l_bValue,l_bErr)
+          l_bSetValue=(l_nSigValue[l_i]!=0)
+          if l_bSetValue==l_bValue
+            l_nResult[l_i]=1
+          else
+            l_nResult[l_i]=2
+          endIf
+        break
+        case 3
+          //ain
+          call io:getAnaIO(io:aInput[l_nSigIndex[l_i]],l_nValue,l_bErr)
+          if l_nSigValue[l_i]==l_nValue
+            l_nResult[l_i]=1
+          else
+            l_nResult[l_i]=2
+          endIf
+        break
+        case 4
+          //aout
+          call io:getAnaIO(io:aOutput[l_nSigIndex[l_i]],l_nValue,l_bErr)
+          if l_nSigValue[l_i]==l_nValue
+            l_nResult[l_i]=1
+          else
+            l_nResult[l_i]=2
+          endIf
+        break
+      endSwitch
+    else
+      l_nResult[l_i]=0
+    endIf
+  endFor
+  
+  //logic
+ call logicIF(l_nResult[0],l_nResult[1],l_nResult[2],l_bANDOR[0],l_bANDOR[1],x_bFinalResult)
+ 
+end]]></Code>
+  </Program>
+</Programs>

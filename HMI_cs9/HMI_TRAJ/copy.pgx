@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="copy">
+    <Locals>
+      <Local name="l_sMsg" type="string" xsi:type="array" size="1" />
+      <Local name="l_sInputName" type="string" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResult1" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nID" type="num" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_bFound" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_sHeader" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_sMsg="复制"+sSelTraj+"到："
+  l_bResult=userPagePrompt(l_sMsg,l_sInputName)
+  if l_bResult
+    call trajectory:isDefine(l_sInputName,l_bResult1)
+    if !l_bResult1
+      call trajectory:getSize(l_nSize)
+      call getTrajID()
+      l_nID=0
+      do
+        l_i=0
+        do
+          if l_nID==nIDIsExit[l_i]
+            l_bFound=true
+            l_nID=l_nID+1
+          else
+            l_bFound=false
+          endIf
+          l_i=l_i+1
+        until l_bFound==false or l_i>=size(nIDIsExit)
+         
+      until l_bFound==false
+       
+      if l_nSize<10
+        l_sHeader="0"+toString("",l_nID)+" "+l_sInputName
+      else 
+        l_sHeader=toString("",l_nID)+" "+l_sInputName
+      endIf
+      
+      call trajectory:copy(sSelTraj,l_sHeader,bToSave)
+      call trajectory:onSave(bToSave)
+    else
+      userPageAlert("输入的名称重复！")
+    endIf
+  endIf
+end ]]></Code>
+  </Program>
+</Programs>

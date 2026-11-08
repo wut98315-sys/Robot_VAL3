@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="resetAlarm" access="public" >
+    <Locals>
+      <Local name="l_n" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  for l_n=0 to size(_nAlarmCode)-1
+    _nErrIndex[l_n]=-1
+    _nAlarmCode[l_n]=0
+    sAlarmMes[l_n]=""
+  endFor
+  _nAlarmIndex=0
+end]]></Code>
+  </Program>
+</Programs>

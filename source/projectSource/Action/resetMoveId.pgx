@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="resetMoveId" access="public">
+    <Locals>
+      <Local name="l_nNextId" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //reset move id to avoid move id overflow
+  l_nNextId=nextMoveId()
+  if l_nNextId>=nMoveIdMax
+    setMoveId(0)
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="bind">
+    <Code><![CDATA[begin
+  userPageBindClick("home","btn1",bEditIO,true)
+  userPageBindClick("home","btn2",bEditAction,true)
+  userPageBindClick("home","btn3",bEditTRAJ,true)
+  userPageBindClick("home","btn4",bEditPROG,true)
+  userPageBindClick("home","btn7",bEditFrame,true)
+  userPageBindClick("home","btn8",bEditSetting,true)
+  userPageBindClick("home","btn5",bEditCycle,true)
+  userPageBindClick("home","btn6",bLogMsg,true)
+  userPageBindClick("home","btn9",bEditSpoint,true)
+  userPageBindClick("home","btn10",bEditSzone,true)
+  userPageBindClick("home","btn11",bEditTcpTool,true)
+  userPageBindClick("home","img1",bExit,true)
+  userPageSet("home","btn1","disabled",false)
+  userPageSet("home","btn2","disabled",true)
+  userPageSet("home","btn3","disabled",false)
+  userPageSet("home","btn4","disabled",true)
+  userPageSet("home","btn5","disabled",false)
+  userPageSet("home","btn6","disabled",false)
+  userPageSet("home","btn7","disabled",true)
+  userPageSet("home","btn8","disabled",false)
+  userPageSet("home","btn9","disabled",true)
+  userPageSet("home","btn10","disabled",true)
+  userPageSet("home","btn11","disabled",true)
+  
+  userPageBind("home","lbl3","innerHTML",sLib,1,"r")
+  userPageBind("home","lbl3_Copy1","innerHTML",sRobState,1,"r")
+end]]></Code>
+  </Program>
+</Programs>

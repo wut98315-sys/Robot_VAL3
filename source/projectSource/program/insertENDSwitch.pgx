@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="insertENDSwitch" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sKey" type="string" xsi:type="element" />
+      <Parameter name="x_nIndex" type="num" xsi:type="element" />
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  if x_nIndex==0 and progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sTRAJname==""
+    x_nIndex=x_nIndex
+  else
+    x_nIndex=x_nIndex+1
+    //// insert(progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex])
+    //l_nIndex=x_nIndex+1
+    //insert(progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex+1])
+    append(progTemp:pProgItem[x_sKey].pProgTemplate)
+    for l_i = size(progTemp:pProgItem[x_sKey].pProgTemplate)-1 to x_nIndex step -1
+      call copyPara(x_sKey,l_i-1,l_i)
+    endFor
+  endIf
+  
+  progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].nType=7
+  progTemp:pProgItem[x_sKey].pProgTemplate[x_nIndex].sTRAJname="ENDSWITCH"
+  x_bToSave=true
+end]]></Code>
+  </Program>
+</Programs>

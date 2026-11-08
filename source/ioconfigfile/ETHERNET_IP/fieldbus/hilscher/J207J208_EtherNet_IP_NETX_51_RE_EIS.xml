@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SYCONnet>
+  <ProjectPath>.</ProjectPath>
+  <ProjectFile>J207J208_EtherNet_IP_NETX_51_RE_EIS.spj</ProjectFile>
+  <Target UID="Item1" Protocol="EtherNet/IP" ModuleName="NETX 51 RE/EIS" DtmProgID="Hilscher.ENIPAdapterDTM.1" PathToExportedFiles="..\..\configs\hilscher" BaseNameForExportedFiles="J207J208" />
+</SYCONnet>

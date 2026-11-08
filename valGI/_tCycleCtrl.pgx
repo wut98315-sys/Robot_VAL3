@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_tCycleCtrl">
+    <Locals>
+      <Local name="l_bAckAlarm" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bEndCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bErr" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bHoldCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bPowerOff" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bPowerOn" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResetCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bResetIO" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bStartCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_bStopCmd" type="bool" xsi:type="array" size="1" />
+      <Local name="l_n" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //  rs:_nOmacStat
+  //1-Ready
+  //2-Starting
+  //3-Running
+  //4-Resetting
+  //5-Holding
+  //6-Held
+  //7-Ending
+  //8-Stopping
+  //9-Stopped
+  //10-Aborting
+
+  // _nStateCmd
+  //1-Reset
+  //2-Start
+  //3-Hold
+  //4-Unhold
+  //5-End
+  //6-Stop
+  //7-Abort
+
+  do
+    //add by guohangxin 20240408 refreshing log
+    call rs:robotStatus()
+    //    if rs:bIsHome and workingMode()==4 and esStatus()!=2 and rs:_nOmacStat==9
+    //      rs:_nOmacStat=1
+    //    endIf
+    //****************************Cycle control*****************************//
+    //7-Abort
+    if rs:_bHeavyAlarm==true and (rs:_nOmacStat<9 and rs:_nOmacStat!=3 and rs:_nOmacStat!=6) or (workingMode()==1 and rs:_nOmacStat<9)
+      //********add by guohangxin log**********//
+      if rs:_bHeavyAlarm==true
+        rs:_sRobotStatus="当前机器人有报警,代码:"+toString("",rs:_nAlarmCode[rs:_nErrIndex])
+      elseIf(workingMode()==1 and rs:_nOmacStat<9)
+        rs:_sRobotStatus="当前机器人处于手动非停止状态"
+      endIf
+      //***************************************//
+      _nStateCMD=7
+      //1-Reset
+    elseIf(rs:nPLCcmd==1 or rs:nCycleCmd==1) and rs:_nOmacStat==9
+      //********add by guohangxin log**********//
+      if rs:nPLCcmd==1
+        rs:_sRobotStatus="收到PLC复位信号"
+      elseIf rs:nCycleCmd==1
+        rs:_sRobotStatus="页面设置复位信号"
+      endIf
+      if rs:_bHeavyAlarm==false
+        _nStateCMD=1
+      else
+        _nStateCMD=0
+        popUpMsg("请先清除报错!")
+        delay(3)
+      endIf
+      //***************************************//
+      //2-Start
+    elseIf(rs:nPLCcmd==2 or rs:nCycleCmd==2) and rs:_nOmacStat==1
+      //********add by guohangxin log**********//
+      if rs:nPLCcmd==2
+        rs:_sRobotStatus="收到PLC启动信号"
+      elseIf rs:nCycleCmd==2
+        rs:_sRobotStatus="页面设置启动信号"
+      endIf
+      if rs:_bHeavyAlarm==false
+        _nStateCMD=2
+      else
+        _nStateCMD=0
+        popUpMsg("请先清除报错!")
+        delay(3)
+      endIf
+      //***************************************//
+      //3-Hold
+    elseIf(rs:nPLCcmd==3 or rs:nCycleCmd==3 or rs:_bHeavyAlarm==true) and rs:_nOmacStat==3
+      //********add by guohangxin log**********//
+      if rs:nPLCcmd==3
+        rs:_sRobotStatus="收到PLC暂停信号"
+      elseIf rs:nCycleCmd==3
+        rs:_sRobotStatus="页面设置暂停信号"
+      elseIf rs:_bHeavyAlarm==true
+        rs:_sRobotStatus="机器人报警，暂停生产"
+      endIf
+      //***************************************//
+      _nStateCMD=3
+      //4-Unhold
+    elseIf(rs:nPLCcmd==2 or rs:nCycleCmd==4) and rs:_nOmacStat==6
+      //********add by guohangxin log**********//
+      if rs:nPLCcmd==2
+        rs:_sRobotStatus="收到PLC暂停恢复信号"
+      elseIf rs:nCycleCmd==4
+        rs:_sRobotStatus="页面设置暂停恢复信号"
+      endIf
+      //***************************************//
+      if rs:_bHeavyAlarm==false
+        _nStateCMD=4
+      else
+        _nStateCMD=0
+        popUpMsg("请先清除报错!")
+        delay(3)
+      endIf
+      //5-End
+    elseIf(rs:nPLCcmd==4 or rs:nCycleCmd==5) and rs:_nOmacStat==3
+      //********add by guohangxin log**********//
+      if rs:nPLCcmd==4
+        rs:_sRobotStatus="收到PLC生产结束信号"
+      elseIf rs:nCycleCmd==5
+        rs:_sRobotStatus="页面设置生产结束信号"
+      endIf
+      //***************************************//
+      _nStateCMD=5
+      //6-Stop
+    elseIf(rs:nPLCcmd==5 or rs:nCycleCmd==6) and rs:_nOmacStat<8
+      //********add by guohangxin log**********//
+      if rs:nPLCcmd==5
+        rs:_sRobotStatus="收到PLC停止信号"
+      elseIf rs:nCycleCmd==6
+        rs:_sRobotStatus="页面设置停止信号"
+      endIf
+      //***************************************//
+      _nStateCMD=6
+      //2025.7.21 add 增加路径回原程序
+      //elseIf(rs:nPLCcmd==6) and (rs:_nOmacStat==9 and rs:_nOmacStat!=11) and rs:bIsHome==false and esStatus()!=2 and workingMode()==4
+    elseIf (rs:nCycleCmd==7 or rs:nPLCcmd==7) and (rs:_nOmacStat==9 and rs:_nOmacStat!=11) and rs:bIsHome==false and esStatus()!=2 and (workingMode()==4 or workingMode()==1)
+      if rs:_bHeavyAlarm==false and ioStatus(io:dORbHeartbeat)>=0
+        if rs:nPLCcmd==7
+          rs:_sRobotStatus="收到PLC路径回Home点信号"
+        elseIf rs:nCycleCmd==7
+          rs:_sRobotStatus="收到页面手动路径回Home点信号"
+        endIf
+        _nStateCMD=8
+      else
+        _nStateCMD=0
+        popUpMsg("请先清除报错!")
+        delay(3)
+      endIf
+      //2025.7.21 add 增加直接回原程序
+    elseIf (rs:nPLCcmd==6) and ((rs:_nOmacStat==9 or rs:_nOmacStat==11) and rs:_nOmacStat!=12) and rs:bIsHome==false and esStatus()!=2 and workingMode()==4
+      if rs:_bHeavyAlarm==false and ioStatus(io:dORbHeartbeat)>=0
+        rs:_sRobotStatus="收到PLC直接回Home点信号"
+        _nStateCMD=9
+      else
+        _nStateCMD=0
+        popUpMsg("请先清除报错!")
+        delay(3)
+      endIf
+    else
+      _nStateCMD=0
+    endIf
+
+    //if _nStateCMD!=_nLastStateCMD
+    switch _nStateCMD
+      //Reset
+      case 1
+        if rs:_nOmacStat==9
+          if taskStatus("Reset")>=0
+            taskKill("Reset")
+          endIf
+          wait(taskStatus("Reset")<0)
+          delay(0.1)
+          taskCreate "Reset",100,cycle_Reset()
+        endIf
+      break
+
+      //Start
+      case 2
+        if rs:_nOmacStat==1
+          if taskStatus("Start")>=0
+            taskKill("Start")
+          endIf
+          wait(taskStatus("Start")<0)
+          delay(0.1)
+          taskCreate "Start",100,cycle_Start()
+        endIf
+      break
+
+      //Hold
+      case 3
+        if taskStatus("Hold")>=0
+          taskKill("Hold")
+        endIf
+        wait(taskStatus("Hold")<0)
+        taskCreate "Hold",100,cycle_Hold()
+      break
+
+      //unHold
+      case 4
+        if taskStatus("Unhold")>=0
+          taskKill("Unhold")
+        endIf
+        wait(taskStatus("Unhold")<0)
+        taskCreate "Unhold",100,cycle_Unhold()
+        delay(0.1)
+      break
+
+      case 5
+        if taskStatus("End")>=0
+          taskKill("End")
+        endIf
+        wait(taskStatus("End")<0)
+        taskCreate "End",100,cycle_End()
+      break
+
+      //Stop
+      case 6
+        if taskStatus("Stop")>=0
+          taskKill("Stop")
+        endIf
+        wait(taskStatus("Stop")<0)
+        taskCreate "Stop",100,cycle_Stop()
+      break
+
+      //Abort
+      case 7
+        if taskStatus("Abort")>=0
+          taskKill("Abort")
+        endIf
+        wait(taskStatus("Abort")<0)
+        taskCreate "Abort",100,cycle_Abort()
+      break
+            //路径回Home
+      case 8
+        if taskStatus("RotGoHome")>=0
+          taskKill("RotGoHome")
+        endIf
+        wait(taskStatus("RotGoHome")<0)
+        taskCreate "RotGoHome",100,cycle_RotGoHome()
+      break
+
+      //直接回Home
+      case 9
+        if taskStatus("GoHome")>=0
+          taskKill("GoHome")
+        endIf
+        wait(taskStatus("GoHome")<0)
+        taskCreate "GoHome",100,cycle_GoHome()
+      break
+    endSwitch
+    // endIf
+    //记录上次指令
+    //_nLastStateCMD=_nStateCMD
+    delay(0.02)
+  until false
+end]]></Code>
+  </Program>
+</Programs>

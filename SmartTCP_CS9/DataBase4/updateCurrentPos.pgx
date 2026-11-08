@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="updateCurrentPos" access="public">
+    <Locals>
+      <Local name="l_pHere" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_jHere" type="jointRs" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  nJogMode=$getJogmode()
+  switch nJogMode
+    case 1
+      bShowJpos=true
+    break
+    case 2,3
+      bShowJpos=false
+    break
+    default
+      bShowJpos=true
+    break
+  endSwitch
+  //
+  l_pHere=here(utCurrentTool.tValue,world)
+  l_jHere=herej()  
+  if bShowJpos==true
+    utLbl_CurrentPos_Name[0].Common.sText="J1:"
+    utLbl_CurrentPos_Name[1].Common.sText="J2:"
+    utLbl_CurrentPos_Name[2].Common.sText="J3:"
+    utLbl_CurrentPos_Name[3].Common.sText="J4:"
+    utLbl_CurrentPos_Name[4].Common.sText=""
+    utLbl_CurrentPos_Name[5].Common.sText=""
+    //
+    utLbl_CurrentPos_Data[0].Common.sText=toString(".3",l_jHere.j1)
+    utLbl_CurrentPos_Data[1].Common.sText=toString(".3",l_jHere.j2)
+    utLbl_CurrentPos_Data[2].Common.sText=toString(".3",l_jHere.j3)
+    utLbl_CurrentPos_Data[3].Common.sText=toString(".3",l_jHere.j4)
+    utLbl_CurrentPos_Data[4].Common.sText=toString(".3",0)
+    utLbl_CurrentPos_Data[5].Common.sText=toString(".3",0)
+    //
+    utLbl_CurrentPos_Name[4].Appearance.bVisibility=false
+    utLbl_CurrentPos_Name[5].Appearance.bVisibility=false
+    utLbl_CurrentPos_Data[4].Appearance.bVisibility=false
+    utLbl_CurrentPos_Data[5].Appearance.bVisibility=false
+  else
+    utLbl_CurrentPos_Name[0].Common.sText="X:"
+    utLbl_CurrentPos_Name[1].Common.sText="Y:"
+    utLbl_CurrentPos_Name[2].Common.sText="Z:"
+    utLbl_CurrentPos_Name[3].Common.sText="RX:"
+    utLbl_CurrentPos_Name[4].Common.sText="RY:"
+    utLbl_CurrentPos_Name[5].Common.sText="RZ:"
+    //
+    utLbl_CurrentPos_Data[0].Common.sText=toString(".3",l_pHere.trsf.x)
+    utLbl_CurrentPos_Data[1].Common.sText=toString(".3",l_pHere.trsf.y)
+    utLbl_CurrentPos_Data[2].Common.sText=toString(".3",l_pHere.trsf.z)
+    utLbl_CurrentPos_Data[3].Common.sText=toString(".3",l_pHere.trsf.rx)
+    utLbl_CurrentPos_Data[4].Common.sText=toString(".3",l_pHere.trsf.ry)
+    utLbl_CurrentPos_Data[5].Common.sText=toString(".3",l_pHere.trsf.rz)   
+    //
+    utLbl_CurrentPos_Name[4].Appearance.bVisibility=true
+    utLbl_CurrentPos_Name[5].Appearance.bVisibility=true
+    utLbl_CurrentPos_Data[4].Appearance.bVisibility=true
+    utLbl_CurrentPos_Data[5].Appearance.bVisibility=true
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

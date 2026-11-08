@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_getSetForce" access="public">
+    <Description><![CDATA[功能：获取对应型号机器人设定的扭矩限值
+//x_nCurrentMaxForce 当前机型扭矩库设置的最大限值
+//x_sKey   扭矩库键值
+//x_sArmType 反馈四轴/六轴机器人
+//x_bFind 是否在扭矩库中找到当前机型]]></Description>
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nCurrentMaxForce" type="num" xsi:type="array" use="reference" />
+      <Parameter name="x_sKey" type="string" xsi:type="element" use="reference" />
+      <Parameter name="x_sArmType" type="string" xsi:type="element" use="reference" />
+      <Parameter name="x_bFind" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sArmType" type="string" xsi:type="array" size="1" />
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="l_bIsScara" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //x_nCurrentMaxForce 当前机型扭矩库设置的最大限值
+  //x_sKey             扭矩库键值
+  //x_sArmType         反馈四轴/六轴机器人
+  //x_bFind            是否在扭矩库中找到当前机型
+  x_bFind=false
+  //获取对应型号机器人设定的扭矩限值
+  //获取机器人型号
+  l_sArmType=getVersion("Arm Type")
+  //打印机器人型号
+  logMsg(l_sArmType)
+  l_bIsScara=(left(l_sArmType,2)=="rs" or left(l_sArmType,2)=="ts" or left(l_sArmType,2)=="tp")
+  l_sArmType=left(l_sArmType,find(l_sArmType,"-"))
+  call getArmTypeList(sArm4List,sArm6List)
+  //判断机器人4轴/6轴
+  if l_bIsScara
+    //获取机器人扭矩设定值
+    for i=0 to size(sArm4List)-1
+      if l_sArmType==sArm4List[i]
+        resize(x_nCurrentMaxForce,1,4)
+        x_nCurrentMaxForce[0]=forcedata:tArm4Force[sArm4List[i]].nMaxJnt4Force[0]
+        x_nCurrentMaxForce[1]=forcedata:tArm4Force[sArm4List[i]].nMaxJnt4Force[1]
+        x_nCurrentMaxForce[2]=forcedata:tArm4Force[sArm4List[i]].nMaxJnt4Force[2]
+        x_nCurrentMaxForce[3]=forcedata:tArm4Force[sArm4List[i]].nMaxJnt4Force[3]
+        x_sKey=l_sArmType
+        x_sArmType="4_Axis"
+        x_bFind=true 
+      endIf
+    endFor
+  else
+    for i=0 to size(sArm6List)-1
+      if l_sArmType==sArm6List[i]
+        resize(x_nCurrentMaxForce,1,6)
+        x_nCurrentMaxForce[0]=forcedata:tArm6Force[sArm6List[i]].nMaxJnt6Force[0]
+        x_nCurrentMaxForce[1]=forcedata:tArm6Force[sArm6List[i]].nMaxJnt6Force[1]
+        x_nCurrentMaxForce[2]=forcedata:tArm6Force[sArm6List[i]].nMaxJnt6Force[2]
+        x_nCurrentMaxForce[3]=forcedata:tArm6Force[sArm6List[i]].nMaxJnt6Force[3]
+        x_nCurrentMaxForce[4]=forcedata:tArm6Force[sArm6List[i]].nMaxJnt6Force[4]
+        x_nCurrentMaxForce[5]=forcedata:tArm6Force[sArm6List[i]].nMaxJnt6Force[5]
+        x_sKey=l_sArmType
+        x_sArmType="6_Axis"
+        x_bFind=true 
+      endIf
+    endFor
+  endIf
+  
+end]]></Code>
+  </Program>
+</Programs>

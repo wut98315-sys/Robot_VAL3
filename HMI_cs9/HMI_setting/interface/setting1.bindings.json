@@ -1,0 +1,158 @@
+{
+  "version": "1.0",
+  "bindings": [
+    {
+      "id": "lbl2",
+      "attribute": "style.visibility",
+      "data": "bIsDoing[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "btnUnlock",
+      "attribute": "innerHTML",
+      "data": "sBtnUnLock[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1",
+      "attribute": "disabled",
+      "data": "bDisable[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1_Copy1",
+      "attribute": "disabled",
+      "data": "bDisable[1]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1_Copy2",
+      "attribute": "disabled",
+      "data": "bDisable[2]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1_Copy4",
+      "attribute": "disabled",
+      "data": "bDisable[3]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1_Copy3",
+      "attribute": "disabled",
+      "data": "bDisable[4]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1_Copy5",
+      "attribute": "disabled",
+      "data": "bDisable[5]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl1_Copy8",
+      "attribute": "style.visibility",
+      "data": "bSix_Axis[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1_Copy3",
+      "attribute": "style.visibility",
+      "data": "bSix_Axis[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "lbl1_Copy9",
+      "attribute": "style.visibility",
+      "data": "bSix_Axis[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1_Copy5",
+      "attribute": "style.visibility",
+      "data": "bSix_Axis[0]",
+      "size": 1,
+      "direction": "r",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1",
+      "attribute": "value",
+      "data": "nMaxJntForec[0]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1_Copy1",
+      "attribute": "value",
+      "data": "nMaxJntForec[1]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1_Copy2",
+      "attribute": "value",
+      "data": "nMaxJntForec[2]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1_Copy4",
+      "attribute": "value",
+      "data": "nMaxJntForec[3]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1_Copy3",
+      "attribute": "value",
+      "data": "nMaxJntForec[4]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    },
+    {
+      "id": "nmb1_Copy5",
+      "attribute": "value",
+      "data": "nMaxJntForec[5]",
+      "size": 1,
+      "direction": "rw",
+      "refresh": 1
+    }
+  ],
+  "callbacks": [
+    {
+      "id": "btnUnlock",
+      "event": "click",
+      "data": "unLock",
+      "priority": 10
+    }
+  ],
+  "events": []
+}

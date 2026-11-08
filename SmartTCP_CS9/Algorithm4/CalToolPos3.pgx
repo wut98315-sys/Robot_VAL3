@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="CalToolPos3" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_tTool" type="tool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bStatus" type="bool" xsi:type="array" size="1" />
+      <Local name="l_p1" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_p2" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_p3" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_pCenter" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_t1" type="tool" xsi:type="array" size="1" />
+      <Local name="l_t2" type="tool" xsi:type="array" size="1" />
+      <Local name="l_t3" type="tool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_bStatus=false
+  link(l_pCenter,world)
+  //
+  l_p1=db:pTeach1
+  l_p2=db:pTeach2
+  l_p3=db:pTeach3
+  call _CalpCircle(l_p1,l_p2,l_p3,l_pCenter,l_bStatus)
+  //
+
+  if l_bStatus==true
+    l_pCenter.trsf.rx=0
+    l_pCenter.trsf.ry=180
+    l_pCenter.trsf.rz=0
+  else
+    call db:hmiAlert("DeviationIsTooLarge","warning")
+  endIf
+  l_t1.trsf=!l_p1.trsf*l_pCenter.trsf
+  l_t2.trsf=!l_p2.trsf*l_pCenter.trsf
+  l_t3.trsf=!l_p3.trsf*l_pCenter.trsf
+  x_tTool.trsf.x=(l_t1.trsf.x+l_t2.trsf.x+l_t3.trsf.x)/3
+  x_tTool.trsf.y=(l_t1.trsf.y+l_t2.trsf.y+l_t3.trsf.y)/3
+  x_tTool.trsf.z=0
+  x_tTool.trsf.rx=0
+  x_tTool.trsf.ry=0
+  x_tTool.trsf.rz=0
+  call db:hmiAlert("SaveInTool1","info")
+end]]></Code>
+  </Program>
+</Programs>

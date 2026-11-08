@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Data/2">
+  <Datas>
+    <Data name="pPointRx" access="public" xsi:type="array" type="pointRx" size="2">
+      <Value key="0" fatherId="world[0]" />
+      <Value key="1" fatherId="world[0]" />
+    </Data>
+    <Data name="jJointRx" access="public" xsi:type="array" type="jointRx" size="1" />
+    <Data name="pParaItem" access="public" xsi:type="array" type="paraItem" size="1">
+      <Value key="0">
+        <Field name="mMdesc" xsi:type="array" type="mdesc" size="1" />
+        <Field name="nMoveType" xsi:type="array" type="num" size="1" />
+        <Field name="nActionIndex" xsi:type="array" type="num" size="1" />
+        <Field name="nPercentage" xsi:type="array" type="num" size="1" />
+        <Field name="iIfItem" xsi:type="array" type="ifItem" size="1">
+          <Value key="0">
+            <Field name="nSigType" xsi:type="array" type="num" size="3" />
+            <Field name="nSigIndex" xsi:type="array" type="num" size="3" />
+            <Field name="nValue" xsi:type="array" type="num" size="3" />
+            <Field name="bANDOR" xsi:type="array" type="bool" size="2" />
+          </Value>
+        </Field>
+        <Field name="nDelay" xsi:type="array" type="num" size="1" />
+        <Field name="nSigValue" xsi:type="array" type="num" size="1" />
+        <Field name="bSafePoint" xsi:type="array" type="bool" size="1" />
+      </Value>
+    </Data>
+    <Data name="sID" access="public" xsi:type="array" type="string" size="1" />
+    <Data name="bMarked" access="public" xsi:type="array" type="bool" size="1" />
+    <Data name="pInter" access="public" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" fatherId="world[0]" />
+    </Data>
+  </Datas>
+</Database>

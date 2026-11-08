@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="updateInfo" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nItemIn" type="num" xsi:type="element" />
+      <Parameter name="x_nItemOut" type="num" xsi:type="element" use="reference" />
+      <Parameter name="x_sTextOut" type="string" xsi:type="element" use="reference" />
+      <Parameter name="x_sNo" type="string" xsi:type="element" />
+      <Parameter name="x_sComment" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sTextOut" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin  
+  switch sLanguage
+    case "chinese"
+      l_sTextOut=sHmiCN[x_nItemIn]
+    break
+    case "english"
+      l_sTextOut=sHmiEN[x_nItemIn]
+    break
+  endSwitch   
+  if x_sNo=="0" or x_nItemIn==100
+    x_sTextOut=l_sTextOut
+  else 
+    if x_nItemIn==99
+      x_sTextOut=""
+    else 
+      x_sTextOut=x_sNo+"."+l_sTextOut   
+    endIf
+  endIf
+  x_nItemOut=x_nItemIn
+end
+]]></Code>
+  </Program>
+</Programs>

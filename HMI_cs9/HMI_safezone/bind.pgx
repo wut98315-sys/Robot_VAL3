@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="bind">
+    <Locals>
+      <Local name="l_nmb" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  userPageBindClick("safezone","btnback",bBack,true)
+  //
+  userPageBind("safezone","cbx1","options",sList,size(sList),"r")
+  userPageBind("safezone","cbx1","value",sSelZone,1,"rw")
+  
+  userPageBindClick("safezone","btn1",bSetFrame,true)
+  userPageBindClick("safezone","btn2",bTeach1,true)
+  userPageBindClick("safezone","btn2_Copy1",bMove,true)
+  // userPageBindClick("safezone","btn3",bRename,true)
+  userPageBindClick("safezone","btn4",bConfirm,true)
+  userPageBindClick("safezone","btnSetFrame",bSetFrameData,true)
+  
+  userPageBind("safezone","txt1","value",sComment,1,"rw")
+  
+  userPageBind("safezone","chk1","checked",bActive,1,"rw")
+  
+  //  userPageBindClick("Wizard","btn1",bExit,true)
+  
+  
+  for l_i = 0 to 5
+    l_nmb="nmb"+toString("",l_i)
+    userPageBind("safezone",l_nmb,"value",nFrame[l_i],1,"rw")
+  endFor
+  
+  for l_i = 0 to 5
+    l_nmb="nmb1"+toString("",l_i)
+    userPageBind("safezone",l_nmb,"value",nTRSF1[l_i],1,"rw")
+  endFor
+  
+  for l_i = 0 to 5
+    l_nmb="nmb2"+toString("",l_i)
+    userPageBind("safezone",l_nmb,"value",nTRSF2[l_i],1,"rw")
+  endFor
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="setIOvisible" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nType" type="num" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sbtn" type="string" xsi:type="array" size="1" />
+      <Local name="l_i" type="num" xsi:type="array" size="1" />
+      <Local name="l_slabel" type="string" xsi:type="array" size="1" />
+      <Local name="l_nSize" type="num" xsi:type="array" size="1" />
+      <Local name="l_slbl" type="string" xsi:type="array" size="1" />
+      <Local name="l_slbl1" type="string" xsi:type="array" size="1" />
+      <Local name="l_slbl2" type="string" xsi:type="array" size="1" />
+      <Local name="l_nSize1" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  call getSize(l_nSize,l_nSize1)
+  switch x_nType
+    case 0,1
+      for l_i = 0 to 15
+        l_slbl="lbl"+toString("",40+l_i)
+        userPageSet("IO",l_slbl,"style.visibility","hidden")
+      endFor
+      for l_i = 0 to l_nSize-1
+        l_slbl="lbl"+toString("",l_i)
+        l_slbl1="lbl"+toString("",20+l_i)
+        l_slbl2="btn"+toString("",60+l_i)
+        userPageSet("IO",l_slbl,"style.visibility","visible")
+        userPageSet("IO",l_slbl1,"style.visibility","visible")
+        userPageSet("IO",l_slbl2,"style.visibility","visible")
+      endFor
+      if l_nSize<16
+        for l_i = l_nSize to 15
+          l_slbl="lbl"+toString("",l_i)
+          l_slbl1="lbl"+toString("",20+l_i)
+          l_slbl2="btn"+toString("",60+l_i)
+          userPageSet("IO",l_slbl,"style.visibility","hidden")
+          userPageSet("IO",l_slbl1,"style.visibility","hidden")
+          userPageSet("IO",l_slbl2,"style.visibility","hidden")
+        endFor
+      endIf
+    break
+    case 2,3
+      for l_i = 0 to 15
+        l_slbl="btn"+toString("",60+l_i)
+        userPageSet("IO",l_slbl,"style.visibility","hidden")
+      endFor   
+      for l_i = 0 to l_nSize1-1
+        l_slbl="lbl"+toString("",l_i)
+        l_slbl1="lbl"+toString("",20+l_i)
+        l_slbl2="lbl"+toString("",40+l_i)
+        userPageSet("IO",l_slbl,"style.visibility","visible")
+        userPageSet("IO",l_slbl1,"style.visibility","visible")
+        userPageSet("IO",l_slbl2,"style.visibility","visible")
+      endFor
+      if l_nSize1<16
+        for l_i = l_nSize1 to 15
+          l_slbl="lbl"+toString("",l_i)
+          l_slbl1="lbl"+toString("",20+l_i)
+          l_slbl2="lbl"+toString("",40+l_i)
+          userPageSet("IO",l_slbl,"style.visibility","hidden")
+          userPageSet("IO",l_slbl1,"style.visibility","hidden")
+          userPageSet("IO",l_slbl2,"style.visibility","hidden")
+        endFor
+      endIf
+    break
+  endSwitch
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_onStartPROG" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sHtml" type="string" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  nPgIndexPROG=0
+  nPgNumPROG=0
+  sPagePROG=""
+  sPgIndexPROG=""
+  bSelProg=true
+  bSelTraj=false
+  if bSelProg
+    call resfreshPROG(x_sHtml)
+  elseIf bSelTraj
+    call resfreshTRAJ(x_sHtml)
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

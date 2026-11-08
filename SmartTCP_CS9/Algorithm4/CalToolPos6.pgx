@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="CalToolPos6" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_tTool" type="tool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bStatus" type="bool" xsi:type="array" size="1" />
+      <Local name="l_pCenter" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_t4" type="tool" xsi:type="array" size="1" />
+      <Local name="l_t3" type="tool" xsi:type="array" size="1" />
+      <Local name="l_t2" type="tool" xsi:type="array" size="1" />
+      <Local name="l_t1" type="tool" xsi:type="array" size="1" />
+      <Local name="l_fFrame" type="frame" xsi:type="array" size="1" />
+      <Local name="l_nFrameErr" type="num" xsi:type="array" size="1" />
+      <Local name="l_bBool" type="bool" xsi:type="array" size="1" />
+      <Local name="l_p5" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_p4" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_p3" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_p2" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_p1" type="pointRs" xsi:type="array" size="1" />
+      <Local name="l_p6" type="pointRs" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_bStatus=false
+  link(l_pCenter,world)
+  //计算中心点坐标
+  l_p1=db:pTeach1
+  l_p2=db:pTeach2
+  l_p3=db:pTeach3
+  l_p4=db:pTeach4
+  l_p5=db:pTeach5
+  l_p6=db:pTeach6
+  l_p1.trsf.z=0
+  l_p2.trsf.z=0
+  l_p3.trsf.z=0  
+  l_p4.trsf.z=0
+  l_p5.trsf.z=0  
+  l_p6.trsf.z=0 
+  call _CalpCircle(l_p1,l_p2,l_p3,l_pCenter,l_bStatus)
+  //计算工具的xyz
+  link(l_p4,world)
+  link(l_p5,world)
+  link(l_p6,world)  
+  link(l_fFrame,world)
+  l_nFrameErr=setFrame(l_p4,l_p5,l_p6,l_fFrame) 
+  switch l_nFrameErr      
+    case 0
+      l_pCenter.trsf.rx=l_fFrame.trsf.rx
+      l_pCenter.trsf.ry=l_fFrame.trsf.ry
+      l_pCenter.trsf.rz=l_fFrame.trsf.rz        
+      x_tTool.trsf=!l_p4.trsf*l_pCenter.trsf      
+    break
+        case -1,-2
+      call db:hmiAlert("DeviationIsTooLarge","info")
+    break
+  endSwitch   
+  call db:hmiAlert("SaveInTool1","info")
+end]]></Code>
+  </Program>
+</Programs>

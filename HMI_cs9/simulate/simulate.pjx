@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.10.3Cs9_BS2093" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="goHome.pgx" />
+    <Program file="simulate_UI.pgx" />
+    <Program file="simulateHome.pgx" />
+    <Program file="simulatePROG.pgx" />
+    <Program file="simulateTRAJ.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="simulate.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="savedata" path="Disk://source/saveData/saveData.pjx" />
+    <Library alias="rs" path="Disk://source/projectSource/robotStatus/robotStatus.pjx" />
+    <Library alias="util" path="Disk://HMI_cs9/HMI_util/HMI_util.pjx" />
+    <Library alias="trajectory" path="Disk://source/projectSource/trajectory/trajectory.pjx" />
+    <Library alias="program" path="Disk://source/projectSource/program/program.pjx" />
+  </Libraries>
+</Project>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s8.10.3Cs9_BS2093" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="bind.pgx" />
+    <Program file="main.pgx" />
+    <Program file="onSave.pgx" />
+    <Program file="onShow.pgx" />
+    <Program file="onStart.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="HMI_action.dtx" />
+  </Database>
+  <Libraries>
+    <Library alias="util" path="Disk://HMI_cs9/HMI_util/HMI_util.pjx" />
+    <Library alias="io" path="Disk://source/projectSource/io/io.pjx" />
+    <Library alias="action" path="Disk://source/projectSource/Action/Action.pjx" />
+    <Library alias="actdata" path="Disk://data/actionData/actionData.pjx" />
+  </Libraries>
+  <Types>
+    <Type name="actItem" path="Disk://source/template/actItem/actItem.pjx" />
+  </Types>
+</Project>

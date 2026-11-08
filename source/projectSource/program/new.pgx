@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="new" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_bToSave" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sNmae" type="string" xsi:type="array" size="1" />
+      <Local name="l_bResult" type="bool" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  l_bResult=userPagePrompt("输入新建名称：",l_sNmae)
+  if l_bResult
+    if !isDefined(progTemp:pProgItem[l_sNmae])
+      insert(progTemp:pProgItem[l_sNmae])
+      x_bToSave=true
+    endIf
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

@@ -62,6 +62,9 @@
 
 ## 待办 / 优化方向
 
+完整的代码评审见 [docs/2026-11-08-code-review.md](docs/2026-11-08-code-review.md)（主循环与任务框架，
+含 P0/P1/P2 分级、修复建议与验证清单）。修复分支：`review/task-framework`。
+
 - [ ] 统一各子工程的 VAL3 版本基线；
 - [ ] `appLauncher` 与 `valGI` 两套入口的重复代码合并；
 - [ ] 主循环中 `clock()` 看门狗与 `delay(0)` 的 CPU 占用评估；

@@ -8,7 +8,25 @@
       <script type="text/javascript" src="/vendor/libs/stblUserPage.min.js"></script>
       <link href="/vendor/libs/up.min.v2.css" rel="stylesheet" media="all" type="text/css"></link>
       <meta name="src-version" content="8.10.3"></meta>
-    </head>
+      <!-- industrial-skin -->
+      <style type="text/css">
+        html, body { background: #eef2f6; }
+        body {
+          font-family: "Microsoft YaHei", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+          color: #28405a; font-size: 13px; -webkit-user-select: none; user-select: none;
+        }
+        /* 点动模式：分段按钮，去掉原来会平铺的图标背景 */
+        #btn1, #btn2, #btn3, #btn4 {
+          background-image: none !important; padding: 0px !important;
+          border: 1px solid #cfd9e3; border-radius: 6px;
+          color: #28405a; font-family: inherit; font-size: 13px; font-weight: bold; outline: none;
+        }
+        #btn1:enabled:hover, #btn2:enabled:hover, #btn3:enabled:hover, #btn4:enabled:hover {
+          border-color: #8fbfe8;
+        }
+        /* 关节读数分隔线改成浅灰 */
+        label { border-color: #d3dde7 !important; font-size: 13px; }
+      </style>    </head>
     <body style="width: 480px; height: 100px; margin: 0">
       <label style="height: 20px; border-color: #000000; border-style: solid; width: 160px; text-align: left; padding: 0px 0px 0px 20px; border-width: 0px 1px 0px 0px; left: 320px; position: absolute; top: 72px" id="lbl1_Copy3">J6:</label>
       <label style="height: 20px; border-color: #000000; border-style: solid; width: 160px; text-align: left; padding: 0px 0px 0px 20px; border-width: 0px 1px 0px 0px; left: 160px; position: absolute; top: 72px" id="lbl1_Copy4">J5:</label>

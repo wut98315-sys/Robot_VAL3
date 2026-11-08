@@ -8,7 +8,43 @@
       <script type="text/javascript" src="/vendor/libs/stblUserPage.min.js"></script>
       <link href="/vendor/libs/up.min.v2.css" rel="stylesheet" media="all" type="text/css"></link>
       <meta name="src-version" content="8.10.3"></meta>
-    </head>
+      <!-- industrial-skin -->
+      <style type="text/css">
+        html, body { background: #eef2f6; }
+        body {
+          font-family: "Microsoft YaHei", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+          color: #28405a; font-size: 13px; -webkit-user-select: none; user-select: none;
+        }
+        /* 标题栏：深色底 + 蓝色强调线，与原 lblTitle 的位置/高度一致 */
+        #lblTitle {
+          background-color: #16324a !important; color: #ffffff !important;
+          font-size: 18px !important; font-weight: bold; letter-spacing: 1px;
+          height: 50px !important; padding: 13px 0px 0px 0px !important;
+          border-bottom: 3px solid #1f8fff; box-sizing: border-box;
+        }
+        /* 返回键：白色圆形按钮，图标居中不放大 */
+        #btnback {
+          background-color: #ffffff !important; border: 1px solid #cfd9e3 !important;
+          border-radius: 20px !important;
+          background-size: 22px 22px; background-position: center center;
+          background-repeat: no-repeat;
+        }
+        button {
+          background-color: #ffffff; border: 1px solid #cfd9e3; border-radius: 6px;
+          color: #28405a; font-family: inherit; font-size: 13px; font-weight: bold;
+          cursor: pointer; outline: none;
+        }
+        /* 20px 的小按钮多为状态指示灯，做成圆形 */
+        button[style*="width: 20px"] { border-radius: 10px; padding: 0px; }
+        button:enabled:hover { background-color: #f5faff; border-color: #8fbfe8; }
+        button:enabled:active { background-color: #e3f0fb; border-color: #1f8fff; }
+        button:disabled { background-color: #f2f5f8; border-color: #dfe6ec; color: #a9b7c4; cursor: default; }
+        input, select, textarea {
+          background-color: #ffffff; border: 1px solid #cfd9e3; border-radius: 4px;
+          color: #28405a; font-family: inherit; font-size: 13px;
+        }
+        hr { border: 1px solid #d3dde7; }
+      </style>    </head>
     <body style="width: 480px; height: 690px; margin: 0">
       <label style="width: 480px; text-align: center; font-size: 26px; height: 50px; padding: 6px 0px 0px 0px; color: #FFFFFF; font-weight: bold; background-color: #6EB6FF; position: absolute; left: 0px; top: 0px" id="lblTitle">PROG</label>
       <button style="height: 40px; width: 40px; background-image: url('../../image/point/home.png'); position: absolute; left: 8px; top: 5px; border-style: none; background-color: rgba(255,255,255,0.0)" id="btnback"></button>

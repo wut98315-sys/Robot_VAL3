@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
   <Program name="movePoint">
     <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
@@ -10,8 +10,7 @@
     </Locals>
     <Code><![CDATA[begin
   l_bResult=userPageConfirm("是否移动到点位："+toString("",x_nIndex)+"?")
-  //1=准备就绪、9=已停止 均视为“未在生产”，允许点动到安全点
-  if l_bResult and (rs:_nOmacStat==9 or rs:_nOmacStat==1)
+  if l_bResult and rs:_nOmacStat==9
     resetMotion()
     l_bResult=pointToJoint(flange,herej(),safeTemp:sSPoint[x_nIndex].pPointRx,l_joint)
     if l_bResult
@@ -20,7 +19,7 @@
       popUpMsg("无法移动到该安全点位")
     endIf
   endIf
-  if rs:_nOmacStat!=9 and rs:_nOmacStat!=1
+  if rs:_nOmacStat!=9
     userPageAlert("机器人当前状态不满足，无法执行移动")
   endIf
 end]]></Code>

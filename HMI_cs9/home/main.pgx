@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
   <Program name="main" access="public">
     <Locals>
@@ -17,40 +17,10 @@
      
       sLib=toString("",saveData:nLibIndex)
       call bind()
-      //bind() 会把按钮恢复成默认状态（其中几项是禁用），这里强制让下面按当前状态判断的
-      //分支重新执行一次，否则只有在 _nOmacStat 变化时才会刷新，而 5.0 里 _nOmacStat 不会变，
-      //返回主页后就会出现"有几个按钮一直是灰的"
-      nLastStat=-1
       userPage(util:sPage)
       delay(0.5)
     endIf
     sLib=toString("",saveData:nLibIndex)
-    if rs:_nOmacStat!=nLastStat
-      nLastStat=rs:_nOmacStat
-      //2~8 为启动/运行/暂停/停止过程中的"生产未退出"状态；1=准备就绪，9=已停止
-      if rs:_nOmacStat>1 and rs:_nOmacStat<9
-        userPageAlert("未退出生产模式，主界面按钮锁定！")
-        userPageSet("home","btn1","disabled",true)
-        userPageSet("home","btn2","disabled",true)
-        userPageSet("home","btn3","disabled",true)
-        userPageSet("home","btn4","disabled",true)
-        userPageSet("home","btn7","disabled",true)
-        userPageSet("home","btn8","disabled",true)
-        userPageSet("home","btn9","disabled",true)
-        userPageSet("home","btn10","disabled",true)
-        userPageSet("home","btn11","disabled",true)
-      else
-        userPageSet("home","btn1","disabled",false)
-        userPageSet("home","btn2","disabled",false)
-        userPageSet("home","btn3","disabled",false)
-        userPageSet("home","btn4","disabled",false)
-        userPageSet("home","btn7","disabled",false)
-        userPageSet("home","btn8","disabled",false)
-        userPageSet("home","btn9","disabled",false)
-        userPageSet("home","btn10","disabled",false)
-        userPageSet("home","btn11","disabled",false)
-      endIf
-    endIf
     //btn
     if bEditIO
       bEditIO=false

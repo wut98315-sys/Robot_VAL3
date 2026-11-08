@@ -3,7 +3,7 @@
 - 评审对象：`Controller1/usr/usrapp`（TX2-90L valGI 应用，1184 个文件）
 - 评审范围：`appLauncher` 主循环、任务框架、PLC 握手、HMI 命令链路；其它模块只记录牵连问题
 - 基线：`main` @ `deabb49`
-- 修复分支：`review/task-framework` @ `67ef5da`（改动 6 个文件，见 §7）
+- 修复分支：`review/task-framework`（改动 6 个文件，见 §7；具体提交见 `git log`）
 - 日期：2026-11-08
 
 > 说明：本机只装了 SRS 2019 / 2022，无法编译 `s8.21 Cs9` 工程。本文所有改动都**必须**先在
@@ -336,7 +336,7 @@ PLC 的 `dOutCycle` 也是 true，而机器人已经停了。现场看到的是"
 
 ## 7. 已落地改动
 
-分支 `review/task-framework`，提交 `67ef5da`，6 个文件：
+分支 `review/task-framework`，6 个文件：
 
 | 文件 | 改动 |
 | --- | --- |

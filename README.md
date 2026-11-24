@@ -17,6 +17,7 @@
 | `valGI/` | 另一套入口（`version:4.11.20251028`），带 `cycle_*` 周期控制、`_tCycleCtrl`、`_productCycle`、`MonitorIO` 及 HMI 接口 |
 | `source/` | 公共源码库：`robotStatus`、`plc`、`io`、`program`、`trajectory`、`Action`、`safeCheck`、`goSafeHome`、`saveData`、`template/*`（程序/轨迹/动作模板）、`ioconfigfile`（现场总线与 I/O 配置） |
 | `HMI_cs9/` | CS9 触摸屏 HMI：`home`（主界面）、`HMI_TRAJ`、`HMI_prog`、`HMI_progEdit`、`HMI_pointEdit`、`HMI_cycle`、`HMI_IO`、`HMI_setting`、`HMI_safepoint`、`HMI_safezone`、`HMI_message`、`HMI_FrameSet`、`HMI_util`、`simulate` |
+| `HMI_cs9/css/hmi-theme.css` | 全部 HMI 页面共用的视觉主题：字体、深色标题栏、返回键、按钮/输入框、分割线、焦点态。页面通过 `<link href="../../css/hmi-theme.css">` 引用，改配色只需改这一个文件 |
 | `SmartTCP_CS9/` | SmartTCP 功能（TX2/TS2 两套算法 + 数据库 + 矩阵库 + `userType` 触摸控件） |
 | `LibTorque/` | 关节力矩库：`_setMaxJntForce`、`_getSetForce`、`setPageMaxJntForce` 及 `ForceData` |
 | `autoReturn/` | 自动回退：`MoveJ/MoveL/MoveC` 封装、`returnMove`、移动栈记录（`logMoveMsg*`） |
